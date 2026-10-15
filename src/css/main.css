@@ -1,0 +1,95 @@
+@font-face {
+  font-family: "SVN-DK Longreach";
+  src: url("../fonts/SVN-DK Longreach/SVN-DKLongreach.otf") format("opentype");
+}
+:root {
+  --color-primary: rgb(254 213 25);
+  --color-font: rgb(65 69 69);
+  --font-primary: "Google Sans", sans-serif;
+  --font-LuckiestGuy: "SVN-DK Longreach", sans-serif;
+}
+/* Components */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  width: 100%;
+  min-height: 100vh;
+  font-family: var(--font-primary);
+  color: var(--color-font);
+}
+.site-container {
+  margin: 0 auto;
+  padding: 1rem 0;
+  max-width: 1280px;
+}
+
+/* Topbar */
+header {
+  height: 68px;
+  width: 100%;
+  display: flex;
+  background-color: var(--color-primary);
+}
+.topbar {
+  max-width: 1280px;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.topbar-items {
+  gap: 10px;
+  padding: 0 4px;
+  height: 100%;
+}
+
+.topbar-items img {
+  display: none;
+  flex: none;
+  max-width: 100%;
+  height: auto;
+}
+
+.topbar-items span {
+  font-weight: 500;
+  font-size: 16px;
+  display: none;
+  white-space: nowrap;
+}
+
+.topbar-items span.slogan {
+  text-transform: uppercase;
+  font-family: var(--font-LuckiestGuy);
+}
+@media (min-width: 640px) {
+  .topbar-items img.logo {
+    display: block;
+  }
+}
+@media (min-width: 1024px) {
+  .topbar-items {
+    gap: 40px;
+    padding: 0 0;
+  }
+  .topbar-items span {
+    display: block;
+  }
+  .topbar-items span.slogan {
+    font-size: 20px;
+  }
+}
+@media (min-width: 1367px) {
+  .topbar-items {
+    gap: 78px;
+  }
+}
+@media (min-width: 1536px) {
+  .topbar-items img {
+    display: block;
+  }
+}
