@@ -1,9 +1,13 @@
 <!doctype html>
-<html lang="en">
+<html lang="vi">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -19,37 +23,92 @@
     <!--------->
   </head>
   <body>
-    <header class="header">
-      <div class="topbar flexRow-center">
-        <nav class="topbar-items flexRow-center">
-          <img
-          class="logo"
-            src="./src/img/sprite-pet-both-icon.svg"
-            alt="icon-branch"
-            id="iconBranch"
-          />
-          <span translate="no">Liên hệ : 1900 3305</span>
-          <img
-            src="./src/img/sprite-pet-both-icon.svg"
-            alt="icon-branch"
-            id="iconBranch"
-          />
-          <span class="slogan">cửa hàng thú cưng</span>
-          <img
-            src="./src/img/sprite-pet-both-icon.svg"
-            alt="icon-branch"
-            id="iconBranch"
-          />
-          <span>Hệ Thống Cửa Hàng</span>
-          <img
-          class="logo"
-            src="./src/img/sprite-pet-both-icon.svg"
-            alt="icon-branch"
-            id="iconBranch"
-          />
-        </nav>
-      </div>
-    </>
+    <div class="Destop-layout">
+      <!-- Topbar -->
+      <header class="header">
+        <div class="topbar flexRow-center site-container">
+          <nav class="topbar-items flexRow-center">
+            <img
+              src="./src/img/sprite-pet-both-icon.svg"
+              alt="icon-branch"
+              id="iconBranch"
+            />
+            <span translate="no">Liên hệ : 1900 3305</span>
+            <img
+              src="./src/img/sprite-pet-both-icon.svg"
+              alt="icon-branch"
+              id="iconBranch"
+            />
+            <span class="slogan">cửa hàng thú cưng</span>
+            <img
+              src="./src/img/sprite-pet-both-icon.svg"
+              alt="icon-branch"
+              id="iconBranch"
+            />
+            <span>Hệ Thống Cửa Hàng</span>
+            <img
+              src="./src/img/sprite-pet-both-icon.svg"
+              alt="icon-branch"
+              id="iconBranch"
+            />
+          </nav>
+        </div>
+      </header>
+      <!------------>
+      <!-- Navigation -->
+      <nav class="navbar site-container">
+        <div class="left-bar flexRow-center">
+          <div class="logo">
+            <img src="./src/img/logo_headerDesktop.svg" alt="icon" />
+          </div>
+          <div class="nav-item"><a href="#Trangchủ">Trang chủ</a></div>
+          <div class="nav-item"><a href="#Giớithiệu">Giới thiệu</a></div>
+          <div class="nav-item"><a href="#Sảnphẩm">Sản phẩm</a></div>
+          <div class="nav-item"><a href="#Thươnghiệu">Thương hiệu</a></div>
+          <div class="nav-item"><a href="#Tạpchí">Tạp chí</a></div>
+        </div>
+        <div class="right-bar flexRow-center">
+          <div class="search">
+            <div class="left-search-icon">
+              <img
+                id="icon"
+                src="./src/img/sprite-pet-dog-sticker.svg"
+                alt=""
+              />
+            </div>
+            <div class="right-search-icon">
+              <img
+                id="icon"
+                src="./src/img/sprite-pet-cat-sticker.svg"
+                alt=""
+              />
+            </div>
+            <input
+              class="text-search"
+              type="text"
+              placeholder="Tìm thức ăn và phụ kiện"
+            />
+          </div>
+          <div class="icon-set">
+            <button type="button" class="btn flexRow-center" id="switchBtn">
+              <div class="btn-icon-wrapper">
+                <img
+                  src="./src/img/sprite-pet-switch-both.svg"
+                  alt=""
+                  id="switchIcon"
+                />
+              </div>
+              <div class="btn-content flexRow-center">
+                <span id="btn-text">Pet cưng</span
+                ><i class="ri-arrow-down-wide-line"></i>
+              </div>
+            </button>
+          </div>
+          <div cslass="account"><i class="ri-user-line"></i></div>
+        </div>
+      </nav>
+      <!------------>
+    </div>
     <!-- JS -->
     <script src="./src/js/main.js"></script>
     <!--------->
