@@ -3,7 +3,7 @@
   src: url("../fonts/SVN-DK Longreach/SVN-DKLongreach.otf") format("opentype");
 }
 :root {
-  --color-primary: rgb(254 213 25);
+  --color-primary: rgb(253, 214, 53);
   --color-font: rgb(65 69 69);
   --font-primary: "Google Sans", sans-serif;
   --font-LuckiestGuy: "SVN-DK Longreach", sans-serif;
@@ -167,6 +167,7 @@ header {
   cursor: pointer;
 }
 .btn {
+  position: relative;
   height: 48px;
   cursor: pointer;
   border: 2px solid var(--color-primary);
@@ -188,16 +189,50 @@ header {
   height: 100%;
 }
 .btn-content {
-  margin-left: 20%;
+  margin-left: 8%;
   gap: 5px;
   font-size: 18px;
   color: var(--color-font);
 }
+.btn-content i {
+  position: absolute;
+  font-size: 34px;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.dropdown-icon {
+  position: absolute;
+  flex-direction: column;
+  border-radius: 12px;
+  gap: 3px;
+  display: flex;
+  padding: 3px 3px 10px 3px;
+  border: 1px solid #fed51966;
+  z-index: 10;
+  right: 0;
+  top: 100%;
+  margin-top: 2px;
+}
+.dropdown-icon ul {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+li .btn {
+  width: 140px;
+}
+li .btn .btn-content {
+  margin-left: 20%;
+}
 
 .account {
   cursor: pointer;
+  padding: 10px;
+  border: 2px solid var(--color-primary);
+  border-radius: 50%;
 }
 .account i {
-  height: 24px;
-  width: auto;
+  font-size: 26px;
 }
