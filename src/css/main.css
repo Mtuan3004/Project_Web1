@@ -166,15 +166,25 @@ header {
   position: relative;
   cursor: pointer;
 }
-.btn {
+.icon-set .btn {
   position: relative;
   height: 48px;
-  cursor: pointer;
   border: 2px solid var(--color-primary);
   gap: 8px;
   border-radius: 50px;
   width: 160px;
   background-color: white;
+}
+.btn:hover {
+  background-color: #fffbe8;
+}
+
+.icon-set.active .btn .btn-content i {
+  transform: translateY(-50%) rotate(180deg);
+}
+.icon-set.active .dropdown-icon {
+  opacity: 1;
+  transform: translateY(0);
 }
 .btn .btn-icon-wrapper {
   flex-shrink: 0;
@@ -200,19 +210,28 @@ header {
   right: 0;
   top: 50%;
   transform: translateY(-50%);
+  transition: transform 0.3s ease;
 }
 .dropdown-icon {
   position: absolute;
+  display: flex;
   flex-direction: column;
   border-radius: 12px;
   gap: 3px;
-  display: flex;
   padding: 3px 3px 10px 3px;
   border: 1px solid #fed51966;
   z-index: 10;
   right: 0;
   top: 100%;
   margin-top: 2px;
+  opacity: 0;
+  transform: translateY(-15px);
+  transition:
+    opacity 0.1s ease,
+    transform 0.4s ease;
+}
+.dropdown-icon #switchBtn.active {
+  background-color: var(--color-primary);
 }
 .dropdown-icon ul {
   list-style-type: none;
@@ -221,7 +240,7 @@ header {
   gap: 6px;
 }
 li .btn {
-  width: 140px;
+  width: 140px !important;
 }
 li .btn .btn-content {
   margin-left: 20%;
