@@ -269,6 +269,7 @@ li .btn .btn-content {
   z-index: 1;
   display: flex;
   width: 100%;
+  transform: translateX(0%);
   transition: transform 0.6s ease;
 }
 

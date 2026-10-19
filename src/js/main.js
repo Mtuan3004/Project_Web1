@@ -61,26 +61,20 @@ btnIcon.forEach((iconSet) => {
   });
 });
 // slider
+const slider = document.querySelector('#slider');
+const totalSlides = slider.children.length;
+let i = 0;
 
-var slider_img = document.querySelector('#pic');
-const images = [
-  'src/img/slider img/BANNER FREESHIP_thumb.webp',
-  'src/img/slider img/Horizontal Banner_thumb.webp',
-  'src/img/slider img/banner-pate-cun-desktop-v2_thumb.webp',
-  'src/img/slider img/HERO BANNER THỨ 4 MỞ APP_thumb.webp',
-];
-var i = 0; //Img Position
+function updateSlider() {
+  slider.style.transform = `translateX(-${i * 100}%)`;
+}
+
+function next() {
+  i = (i + 1) % totalSlides;
+  updateSlider();
+}
 
 function prev() {
-  if (i <= 0) i = images.length;
-  i--;
-  return setImg();
-}
-function next() {
-  if (i >= images.length - 1) i = -1;
-  i++;
-  return setImg();
-}
-function setImg() {
-  return slider_img.setAttribute('src', images[i]);
+  i = (i - 1 + totalSlides) % totalSlides;
+  updateSlider();
 }
