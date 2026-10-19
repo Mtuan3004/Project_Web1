@@ -246,8 +246,9 @@ li .btn {
 li .btn .btn-content {
   margin-left: 20%;
 }
-
+/* Account */
 .account {
+  position: relative;
   cursor: pointer;
   padding: 10px;
   border: 2px solid var(--color-primary);
@@ -309,4 +310,123 @@ li .btn .btn-content {
   opacity: 1;
   padding: 27px;
   font-size: 33px;
+}
+.account::after {
+  content: '';
+  position: absolute;
+  right: 17px;
+  top: calc(100% + 8px);
+  width: 16px;
+  height: 16px;
+  background-color: white;
+  transform: rotate(45deg);
+  z-index: 100;
+  cursor: default;
+}
+.account-menu {
+  cursor: default;
+  position: absolute;
+  padding: 20px;
+  width: 330px;
+  z-index: 10;
+  right: 0;
+  top: calc(100% + 16px);
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+}
+.avatar {
+  background-color: rgb(233, 233, 231);
+  border-radius: 50%;
+  overflow: hidden;
+  height: 42px;
+  width: 42px;
+  display: flex;
+}
+
+.avatar img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+/* Account-menu */
+.account-menu {
+  display: none;
+}
+.account-menu.active {
+  display: block;
+}
+
+.account-top {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.account-menu__header {
+  display: flex;
+  gap: 15px;
+}
+.account-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.account-menu__header .role {
+  font-size: x-small;
+  opacity: 55%;
+}
+.account-menu__auth {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  width: 100%;
+}
+.account-menu__auth button {
+  height: 40px;
+  border-radius: 17px;
+  font-weight: 600;
+  font-size: medium;
+  border: 1px solid var(--color-primary);
+  cursor: pointer;
+}
+
+.account-menu__auth .sign-up {
+  background-color: var(--color-primary);
+}
+.account-menu__auth button:hover {
+  opacity: 110%;
+}
+
+.account-top,
+.account-main {
+  padding: 12px 16px 18px 16px;
+  border-bottom: 1px solid #f0f0f0;
+}
+.account-footer {
+  padding: 12px 16px 18px 16px;
+}
+.personal-menu {
+  gap: 15px;
+  display: flex;
+  color: var(--color-font);
+  cursor: pointer;
+}
+
+.prefenrence-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.prefenrence-icon i,
+.prefenrence-icon img,
+.prefenrence-icon span {
+  object-fit: cover;
+  font-size: 18px;
+}
+.account-footer,
+.account-main {
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
 }

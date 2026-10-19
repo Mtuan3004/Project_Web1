@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>PETPET</title>
     <link
       href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css"
       rel="stylesheet"
@@ -99,7 +99,7 @@
                 />
               </div>
               <div class="btn-content flexRow-center">
-                <span id="btn-text">Pet cưng</span>
+                <span id="btnText">Pet cưng</span>
                 <i class="ri-arrow-drop-down-line"></i>
               </div>
             </button>
@@ -120,7 +120,7 @@
                       />
                     </div>
                     <div class="btn-content flexRow-center">
-                      <span id="btn-text">Pet cưng</span>
+                      <span>Pet cưng</span>
                     </div>
                   </button>
                 </li>
@@ -139,7 +139,7 @@
                       />
                     </div>
                     <div class="btn-content flexRow-center">
-                      <span id="btn-text">Cún cưng</span>
+                      <span>Cún cưng</span>
                     </div>
                   </button>
                 </li>
@@ -158,14 +158,79 @@
                       />
                     </div>
                     <div class="btn-content flexRow-center">
-                      <span id="btn-text">Mèo cưng</span>
+                      <span>Mèo cưng</span>
                     </div>
                   </button>
                 </li>
               </ul>
             </div>
           </div>
-          <div class="account flexRow-center"><i class="ri-user-line"></i></div>
+          <!-- SignUp - SignIn -->
+          <div class="account flexRow-center">
+            <i class="ri-user-line"></i>
+            <div class="account-menu">
+              <div class="account-top">
+                <div class="account-menu__header flexRow-center">
+                  <div class="avatar">
+                    <img
+                      src="./src/img/Avatar-icon.png"
+                      alt="Avatar flexRow-center"
+                    />
+                  </div>
+                  <div class="account-header-text">
+                    <div class="account-text">
+                      <h3 class="h2-text">Xin Chào!</h3>
+                      <div class="role">
+                        <span>Đăng nhập để trải nghiệm đầy đủ tính năng</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="account-menu__auth">
+                  <button class="sign-up" id="signUp">
+                    <span>Đăng nhập</span>
+                  </button>
+                  <button class="sign-in" id="signIn">
+                    <span>Đăng kí</span>
+                  </button>
+                </div>
+              </div>
+              <div class="account-main">
+                <div class="personal-menu">
+                  <div class="prefenrence-icon">
+                    <i class="ri-receipt-line"></i>
+                  </div>
+                  <span>Đơn hàng của tôi</span>
+                </div>
+                <div class="personal-menu">
+                  <div class="prefenrence-icon">
+                    <i class="ri-heart-line"></i>
+                  </div>
+                  <span>Yêu thích</span>
+                </div>
+                <div class="personal-menu">
+                  <div class="prefenrence-icon">
+                    <i class="ri-notification-2-line"></i>
+                  </div>
+                  <span>Thông báo</span>
+                </div>
+              </div>
+              <div class="account-footer">
+                <div class="personal-menu">
+                  <div class="prefenrence-icon">
+                    <i class="ri-settings-4-line"></i>
+                  </div>
+                  <span>Cài đặt tài khoản</span>
+                </div>
+                <div class="personal-menu">
+                  <div class="prefenrence-icon">
+                    <i class="ri-logout-box-r-line"></i>
+                  </div>
+                  <span>Đăng xuất</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </nav>
       <!-- Image Slider -->
@@ -202,6 +267,7 @@
 
       <!------------>
     </div>
+    <!-- Account -->
     <!-- JS -->
     <script src="./src/js/main.js"></script>
     <!--------->
