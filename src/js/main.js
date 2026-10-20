@@ -124,16 +124,15 @@ selects.forEach((selectBox) => {
   selectBox.addEventListener('click', (e) => {
     e.stopPropagation(); // Không cho lan truyền sự kiện ra ngoài document ngay lập tức
 
-    // Nếu bấm vào bên trong menu con (checkbox, thanh kéo range), KHÔNG đóng menu
     if (e.target.closest('.dropdown-menu')) {
       return;
     }
 
     let isOpen = selectBox.classList.contains('active');
-    closeAllMenus(); // Đóng tất cả các menu khác trước
+    closeAllMenus();
 
     if (!isOpen) {
-      selectBox.classList.add('active'); // Mở menu hiện tại nếu chưa mở
+      selectBox.classList.add('active');
     }
   });
 });
