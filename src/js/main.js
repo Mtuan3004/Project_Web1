@@ -9,6 +9,8 @@ const leftSearchIcon = document.querySelector('.left-search-icon');
 const rightSearchIcon = document.querySelector('.right-search-icon');
 const account = document.querySelector('.account');
 const accountMenu = document.querySelector('.account-menu');
+
+const selects = document.querySelectorAll('.selects');
 //gạch chân của các vả ở leftNav
 navLinks.forEach((link) => {
   link.addEventListener('click', () => {
@@ -22,9 +24,11 @@ navLinks.forEach((link) => {
 function closeAllMenus() {
   btnMain.classList.remove('active');
   accountMenu.classList.remove('active');
+  selects.forEach((item) => item.classList.remove('active'));
 }
 
-btnMain.addEventListener('click', () => {
+btnMain.addEventListener('click', (e) => {
+  e.stopPropagation();
   let isOpen = btnMain.classList.contains('active');
   closeAllMenus();
 
@@ -101,6 +105,7 @@ function prev() {
 
 // Account
 account.addEventListener('click', (e) => {
+  e.stopPropagation();
   let isOpen = accountMenu.classList.contains('active');
   closeAllMenus();
 
@@ -113,4 +118,22 @@ document.addEventListener('click', function (event) {
   let clickInside =
     account.contains(event.target) || btnMain.contains(event.target);
   if (!clickInside) closeAllMenus();
+});
+// Selects-Main
+selects.forEach((selectBox) => {
+  selectBox.addEventListener('click', (e) => {
+    e.stopPropagation(); // Không cho lan truyền sự kiện ra ngoài document ngay lập tức
+
+    // Nếu bấm vào bên trong menu con (checkbox, thanh kéo range), KHÔNG đóng menu
+    if (e.target.closest('.dropdown-menu')) {
+      return;
+    }
+
+    let isOpen = selectBox.classList.contains('active');
+    closeAllMenus(); // Đóng tất cả các menu khác trước
+
+    if (!isOpen) {
+      selectBox.classList.add('active'); // Mở menu hiện tại nếu chưa mở
+    }
+  });
 });

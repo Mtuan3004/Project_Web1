@@ -11,10 +11,7 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@6..144,1..1000&family=Luckiest+Guy&display=swap"
-      rel="stylesheet"
-    />
+
     <!----------->
 
     <!-- CSS -->
@@ -288,25 +285,107 @@
                 type="text"
                 name="search"
                 id="search-body"
-                placeholder="tìm kiếm...."
+                placeholder="Tìm thức ăn, đồ chơi, phụ kiện..."
               />
               <div class="icon-nav-body"><i class="ri-search-line"></i></div>
               <button class="btn-search-body">Tìm kiếm</button>
             </div>
             <div class="search-keyword-input">
-              <div class="selects">
+              <div class="selects" id="products">
                 <div class="content">
                   <i class="ri-box-3-line"></i><span>Loại sản phẩm</span>
                 </div>
-              </div>
-              <div class="selects">
-                <div class="content">
-                  <i class="ri-checkbox-circle-line"></i><span>Dành cho</span>
+                <div class="icon-select">
+                  <i class="ri-arrow-up-s-line"></i>
+                </div>
+
+                <div class="dropdown-menu">
+                  <div class="dropdown-pointer"></div>
+                  <div class="dropdown-header">
+                    <i class="ri-box-3-line"></i> Loại sản phẩm
+                  </div>
+                  <label
+                    class="dropdown-item"
+                    onclick="event.stopPropagation()"
+                  >
+                    <input type="checkbox" checked /> Thức ăn
+                  </label>
+                  <label
+                    class="dropdown-item"
+                    onclick="event.stopPropagation()"
+                  >
+                    <input type="checkbox" /> Đồ chơi
+                  </label>
+                  <label
+                    class="dropdown-item"
+                    onclick="event.stopPropagation()"
+                  >
+                    <input type="checkbox" /> Phụ kiện
+                  </label>
                 </div>
               </div>
-              <div class="selects">
+              <div class="selects" id="pet">
+                <div class="content">
+                  <i class="fa-solid fa-paw"></i><span>Dành cho</span>
+                </div>
+                <div class="icon-select">
+                  <i class="ri-arrow-up-s-line"></i>
+                </div>
+                <div class="dropdown-menu">
+                  <div class="dropdown-pointer"></div>
+                  <div class="dropdown-header">
+                    <i class="ri-paw-print-line"></i> Đối tượng thú cưng
+                  </div>
+                  <label
+                    class="dropdown-item"
+                    onclick="event.stopPropagation()"
+                  >
+                    <input type="checkbox" /> Chó
+                  </label>
+                  <label
+                    class="dropdown-item"
+                    onclick="event.stopPropagation()"
+                  >
+                    <input type="checkbox" /> Mèo
+                  </label>
+                  <label
+                    class="dropdown-item"
+                    onclick="event.stopPropagation()"
+                  >
+                    <input type="checkbox" /> Chó và Mèo
+                  </label>
+                </div>
+              </div>
+              <div class="selects" id="price">
                 <div class="content">
                   <i class="ri-price-tag-3-line"></i><span>Khoảng giá</span>
+                </div>
+                <div class="icon-select">
+                  <i class="ri-arrow-up-s-line"></i>
+                </div>
+                <div
+                  class="dropdown-menu price-range-menu"
+                  onclick="event.stopPropagation()"
+                >
+                  <div class="dropdown-pointer"></div>
+
+                  <div class="price-title">Chọn khoảng giá tối đa</div>
+                  <div class="price-display">
+                    Từ 0đ đến <span id="price-value">250.000đ</span>
+                  </div>
+                  <!-- Thẻ input dạng range -->
+                  <input
+                    type="range"
+                    min="0"
+                    max="1000000"
+                    step="10000"
+                    value="250000"
+                    class="range-slider"
+                    oninput="
+                      document.getElementById('price-value').innerText =
+                        Number(this.value).toLocaleString() + 'đ'
+                    "
+                  />
                 </div>
               </div>
             </div>
@@ -320,6 +399,11 @@
     <!-- Account -->
     <!-- JS -->
     <script src="./src/js/main.js"></script>
+    <script
+      src="https://kit.fontawesome.com/6abea2bdfc.js"
+      crossorigin="anonymous"
+    ></script>
+
     <!--------->
   </body>
 </html>
