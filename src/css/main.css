@@ -100,7 +100,7 @@ header {
   padding: 20px 10px;
 }
 .left-bar {
-  gap: 18px;
+  gap: 38px;
   flex-shrink: 0;
 }
 .nav-item {

@@ -3,3 +3,22 @@
   align-items: center;
   justify-content: center;
 }
+.yellow {
+  background: #fff1bd;
+  color: #9b7000;
+}
+
+.purple {
+  background: #eee9ff;
+  color: #684cb9;
+}
+
+.blue {
+  background: #e5f1ff;
+  color: #3971ae;
+}
+
+.red {
+  background: #ffe6e3;
+  color: #c24c45;
+}

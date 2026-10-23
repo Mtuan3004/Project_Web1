@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PETPET - Trang quản trị</title>
+    <link rel="stylesheet" href="../css/admin.css" />
+    <link rel="stylesheet" href="../css/utilities.css" />
+  </head>
+  <body>
+    <div class="admin-layout">
+      <aside class="sidebar" id="sidebar">
+        <div class="logo">
+          <span class="logo-mark">P</span>
+          <div>
+            <h2>PETPET</h2>
+            <p>ADMIN CENTER</p>
+          </div>
+        </div>
+
+        <nav>
+          <p class="menu-label">TỔNG QUAN</p>
+          <button class="menu-item active" data-title="Tổng quan">
+            <span class="menu-icon">TQ</span>
+            <span class="menu-text">Tổng quan</span>
+          </button>
+
+          <p class="menu-label">QUẢN LÝ</p>
+          <button class="menu-item" data-title="Đơn hàng">
+            <span class="menu-icon">ĐH</span>
+            <span class="menu-text">Đơn hàng</span>
+            <b class="menu-count">12</b>
+          </button>
+          <button class="menu-item" data-title="Sản phẩm">
+            <span class="menu-icon">SP</span>
+            <span class="menu-text">Sản phẩm</span>
+          </button>
+          <button class="menu-item" data-title="Khách hàng">
+            <span class="menu-icon">KH</span>
+            <span class="menu-text">Khách hàng</span>
+          </button>
+          <button class="menu-item" data-title="Báo cáo">
+            <span class="menu-icon">BC</span>
+            <span class="menu-text">Báo cáo</span>
+          </button>
+          <button class="menu-item" data-title="Khuyến mãi">
+            <span class="menu-icon">KM</span>
+            <span class="menu-text">Khuyến mãi</span>
+          </button>
+
+          <p class="menu-label">HỆ THỐNG</p>
+          <button class="menu-item" data-title="Cài đặt">
+            <span class="menu-icon">CĐ</span>
+            <span class="menu-text">Cài đặt</span>
+          </button>
+        </nav>
+
+        <button class="collapse-button" id="collapseButton">
+          <span class="collapse-arrow">‹</span>
+          <span class="collapse-text">Thu gọn menu</span>
+        </button>
+      </aside>
+
+      <main class="main-content">
+        <header class="header">
+          <button class="mobile-menu" id="mobileMenu">☰</button>
+          <div>
+            <h1 id="pageTitle">Tổng quan</h1>
+            <p>Xin chào, chúc bạn một ngày làm việc hiệu quả!</p>
+          </div>
+
+          <div class="admin-info">
+            <span>AN</span>
+            <div>
+              <strong>Admin Nguyễn</strong>
+              <small>Quản trị viên</small>
+            </div>
+          </div>
+        </header>
+
+        <div class="page-content">
+          <section class="stat-list">
+            <article class="stat-card">
+              <div class="stat-icon yellow">ĐH</div>
+              <div>
+                <p>Đơn hàng hôm nay</p>
+                <h2>12</h2>
+              </div>
+            </article>
+
+            <article class="stat-card">
+              <div class="stat-icon purple">SP</div>
+              <div>
+                <p>Tổng sản phẩm</p>
+                <h2>86</h2>
+              </div>
+            </article>
+
+            <article class="stat-card">
+              <div class="stat-icon blue">KH</div>
+              <div>
+                <p>Khách hàng</p>
+                <h2>245</h2>
+              </div>
+            </article>
+
+            <article class="stat-card">
+              <div class="stat-icon red">HH</div>
+              <div>
+                <p>Sắp hết hàng</p>
+                <h2>8</h2>
+              </div>
+            </article>
+          </section>
+
+          <section class="two-columns">
+            <article class="box">
+              <div class="box-title">
+                <div>
+                  <h2>Sản phẩm bán chạy</h2>
+                  <p>Các sản phẩm được mua nhiều trong tháng</p>
+                </div>
+                <span class="note">Ghi chú</span>
+              </div>
+
+              <div class="product-list">
+                <div class="product">
+                  <span class="product-image yellow">RC</span>
+                  <div>
+                    <strong>Royal Canin Mini Adult</strong>
+                    <p>Thức ăn cho chó</p>
+                  </div>
+                  <b>Đã bán: 56</b>
+                </div>
+
+                <div class="product">
+                  <span class="product-image purple">CT</span>
+                  <div>
+                    <strong>Cát vệ sinh Cature</strong>
+                    <p>Đồ dùng cho mèo</p>
+                  </div>
+                  <b>Đã bán: 43</b>
+                </div>
+
+                <div class="product">
+                  <span class="product-image blue">PM</span>
+                  <div>
+                    <strong>Pate mèo Catchy</strong>
+                    <p>Thức ăn cho mèo</p>
+                  </div>
+                  <b>Đã bán: 38</b>
+                </div>
+              </div>
+            </article>
+
+            <article class="box">
+              <div class="box-title">
+                <div>
+                  <h2>Cảnh báo tồn kho</h2>
+                  <p>Sản phẩm cần nhập thêm</p>
+                </div>
+              </div>
+
+              <div class="stock-list">
+                <div>
+                  <span>Royal Canin Mini Adult</span>
+                  <b>Còn 4</b>
+                </div>
+                <div>
+                  <span>Cát vệ sinh Cature</span>
+                  <b>Còn 6</b>
+                </div>
+                <div>
+                  <span>Balo vận chuyển</span>
+                  <b>Còn 3</b>
+                </div>
+                <div>
+                  <span>Vòng cổ thú cưng</span>
+                  <b>Còn 5</b>
+                </div>
+              </div>
+            </article>
+          </section>
+
+          <section class="box order-box">
+            <div class="box-title order-title">
+              <div>
+                <h2>Đơn hàng gần đây</h2>
+                <p>Danh sách các đơn hàng mới nhất</p>
+              </div>
+
+              <div class="order-tools">
+                <input
+                  type="text"
+                  id="searchInput"
+                  placeholder="Tìm mã đơn hoặc khách hàng..."
+                />
+                <select id="statusFilter">
+                  <option value="Tất cả">Tất cả trạng thái</option>
+                  <option value="Chờ xử lý">Chờ xử lý</option>
+                  <option value="Đang giao">Đang giao</option>
+                  <option value="Đã giao">Đã giao</option>
+                </select>
+                <button class="add-button" id="showFormButton">Thêm đơn</button>
+              </div>
+            </div>
+
+            <form class="order-form hidden" id="orderForm">
+              <h3>Thêm đơn hàng mới</h3>
+              <div class="form-fields">
+                <input
+                  id="customerName"
+                  required
+                  placeholder="Tên khách hàng"
+                />
+                <input id="productName" required placeholder="Tên sản phẩm" />
+                <input
+                  id="orderTotal"
+                  required
+                  type="number"
+                  min="1000"
+                  placeholder="Tổng tiền"
+                />
+                <select id="orderStatus">
+                  <option>Chờ xử lý</option>
+                  <option>Đang giao</option>
+                  <option>Đã giao</option>
+                </select>
+              </div>
+              <div class="form-buttons">
+                <button type="button" class="cancel-button" id="cancelButton">
+                  Hủy
+                </button>
+                <button type="submit" class="add-button">Lưu đơn hàng</button>
+              </div>
+            </form>
+
+            <div class="table-wrapper">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Mã đơn</th>
+                    <th>Khách hàng</th>
+                    <th>Sản phẩm</th>
+                    <th>Tổng tiền</th>
+                    <th>Trạng thái</th>
+                  </tr>
+                </thead>
+                <tbody id="orderTable"></tbody>
+              </table>
+              <p class="empty-message hidden" id="emptyMessage">
+                Không tìm thấy đơn hàng phù hợp.
+              </p>
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
+
+    <div class="message" id="message"></div>
+    <script type="module" src="../js/admin.js"></script>
+  </body>
+</html>
