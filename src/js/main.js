@@ -11,6 +11,9 @@ const account = document.querySelector('.account');
 const accountMenu = document.querySelector('.account-menu');
 
 const selects = document.querySelectorAll('.selects');
+
+const sigUp = document.getElementById('signUp');
+const register = document.getElementById('signIn');
 //gạch chân của các vả ở leftNav
 navLinks.forEach((link) => {
   link.addEventListener('click', () => {
@@ -136,4 +139,43 @@ selects.forEach((selectBox) => {
       selectBox.classList.add('active'); // Mở menu hiện tại nếu chưa mở
     }
   });
+});
+sigUp.addEventListener('click', (e) => {
+  window.location.href = './src/html/signUp.html';
+});
+console.log(register);
+console.log(sigUp);
+register.addEventListener('click', (e) => {
+  window.location.href = './src/html/signUp.html?mode=register';
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+  // Lấy thông tin user đang đăng nhập từ localStorage
+  const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+
+  const h2Text = document.querySelector('.h2-text');
+  const role = document.querySelector('.role');
+  const authBox = document.querySelector('.account-top .account-menu__auth');
+
+  if (currentUser) {
+    if (h2Text) {
+      h2Text.textContent = currentUser.name;
+    }
+
+    // Đổi dòng mô tả thành chức vụ (Thành viên hoặc Admin)
+    if (role) {
+      if (currentUser.role === 'admin') {
+        role.textContent = 'Admin';
+        role.classList.add('admin');
+        role.style.color = '#d63031';
+      } else {
+        role.textContent = 'Thành viên';
+        role.classList.add('customers');
+      }
+    }
+
+    if (authBox) {
+      authBox.style.display = 'none';
+    }
+  }
 });
