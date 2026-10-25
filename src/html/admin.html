@@ -4,6 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>PETPET - Trang quản trị</title>
+    <link
+      rel="shortcut icon"
+      href="../img/icon/favicon.ico"
+      type="image/x-icon"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="../css/admin.css" />
     <link rel="stylesheet" href="../css/utilities.css" />
   </head>
@@ -11,7 +20,9 @@
     <div class="admin-layout">
       <aside class="sidebar" id="sidebar">
         <div class="logo">
-          <span class="logo-mark">P</span>
+          <span class="logo-mark"
+            ><img src="../img/icon/favicon.ico" alt=""
+          /></span>
           <div>
             <h2>PETPET</h2>
             <p>ADMIN CENTER</p>
@@ -21,36 +32,50 @@
         <nav>
           <p class="menu-label">TỔNG QUAN</p>
           <button class="menu-item active" data-title="Tổng quan">
-            <span class="menu-icon">TQ</span>
+            <div class="menu-icon flexRow-center">
+              <i class="ri-home-3-line"></i>
+            </div>
             <span class="menu-text">Tổng quan</span>
           </button>
 
           <p class="menu-label">QUẢN LÝ</p>
           <button class="menu-item" data-title="Đơn hàng">
-            <span class="menu-icon">ĐH</span>
+            <div class="menu-icon flexRow-center">
+              <i class="ri-suitcase-line"></i>
+            </div>
             <span class="menu-text">Đơn hàng</span>
             <b class="menu-count">12</b>
           </button>
           <button class="menu-item" data-title="Sản phẩm">
-            <span class="menu-icon">SP</span>
+            <div class="menu-icon flexRow-center">
+              <i class="ri-box-3-line"></i>
+            </div>
             <span class="menu-text">Sản phẩm</span>
           </button>
           <button class="menu-item" data-title="Khách hàng">
-            <span class="menu-icon">KH</span>
+            <div class="menu-icon flexRow-center">
+              <i class="ri-user-line"></i>
+            </div>
             <span class="menu-text">Khách hàng</span>
           </button>
           <button class="menu-item" data-title="Báo cáo">
-            <span class="menu-icon">BC</span>
+            <div class="menu-icon flexRow-center">
+              <i class="ri-bar-chart-fill"></i>
+            </div>
             <span class="menu-text">Báo cáo</span>
           </button>
           <button class="menu-item" data-title="Khuyến mãi">
-            <span class="menu-icon">KM</span>
+            <div class="menu-icon flexRow-center">
+              <i class="ri-price-tag-3-line"></i>
+            </div>
             <span class="menu-text">Khuyến mãi</span>
           </button>
 
           <p class="menu-label">HỆ THỐNG</p>
           <button class="menu-item" data-title="Cài đặt">
-            <span class="menu-icon">CĐ</span>
+            <div class="menu-icon flexRow-center">
+              <i class="ri-settings-4-line"></i>
+            </div>
             <span class="menu-text">Cài đặt</span>
           </button>
         </nav>
@@ -258,6 +283,11 @@
     </div>
 
     <div class="message" id="message"></div>
+
+    <script
+      src="https://kit.fontawesome.com/6abea2bdfc.js"
+      crossorigin="anonymous"
+    ></script>
     <script type="module" src="../js/admin.js"></script>
   </body>
 </html>
