@@ -31,7 +31,6 @@ select {
 
 .sidebar {
   background-image: url('../img/Gemini_Generated_Image_7vc9mu7vc9mu7vc9.png');
-  background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
 
@@ -240,10 +239,16 @@ nav {
 }
 
 .stat-card {
+  position: relative;
   display: flex;
   align-items: center;
   gap: 13px;
-  padding: 20px;
+  padding: 20px 20px 40px;
+}
+.stat-card .stat-desc {
+  position: absolute;
+  bottom: 9px;
+  left: 25%;
 }
 
 .stat-icon {
@@ -254,7 +259,7 @@ nav {
   width: 45px;
   height: 45px;
   border-radius: 9px;
-  font-size: 11px;
+  font-size: 20px;
   font-weight: bold;
 }
 
@@ -266,6 +271,21 @@ nav {
 
 .stat-card h2 {
   font-size: 24px;
+}
+.trend-up {
+  color: #10b981;
+  font-weight: 600;
+}
+
+.trend-down {
+  color: #ef4444;
+  font-weight: 600;
+}
+
+.stat-desc {
+  font-size: 13px;
+  color: #6b7280;
+  margin-top: 4px;
 }
 
 .two-columns {
