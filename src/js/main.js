@@ -14,6 +14,9 @@ const selects = document.querySelectorAll('.selects');
 
 const sigUp = document.getElementById('signUp');
 const register = document.getElementById('signIn');
+const logOut = document.getElementById('logOut');
+
+const linkAdmin = document.querySelector('.link_Admin');
 //gạch chân của các vả ở leftNav
 navLinks.forEach((link) => {
   link.addEventListener('click', () => {
@@ -168,6 +171,7 @@ document.addEventListener('DOMContentLoaded', function () {
         role.textContent = 'Admin';
         role.classList.add('admin');
         role.style.color = '#d63031';
+        linkAdmin.style.display = 'flex';
       } else {
         role.textContent = 'Thành viên';
         role.classList.add('customers');
@@ -178,4 +182,13 @@ document.addEventListener('DOMContentLoaded', function () {
       authBox.style.display = 'none';
     }
   }
+});
+
+logOut.addEventListener('click', () => {
+  localStorage.removeItem('currentUser');
+  window.location.reload();
+});
+
+linkAdmin.addEventListener('click', (e) => {
+  window.location.href = './src/html/admin.html';
 });

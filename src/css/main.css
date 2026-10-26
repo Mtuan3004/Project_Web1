@@ -291,13 +291,13 @@ li .btn .btn-content {
 }
 .account-menu__header .role.customers {
   color: #f39c12;
-  font-size: smaller;
   border-radius: 50px;
   padding: 3px 4px;
   background-color: #efe4d2;
 }
 .account-menu__header .role.admin {
   color: #d63031;
+  padding: 3px 4px;
   border-radius: 50px;
   background-color: #f8b6b6;
 }
@@ -322,6 +322,14 @@ li .btn .btn-content {
 }
 .account-menu__auth button:hover {
   opacity: 110%;
+}
+.link_Admin {
+  display: none;
+  cursor: pointer;
+  border-radius: 20px;
+  background-color: var(--color-primary);
+  font-size: large;
+  padding: 12px 9px;
 }
 
 .account-top,
