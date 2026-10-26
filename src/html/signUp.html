@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pet Shop - Tài khoản</title>
+    <link
+      rel="shortcut icon"
+      href="../img/icon/favicon.ico"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="../css/signUp.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="form-box">
+        <div class="cancel-button" id="cancel-button"><h2>+</h2></div>
+        <div class="logo">PetPet</div>
+
+        <h2 id="title">🐾 Đăng nhập</h2>
+        <p class="subtitle" id="subtitle">Chào mừng bạn quay trở lại!</p>
+
+        <form id="loginForm">
+          <div class="input-group">
+            <label for="loginEmail">Email</label>
+            <input
+              type="email"
+              id="loginEmail"
+              placeholder="Nhập email"
+              required
+            />
+          </div>
+
+          <div class="input-group">
+            <label for="loginPassword">Mật khẩu</label>
+            <input
+              type="password"
+              id="loginPassword"
+              placeholder="Nhập mật khẩu"
+              required
+            />
+          </div>
+
+          <button type="submit">Đăng nhập</button>
+
+          <p class="switch">
+            Chưa có tài khoản?
+            <a href="#" id="showRegister"> Đăng ký</a>
+          </p>
+        </form>
+
+        <form id="registerForm" class="hidden">
+          <div class="input-group">
+            <label for="name">Họ và tên</label>
+            <input
+              type="text"
+              id="name"
+              placeholder="Nhập họ và tên"
+              required
+            />
+          </div>
+
+          <div class="input-group">
+            <label for="registerEmail">Email</label>
+            <input
+              type="email"
+              id="registerEmail"
+              placeholder="Nhập email"
+              required
+            />
+          </div>
+
+          <div class="input-group">
+            <label for="registerPassword">Mật khẩu</label>
+            <input
+              type="password"
+              id="registerPassword"
+              placeholder="Ít nhất 6 ký tự"
+              minlength="6"
+              required
+            />
+          </div>
+
+          <div class="input-group">
+            <label for="confirmPassword">Xác nhận mật khẩu</label>
+            <input
+              type="password"
+              id="confirmPassword"
+              placeholder="Nhập lại mật khẩu"
+              required
+            />
+          </div>
+
+          <button type="submit">Tạo tài khoản</button>
+
+          <p class="switch">
+            Đã có tài khoản?
+            <a href="#" id="showLogin"> Đăng nhập</a>
+          </p>
+        </form>
+
+        <p id="message"></p>
+      </div>
+    </div>
+
+    <script src="../js/signUp.js"></script>
+  </body>
+</html>
