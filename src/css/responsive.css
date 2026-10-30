@@ -1,0 +1,64 @@
+@media (max-width: 600px) {
+  .navbar {
+    display: none;
+  }
+  .slider-btn {
+    display: none;
+  }
+  .img-slider {
+    border-radius: 0;
+  }
+  .nav-body {
+    display: none;
+  }
+  .barrier {
+    display: none;
+  }
+  .right-nav-body {
+    margin: 0 auto;
+  }
+  .search-keyword-input {
+    display: block;
+  }
+  .brand-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .product-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .brand-view-more {
+    order: -2;
+  }
+  .footer-grid {
+    display: flex;
+    flex-direction: column;
+  }
+  .icon-branch-footer {
+    order: -1;
+  }
+  .f1-description {
+    order: 0;
+  }
+  .subMenu-footer {
+    display: none;
+    margin: 10px;
+  }
+  .VePETPET,
+  .DanhChoThuCung {
+    display: flex;
+    flex-direction: row;
+    border-top: 1px solid lightgray;
+    cursor: pointer;
+  }
+  .ri-arrow-down-s-fill {
+    display: flex;
+    margin-left: auto;
+  }
+  .ri-arrow-down-s-fill.open {
+    transform: rotate(90deg);
+  }
+  .subMenu-footer.open {
+    display: flex;
+    flex-direction: column;
+  }
+}

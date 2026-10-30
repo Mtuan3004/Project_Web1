@@ -191,3 +191,8 @@ logOut.addEventListener('click', () => {
 linkAdmin.addEventListener('click', (e) => {
   window.location.href = './src/html/admin.html';
 });
+//open list footer
+function toggleMenu(e) {
+  const subMenu = e.querySelector('.subMenu-footer');
+  subMenu.classList.toggle('open');
+}

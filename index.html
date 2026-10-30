@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="./src/css/utilities.css" />
     <link rel="stylesheet" href="./src/css/body-main.css" />
     <link rel="stylesheet" href="./src/css/section-branch.css" />
+    <link rel="stylesheet" href="./src/css/responsive.css" />
     <!--------->
   </head>
   <body>
@@ -744,21 +745,40 @@
                 <i class="ri-map-pin-fill"></i>
                 <p>ĐKKD: 13A-13C Trần Não, P. An Khánh, Tp. HCM</p>
               </div>
+              <div class="icon-branch-footer">
+                <img src="src/img/footer/logo_Footer.svg" alt="" />
+              </div>
             </div>
             <div class="footer-info f2">
-              <h3>Về PETPET</h3>
-              <a href="#">Giới thiệu về PETPET</a>
-              <a href="#">Khuyến mãi</a>
-              <a href="#">Tuyển dụng</a>
-              <a href="#">Chính sách và Điều khoản</a>
-              <h4><a href="#">Dành cho thú cưng</a></h4>
-              <a href="#">Thức ăn</a>
-              <a href="#">Bánh thưởng</a>
-              <a href="#">Đồ chơi</a>
-              <a href="#">Phụ kiện</a>
-              <a href="#">Giá tốt</a>
-              <a href="#">Combo tiết kiệm</a>
-              <a href="#">Thương hiệu thú cưng</a>
+              <div onclick="toggleMenu(this)">
+                <div class="VePETPET">
+                  <h3>Về PETPET</h3>
+                  <i class="ri-arrow-down-s-fill"></i>
+                </div>
+
+                <div class="subMenu-footer">
+                  <a href="#">Giới thiệu về PETPET</a>
+                  <a href="#">Khuyến mãi</a>
+                  <a href="#">Tuyển dụng</a>
+                  <a href="#">Chính sách và Điều khoản</a>
+                </div>
+              </div>
+              <div onclick="toggleMenu(this)">
+                <div class="DanhChoThuCung">
+                  <h3>Dành cho thú cưng</h3>
+                  <i class="ri-arrow-down-s-fill"></i>
+                </div>
+
+                <div class="subMenu-footer">
+                  <a href="#">Thức ăn</a>
+                  <a href="#">Bánh thưởng</a>
+                  <a href="#">Đồ chơi</a>
+                  <a href="#">Phụ kiện</a>
+                  <a href="#">Giá tốt</a>
+                  <a href="#">Combo tiết kiệm</a>
+                  <a href="#">Thương hiệu thú cưng</a>
+                </div>
+              </div>
             </div>
             <div class="footer-info f3">
               <h3>Chấp nhận thanh toán</h3>
