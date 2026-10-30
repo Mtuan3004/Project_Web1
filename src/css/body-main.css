@@ -161,7 +161,7 @@ input#search-body:focus {
 .dropdown-item:hover {
   background: #fffbeb;
 }
-.dropdown-item input[type='checkbox'] {
+.dropdown-item input[type="checkbox"] {
   cursor: pointer;
   accent-color: #facc15;
   width: 16px;
@@ -193,3 +193,5 @@ input#search-body:focus {
   cursor: pointer;
   height: 6px;
 }
+
+
