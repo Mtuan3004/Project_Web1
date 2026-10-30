@@ -1,0 +1,116 @@
+.flexRow-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.yellow {
+  background: #fff1bd;
+  color: #9b7000;
+}
+
+.purple {
+  background: #eee9ff;
+  color: #684cb9;
+}
+
+.blue {
+  background: #e5f1ff;
+  color: #3971ae;
+}
+
+.red {
+  background: #ffe6e3;
+  color: #c24c45;
+}
+
+
+/* THÔNG TIN CỬA HÀNG PETPET */
+
+.shop-info {
+    padding: 24px;
+    background: #fffdf5;
+    border: 1px solid #f0e5c5;
+    border-radius: 16px;
+    box-sizing: border-box;
+}
+
+.shop-info h3 {
+    margin: 0 0 22px;
+    padding-bottom: 14px;
+    border-bottom: 2px solid #ffcf33;
+    color: #44321c;
+    font-size: 21px;
+}
+
+/* Logo và tên cửa hàng */
+.shop-brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 24px;
+}
+
+.shop-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 58px;
+    height: 58px;
+    flex-shrink: 0;
+    background: #ffcf33;
+    border-radius: 50%;
+    font-size: 30px;
+}
+
+.shop-brand h4 {
+    margin: 0 0 5px;
+    color: #362718;
+    font-size: 23px;
+}
+
+.shop-brand p {
+    margin: 0;
+    color: #777;
+    font-size: 14px;
+}
+
+/* Từng dòng thông tin */
+.shop-detail {
+    display: flex;
+    align-items: flex-start;
+    gap: 13px;
+    margin-top: 18px;
+}
+
+.shop-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    flex-shrink: 0;
+    background: #fff0b8;
+    border-radius: 10px;
+    font-size: 18px;
+}
+
+.shop-detail p {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    min-width: 0;
+    margin: 0;
+    line-height: 1.5;
+}
+
+.shop-detail strong {
+    color: #44321c;
+    font-size: 14px;
+}
+
+.shop-detail p span {
+    color: #686868;
+    font-size: 14px;
+    overflow-wrap: anywhere;
+}
+
