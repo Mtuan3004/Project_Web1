@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VetCare Admin Center</title>
+    <!-- Tailwind CSS & Icons -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/admin.css" />
+  </head>
+  <body class="admin-root">
+    <div id="app-root"></div>
+
+    <!-- JS -->
+    <script src="js/dataProducts.js"></script>
+    <script src="js/admin.js"></script>
+    <script>
+      // Khởi chạy ngay ở chế độ Admin Dashboard
+      window.addEventListener("DOMContentLoaded", () => {
+        state.currentTab = "admin-dashboard";
+      });
+    </script>
+  </body>
+</html>
