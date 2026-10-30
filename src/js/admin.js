@@ -14,7 +14,7 @@ function renderAdminLayout() {
     <div class="logo">
         <img src="../img/icon/favicon.ico" alt="ảnh logo" class="logo-mark"><i class="ri-shield-cross-line"></i></img>
         <div>
-            <h2>PetPet</h2>
+            <h2>PetPett</h2>
             <p>ADMIN CENTER</p>
         </div>
     </div>
