@@ -17,6 +17,7 @@
   padding: 0;
 }
 
+html,
 body {
   width: 100%;
   min-height: 100vh;
@@ -27,19 +28,18 @@ body {
 .site-container {
   margin: 0 auto;
   max-width: 1280px;
+  padding: 0 15px;
 }
 
 /* Topbar */
 header {
-  height: 68px;
+  height: auto;
   width: 100%;
   display: flex;
   background-color: var(--color-primary);
-  flex-shrink: 0;
-  flex-grow: 0;
+  border-bottom: 1px solid #fee56d;
 }
 .topbar {
-  max-width: 1280px;
   height: 100%;
   margin: 0 auto;
   padding: 0 0;
@@ -70,44 +70,34 @@ header {
   font-family: var(--font-LuckiestGuy);
 }
 
-@media (min-width: 1024px) {
-  .topbar-items {
-    gap: 40px;
-    padding: 0 0;
-  }
-  .topbar-items span {
-    display: block;
-  }
-  .topbar-items span.slogan {
-    font-size: 20px;
-  }
-  .topbar-items img {
-    display: block;
-  }
-}
-@media (min-width: 1262px) {
-  .topbar-items {
-    gap: 78px;
-  }
-}
-
 /* Navigation */
 /* Left-nav */
 .navbar {
+  background-color: var(--color-primary);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px 10px;
+  padding: 20px 10px !important;
 }
+.navbar .logo {
+  display: none;
+}
+
 .left-bar {
+  display: block;
   gap: 38px;
-  flex-shrink: 0;
+}
+.nav-menu {
+  display: none;
+  gap: 38px;
 }
 .nav-item {
+  list-style: none;
   cursor: pointer;
   position: relative;
   padding-bottom: 4px;
 }
+
 .nav-item::after {
   content: "";
   position: absolute;
@@ -129,6 +119,7 @@ header {
 }
 /* Right-nav */
 .right-bar {
+  display: none;
   gap: 12px;
 }
 .search {

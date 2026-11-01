@@ -39,8 +39,13 @@
 
 .brand-grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr); 
+  grid-template-columns: repeat(5, 1fr);
   gap: 20px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+}
+.brand-grid::-webkit-scrollbar {
+  display: none;
 }
 
 /* Từng thẻ thương hiệu (Brand Card) */
@@ -131,6 +136,11 @@
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 16px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+}
+.product-grid::-webkit-scrollbar {
+  display: none;
 }
 
 /* Thẻ sản phẩm */
@@ -141,7 +151,9 @@
   padding: 12px;
   display: flex;
   flex-direction: column;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
   cursor: pointer;
 }
 
@@ -186,7 +198,7 @@
 }
 
 .product-rating {
-  color: #ffc107; 
+  color: #ffc107;
   font-size: 12px;
   margin-bottom: 8px;
   display: flex;

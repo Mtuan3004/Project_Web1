@@ -1,6 +1,6 @@
 @import url(./main.css);
 .nav-body-main {
-  display: flex;
+  display: none; /*hfahsffhslfhkjflkasf*/
   align-items: center;
   justify-content: space-between;
   margin: 30px;
@@ -161,7 +161,7 @@ input#search-body:focus {
 .dropdown-item:hover {
   background: #fffbeb;
 }
-.dropdown-item input[type='checkbox'] {
+.dropdown-item input[type="checkbox"] {
   cursor: pointer;
   accent-color: #facc15;
   width: 16px;

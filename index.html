@@ -24,12 +24,51 @@
     <link rel="stylesheet" href="./src/css/utilities.css" />
     <link rel="stylesheet" href="./src/css/body-main.css" />
     <link rel="stylesheet" href="./src/css/section-branch.css" />
+    <link rel="stylesheet" href="./src/css/reposive.css" />
+    <link rel="stylesheet" href="./src/css/mobile.css" />
     <!--------->
   </head>
   <body>
     <div class="Destop-layout">
       <!-- Topbar -->
       <header class="header">
+        <div class="topbar-mobile flexRow-center">
+          <div class="topbar-up">
+            <div class="logo">
+              <img src="./src/img/icon/logo_headerDesktop.svg" alt="icon" />
+            </div>
+            <div class="pet-dropdown-toggle">
+              <div class="text-group">
+                <span class="sub-label">Mua cho</span>
+                <span class="main-label">Cún cưng</span>
+              </div>
+              <i class="ri-arrow-drop-down-line"></i>
+            </div>
+          </div>
+          <div class="topbar-down">
+            <div class="search mobile">
+              <div class="left-search-icon">
+                <img
+                  id="icon-search-dog"
+                  src="./src/img/icon/sprite-pet-dog-sticker.svg"
+                  alt=""
+                />
+              </div>
+              <div class="right-search-icon">
+                <img
+                  id="icon-search-cat"
+                  src="./src/img/icon/sprite-pet-cat-sticker.svg"
+                  alt=""
+                />
+              </div>
+              <input
+                class="text-search"
+                type="text"
+                placeholder="Tìm thức ăn và phụ kiện"
+              />
+            </div>
+          </div>
+        </div>
         <div class="topbar flexRow-center site-container">
           <nav class="topbar-items flexRow-center">
             <img
@@ -62,14 +101,22 @@
       <!-- Navigation -->
       <nav class="navbar site-container">
         <div class="left-bar flexRow-center">
+          <div class="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+          </div>
           <div class="logo">
             <img src="./src/img/icon/logo_headerDesktop.svg" alt="icon" />
           </div>
-          <div class="nav-item"><a href="#Trangchủ">Trang chủ</a></div>
-          <div class="nav-item"><a href="#Giớithiệu">Giới thiệu</a></div>
-          <div class="nav-item"><a href="#Sảnphẩm">Sản phẩm</a></div>
-          <div class="nav-item"><a href="#Thươnghiệu">Thương hiệu</a></div>
+          <ul class="nav-menu flexRow-center">
+            <li class="nav-item"><a href="#Trangchủ">Trang chủ</a></li>
+            <li class="nav-item"><a href="#Giớithiệu">Giới thiệu</a></li>
+            <li class="nav-item"><a href="#Sảnphẩm">Sản phẩm</a></li>
+            <li class="nav-item"><a href="#Thươnghiệu">Thương hiệu</a></li>
+          </ul>
         </div>
+
         <div class="right-bar flexRow-center">
           <div class="search">
             <div class="left-search-icon">
@@ -715,14 +762,16 @@
           </div>
         </div>
       </section>
-      <!-- Footer -->
       <div class="site-container">
-        <footer class="footer">
-          <div class="break-line">
-            <div id="line1"></div>
-            <div id="line2"></div>
-            <div id="line3"></div>
-          </div>
+        <div class="break-line">
+          <div id="line1"></div>
+          <div id="line2"></div>
+          <div id="line3"></div>
+        </div>
+      </div>
+      <!-- Footer -->
+      <!-- <footer class="footer">
+        <div class="site-container">
           <div class="footer-grid">
             <div class="footer-info f1">
               <h3>Công Ty Cổ Phần PETPET</h3>
@@ -775,8 +824,8 @@
               <a href="#">Pet shop - Đỗ Xuân Hợp, Quận 9</a>
             </div>
           </div>
-        </footer>
-      </div>
+        </div>
+      </footer> -->
       <!------------>
     </div>
     <!-- JS -->

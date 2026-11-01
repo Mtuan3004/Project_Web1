@@ -1,0 +1,77 @@
+.topbar-mobile {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 15px 15px 0px 15px;
+}
+.topbar-mobile .topbar-up {
+  align-items: center;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.pet-select-dropdown {
+  position: relative;
+  display: inline-block;
+}
+.pet-dropdown-toggle {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.text-group {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+  text-align: left;
+}
+
+.sub-label {
+  font-size: 10px;
+  color: #555555;
+}
+
+.main-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #222222;
+}
+.pet-dropdown-toggle i {
+  font-size: 25px;
+  font-weight: 100;
+}
+.topbar-mobile .topbar-down {
+  padding: 10px;
+}
+.topbar-down .search.mobile {
+  position: relative;
+  border: 2px solid;
+  border-color: var(--color-primary);
+  background-color: white;
+  height: 48px;
+  width: 420px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 21px;
+  cursor: pointer;
+}
+
+.hamburger .bar {
+  display: block;
+  width: 26px;
+  height: 3px;
+  margin: 0 auto;
+  transition: all 0.3s ease-in-out;
+  background-color: #333;
+  border-radius: 4px;
+}
