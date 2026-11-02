@@ -108,6 +108,12 @@ function prev() {
   i = (i - 1 + totalSlides) % totalSlides;
   updateSlider();
 }
+// Auto Slider
+setInterval(() => {
+  i++;
+  if (i >= totalSlides) i = 0;
+  updateSlider();
+}, 3000);
 
 // Account
 account.addEventListener('click', (e) => {
@@ -191,3 +197,10 @@ logOut.addEventListener('click', () => {
 linkAdmin.addEventListener('click', (e) => {
   window.location.href = './src/html/admin.html';
 });
+//open footer menu
+function toggleMenu(e) {
+  const subMenu = e.querySelector('.subMenu-footer');
+  const arrowMenu = e.querySelector('.ri-arrow-down-s-fill');
+  subMenu.classList.toggle('open');
+  arrowMenu.classList.toggle('open');
+}

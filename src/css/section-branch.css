@@ -39,7 +39,7 @@
 
 .brand-grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr); 
+  grid-template-columns: repeat(5, 1fr);
   gap: 20px;
 }
 
@@ -141,7 +141,9 @@
   padding: 12px;
   display: flex;
   flex-direction: column;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
   cursor: pointer;
 }
 
@@ -186,7 +188,7 @@
 }
 
 .product-rating {
-  color: #ffc107; 
+  color: #ffc107;
   font-size: 12px;
   margin-bottom: 8px;
   display: flex;
