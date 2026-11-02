@@ -1,125 +1,132 @@
-const loginForm = document.getElementById('loginForm');
-const registerForm = document.getElementById('registerForm');
-const title = document.getElementById('title');
-const subtitle = document.getElementById('subtitle');
-const message = document.getElementById('message');
-const cancel = document.getElementById('cancel-button');
+// Logic xử lý Đăng ký & Đăng nhập Khách hàng
+function renderLoginModalContent() {
+  const div = document.createElement("div");
+  div.className = "space-y-4";
+  div.innerHTML = `
+    <div class="text-center space-y-1">
+        <h3 class="text-xl font-bold text-slate-800">Đăng Nhập Khách Hàng</h3>
+        <p class="text-xs text-slate-500">Đăng nhập tài khoản để mua dược phẩm thú y</p>
+    </div>
+    <form id="client-login-form" class="space-y-3">
+        <div>
+            <label class="block text-xs font-semibold text-slate-600 mb-1">Tài khoản (Mẫu: user)</label>
+            <input type="text" id="m-user" required class="w-full p-2 border rounded-lg text-sm">
+        </div>
+        <div>
+            <label class="block text-xs font-semibold text-slate-600 mb-1">Mật khẩu (Mẫu: 123)</label>
+            <input type="password" id="m-pass" required class="w-full p-2 border rounded-lg text-sm">
+        </div>
+        <button type="submit" class="w-full py-2.5 bg-vet-600 hover:bg-vet-700 text-white font-bold rounded-lg text-sm shadow">Đăng Nhập</button>
+    </form>
+    <div class="text-center pt-2 text-xs">
+        <span class="text-slate-500">Chưa có tài khoản? </span>
+        <button onclick="openModal('register')" class="text-vet-600 font-bold underline">Đăng ký mới</button>
+    </div>
+  `;
 
-// Hàm chuyển sang form Đăng ký
-function openRegisterForm() {
-  loginForm.classList.add('hidden');
-  registerForm.classList.remove('hidden');
-  title.textContent = '🐾 Đăng ký';
-  subtitle.textContent = 'Tạo tài khoản Pet Shop của bạn';
-  message.textContent = '';
+  setTimeout(() => {
+    const form = div.querySelector("#client-login-form");
+    if (form) {
+      form.onsubmit = (e) => {
+        e.preventDefault();
+        const u = div.querySelector("#m-user").value.trim();
+        const p = div.querySelector("#m-pass").value.trim();
+
+        const users = DB.getUsers();
+        const found = users.find((x) => x.username === u && x.password === p);
+
+        if (found) {
+          if (found.locked) {
+            showNotification(
+              "Tài khoản của bạn đã bị khóa bởi Quản trị viên!",
+              "error",
+            );
+            return;
+          }
+          setCurrentUser(found);
+          showNotification(`Xin chào ${found.fullname}!`, "success");
+          closeModal();
+        } else {
+          showNotification(
+            "Tên đăng nhập hoặc mật khẩu không chính xác!",
+            "error",
+          );
+        }
+      };
+    }
+  }, 0);
+
+  return div;
 }
 
-// Hàm chuyển sang form Đăng nhập
-function openLoginForm() {
-  registerForm.classList.add('hidden');
-  loginForm.classList.remove('hidden');
-  title.textContent = '🐾 Đăng nhập';
-  subtitle.textContent = 'Chào mừng bạn quay trở lại!';
-  message.textContent = '';
+function renderRegisterModalContent() {
+  const div = document.createElement("div");
+  div.className = "space-y-4";
+  div.innerHTML = `
+    <div class="text-center space-y-1">
+        <h3 class="text-xl font-bold text-slate-800">Đăng Ký Tài Khoản Khách Hàng</h3>
+        <p class="text-xs text-slate-500">Tạo tài khoản mua sắm tiện lợi tại VetCare</p>
+    </div>
+    <form id="client-register-form" class="space-y-3">
+        <div>
+            <label class="block text-xs font-semibold text-slate-600 mb-1">Tên đăng nhập</label>
+            <input type="text" id="r-user" required class="w-full p-2 border rounded-lg text-sm">
+        </div>
+        <div>
+            <label class="block text-xs font-semibold text-slate-600 mb-1">Mật khẩu</label>
+            <input type="password" id="r-pass" required class="w-full p-2 border rounded-lg text-sm">
+        </div>
+        <div>
+            <label class="block text-xs font-semibold text-slate-600 mb-1">Họ và tên</label>
+            <input type="text" id="r-name" required class="w-full p-2 border rounded-lg text-sm">
+        </div>
+        <div>
+            <label class="block text-xs font-semibold text-slate-600 mb-1">Số điện thoại</label>
+            <input type="text" id="r-phone" required class="w-full p-2 border rounded-lg text-sm">
+        </div>
+        <div>
+            <label class="block text-xs font-semibold text-slate-600 mb-1">Địa chỉ nhận hàng</label>
+            <textarea id="r-address" required class="w-full p-2 border rounded-lg text-sm" rows="2"></textarea>
+        </div>
+        <button type="submit" class="w-full py-2.5 bg-vet-600 hover:bg-vet-700 text-white font-bold rounded-lg text-sm shadow">Đăng Ký Tài Khoản</button>
+    </form>
+  `;
+
+  setTimeout(() => {
+    const form = div.querySelector("#client-register-form");
+    if (form) {
+      form.onsubmit = (e) => {
+        e.preventDefault();
+        const username = div.querySelector("#r-user").value.trim();
+        const password = div.querySelector("#r-pass").value.trim();
+        const fullname = div.querySelector("#r-name").value.trim();
+        const phone = div.querySelector("#r-phone").value.trim();
+        const address = div.querySelector("#r-address").value.trim();
+
+        const users = DB.getUsers();
+        if (users.some((x) => x.username === username)) {
+          showNotification("Tên đăng nhập đã tồn tại!", "error");
+          return;
+        }
+
+        const newUser = {
+          id: "U" + Math.floor(100 + Math.random() * 900),
+          username,
+          password,
+          fullname,
+          phone,
+          address,
+          locked: false,
+        };
+        users.push(newUser);
+        DB.saveUsers(users);
+
+        setCurrentUser(newUser);
+        showNotification("Đăng ký tài khoản thành công!", "success");
+        closeModal();
+      };
+    }
+  }, 0);
+
+  return div;
 }
-
-document.getElementById('showRegister').addEventListener('click', function (e) {
-  e.preventDefault();
-  openRegisterForm();
-});
-
-document.getElementById('showLogin').addEventListener('click', function (e) {
-  e.preventDefault();
-  openLoginForm();
-});
-
-// Tự động kiểm tra khi từ trang chủ index.html bay sang
-window.addEventListener('DOMContentLoaded', function () {
-  const urlParams = new URLSearchParams(window.location.search);
-  const mode = urlParams.get('mode'); // Đọc chữ 'mode' trên URL
-
-  if (mode === 'register') {
-    openRegisterForm();
-  }
-});
-
-// Kiểm tra đăng ký
-registerForm.addEventListener('submit', function (e) {
-  e.preventDefault();
-  const password = document.getElementById('registerPassword').value;
-  const confirmPassword = document.getElementById('confirmPassword').value;
-
-  if (password !== confirmPassword) {
-    message.style.color = 'red';
-    message.textContent = 'Mật khẩu xác nhận không khớp!';
-  } else {
-    message.style.color = 'green';
-    message.textContent = 'Thông tin hợp lệ! Đây là bản demo.';
-  }
-});
-
-console.log(cancel);
-cancel.addEventListener('click', (e) => {
-  window.location.href = '../../index.html';
-});
-
-registerForm.addEventListener('submit', function (e) {
-  e.preventDefault();
-
-  const name = document.getElementById('name').value;
-  const email = document.getElementById('registerEmail').value;
-  const password = document.getElementById('registerPassword').value;
-  let role = 'customer';
-
-  const newUser = {
-    name: name,
-    email: email,
-    password: password,
-    role: role,
-  };
-
-  // Lấy danh sách tài khoản cũ đã lưu trước đó (nếu có), nếu chưa có thì tạo mảng trống []
-  let userList = JSON.parse(localStorage.getItem('users')) || [];
-
-  const existingUser = userList.find((user) => user.email === email);
-  if (existingUser) {
-    message.style.color = 'red';
-    message.textContent = 'Email này đã được đăng ký trước đó!';
-    return;
-  }
-
-  // Thêm tài khoản mới vào danh sách và lưu ngược lại vào localStorage
-  userList.push(newUser);
-  localStorage.setItem('users', JSON.stringify(userList));
-
-  message.style.color = 'green';
-  message.textContent = 'Đăng ký thành công! Bạn có thể chuyển sang đăng nhập.';
-  openLoginForm();
-});
-
-loginForm.addEventListener('submit', function (e) {
-  e.preventDefault();
-
-  const emailInput = document.getElementById('loginEmail').value;
-  const passwordInput = document.getElementById('loginPassword').value;
-
-  // 1. Lấy danh sách toàn bộ người dùng đã lưu trong localStorage
-  let userList = JSON.parse(localStorage.getItem('users')) || [];
-
-  // 2. Dò tìm xem có tài khoản nào khớp email và password không
-  const foundUser = userList.find(
-    (user) => user.email === emailInput && user.password === passwordInput
-  );
-
-  if (foundUser) {
-    message.style.color = 'green';
-    message.textContent = `Đăng nhập thành công! Chào mừng ${foundUser.name}`;
-
-    localStorage.setItem('currentUser', JSON.stringify(foundUser));
-
-    window.location.href = '../../index.html';
-  } else {
-    message.style.color = 'red';
-    message.textContent = 'Email hoặc mật khẩu không chính xác!';
-  }
-});
