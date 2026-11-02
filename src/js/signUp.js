@@ -97,27 +97,62 @@ registerForm.addEventListener('submit', function (e) {
   openLoginForm();
 });
 
+// Tạo tài khoản admin mặc định
+let userList = JSON.parse(localStorage.getItem('users')) || [];
+
+const adminEmail = 'admin@petpet.com';
+
+const adminExists = userList.find(function (user) {
+    return user.email === adminEmail;
+});
+
+if (!adminExists) {
+    const adminAccount = {
+        name: 'Admin',
+        email: 'admin@petpet.com',
+        password: 'admin123',
+        role: 'admin'
+    };
+
+    userList.push(adminAccount);
+    localStorage.setItem('users', JSON.stringify(userList));
+}
+
+
+
 loginForm.addEventListener('submit', function (e) {
   e.preventDefault();
 
-  const emailInput = document.getElementById('loginEmail').value;
+  const emailInput = document.getElementById('loginEmail').value.trim();
   const passwordInput = document.getElementById('loginPassword').value;
 
-  // 1. Lấy danh sách toàn bộ người dùng đã lưu trong localStorage
-  let userList = JSON.parse(localStorage.getItem('users')) || [];
+  // Lấy danh sách tài khoản đã đăng ký
+  const userList = JSON.parse(localStorage.getItem('users')) || [];
 
-  // 2. Dò tìm xem có tài khoản nào khớp email và password không
+  // Tìm tài khoản khớp email và mật khẩu
   const foundUser = userList.find(
-    (user) => user.email === emailInput && user.password === passwordInput
+    (user) =>
+      user.email === emailInput &&
+      user.password === passwordInput
   );
 
-  if (foundUser) {
-    message.style.color = 'green';
-    message.textContent = `Đăng nhập thành công! Chào mừng ${foundUser.name}`;
 
+
+  if (foundUser) {
+    // Lưu thông tin người đang đăng nhập
     localStorage.setItem('currentUser', JSON.stringify(foundUser));
 
-    window.location.href = '../../index.html';
+    message.style.color = 'green';
+    message.textContent = `Đăng nhập thành công! Xin chào ${foundUser.name}`;
+
+    // Kiểm tra quyền tài khoản
+    if (foundUser.role === 'admin') {
+      // Admin chuyển đến giao diện quản trị
+      window.location.href = '../html/admin.html';
+    } else {
+      // Khách hàng chuyển đến trang chủ
+      window.location.href = '../../index.html';
+    }
   } else {
     message.style.color = 'red';
     message.textContent = 'Email hoặc mật khẩu không chính xác!';

@@ -200,12 +200,16 @@
                 <div class="link_Admin flexRow-center"><span>Admin</span></div>
               </div>
               <div class="account-main">
-                <div class="personal-menu">
+                <a
+                  href="orders.html"
+                  class="personal-menu"
+                  style="text-decoration: none; color: inherit"
+                >
                   <div class="prefenrence-icon">
                     <i class="ri-receipt-line"></i>
                   </div>
                   <span>Đơn hàng của tôi</span>
-                </div>
+                </a>
                 <div class="personal-menu">
                   <div class="prefenrence-icon">
                     <i class="ri-heart-line"></i>
@@ -565,6 +569,13 @@
                   <span class="old-price">69,000 đ</span>
                 </div>
                 <div class="current-price">59,000 đ</div>
+                <button
+                  type="button"
+                  class="price-btn"
+                  onclick="window.addToCart('SP001')"
+                >
+                  Thêm vào giỏ
+                </button>
               </div>
             </div>
 
@@ -780,7 +791,10 @@
       <!------------>
     </div>
     <!-- JS -->
+    <script src="./src/js/storefront.js"></script>
     <script src="./src/js/main.js"></script>
+    <script src="./src/js/orders.js"></script>
+
     <script
       src="https://kit.fontawesome.com/6abea2bdfc.js"
       crossorigin="anonymous"

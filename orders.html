@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Giỏ Hàng & Đơn Hàng Của Tôi - PETPET</title>
+    <link rel="icon" type="image/png" href="./src/img/icon/favicon.ico" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./src/css/main.css" />
+    <link rel="stylesheet" href="./src/css/utilities.css" />
+    <link rel="stylesheet" href="./src/css/orders.css" />
+  </head>
+  <body>
+    <!-- Navbar giống index.html -->
+    <nav class="navbar site-container">
+      <div class="left-bar flexRow-center">
+        <div class="logo">
+          <a href="index.html"
+            ><img src="./src/img/icon/logo_headerDesktop.svg" alt="icon"
+          /></a>
+        </div>
+        <div class="nav-item"><a href="index.html">Trang chủ</a></div>
+      </div>
+      <div class="right-bar flexRow-center">
+        <div id="cartBtn" class="cart-btn-wrapper">
+          <i class="ri-shopping-cart-2-line cart-icon-img"></i>
+          <b id="cartCount" class="cart-badge">0</b>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <!-- PHẦN 1: GIỎ HÀNG VÀ THANH TOÁN -->
+      <section class="section-box">
+        <h2><i class="ri-shopping-cart-2-line"></i> Giỏ Hàng & Thanh Toán</h2>
+        <div id="cartAndCheckoutContainer"></div>
+      </section>
+
+      <!-- PHẦN 2: ĐƠN HÀNG CỦA TÔI -->
+      <section class="section-box">
+        <h2><i class="ri-receipt-line"></i> Lịch Sử Đơn Hàng Của Tôi</h2>
+        <div id="myOrdersPageContainer"></div>
+      </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer site-container page-footer">
+      <p>© PetPet - Thế giới thú cưng</p>
+    </footer>
+
+    <!-- Script xử lý giỏ hàng, thanh toán và modal thành công -->
+    <script src="./src/js/storefront.js"></script>
+    <script src="./src/js/orders.js"></script>
+  </body>
+</html>
