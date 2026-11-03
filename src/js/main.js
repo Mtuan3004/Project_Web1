@@ -117,6 +117,12 @@ function prev() {
   i = (i - 1 + totalSlides) % totalSlides;
   updateSlider();
 }
+// Auto Slider
+setInterval(() => {
+  i++;
+  if (i >= totalSlides) i = 0;
+  updateSlider();
+}, 3000);
 
 // Account
 account.addEventListener("click", (e) => {
@@ -199,20 +205,11 @@ logOut.addEventListener("click", () => {
 linkAdmin.addEventListener("click", (e) => {
   window.location.href = "./src/html/admin.html";
 });
-// Hamburger
 
-if (hamburger && navMenu) {
-  // Khi click vào nút hamburger
-  hamburger.addEventListener("click", () => {
-    hamburger.classList.toggle("active");
-    navMenu.classList.toggle("active");
-  });
-
-  // Tự động đóng menu khi bấm vào một link bất kỳ
-  document.querySelectorAll(".nav-item").forEach((link) => {
-    link.addEventListener("click", () => {
-      hamburger.classList.remove("active");
-      navMenu.classList.remove("active");
-    });
-  });
+//open footer menu
+function toggleMenu(e) {
+  const subMenu = e.querySelector('.subMenu-footer');
+  const arrowMenu = e.querySelector('.ri-arrow-down-s-fill');
+  subMenu.classList.toggle('open');
+  arrowMenu.classList.toggle('open');
 }
