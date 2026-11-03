@@ -145,6 +145,32 @@
     ]
   },
   {
+    "id": "sp6",
+    "name": "Combo 10 Pate Silver Spoon Vị Cá Ngừ Cho Mèo Gói 60g",
+    "brand": "Silver Spoon",
+    "category": "Pate / Thức ăn ướt",
+    "pet": "Mèo cưng",
+    "weight": "600g (10 gói)",
+    "origin": "Nhật Bản",
+    "image": "./src/img/img-products/C10CBSIS03__main__20260927_220246_q97r6q_400x400.webp",
+    "price": 180500,
+    "oldPrice": 190000,
+    "discount": "-5%",
+    "stock": "Còn 18 sản phẩm",
+    "sold": 55,
+    "description": "Pate Silver Spoon chuyên vị cá ngừ đại dương tươi ngon, thạch dẻo mềm mịn, giàu vitamin E và Taurine hỗ trợ phát triển thị giác và tim mạch.",
+    "highlights": [
+      "100% nguyên liệu cá ngừ đánh bắt tự nhiên giàu đạm sạch.",
+      "Độ ẩm dồi dào trên 88% bổ sung nước cho cơ thể mèo.",
+      "Không sử dụng phẩm màu tổng hợp hay chất bảo quản độc hại."
+    ],
+    "ingredients": "Cá ngừ, chiết xuất cá ngừ bào khô, oligosaccharides, vitamin E, chất làm đông nguồn gốc thực vật.",
+    "instructions": [
+      "Mở gói dùng liền cho bữa ăn hàng ngày.",
+      "Bảo quản ngăn mát phần dư và dùng hết trong ngày."
+    ]
+  },
+  {
     "id": "sp7",
     "name": "Combo 5 Pate DoggyMan Cho Cún Sốt Kem Gói 70g",
     "brand": "DoggyMan",
@@ -201,6 +227,32 @@
     ]
   },
   {
+    "id": "sp8_2",
+    "name": "Hạt SmartHeart Adult Vị Bò & Nướng Cho Chó Lớn",
+    "brand": "SmartHeart",
+    "category": "Hạt cho cún",
+    "pet": "Cún cưng",
+    "weight": "Bịch 1.5kg",
+    "origin": "Thái Lan",
+    "image": "./src/img/img-products/3.webp",
+    "price": 145000,
+    "oldPrice": 160000,
+    "discount": "-9%",
+    "stock": "Còn 40 sản phẩm",
+    "sold": 52,
+    "description": "Thức ăn khô dinh dưỡng hoàn chỉnh dành cho chó trưởng thành trên 1 năm tuổi, hương vị thịt bò nướng đậm đà, bổ sung DHA và Axit béo Omega 3 & 6 cho trái tim và trí não khỏe mạnh.",
+    "highlights": [
+      "DHA từ dầu cá và Choline giúp phát triển và tăng cường trí nhớ.",
+      "Axit béo Omega 3 & 6 giúp bộ lông luôn bóng mượt và làn da khỏe mạnh.",
+      "Canxi và Photpho giúp cơ bắp săn chắc và xương khớp cứng cáp."
+    ],
+    "ingredients": "Ngô, bột thịt gia cầm, gạo, bột đậu nành, mỡ gà, bột cá hồi, dầu hạt lanh, khoáng chất và vitamin.",
+    "instructions": [
+      "Cho ăn trực tiếp tùy theo mức độ hoạt động và cân nặng của chó.",
+      "Đảm bảo cung cấp nước uống đầy đủ trong ngày."
+    ]
+  },
+  {
     "id": "sp9",
     "name": "Cát Đậu Nành Tofu Cature Khử Mùi Cho Mèo",
     "brand": "Cature",
@@ -229,6 +281,189 @@
     ]
   },
   {
+    "id": "sp10",
+    "name": "Pate Royal Canin Recovery Hỗ Trợ Dưỡng Bệnh",
+    "brand": "Royal Canin",
+    "category": "Pate thú y",
+    "pet": "Cả Chó và Mèo",
+    "weight": "Lon 195g",
+    "origin": "Pháp",
+    "image": "./src/img/img-products/pate.webp",
+    "price": 68000,
+    "oldPrice": 75000,
+    "discount": "-9%",
+    "stock": "Còn 25 sản phẩm",
+    "sold": 63,
+    "description": "Thức ăn dinh dưỡng năng lượng cao dạng mousse mềm mịn chuyên biệt dành cho chó và mèo trong giai đoạn phục hồi sau phẫu thuật, suy nhược hoặc biếng ăn nghiêm trọng.",
+    "highlights": [
+      "Mật độ năng lượng cao giúp bù đắp calo nhanh chóng ngay cả khi thú cưng ăn ít.",
+      "Kết cấu siêu nhuyễn mịn dễ dàng bơm ăn qua ống tiêm hoặc thìa.",
+      "Phức hợp chất chống oxy hóa tăng cường hệ miễn dịch tự nhiên."
+    ],
+    "ingredients": "Gan gà, thịt heo, thịt gia cầm, gelatin thủy phân, dầu cá, cellulose, khoáng chất và taurine.",
+    "instructions": [
+      "Sử dụng dưới sự chỉ dẫn của bác sĩ thú y.",
+      "Chia đều thành nhiều bữa nhỏ trong ngày.",
+      "Bảo quản ngăn mát sau khi mở nắp lon và dùng trong 48 giờ."
+    ]
+  },
+  {
+    "id": "sp11",
+    "name": "Sữa Tắm Thảo Dược SOS Dưỡng Mượt Lông Cho Chó Mèo",
+    "brand": "SOS",
+    "category": "Chăm sóc & Vệ sinh",
+    "pet": "Cả Chó và Mèo",
+    "weight": "Chai 530ml",
+    "origin": "Đài Loan",
+    "image": "./src/img/img-products/sua-tam.jpg",
+    "price": 95000,
+    "oldPrice": 120000,
+    "discount": "-21%",
+    "stock": "Còn 45 sản phẩm",
+    "sold": 142,
+    "description": "Sữa tắm chuyên dụng chiết xuất từ thảo dược tự nhiên giúp làm sạch sâu, khử mùi hôi cơ thể, dưỡng lông mềm mượt và lưu hương thơm dịu nhẹ kéo dài nhiều ngày.",
+    "highlights": [
+      "Độ pH trung tính an toàn dịu nhẹ, không gây cay mắt hay kích ứng da.",
+      "Hỗ trợ diệt khuẩn và phòng ngừa ve rận, nấm ngứa hiệu quả.",
+      "Công thức xả bọt nhanh giúp tiết kiệm thời gian tắm rửa."
+    ],
+    "ingredients": "Nước tinh khiết, chiết xuất hoa cúc, tinh dầu dừa, vitamin E, chiết xuất lô hội tự nhiên.",
+    "instructions": [
+      "Làm ướt toàn bộ lông thú cưng bằng nước ấm.",
+      "Lấy lượng sữa tắm vừa đủ thoa đều, massage nhẹ nhàng trong 5-10 phút rồi xả sạch lại bằng nước."
+    ]
+  },
+  {
+    "id": "sp12",
+    "name": "Hạt Cho Mèo Con Me-O Mother & Baby Cat",
+    "brand": "Me-O",
+    "category": "Hạt khô",
+    "pet": "Mèo cưng",
+    "weight": "Bịch 1.1kg",
+    "origin": "Thái Lan",
+    "image": "./src/img/img-products/master.webp",
+    "price": 105000,
+    "oldPrice": null,
+    "discount": "",
+    "stock": "Còn 27 sản phẩm",
+    "sold": 38,
+    "description": "Công thức giàu dưỡng chất chuyên biệt cho mèo mẹ mang thai, đang cho con bú và mèo con từ 1 đến 4 tháng tuổi tập ăn hạt.",
+    "highlights": [
+      "Hạt kích thước siêu nhỏ, ngâm mềm nhanh trong nước hoặc sữa ấm.",
+      "Bổ sung sữa non và DHA hỗ trợ phát triển hệ miễn dịch và não bộ mèo con.",
+      "Giàu đạm và canxi giúp mèo mẹ duy trì nguồn sữa dồi dào."
+    ],
+    "ingredients": "Bột thịt gia cầm, gạo tấm, bột cá ngừ, mỡ gà, sữa gầy, dầu cá hồi, men bia và vitamin.",
+    "instructions": [
+      "Mèo con dưới 2 tháng: ngâm hạt mềm với nước ấm hoặc sữa chuyên dụng trước khi cho ăn.",
+      "Mèo mẹ: cho ăn tự do theo nhu cầu."
+    ]
+  },
+  {
+    "id": "sp13",
+    "name": "Bánh Thưởng Gặm Sạch Răng Bowwow Vị Bò Cho Cún",
+    "brand": "Bowwow",
+    "category": "Bánh thưởng",
+    "pet": "Cún cưng",
+    "weight": "Gói 100g",
+    "origin": "Hàn Quốc",
+    "image": "./src/img/img-products/banh-xuong.jpg",
+    "price": 42000,
+    "oldPrice": 48000,
+    "discount": "-13%",
+    "stock": "Còn 38 sản phẩm",
+    "sold": 29,
+    "description": "Bánh thưởng gặm làm sạch răng dạng xoắn từ thịt bò tươi nhập khẩu Hàn Quốc, giúp đánh bật mảng bám vôi răng và giảm stress hiệu quả cho cún cưng.",
+    "highlights": [
+      "Kết cấu dẻo dai giúp cún gặm nhai lâu, kích thích tiết nước bọt diệt khuẩn.",
+      "Hàm lượng calo thấp, không gây béo phì hay đầy bụng.",
+      "Nguyên liệu thịt bò tươi sạch 100% thơm ngon khó cưỡng."
+    ],
+    "ingredients": "Thịt bò tươi nguyên chất, gelatin thực phẩm, bột mì, glycerin, chiết xuất trà xanh.",
+    "instructions": [
+      "Cho cún ăn từ 1 - 2 que mỗi ngày như một phần thưởng khi huấn luyện.",
+      "Đóng kín túi sau khi mở."
+    ]
+  },
+  {
+    "id": "sp14",
+    "name": "Gel Dinh Dưỡng Nourse 21 Bổ Sung Vitamin Cho Chó Mèo",
+    "brand": "Nourse",
+    "category": "Thực phẩm chức năng",
+    "pet": "Cả Chó và Mèo",
+    "weight": "Tuýp 120g",
+    "origin": "Nội địa Trung",
+    "image": "./src/img/img-products/gel.webp",
+    "price": 145000,
+    "oldPrice": 165000,
+    "discount": "-12%",
+    "stock": "Còn 20 sản phẩm",
+    "sold": 54,
+    "description": "Gel dinh dưỡng đậm đặc cung cấp hơn 20 loại vitamin và khoáng chất thiết yếu, hồi phục thể lực nhanh chóng cho thú cưng ốm yếu, còi xương hoặc kén ăn.",
+    "highlights": [
+      "Cung cấp năng lượng tức thì với các loại axit amin dễ hấp thu.",
+      "Kích thích cảm giác thèm ăn, hỗ trợ tăng cân an toàn.",
+      "Hương vị mạch nha tự nhiên béo ngọt, thú cưng rất thích liếm."
+    ],
+    "ingredients": "Mạch nha, dầu đậu nành, dầu gan cá tuyết, vitamin tổng hợp (A, D3, E, B1, B2, B6, B12), canxi lactate.",
+    "instructions": [
+      "Bóp trực tiếp vào miệng hoặc trộn cùng thức ăn.",
+      "Liều lượng: 3 - 5cm gel/ngày cho mỗi 5kg thể trọng."
+    ]
+  },
+  {
+    "id": "sp15",
+    "name": "Pate Lon Monge Vị Cá Hồi & Lê Cho Chó Nhỏ",
+    "brand": "Monge",
+    "category": "Pate cún",
+    "pet": "Cún cưng",
+    "weight": "Lon 100g",
+    "origin": "Ý",
+    "image": "./src/img/img-products/pate_lon.webp",
+    "price": 38000,
+    "oldPrice": null,
+    "discount": "",
+    "stock": "Còn 60 sản phẩm",
+    "sold": 19,
+    "description": "Pate thịt cá hồi tươi kết hợp hoa quả tươi tự nhiên (trái lê) nhập khẩu từ Ý, cung cấp dinh dưỡng cân bằng và lành mạnh cho các giống chó nhỏ.",
+    "highlights": [
+      "Không chứa ngũ cốc (Grain-Free), chống dị ứng cho làn da nhạy cảm.",
+      "Bổ sung trái cây tự nhiên giàu chất chống oxy hóa và vitamin C.",
+      "Quy trình hấp chín giữ trọn dinh dưỡng tươi mới."
+    ],
+    "ingredients": "Thịt cá hồi tươi (26%), gan gà, thịt heo nạc, trái lê tươi (4%), khoáng chất.",
+    "instructions": [
+      "Cho ăn trực tiếp ở nhiệt độ phòng.",
+      "Dùng 2 - 3 lon/ngày cho cún dưới 5kg."
+    ]
+  },
+  {
+    "id": "sp16",
+    "name": "Bình Nước Du Lịch Tự Động Kèm Khay Ăn Cho Thú Cưng",
+    "brand": "PETPET",
+    "category": "Phụ kiện",
+    "pet": "Cả Chó và Mèo",
+    "weight": "Dung tích 500ml",
+    "origin": "Việt Nam",
+    "image": "./src/img/img-products/bat_doi.webp",
+    "price": 89000,
+    "oldPrice": 110000,
+    "discount": "-19%",
+    "stock": "Còn 14 sản phẩm",
+    "sold": 33,
+    "description": "Bình nước tiện ích cầm tay tích hợp nút khóa rò rỉ và khay hứng nước cong vòng cung, lý tưởng để mang theo khi dắt chó mèo đi dạo ngoài trời.",
+    "highlights": [
+      "Nút bấm nhả nước một chạm, tự động thu hồi nước thừa vào bình.",
+      "Vòng đệm silicon khóa chặt 100%, không lo rò rỉ ra balo.",
+      "Chất liệu nhựa ABS an toàn không chứa BPA độc hại."
+    ],
+    "ingredients": "Nhựa ABS thực phẩm cao cấp và silicon chống tràn.",
+    "instructions": [
+      "Mở nắp, đổ nước sạch và vặn chặt.",
+      "Nhấn giữ nút để nước chảy ra khay uống, nhả nút để khóa dòng nước."
+    ]
+  },
+  {
     "id": "sp17",
     "name": "Combo 6 Hộp Pate Whiskas Vị Cá Biển Cho Mèo 85g",
     "brand": "Whiskas",
@@ -254,6 +489,58 @@
       "Mèo 1 - 4kg dùng khoảng 1 - 2 gói/ngày.",
       "Có thể trộn cùng hạt khô Whiskas để bữa ăn phong phú hơn.",
       "Bảo quản ngăn mát tủ lạnh phần chưa dùng hết."
+    ]
+  },
+  {
+    "id": "sp18",
+    "name": "Bàn Cào Móng Giấy Hình Lượn Sóng Cho Mèo",
+    "brand": "PETPET",
+    "category": "Đồ chơi & Phụ kiện",
+    "pet": "Mèo cưng",
+    "weight": "Kích thước 45x21cm",
+    "origin": "Việt Nam",
+    "image": "./src/img/img-products/ban_cao.webp",
+    "price": 49000,
+    "oldPrice": null,
+    "discount": "",
+    "stock": "Còn 26 sản phẩm",
+    "sold": 67,
+    "description": "Bàn cào móng bằng bìa carton nén sóng mật độ cao, giúp mèo mài dũa móng vuốt tự nhiên, giải tỏa căng thẳng và hạn chế cào xước sofa, đồ đạc trong nhà.",
+    "highlights": [
+      "Giấy carton ép chặt bền bỉ, ít bị vụn rơi vãi ra sàn.",
+      "Thiết kế lượn sóng thoải mái để mèo vừa cào móng vừa nằm nghỉ ngơi.",
+      "Tặng kèm 1 gói cỏ bạc hà mèo Catnip kích thích hưng phấn."
+    ],
+    "ingredients": "Giấy carton sóng ép thân thiện với môi trường và keo bắp tự nhiên.",
+    "instructions": [
+      "Đặt bàn cào ở nơi mèo hay qua lại hoặc gần chỗ ngủ của bé.",
+      "Rắc một chút bột cỏ Catnip lên bề mặt để dẫn dụ mèo làm quen."
+    ]
+  },
+  {
+    "id": "sp19",
+    "name": "Xịt Khử Mùi & Diệt Khuẩn Không Gian Nuôi JoyPet",
+    "brand": "JoyPet",
+    "category": "Vệ sinh & Chăm sóc",
+    "pet": "Cả Chó và Mèo",
+    "weight": "Chai xịt 400ml",
+    "origin": "Nhật Bản",
+    "image": "./src/img/img-products/xitkhumui.webp",
+    "price": 110000,
+    "oldPrice": 130000,
+    "discount": "-15%",
+    "stock": "Còn 31 sản phẩm",
+    "sold": 44,
+    "description": "Chai xịt sinh học công nghệ Nhật Bản khử sạch tận gốc mùi nước tiểu, mùi phân và khử khuẩn không gian nuôi thú cưng, an toàn tuyệt đối ngay cả khi thú cưng liếm phải.",
+    "highlights": [
+      "Phân hủy phân tử mùi hôi amoniac tức thì chỉ sau 30 giây xịt.",
+      "Diệt trừ 99.9% vi khuẩn gây mùi và nấm mốc trong môi trường sống.",
+      "Chiết xuất thực vật hữu cơ, hoàn toàn không độc hại."
+    ],
+    "ingredients": "Nước điện giải, chiết xuất hạt bưởi tự nhiên, tinh chất trà xanh diệt khuẩn.",
+    "instructions": [
+      "Xịt trực tiếp vào khay cát, chuồng nuôi, đệm ngủ hoặc góc tường bị mèo đánh dấu.",
+      "Không cần lau lại bằng nước sau khi xịt."
     ]
   },
   {
