@@ -74,6 +74,9 @@
   .brand-grid {
     gap: 20px;
   }
+  .nav-body-main .left-nav-body {
+    display: flex !important;
+  }
 }
 @media (max-width: 768px) {
   /* Khung chứa các thẻ sản phẩm dạng lướt ngang */
@@ -118,7 +121,7 @@
   .product-info {
     display: flex;
     flex-direction: column;
-    gap: 4px; /* Khoảng cách đều giữa các dòng */
+    gap: 4px; 
     width: 100%;
   }
 
@@ -130,23 +133,21 @@
     color: #333;
     display: -webkit-box;
     overflow: hidden;
-    height: 32px; /* Cố định chiều cao tên để các card đều nhau */
+    height: 32px; 
     margin: 0;
   }
 
-  /* Phần đánh giá sao */
   .product-card .stars,
   .product-rating {
     font-size: 10px;
     margin: 2px 0;
   }
 
-  /* Phần giá tiền và thẻ giảm giá */
   .product-price-box {
     display: flex;
     flex-direction: column;
     gap: 2px;
-    margin-top: auto; /* Đẩy giá xuống đáy card */
+    margin-top: auto; 
   }
 
   .product-price {
@@ -154,4 +155,164 @@
     font-weight: 700;
     color: #e53935;
   }
+}
+
+
+
+/* =================================
+   RESPONSIVE SEARCH - MOBILE
+================================= */
+
+@media screen and (max-width: 768px) {
+
+  .right-nav-body {
+    margin: 0px;
+    width: 100%;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  /* Thanh tìm kiếm */
+
+  .search-bar-container {
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+    padding: 7px;
+    border-radius: 16px;
+  }
+
+  #search-body {
+    flex: 1;
+    min-width: 0;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 14px;
+    padding: 12px 10px 12px 38px;
+  }
+
+  .icon-nav-body {
+    position: absolute;
+    left: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+  }
+
+  .btn-search-body {
+    flex-shrink: 0;
+    height: 26px;
+    font-size: 11px;
+    width: 80px;
+  }
+
+  /* Khu vực bộ lọc */
+
+  .search-keyword-input {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 6px;
+    box-sizing: border-box;
+    padding-top: 0px;
+  }
+
+  .selects {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    position: relative;
+    padding: 12px;
+    border-radius: 14px;
+  }
+
+  .selects .content {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
+  }
+
+  .selects .content span {
+    font-size: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .selects .icon-select {
+    flex-shrink: 0;
+  }
+
+  /* Khoảng giá chiếm toàn bộ hàng */
+
+  #price {
+    grid-column: 1 / -1;
+  }
+
+  /* Dropdown */
+
+  .dropdown-menu {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    right: auto;
+    width: 100%;
+    min-width: 0;
+    max-width: 320px;
+    box-sizing: border-box;
+    z-index: 1000;
+  }
+
+  /* Dropdown của khoảng giá */
+
+  .price-range-menu {
+    width: 100%;
+    max-width: 100%;
+    padding: 16px;
+  }
+
+  .range-slider {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+}
+
+/* Điện thoại màn hình nhỏ */
+
+@media screen and (max-width: 380px) {
+
+  .search-bar-container {
+    gap: 5px;
+    padding: 5px;
+  }
+
+  #search-body {
+    font-size: 12px;
+    padding-right: 5px;
+  }
+
+  .btn-search-body {
+    padding: 11px 10px;
+    font-size: 12px;
+  }
+
+  .selects {
+    padding: 10px;
+  }
+
+  .selects .content {
+    gap: 6px;
+  }
+
+  .selects .content span {
+    font-size: 12px;
+  }
+
 }

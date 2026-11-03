@@ -1,12 +1,12 @@
 @import url(./main.css);
 .nav-body-main {
-  display: none; /*hfahsffhslfhkjflkasf*/
+  display: flex; 
   align-items: center;
   justify-content: space-between;
   margin: 30px;
 }
 .nav-body-main .left-nav-body {
-  display: flex;
+  display: none;
   align-items: center;
   gap: 28px;
 }
@@ -31,7 +31,6 @@
 .right-nav-body {
   margin-left: 28px;
   width: 100%;
-  gap: 5px;
   padding: 10px 5px;
   border: 1px solid var(--color-primary);
   border-radius: 12px;
