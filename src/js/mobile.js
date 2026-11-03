@@ -84,6 +84,7 @@ petOptions.forEach((option) => {
     closePetModal();
   });
 });
+console.log(leftSearchIcons, rightSearchIcons);
 
 function handleStickyHeader() {
   if (window.scrollY > 0) {
@@ -125,4 +126,21 @@ function mobileBottom(nav) {
 }
 bottomNavItems[0].click(); // Mặc định click vào nav đầu tiên khi load trang
 
-console.log(document.querySelector(".header-mobile-bar").classList);
+const menuBtn = document.querySelector(".nav-mobile:first-child"); // Hoặc class nút Menu của bạn
+const menuModal = document.getElementById("mobileMenuModal");
+const modalOverlay = document.querySelector(".menu-modal-overlay");
+
+// Bấm vào nút Menu để mở
+if (menuBtn && menuModal) {
+  menuBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    menuModal.classList.add("active");
+  });
+}
+
+// Bấm ra ngoài nền mờ để đóng
+if (modalOverlay && menuModal) {
+  modalOverlay.addEventListener("click", () => {
+    menuModal.classList.remove("active");
+  });
+}

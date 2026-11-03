@@ -30,7 +30,7 @@
   .left-bar {
     flex-shrink: 0;
     display: flex !important;
-    justify-content: flex-start;
+    width: auto !important;
   }
   .topbar-mobile {
     display: none !important;
@@ -63,5 +63,95 @@
   }
   .header-mobile-bar {
     display: none !important;
+  }
+  .brand-item {
+    padding: 16px;
+    width: auto;
+  }
+  .brand-img-box {
+    padding: 0;
+  }
+  .brand-grid {
+    gap: 20px;
+  }
+}
+@media (max-width: 768px) {
+  /* Khung chứa các thẻ sản phẩm dạng lướt ngang */
+  .product-grid {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 12px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding: 4px 12px 12px 12px;
+  }
+
+  .product-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Định dạng từng thẻ sản phẩm */
+  .product-card {
+    flex: 0 0 160px; /* Tăng chiều rộng lên một chút cho thoáng (160px) */
+    scroll-snap-align: start;
+    background: #ffffff;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    height: auto; /* Để chiều cao tự co giãn theo nội dung, tránh bị bóp méo */
+  }
+
+  /* Khung chứa ảnh sản phẩm */
+  .product-card img,
+  .product-img-box img {
+    width: 100%;
+    height: 130px;
+    object-fit: contain;
+    margin-bottom: 8px;
+  }
+
+  /* Khung bọc thông tin (chữ, giá, sao) để sắp xếp theo chiều dọc không bị đè */
+  .product-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px; /* Khoảng cách đều giữa các dòng */
+    width: 100%;
+  }
+
+  .product-card h3,
+  .product-name {
+    font-size: 12px;
+    line-height: 1.3;
+    font-weight: 500;
+    color: #333;
+    display: -webkit-box;
+    overflow: hidden;
+    height: 32px; /* Cố định chiều cao tên để các card đều nhau */
+    margin: 0;
+  }
+
+  /* Phần đánh giá sao */
+  .product-card .stars,
+  .product-rating {
+    font-size: 10px;
+    margin: 2px 0;
+  }
+
+  /* Phần giá tiền và thẻ giảm giá */
+  .product-price-box {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-top: auto; /* Đẩy giá xuống đáy card */
+  }
+
+  .product-price {
+    font-size: 14px;
+    font-weight: 700;
+    color: #e53935;
   }
 }
