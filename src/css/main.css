@@ -452,7 +452,7 @@ li .btn .btn-content {
   object-fit: cover;
 }
 .break-line {
-  margin: 60px 0;
+  margin: 20px 0;
 }
 #line1 {
   background-color: #ccc;
@@ -472,7 +472,7 @@ li .btn .btn-content {
 .footer-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  margin: 50px 0;
+  margin: 10px 0 100px;
 }
 .footer-info {
   display: grid;
