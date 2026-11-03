@@ -23,8 +23,6 @@
   .brand-grid {
     grid-template-columns: repeat(3, 1fr);
   }
-  .brand-view-more {
-  }
   .product-grid {
     grid-template-columns: repeat(3, 1fr);
   }
