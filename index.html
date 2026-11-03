@@ -37,7 +37,7 @@
         display: none !important;
       }
 
-      /* Navbar link cố định màu đen, xóa màu vàng và viền đen khi focus */
+      /* Navbar link */
       .navbar .nav-item a,
       .navbar .nav-item.active a,
       .navbar .nav-item a:focus,
@@ -55,7 +55,7 @@
         color: #000000 !important;
       }
 
-      /* Giao diện lưới sản phẩm tràn đều (View 2) */
+      /* Giao diện lưới sản phẩm (View 2) */
       .shop-header-bar {
         display: flex;
         justify-content: space-between;
@@ -143,11 +143,12 @@
         font-size: 13px;
       }
 
-      /* Giao diện cài đặt tài khoản (View 3) */
+      /* CSS GIAO DIỆN CÀI ĐẶT TÀI KHOẢN (VIEW 3) */
       .account-setting-container {
         display: flex;
         gap: 30px;
         margin: 40px auto 70px;
+        max-width: 1200px;
       }
       .setting-sidebar {
         width: 280px;
@@ -157,6 +158,7 @@
         padding: 24px;
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
         border: 1px solid #eee;
+        height: fit-content;
       }
       .user-brief {
         display: flex;
@@ -167,8 +169,8 @@
         margin-bottom: 20px;
       }
       .user-brief img {
-        width: 54px;
-        height: 54px;
+        width: 60px !important;
+        height: 60px !important;
         border-radius: 50%;
         object-fit: cover;
       }
@@ -239,6 +241,12 @@
         border-radius: 8px;
         font-size: 14px;
         outline: none;
+        width: 100%;
+        box-sizing: border-box;
+      }
+      .form-group input:focus,
+      .form-group select:focus {
+        border-color: #f7a600;
       }
       .btn-save-account {
         margin-top: 25px;
@@ -250,260 +258,322 @@
         font-weight: 700;
         font-size: 14px;
         cursor: pointer;
+        transition: 0.2s;
+      }
+      .btn-save-account:hover {
+        background: #e59900;
       }
 
-      /* Giao diện chi tiết sản phẩm theo UI bạn Phúc (View 4) */
-      .detail-page-wrapper {
-        margin: 25px auto 60px;
+      /* CSS VIEW 4: CHI TIẾT SẢN PHẨM */
+      .section-nav-container {
+        margin: 20px 0 15px 0;
       }
-      .detail-breadcrumb {
-        font-size: 13px;
-        color: #666;
-        margin-bottom: 20px;
+      .section-nav {
+        list-style: none;
         display: flex;
-        align-items: center;
         gap: 8px;
+        padding: 0;
+        font-size: 13px;
+        align-items: center;
       }
-      .detail-breadcrumb a {
-        color: #555;
+      .section-nav a {
         text-decoration: none;
-        cursor: pointer;
+        color: #555;
       }
-      .detail-breadcrumb a:hover {
-        color: var(--color-primary, #f7a600);
+      .section-nav a:hover {
+        color: #f7a600;
       }
-      .detail-card-layout {
-        background: #fff;
-        border-radius: 12px;
-        border: 1px solid #eaeaea;
-        padding: 30px;
-        display: flex;
+      .details-container {
+        display: grid;
+        grid-template-columns: 480px 1fr;
         gap: 40px;
+        margin-top: 10px;
       }
-      .detail-gallery {
-        width: 420px;
-        flex-shrink: 0;
-      }
-      .detail-main-img-box {
-        width: 100%;
-        aspect-ratio: 1;
-        border: 1px solid #ebebeb;
-        border-radius: 8px;
-        overflow: hidden;
+      .img-container {
+        border: 2px solid #ffd800;
+        border-radius: 12px;
+        padding: 15px;
+        background: #fff;
         display: flex;
         align-items: center;
         justify-content: center;
-        background: #fafafa;
       }
-      .detail-main-img-box img {
+      .img-container img {
         width: 100%;
-        height: 100%;
+        max-height: 440px;
         object-fit: contain;
       }
-      .detail-info-col {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
-      }
-      .detail-title {
+      .product-title h2 {
         font-size: 22px;
-        font-weight: 700;
+        line-height: 1.4;
         color: #111;
-        line-height: 1.35;
-        margin: 0;
+        margin: 0 0 15px 0;
       }
-      .detail-meta-row {
+      .rating-section {
         display: flex;
         align-items: center;
-        gap: 15px;
-        font-size: 13px;
+        gap: 12px;
         color: #666;
+        font-size: 13px;
       }
-      .detail-stars {
+      .rating-section .stars-gold {
         color: #ff9800;
+        font-size: 16px;
       }
-      .detail-price-box {
-        background: #fafafa;
-        padding: 16px 20px;
-        border-radius: 8px;
+      .rating-section i {
+        font-size: 20px;
+        cursor: pointer;
+      }
+      .prices {
+        margin: 20px 0;
         display: flex;
         align-items: baseline;
         gap: 12px;
       }
-      .detail-price-current {
-        font-size: 28px;
+      .discount {
+        display: inline-block;
+        font-size: 13px;
         font-weight: 700;
-        color: #111;
+        color: #cf1322;
+        background-color: #fff1f0;
+        border: 1px solid #ffa39e;
+        padding: 2px 6px;
+        border-radius: 4px;
       }
-      .detail-price-old {
-        font-size: 16px;
+      .old-price {
+        font-size: 15px;
         color: #8c8c8c;
         text-decoration: line-through;
       }
-      .detail-discount-badge {
-        background: #fff1f0;
-        color: #cf1322;
-        border: 1px solid #ffa39e;
-        padding: 2px 6px;
-        font-size: 12px;
+      .sales-price {
+        font-size: 28px;
         font-weight: 700;
-        border-radius: 3px;
+        color: #111;
+        margin: 0;
       }
-      .detail-specs-list {
+      .ton-kho, .van-chuyen {
         display: flex;
-        flex-direction: column;
-        gap: 10px;
-        font-size: 14px;
-        margin-top: 5px;
-      }
-      .detail-spec-line {
-        display: flex;
-        gap: 10px;
-      }
-      .detail-spec-line .label {
-        color: #777;
-        width: 110px;
-        flex-shrink: 0;
-      }
-      .detail-spec-line .value {
-        color: #222;
-        font-weight: 500;
-      }
-      .detail-spec-line .value.stock-green {
-        color: #16a34a;
-        font-weight: 600;
-      }
-      .quantity-selector {
-        display: inline-flex;
         align-items: center;
-        border: 1px solid #ddd;
-        border-radius: 4px;
+        gap: 16px;
+        margin: 10px 0;
+        font-size: 14px;
+      }
+      .ton-kho p, .van-chuyen p {
+        margin: 0;
+        color: #555;
+        width: 110px;
+      }
+      .ton-kho span {
+        font-weight: 700;
+        color: #16a34a;
+      }
+      .van-chuyen span {
+        font-weight: 500;
+        color: #222;
+      }
+      .quantity-container {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        margin: 20px 0;
+      }
+      .quantity-container p {
+        margin: 0;
+        color: #555;
+        width: 110px;
+      }
+      .quantity-btn-container {
+        display: flex;
+        align-items: center;
+        border: 1px solid #ccc;
+        border-radius: 20px;
         overflow: hidden;
       }
-      .btn-qty {
-        background: #f8f8f8;
+      .quantity-btn {
         border: none;
-        width: 32px;
         height: 32px;
-        cursor: pointer;
+        width: 32px;
         font-size: 16px;
+        background-color: #f7f7f7;
+        cursor: pointer;
+      }
+      .quantity-btn:hover {
+        background-color: #eaeaea;
+      }
+      #quantity {
+        width: 42px;
+        height: 32px;
         display: flex;
         align-items: center;
         justify-content: center;
-      }
-      .qty-input {
-        width: 45px;
-        height: 32px;
-        border: none;
-        text-align: center;
-        outline: none;
+        border-left: 1px solid #ccc;
+        border-right: 1px solid #ccc;
+        font-size: 14px;
         font-weight: 600;
+        margin: 0;
       }
-      .btn-app-buy {
-        background-color: var(--color-primary, #f7a600);
-        color: #111;
-        font-weight: 700;
+      .app-btn button {
         font-size: 15px;
-        border: none;
-        padding: 14px 24px;
+        font-weight: 700;
         border-radius: 6px;
+        border: none;
+        padding: 14px 28px;
+        background-color: #fdd635;
         cursor: pointer;
-        width: 220px;
         transition: 0.2s;
-        margin-top: 10px;
       }
-      .btn-app-buy:hover {
+      .app-btn button:hover {
         background-color: #f7cb14;
       }
+      .mini-img-container {
+        display: flex;
+        gap: 10px;
+        margin: 15px 0 35px 0;
+      }
+      .mini-img-container img {
+        width: 70px;
+        height: 70px;
+        border-radius: 6px;
+        border: 1px solid #ddd;
+        object-fit: cover;
+        cursor: pointer;
+      }
+      .info-sp-container {
+        display: grid;
+        grid-template-columns: 1fr 340px;
+        gap: 40px;
+        margin-bottom: 60px;
+      }
+      .info-title h2 {
+        font-size: 18px;
+        margin: 0 0 6px 0;
+      }
+      .info-title h3 {
+        font-size: 15px;
+        color: #555;
+        font-weight: 500;
+        margin: 0 0 16px 0;
+      }
+      .info-box {
+        margin: 0 0 20px 0;
+      }
+      .box-row {
+        display: flex;
+        align-items: center;
+        background-color: #f8f8f8;
+        padding: 8px 14px;
+        margin-bottom: 6px;
+        border-radius: 4px;
+        font-size: 13px;
+      }
+      .box-row span {
+        color: #666;
+        width: 120px;
+      }
+      .box-row a, .box-row p {
+        margin-left: auto;
+        color: #222;
+        font-weight: 500;
+        text-decoration: none;
+        margin-bottom: 0;
+      }
+      .info-sp-content {
+        font-size: 14px;
+        line-height: 1.6;
+        color: #333;
+      }
+      .info-sp-content ul {
+        padding-left: 20px;
+        margin: 8px 0 16px 0;
+      }
+      .side-sp {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        overflow-y: auto;
+        max-height: 750px;
+        padding-right: 8px;
+      }
+      .khung-sp {
+        border: 1px solid #ebebeb;
+        border-radius: 12px;
+        padding: 10px;
+        cursor: pointer;
+        display: flex;
+        gap: 12px;
+        background: #fff;
+        transition: transform 0.2s, box-shadow 0.2s;
+      }
+      .khung-sp:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      }
+      .khung-img {
+        width: 80px;
+        height: 80px;
+        flex-shrink: 0;
+      }
+      .khung-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 6px;
+      }
+      .info-sp {
+        flex: 1;
+      }
+      .info-sp .name-sp {
+        font-size: 13px;
+        font-weight: 600;
+        line-height: 1.35;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+      .info-sp .stars {
+        color: #ff9800;
+        font-size: 12px;
+        margin: 2px 0;
+      }
+      .info-sp .prices {
+        margin: 4px 0 0 0;
+        gap: 6px;
+      }
+      .info-sp .sales-price {
+        font-size: 14px;
+        color: #d32f2f;
+      }
+      .info-sp .old-price {
+        font-size: 11px;
+      }
 
-      /* Popup xem nhanh */
-      .product-popup-overlay {
+      /* Popup QC */
+      .app-qc-container {
+        display: none;
+      }
+      .app-qc-container.show {
+        display: block;
+      }
+      .app-qc-blur {
         position: fixed;
-        top: 0; left: 0;
-        width: 100vw; height: 100vh;
-        background-color: rgba(0, 0, 0, 0.55);
+        inset: 0;
+        background-color: rgba(0, 0, 0, 0.6);
+        z-index: 99998;
+      }
+      .app-qc {
+        position: fixed;
+        inset: 0;
         display: flex;
         align-items: center;
         justify-content: center;
         z-index: 99999;
-        opacity: 0;
-        visibility: hidden;
-        transition: 0.2s;
-        padding: 16px;
-        box-sizing: border-box;
       }
-      .product-popup-overlay.active {
-        opacity: 1;
-        visibility: visible;
+      .app-qc img {
+        max-width: 320px;
+        border-radius: 12px;
       }
-      .product-popup-content {
-        background: #ffffff;
-        width: 440px;
-        max-width: 100%;
-        max-height: 90vh;
-        overflow-y: auto;
-        border-radius: 4px;
-        border: 2px solid var(--color-primary, #f7a600);
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
-        padding: 20px;
-        display: flex;
-        flex-direction: column;
-        gap: 14px;
-      }
-      .popup-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        border-bottom: 1px solid #ebebeb;
-        padding-bottom: 10px;
-      }
-      .btn-close-popup {
-        background: #f1f1f1;
-        border: 1px solid #d5d5d5;
-        padding: 4px 10px;
-        font-size: 12px;
-        cursor: pointer;
-        border-radius: 3px;
-      }
-      .popup-badges {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-      }
-      .popup-badge {
-        font-size: 12px;
-        padding: 4px 8px;
-        border-radius: 3px;
-      }
-      .popup-badge.badge-brand { background-color: #fff9e6; color: #854d0e; border: 1px solid #fde68a; }
-      .popup-badge.badge-pet { background-color: #fef2f2; color: #991b1b; border: 1px solid #fecaca; }
-      .popup-badge.badge-stock { background-color: #ecfdf5; color: #065f46; border: 1px solid #a7f3d0; }
-      .popup-main-info { display: flex; gap: 14px; }
-      .popup-img-container {
-        width: 90px; height: 90px; min-width: 90px;
-        border: 1px solid #e5e5e5; display: flex; align-items: cente; justify-content: center;
-      }
-      .popup-img-container img { width: 100%; height: 100%; object-fit: contain; }
-      .popup-title-price { display: flex; flex-direction: column; gap: 5px; flex: 1; }
-      .popup-title { font-size: 15px; font-weight: 700; margin: 0; }
-      .popup-price-area { display: flex; flex-direction: column; gap: 2px; }
-      .popup-price-area .current-price { font-size: 20px; font-weight: 700; }
-      .popup-divider { height: 1px; background: #ebebeb; }
-      .desc-text {
-        font-size: 13px; line-height: 1.5; color: #444; margin: 0;
-        background: #fffbeb; border-left: 3px solid var(--color-primary, #f7a600);
-        padding: 8px 10px; border-radius: 0 4px 4px 0;
-      }
-      .popup-actions { display: grid; grid-template-columns: 1.5fr 1fr auto; gap: 8px; }
-      .btn-popup-cart, .btn-popup-view, .btn-popup-close-action {
-        border: none; height: 38px; border-radius: 4px; font-size: 13px;
-        font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center;
-        text-decoration: none;
-      }
-      .btn-popup-cart { background-color: var(--color-primary, #f7a600); color: #111; }
-      .btn-popup-view { background-color: #f3f4f6; color: #333; border: 1px solid #d1d5db; }
-      .btn-popup-close-action { background-color: #fff; color: #666; border: 1px solid #d1d5db; }
     </style>
   </head>
   <body>
@@ -627,9 +697,7 @@
         </div>
       </nav>
 
-      <!-- ======================================================= -->
-      <!-- VIEW 1: TRANG CHỦ                                      -->
-      <!-- ======================================================= -->
+      <!-- VIEW 1: TRANG CHỦ -->
       <section id="view-home" class="app-view">
         <div class="site-container">
           <div class="img-slider">
@@ -703,7 +771,7 @@
           </div>
         </section>
 
-        <!-- SECTION 1: GIÁ TỐT HÔM NAY (5 SẢN PHẨM) -->
+        <!-- SECTION 1: GIÁ TỐT HÔM NAY (CLICK MỞ THẲNG CHI TIẾT) -->
         <section class="product-section">
           <div class="site-container">
             <div class="section-header">
@@ -717,8 +785,7 @@
             </div>
 
             <div class="product-grid">
-              <!-- SP 1 -->
-              <div class="product-card" data-id="sp1" onclick="showProductPopup(this, event)">
+              <div class="product-card" onclick="openProductDetail('sp1')" style="cursor: pointer;">
                 <div class="product-img-box">
                   <img src="./src/img/img-products/DPF00238__main__20260927_230749_n5ptjh_400x400.webp" alt="Bánh Thưởng Pedigree" />
                 </div>
@@ -735,8 +802,7 @@
                 </div>
               </div>
 
-              <!-- SP 2 -->
-              <div class="product-card" data-id="sp2" onclick="showProductPopup(this, event)">
+              <div class="product-card" onclick="openProductDetail('sp2')" style="cursor: pointer;">
                 <div class="product-img-box">
                   <img src="./src/img/img-products/C10CBSIS03__main__20260927_220246_q97r6q_400x400.webp" alt="Pate Silver Spoon" />
                 </div>
@@ -753,8 +819,7 @@
                 </div>
               </div>
 
-              <!-- SP 3 -->
-              <div class="product-card" data-id="sp3" onclick="showProductPopup(this, event)">
+              <div class="product-card" onclick="openProductDetail('sp3')" style="cursor: pointer;">
                 <div class="product-img-box">
                   <img src="./src/img/img-products/C10CBSIS01__main__20260927_220147_8xpwzh_400x400.webp" alt="Cát Đất Sét Moon Cat" />
                 </div>
@@ -764,27 +829,25 @@
                     <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i>
                   </div>
                   <div class="price-box no-discount"></div>
-                  <div class="current-price">65,000đ</div>
+                  <div class="current-price">65,000 đ</div>
                 </div>
               </div>
 
-              <!-- SP 4 -->
-              <div class="product-card" data-id="sp4" onclick="showProductPopup(this, event)">
+              <div class="product-card" onclick="openProductDetail('sp4')" style="cursor: pointer;">
                 <div class="product-img-box">
                   <img src="./src/img/img-products/petq.webp" alt="Súp Thưởng PetQ" />
                 </div>
                 <div class="product-info">
-                  <h3 class="product-name">Súp Thưởng PetQ Cho Mèo Vị Sữa Dê Cỏ Mèo...</h3>
+                  <h3 class="product-name">Súp Thưởng PetQ Cho Mèo Vị Sữa Dê Cỏ Mèo</h3>
                   <div class="product-rating">
                     <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i>
                   </div>
                   <div class="price-box no-discount"></div>
-                  <div class="current-price">7,000đ</div>
+                  <div class="current-price">7,000 đ</div>
                 </div>
               </div>
 
-              <!-- SP 5 -->
-              <div class="product-card" data-id="sp5" onclick="showProductPopup(this, event)">
+              <div class="product-card" onclick="openProductDetail('sp5')" style="cursor: pointer;">
                 <div class="product-img-box">
                   <img src="./src/img/img-products/CDF00163__main__20260927_210639_snf5hn_400x400.webp" alt="Hạt S2PET" />
                 </div>
@@ -804,7 +867,7 @@
           </div>
         </section>
 
-        <!-- SECTION 2: COMBO TIẾT KIỆM & BÁN CHẠY (5 SẢN PHẨM) -->
+        <!-- SECTION 2: COMBO TIẾT KIỆM & BÁN CHẠY (CLICK MỞ THẲNG CHI TIẾT) -->
         <section class="product-section">
           <div class="site-container">
             <div class="section-header">
@@ -818,8 +881,7 @@
             </div>
 
             <div class="product-grid">
-              <!-- SP 7 -->
-              <div class="product-card" data-id="sp7" onclick="showProductPopup(this, event)">
+              <div class="product-card" onclick="openProductDetail('sp7')" style="cursor: pointer;">
                 <div class="product-img-box">
                   <img src="./src/img/img-products/pate_sot.webp" alt="Pate DoggyMan" />
                 </div>
@@ -836,8 +898,7 @@
                 </div>
               </div>
 
-              <!-- SP 17 -->
-              <div class="product-card" data-id="sp17" onclick="showProductPopup(this, event)">
+              <div class="product-card" onclick="openProductDetail('sp17')" style="cursor: pointer;">
                 <div class="product-img-box">
                   <img src="./src/img/img-products/6_goi.webp" alt="Pate Whiskas" />
                 </div>
@@ -854,8 +915,7 @@
                 </div>
               </div>
 
-              <!-- SP 20 (S2PET V3) -->
-              <div class="product-card" data-id="sp20" onclick="showProductPopup(this, event)">
+              <div class="product-card" onclick="openProductDetail('sp20')" style="cursor: pointer;">
                 <div class="product-img-box">
                   <img src="./src/img/img-products/CDF.jpg" alt="Hạt S2PET V3" />
                 </div>
@@ -872,8 +932,7 @@
                 </div>
               </div>
 
-              <!-- SP 8_1 (Royal Canin Indoor) -->
-              <div class="product-card" data-id="sp8_1" onclick="showProductPopup(this, event)">
+              <div class="product-card" onclick="openProductDetail('sp8_1')" style="cursor: pointer;">
                 <div class="product-img-box">
                   <img src="./src/img/img-products/royal_canin.webp" alt="Royal Canin Indoor" />
                 </div>
@@ -890,8 +949,7 @@
                 </div>
               </div>
 
-              <!-- SP 9 (Cát Cature) -->
-              <div class="product-card" data-id="sp9" onclick="showProductPopup(this, event)">
+              <div class="product-card" onclick="openProductDetail('sp9')" style="cursor: pointer;">
                 <div class="product-img-box">
                   <img src="./src/img/img-products/cat.webp" alt="Cát Cature" />
                 </div>
@@ -912,9 +970,7 @@
         </section>
       </section>
 
-      <!-- ======================================================= -->
-      <!-- VIEW 2: TẤT CẢ SẢN PHẨM (20 MÓN DÀN ĐỀU, BỎ BỘ LỌC)    -->
-      <!-- ======================================================= -->
+      <!-- VIEW 2: TẤT CẢ SẢN PHẨM -->
       <section id="view-products" class="app-view d-none">
         <main class="site-container">
           <div class="shop-header-bar">
@@ -925,9 +981,7 @@
         </main>
       </section>
 
-      <!-- ======================================================= -->
-      <!-- VIEW 3: CÀI ĐẶT TÀI KHOẢN                             -->
-      <!-- ======================================================= -->
+      <!-- VIEW 3: CÀI ĐẶT TÀI KHOẢN -->
       <section id="view-account" class="app-view d-none">
         <main class="site-container">
           <div class="account-setting-container">
@@ -986,72 +1040,104 @@
         </main>
       </section>
 
-      <!-- ======================================================= -->
-      <!-- VIEW 4: CHI TIẾT SẢN PHẨM (CHUẨN GIAO DIỆN PHÚC)        -->
-      <!-- ======================================================= -->
+      <!-- VIEW 4: CHI TIẾT SẢN PHẨM -->
       <section id="view-detail" class="app-view d-none">
-        <main class="site-container detail-page-wrapper">
-          <!-- Breadcrumb điều hướng -->
-          <div class="detail-breadcrumb">
-            <a onclick="switchView('home')">Trang chủ</a>
-            <span>/</span>
-            <a onclick="switchView('products')">Sản phẩm</a>
-            <span>/</span>
-            <span id="detailBreadcrumbName" style="color: #222; font-weight: 500;">Chi tiết</span>
+        <main class="site-container">
+          <div class="section-nav-container">
+            <ul class="section-nav">
+              <li><a href="javascript:void(0)" onclick="switchView('home')">Petpet</a></li>
+              <li>/</li>
+              <li><a href="javascript:void(0)" onclick="switchView('products')">Sản phẩm</a></li>
+              <li>/</li>
+              <li><a href="javascript:void(0)" id="detailBreadcrumbCategory">Thức ăn</a></li>
+              <li>/</li>
+              <li><a href="javascript:void(0)"><b id="detailBreadcrumbName">Chi tiết sản phẩm</b></a></li>
+            </ul>
           </div>
 
-          <!-- Khung thẻ sản phẩm của Phúc -->
-          <div class="detail-card-layout">
-            <div class="detail-gallery">
-              <div class="detail-main-img-box">
-                <img id="detailImg" src="" alt="Sản phẩm" />
+          <div class="details-container">
+            <div class="img-container">
+              <img id="detailImg" src="" alt="Sản phẩm chi tiết" />
+            </div>
+
+            <div class="info-container">
+              <div class="product-title">
+                <h2 id="detailTitle">Tên sản phẩm</h2>
+              </div>
+              <div class="rating-section">
+                <span class="stars-gold">★★★★★</span>
+                <span id="detailSoldText">| Đã bán Online: 0</span>
+                <i class="ri-poker-hearts-line" title="Yêu thích"></i>
+                <i class="ri-share-box-line" title="Chia sẻ"></i>
+              </div>
+              <div class="prices">
+                <span id="detailDiscount" class="discount">-5%</span>
+                <span id="detailOldPrice" class="old-price">190,000đ</span>
+                <p id="detailSalesPrice" class="sales-price">180,500đ</p>
+              </div>
+              <div class="description">
+                <div class="ton-kho">
+                  <p>Tồn kho online:</p>
+                  <span id="detailStock">Còn hàng</span>
+                </div>
+                <div class="van-chuyen">
+                  <p>Vận chuyển:</p>
+                  <span>Săn voucher giảm phí vận chuyển nội thành Tp.HCM</span>
+                </div>
+              </div>
+              <div class="quantity-container">
+                <div class="quantity-text">
+                  <p>Số lượng:</p>
+                </div>
+                <div class="quantity-btn-container">
+                  <button type="button" class="quantity-btn desc" onclick="changeQuantity(-1)">-</button>
+                  <p id="quantity">1</p>
+                  <button type="button" class="quantity-btn asc" onclick="changeQuantity(1)">+</button>
+                </div>
+              </div>
+              <div class="app-btn">
+                <button type="button" onclick="showQC()">
+                  <span>Mua ngay trên app PETPET</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="mini-img-container">
+            <img id="detailThumb1" src="" alt="" />
+          </div>
+
+          <div class="info-sp-container">
+            <div>
+              <div class="info-title">
+                <h2>THÔNG TIN SẢN PHẨM</h2>
+                <h3 id="detailSubTitle">Tên sản phẩm</h3>
+              </div>
+              <div class="info-box">
+                <div class="box-row">
+                  <span>Thương hiệu</span>
+                  <a href="javascript:void(0)" id="detailBrand">PETPET</a>
+                </div>
+                <div class="box-row">
+                  <span>Danh mục</span>
+                  <a href="javascript:void(0)" id="detailCategory">Thức ăn thú cưng</a>
+                </div>
+                <div class="box-row">
+                  <span>Khối lượng</span>
+                  <p id="detailWeight">1kg</p>
+                </div>
+                <div class="box-row">
+                  <span>Xuất xứ</span>
+                  <p id="detailOrigin">Nhật Bản</p>
+                </div>
+              </div>
+              <div class="info-sp-content" id="detailFullContent">
+                <!-- Nội dung mô tả chi tiết được JS đọc từ JSON render vào -->
               </div>
             </div>
 
-            <div class="detail-info-col">
-              <h1 id="detailTitle" class="detail-title">Tên sản phẩm</h1>
-
-              <div class="detail-meta-row">
-                <div class="detail-stars">
-                  <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i>
-                </div>
-                <span>|</span>
-                <span id="detailSoldText">Đã bán Online: 66</span>
-                <i class="ri-heart-line" style="font-size: 18px; cursor: pointer;"></i>
-                <i class="ri-share-forward-line" style="font-size: 18px; cursor: pointer;"></i>
-              </div>
-
-              <!-- Giá tiền và giảm giá -->
-              <div class="detail-price-box">
-                <span id="detailDiscount" class="detail-discount-badge">-3%</span>
-                <span id="detailOldPrice" class="detail-price-old">119,000 đ</span>
-                <span id="detailPrice" class="detail-price-current">115,000 đ</span>
-              </div>
-
-              <!-- Thông số chi tiết -->
-              <div class="detail-specs-list">
-                <div class="detail-spec-line">
-                  <span class="label">Tồn kho Online:</span>
-                  <span id="detailStock" class="value stock-green">Còn hàng</span>
-                </div>
-                <div class="detail-spec-line">
-                  <span class="label">Vận chuyển:</span>
-                  <span class="value">Săn voucher giảm phí vận chuyển nội thành Tp.HCM</span>
-                </div>
-                <div class="detail-spec-line" style="align-items: center; margin: 10px 0;">
-                  <span class="label">Số lượng:</span>
-                  <div class="quantity-selector">
-                    <button type="button" class="btn-qty" onclick="adjustQty(-1)">-</button>
-                    <input type="text" id="detailQty" class="qty-input" value="1" readonly />
-                    <button type="button" class="btn-qty" onclick="adjustQty(1)">+</button>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Nút mua vàng -->
-              <button type="button" class="btn-app-buy" onclick="alert('Đã thêm vào giỏ hàng thành công!')">
-                Mua ngay trên app PETPET
-              </button>
+            <div class="side-sp" id="detailSideList">
+              <!-- Cột gợi ý sản phẩm liên quan bên cạnh -->
             </div>
           </div>
         </main>
@@ -1085,63 +1171,34 @@
       </div>
     </div>
 
-    <!-- POPUP XEM NHANH SẢN PHẨM -->
-    <div id="productPopup" class="product-popup-overlay" aria-hidden="true" onclick="closeProductPopup(event)">
-      <div class="product-popup-content" onclick="event.stopPropagation()">
-        <div class="popup-header">
-          <h3 style="font-size: 15px; font-weight: 700; margin: 0;">Thông tin chi tiết sản phẩm</h3>
-          <button type="button" class="btn-close-popup" onclick="closeProductPopup(event)">Đóng</button>
-        </div>
-        <div class="popup-badges">
-          <span class="popup-badge badge-brand">Thương hiệu: <strong id="popupBrand">PETPET</strong></span>
-          <span class="popup-badge badge-pet">Dành cho: <strong id="popupPet">Thú cưng</strong></span>
-          <span class="popup-badge badge-stock">Tình trạng: <strong id="popupStock">Còn hàng</strong></span>
-        </div>
-        <div class="popup-main-info">
-          <div class="popup-img-container"><img id="popupImg" src="" alt="" /></div>
-          <div class="popup-title-price">
-            <h4 id="popupTitle" class="popup-title">Tên sản phẩm</h4>
-            <div class="popup-price-area"><div id="popupCurrentPrice" class="current-price">0 đ</div></div>
-          </div>
-        </div>
-        <div class="popup-divider"></div>
-        <div class="desc-text" id="popupDesc"></div>
-        <div class="popup-actions">
-          <button type="button" class="btn-popup-cart" onclick="alert('Đã thêm vào giỏ hàng!')">Thêm giỏ hàng</button>
-          <a href="javascript:void(0)" id="btnPopupViewDetail" class="btn-popup-view">Xem chi tiết</a>
-          <button type="button" class="btn-popup-close-action" onclick="closeProductPopup(event)">Đóng</button>
-        </div>
+    <!-- POPUP QC TẢI APP -->
+    <div class="app-qc-container" id="appQcContainer">
+      <div class="app-qc-blur" onclick="hideQC()"></div>
+      <div class="app-qc" onclick="hideQC()">
+        <img src="./src/img/QRDownloadApp.png" alt="Mã QR tải ứng dụng" onerror="this.src='./src/img/Avatar-icon.png'" />
       </div>
     </div>
 
-    <!-- JAVASCRIPT XỬ LÝ TOÀN BỘ 4 GIAO DIỆN -->
+    <!-- JAVASCRIPT ĐỌC TRỰC TIẾP PRODUCTS.JSON VÀ SPA -->
     <script>
-      // 1. Dữ liệu chuẩn 20 sản phẩm (chống CORS file:///)
-      const FALLBACK_LIST = [
-        { id: "sp1", name: "Bánh Thưởng Pedigree Dentastix Cho Cún", image: "./src/img/img-products/DPF00238__main__20260927_230749_n5ptjh_400x400.webp", price: 59000, originalPrice: 69000, discount: "-14%", sold: 48, stock: "Còn hàng (15)" },
-        { id: "sp2", name: "Combo 10 Pate Silver Spoon Cho Mèo Gói 60g", image: "./src/img/img-products/C10CBSIS03__main__20260927_220246_q97r6q_400x400.webp", price: 180500, originalPrice: 190000, discount: "-5%", sold: 62, stock: "Còn hàng (28)" },
-        { id: "sp3", name: "Cát Đất Sét Moon Cat Cho Mèo Bịch 9L", image: "./src/img/img-products/C10CBSIS01__main__20260927_220147_8xpwzh_400x400.webp", price: 65000, originalPrice: null, discount: "", sold: 95, stock: "Còn hàng (50+)" },
-        { id: "sp4", name: "Súp Thưởng PetQ Cho Mèo Vị Sữa Dê Cỏ Mèo", image: "./src/img/img-products/petq.webp", price: 7000, originalPrice: null, discount: "", sold: 110, stock: "Còn hàng (120)" },
-        { id: "sp5", name: "Hạt S2PET Cho Mèo Premium Bịch 1kg", image: "./src/img/img-products/CDF00163__main__20260927_210639_snf5hn_400x400.webp", price: 132050, originalPrice: 139000, discount: "-5%", sold: 34, stock: "Còn hàng (35)" },
-        { id: "sp6", name: "Combo 10 Pate Silver Spoon Cho Mèo Gói 60g", image: "./src/img/img-products/C10CBSIS03__main__20260927_220246_q97r6q_400x400.webp", price: 180500, originalPrice: 190000, discount: "-5%", sold: 62, stock: "Còn hàng (28)" },
-        { id: "sp7", name: "Combo 5 Pate DoggyMan Cho Cún Sốt Kem Gói 70g", image: "./src/img/img-products/pate_sot.webp", price: 71250, originalPrice: 75000, discount: "-5%", sold: 40, stock: "Còn hàng (22)" },
-        { id: "sp8_1", name: "Hạt Royal Canin Indoor 27 Cho Mèo Nuôi Trong Nhà", image: "./src/img/img-products/royal_canin.webp", price: 385000, originalPrice: 420000, discount: "-8%", sold: 88, stock: "Còn hàng (19)" },
-        { id: "sp8_2", name: "Hạt SmartHeart Adult Vị Bò & Nướng Cho Chó Lớn", image: "./src/img/img-products/3.webp", price: 145000, originalPrice: 160000, discount: "-9%", sold: 52, stock: "Còn hàng (40)" },
-        { id: "sp9", name: "Cát Đậu Nành Tofu Cature Khử Mùi Cho Mèo", image: "./src/img/img-products/cat.webp", price: 125000, originalPrice: 140000, discount: "-11%", sold: 76, stock: "Còn hàng (32)" },
-        { id: "sp10", name: "Pate Royal Canin Recovery Hỗ Trợ Dưỡng Bệnh", image: "./src/img/img-products/pate.webp", price: 68000, originalPrice: 75000, discount: "-9%", sold: 63, stock: "Còn hàng (25)" },
-        { id: "sp11", name: "Sữa Tắm Thảo Dược SOS Dưỡng Mượt Lông Cho Chó Mèo", image: "./src/img/img-products/sua-tam.jpg", price: 95000, originalPrice: 120000, discount: "-21%", sold: 142, stock: "Còn hàng (45)" },
-        { id: "sp12", name: "Hạt Cho Mèo Con Me-O Mother & Baby Cat", image: "./src/img/img-products/master.webp", price: 105000, originalPrice: null, discount: "", sold: 38, stock: "Còn hàng (27)" },
-        { id: "sp13", name: "Bánh Thưởng Gặm Sạch Răng Bowwow Vị Bò Cho Cún", image: "./src/img/img-products/banh-xuong.jpg", price: 42000, originalPrice: 48000, discount: "-13%", sold: 29, stock: "Còn hàng (38)" },
-        { id: "sp14", name: "Gel Dinh Dưỡng Nourse 21 Bổ Sung Vitamin Cho Chó Mèo", image: "./src/img/img-products/gel.webp", price: 145000, originalPrice: 165000, discount: "-12%", sold: 54, stock: "Còn hàng (20)" },
-        { id: "sp15", name: "Pate Lon Monge Vị Cá Hồi & Lê Cho Chó Nhỏ", image: "./src/img/img-products/pate_lon.webp", price: 38000, originalPrice: null, discount: "", sold: 19, stock: "Còn hàng (60)" },
-        { id: "sp16", name: "Bình Nước Du Lịch Tự Động Kèm Khay Ăn Cho Thú Cưng", image: "./src/img/img-products/bat_doi.webp", price: 89000, originalPrice: 110000, discount: "-19%", sold: 33, stock: "Còn hàng (14)" },
-        { id: "sp17", name: "Combo 6 Hộp Pate Whiskas Vị Cá Biển Cho Mèo 85g", image: "./src/img/img-products/6_goi.webp", price: 99000, originalPrice: 114000, discount: "-13%", sold: 81, stock: "Còn hàng (42)" },
-        { id: "sp18", name: "Bàn Cào Móng Giấy Hình Lượn Sóng Cho Mèo", image: "./src/img/img-products/ban_cao.webp", price: 49000, originalPrice: null, discount: "", sold: 67, stock: "Còn hàng (26)" },
-        { id: "sp19", name: "Xịt Khử Mùi & Diệt Khuẩn Không Gian Nuôi JoyPet", image: "./src/img/img-products/xitkhumui.webp", price: 110000, originalPrice: 130000, discount: "-15%", sold: 44, stock: "Còn hàng (31)" },
-        { id: "sp20", name: "Hạt S2PET Cho Mèo V3 Bịch 1kg - Bịch", image: "./src/img/img-products/CDF.jpg", price: 115000, originalPrice: 119000, discount: "-3%", sold: 66, stock: "Còn hàng" }
-      ];
+      let productsData = [];
 
-      // 2. Chuyển đổi qua lại giữa 4 View
+      // 1. Tải toàn bộ dữ liệu từ products.json
+      document.addEventListener('DOMContentLoaded', () => {
+        fetch('./src/js/products.json')
+          .then(res => {
+            if (!res.ok) throw new Error(`Lỗi tải JSON: ${res.status}`);
+            return res.json();
+          })
+          .then(data => {
+            productsData = data || [];
+          })
+          .catch(err => {
+            console.error('Không thể đọc file ./src/js/products.json:', err);
+          });
+      });
+
+      // 2. Chuyển đổi giữa các View SPA
       window.switchView = function(viewName) {
         const views = ['view-home', 'view-products', 'view-account', 'view-detail'];
         views.forEach(v => {
@@ -1159,38 +1216,24 @@
         window.scrollTo({ top: 0, behavior: 'smooth' });
       };
 
-      // 3. Render sản phẩm ra lưới
-      let hasLoaded = false;
+      // 3. Render danh sách sản phẩm ở View 2 (Sản phẩm)
+      let hasRenderedShop = false;
       function renderProductsPage() {
-        if (hasLoaded) return;
+        if (hasRenderedShop && document.getElementById('productList').children.length > 0) return;
 
-        // Đã sửa đường dẫn thành đúng vị trí file JSON: ./src/js/products.json
-        fetch('./src/js/products.json')
-          .then(res => {
-            if (!res.ok) throw new Error('Không thể tải file products.json');
-            return res.json();
-          })
-          .then(data => {
-            if (Array.isArray(data) && data.length > 0) {
-              buildGrid(data);
-            } else {
-              buildGrid(FALLBACK_LIST);
-            }
-          })
-          .catch(err => {
-            console.warn('Lỗi fetch JSON, chuyển qua FALLBACK_LIST:', err);
-            buildGrid(FALLBACK_LIST);
-          });
-      }
-
-      function buildGrid(items) {
-        hasLoaded = true;
         const container = document.getElementById('productList');
         const countEl = document.getElementById('productCount');
-        if (countEl) countEl.textContent = `Hiển thị ${items.length} sản phẩm`;
         if (!container) return;
 
-        container.innerHTML = items.map(sp => {
+        if (productsData.length === 0) {
+          if (countEl) countEl.textContent = 'Đang tải dữ liệu...';
+          setTimeout(renderProductsPage, 150);
+          return;
+        }
+
+        if (countEl) countEl.textContent = `Hiển thị ${productsData.length} sản phẩm`;
+
+        container.innerHTML = productsData.map(sp => {
           const oldVal = sp.originalPrice || sp.oldPrice;
           const oldHtml = oldVal
             ? `<span class="old-price">${Number(oldVal).toLocaleString('vi-VN')} đ</span>`
@@ -1213,80 +1256,129 @@
             </div>
           `;
         }).join('');
+        hasRenderedShop = true;
       }
 
-      // 4. Mở View Chi Tiết Sản Phẩm
+      // 4. Mở View Chi Tiết: Bay thẳng vào trang chi tiết từ ID sản phẩm
       window.openProductDetail = function(productId) {
-        const item = FALLBACK_LIST.find(p => p.id === productId) || FALLBACK_LIST[0];
-
-        document.getElementById('detailTitle').textContent = item.name;
-        document.getElementById('detailBreadcrumbName').textContent = item.name;
-        document.getElementById('detailImg').src = item.image;
-        document.getElementById('detailPrice').textContent = `${Number(item.price).toLocaleString('vi-VN')} đ`;
-
-        const oldEl = document.getElementById('detailOldPrice');
-        const discountEl = document.getElementById('detailDiscount');
-        if (item.originalPrice) {
-          oldEl.style.display = 'inline';
-          discountEl.style.display = 'inline';
-          oldEl.textContent = `${Number(item.originalPrice).toLocaleString('vi-VN')} đ`;
-          discountEl.textContent = item.discount || '-5%';
-        } else {
-          oldEl.style.display = 'none';
-          discountEl.style.display = 'none';
+        if (!productsData || productsData.length === 0) {
+          // Thử lại nếu dữ liệu JSON đang nạp dở
+          setTimeout(() => openProductDetail(productId), 100);
+          return;
         }
 
-        document.getElementById('detailSoldText').textContent = `Đã bán Online: ${item.sold || 50}`;
-        document.getElementById('detailStock').textContent = item.stock || 'Còn hàng';
-        document.getElementById('detailQty').value = 1;
+        const item = productsData.find(p => p.id === productId) || productsData[0];
 
+        // Cập nhật Breadcrumb & Tiêu đề
+        document.getElementById('detailBreadcrumbName').textContent = item.name;
+        document.getElementById('detailBreadcrumbCategory').textContent = item.category || 'Thức ăn';
+        document.getElementById('detailTitle').textContent = item.name;
+        document.getElementById('detailSubTitle').textContent = item.name;
+
+        // Cập nhật Ảnh
+        document.getElementById('detailImg').src = item.image;
+        document.getElementById('detailThumb1').src = item.image;
+
+        // Cập nhật Giá bán & Giá cũ
+        document.getElementById('detailSalesPrice').textContent = `${Number(item.price).toLocaleString('vi-VN')}đ`;
+        const oldVal = item.originalPrice || item.oldPrice;
+        const discountEl = document.getElementById('detailDiscount');
+        const oldPriceEl = document.getElementById('detailOldPrice');
+        if (oldVal) {
+          discountEl.style.display = 'inline-block';
+          oldPriceEl.style.display = 'inline-block';
+          discountEl.textContent = item.discount || '-5%';
+          oldPriceEl.textContent = `${Number(oldVal).toLocaleString('vi-VN')}đ`;
+        } else {
+          discountEl.style.display = 'none';
+          oldPriceEl.style.display = 'none';
+        }
+
+        // Cập nhật Thông số
+        document.getElementById('detailStock').textContent = item.stock || 'Còn hàng';
+        document.getElementById('detailSoldText').textContent = `| Đã bán Online: ${item.sold || item.reviewCount || 10}`;
+        document.getElementById('detailBrand').textContent = item.brand || 'PETPET';
+        document.getElementById('detailCategory').textContent = item.category || 'Thức ăn thú cưng';
+        document.getElementById('detailWeight').textContent = item.weight || '1kg';
+        document.getElementById('detailOrigin').textContent = item.origin || 'Nhật Bản';
+
+        // Đọc mảng highlights từ JSON
+        const highlightsHtml = Array.isArray(item.highlights) && item.highlights.length > 0
+          ? `<ul>${item.highlights.map(h => `<li><span>${h}</span></li>`).join('')}</ul>`
+          : '';
+
+        // Đọc mảng instructions từ JSON
+        const instructionsHtml = Array.isArray(item.instructions) && item.instructions.length > 0
+          ? `<ul>${item.instructions.map(ins => `<li><span>${ins}</span></li>`).join('')}</ul>`
+          : '';
+
+        // Chèn nội dung chi tiết
+        document.getElementById('detailFullContent').innerHTML = `
+          <p><span><strong>${item.name}</strong> - ${item.description || ''}</span></p>
+          ${highlightsHtml ? `<p><span><strong>Đặc điểm nổi bật:</strong></span></p>${highlightsHtml}` : ''}
+          ${item.ingredients ? `<p><br /><span><strong>Thành phần:</strong></span></p><p><span>${item.ingredients}</span></p>` : ''}
+          ${instructionsHtml ? `<p><br /><span><strong>Hướng dẫn sử dụng:</strong></span></p>${instructionsHtml}` : ''}
+        `;
+
+        // Reset số lượng về 1
+        document.getElementById('quantity').textContent = '1';
+
+        // Render các sản phẩm liên quan bên phải
+        renderSideProducts(productsData, item.id);
+
+        // Chuyển sang View Chi Tiết
         switchView('detail');
       };
 
-      // Tăng giảm số lượng
-      window.adjustQty = function(delta) {
-        const input = document.getElementById('detailQty');
-        let val = parseInt(input.value) || 1;
-        val += delta;
-        if (val < 1) val = 1;
-        input.value = val;
-      };
+      // 5. Render danh sách sản phẩm liên quan bên cạnh
+      function renderSideProducts(list, currentId) {
+        const sideContainer = document.getElementById('detailSideList');
+        if (!sideContainer) return;
 
-      // 5. Quản lý Popup xem nhanh
-      function showProductPopup(card, event) {
-        if (event) event.stopPropagation();
-        const popup = document.getElementById('productPopup');
-        const id = card.getAttribute('data-id');
-        const item = FALLBACK_LIST.find(p => p.id === id) || {
-          id: id,
-          name: card.querySelector('.product-name')?.textContent || 'Sản phẩm',
-          price: card.querySelector('.current-price')?.textContent || '',
-          image: card.querySelector('img')?.getAttribute('src') || ''
-        };
+        const otherItems = list.filter(p => p.id !== currentId).slice(0, 5);
+        sideContainer.innerHTML = otherItems.map(sp => {
+          const oldVal = sp.originalPrice || sp.oldPrice;
+          const oldHtml = oldVal ? `<span class="old-price">${Number(oldVal).toLocaleString('vi-VN')}đ</span>` : '';
+          const discHtml = sp.discount ? `<span class="discount">${sp.discount}</span>` : '';
 
-        document.getElementById('popupTitle').textContent = item.name;
-        document.getElementById('popupCurrentPrice').textContent = typeof item.price === 'number' ? `${item.price.toLocaleString('vi-VN')} đ` : item.price;
-        document.getElementById('popupImg').src = item.image;
-        document.getElementById('popupDesc').textContent = `${item.name} - Công thức dinh dưỡng cân bằng, nguyên liệu chính hãng 100%.`;
-
-        const btnView = document.getElementById('btnPopupViewDetail');
-        btnView.onclick = function() {
-          closeProductPopup();
-          openProductDetail(item.id);
-        };
-
-        popup.classList.add('active');
+          return `
+            <div class="khung-sp" onclick="openProductDetail('${sp.id}')">
+              <div class="khung-img">
+                <img src="${sp.image}" alt="${sp.name}" onerror="this.src='./src/img/Avatar-icon.png'" />
+              </div>
+              <div class="info-sp">
+                <div class="name-sp" title="${sp.name}">${sp.name}</div>
+                <div class="stars">★★★★★</div>
+                <div class="prices">
+                  ${discHtml}
+                  ${oldHtml}
+                  <p class="sales-price">${Number(sp.price).toLocaleString('vi-VN')}đ</p>
+                </div>
+              </div>
+            </div>
+          `;
+        }).join('');
       }
 
-      function closeProductPopup(event) {
-        if (event) event.stopPropagation();
-        const popup = document.getElementById('productPopup');
-        if (popup) popup.classList.remove('active');
+      // Tăng giảm số lượng sản phẩm
+      function changeQuantity(amount) {
+        const qtyEl = document.getElementById('quantity');
+        let currentQty = Number(qtyEl.textContent) || 1;
+        currentQty += amount;
+        if (currentQty < 1) currentQty = 1;
+        qtyEl.textContent = currentQty;
+      }
+
+      // Hiển thị / Ẩn QC Tải App
+      function showQC() {
+        document.getElementById('appQcContainer').classList.add('show');
+      }
+      function hideQC() {
+        document.getElementById('appQcContainer').classList.remove('show');
       }
     </script>
 
     <script src="./src/js/main.js"></script>
     <script src="https://kit.fontawesome.com/6abea2bdfc.js" crossorigin="anonymous"></script>
-    <script src="./src/js/san-pham.js"></script>
   </body>
 </html>
