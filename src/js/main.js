@@ -5,8 +5,8 @@ const btnMain = document.querySelector(".icon-set");
 const switchIcon = document.querySelector("#switchIcon");
 const petText = document.querySelector("#btnText");
 const btnIcon = document.querySelectorAll("#switchBtn");
-const leftSearchIcon = document.querySelector(".left-search-icon");
-const rightSearchIcon = document.querySelector(".right-search-icon");
+const leftSearchIcons = document.querySelectorAll(".left-search-icon");
+const rightSearchIcons = document.querySelectorAll(".right-search-icon");
 const account = document.querySelector(".account");
 const accountMenu = document.querySelector(".account-menu");
 
@@ -88,9 +88,15 @@ btnIcon.forEach((iconSet) => {
     petText.innerHTML = selectedText;
 
     icon.forEach((img) => (img.src = headerIconSrc));
-    leftSearchIcon.querySelector("img").src = leftSearchSrc;
-    rightSearchIcon.querySelector("img").src = rightSearchSrc;
-    rightSearchIcon.style.display = rightDisplay;
+    leftSearchIcons.forEach((wrap) => {
+      const img = wrap.querySelector("img");
+      if (img) img.src = leftSearchSrc;
+    });
+    rightSearchIcons.forEach((wrap) => {
+      const img = wrap.querySelector("img");
+      if (img) img.src = rightSearchSrc;
+      wrap.style.display = rightDisplay;
+    });
   });
 });
 // slider
@@ -148,8 +154,7 @@ selects.forEach((selectBox) => {
 sigUp.addEventListener("click", (e) => {
   window.location.href = "./src/html/signUp.html";
 });
-console.log(register);
-console.log(sigUp);
+
 register.addEventListener("click", (e) => {
   window.location.href = "./src/html/signUp.html?mode=register";
 });
@@ -211,27 +216,3 @@ if (hamburger && navMenu) {
     });
   });
 }
-console.table({
-  screenWidth: window.innerWidth,
-  documentWidth: document.documentElement.clientWidth,
-  htmlScrollWidth: document.documentElement.scrollWidth,
-  bodyWidth: document.body.clientWidth,
-  bodyScrollWidth: document.body.scrollWidth,
-});
-const viewport = document.documentElement.clientWidth;
-
-console.table(
-  [...document.querySelectorAll("body *")]
-    .map((el) => {
-      const rect = el.getBoundingClientRect();
-
-      return {
-        element: el.tagName.toLowerCase(),
-        class: el.className,
-        width: Math.round(rect.width),
-        right: Math.round(rect.right),
-        overflow: Math.round(rect.right - viewport),
-      };
-    })
-    .filter((el) => el.overflow > 1),
-);

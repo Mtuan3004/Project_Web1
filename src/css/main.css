@@ -75,9 +75,9 @@ header {
 .navbar {
   background-color: var(--color-primary);
   display: flex;
-  align-items: center;
+  width: 100%;
   justify-content: space-between;
-  padding: 20px 10px !important;
+  padding: 12px 10px 10px !important;
 }
 .navbar .logo {
   display: none;
@@ -85,6 +85,7 @@ header {
 
 .left-bar {
   display: block;
+  width: 100%;
   gap: 38px;
 }
 .nav-menu {
@@ -133,8 +134,8 @@ header {
   overflow: hidden;
 }
 .left-search-icon,
-.right-search-icon,
-.text-search {
+.right-search-icon {
+  z-index: 1;
   position: absolute;
 }
 .left-search-icon {
@@ -146,6 +147,7 @@ header {
   transform: scaleX(-1);
 }
 .text-search {
+  position: absolute;
   left: 50px;
   border: none;
   outline: none;

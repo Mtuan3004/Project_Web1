@@ -29,8 +29,57 @@
     <!--------->
   </head>
   <body>
+    <!-- Header Mobile -->
+    <div class="header-mobile-bar flexRow-center">
+      <div class="search mobile">
+        <div class="left-search-icon">
+          <img`
+            id="icon-search-dog"
+            src="./src/img/icon/sprite-pet-dog-sticker.svg"
+            alt=""
+          />
+        </div>
+        <div class="right-search-icon">
+          <img
+            id="icon-search-cat"
+            src="./src/img/icon/sprite-pet-cat-sticker.svg"
+            alt=""
+          />
+        </div>
+        <input class="text-search" type="text" placeholder="Thức ăn ngon" />
+      </div>
+      <div class="pet-dropdown-toggle">
+        <div class="text-group">
+          <span class="sub-label">Mua cho</span>
+          <span class="main-label">Cún cưng</span>
+        </div>
+        <i class="ri-arrow-drop-down-line"></i>
+      </div>
+    </div>
+    <!-- Mobile Bottom Navigation -->
+    <nav class="mobile-bottom-nav">
+      <a href="#Trangchu" class="bottom-nav__item">
+        <img src="./src/img/icon-nav/sprite-nav-home.svg" alt="icon" />
+        <span>Trang chủ</span>
+      </a>
+
+      <a href="#Video" class="bottom-nav__item">
+        <img src="./src/img/icon-nav/sprite-nav-video.svg" alt="icon" />
+        <span>Video</span>
+      </a>
+
+      <a href="#Sanpham" class="bottom-nav__item">
+        <img src="./src/img/icon-nav/sprite-nav-category.svg" alt="icon" />
+        <span>Sản phẩm</span>
+      </a>
+
+      <a href="#Taikhoan" class="bottom-nav__item">
+        <img src="./src/img/icon-nav/sprite-nav-account.svg" alt="icon" />
+        <span>Tài khoản</span>
+      </a>
+    </nav>
+
     <div class="Destop-layout">
-      <!-- Topbar -->
       <header class="header">
         <div class="topbar-mobile flexRow-center">
           <div class="topbar-up">
@@ -45,7 +94,7 @@
               <i class="ri-arrow-drop-down-line"></i>
             </div>
           </div>
-          <div class="topbar-down">
+          <div class="topbar-down flexRow-center">
             <div class="search mobile">
               <div class="left-search-icon">
                 <img
@@ -97,14 +146,110 @@
           </nav>
         </div>
       </header>
+
+      <!-- Pet Modal Mobile -->
+      <div class="pet-modal" id="petModal">
+        <div class="pet-modal__overlay"></div>
+
+        <div class="pet-modal__content">
+          <h2 class="pet-modal__title">"BOSS" NÀO ĐANG CẦN SẮM ĐỒ?</h2>
+
+          <div class="pet-modal__list">
+            <button class="pet-option" data-pet="dog">
+              <img src="./src/img/icon/sprite-pet-switch-dog.svg" alt="Dog" />
+
+              <div class="pet-option__info">
+                <h3>Cún cưng</h3>
+                <p>Gâu gâu, gâu gâu gâu</p>
+              </div>
+
+              <span class="pet-option__radio"></span>
+            </button>
+
+            <button class="pet-option" data-pet="cat">
+              <img src="./src/img/icon/sprite-pet-switch-cat.svg" alt="Cat" />
+
+              <div class="pet-option__info">
+                <h3>Quàng thượng</h3>
+                <p>Méo</p>
+              </div>
+
+              <span class="pet-option__radio"></span>
+            </button>
+
+            <button class="pet-option active" data-pet="both">
+              <img src="./src/img/icon/sprite-pet-switch-both.svg" alt="Both" />
+
+              <div class="pet-option__info">
+                <h3>Pet cưng</h3>
+                <p>MEO MEO GÂU GÂU!</p>
+              </div>
+
+              <span class="pet-option__radio"></span>
+            </button>
+          </div>
+        </div>
+      </div>
       <!------------>
       <!-- Navigation -->
       <nav class="navbar site-container">
         <div class="left-bar flexRow-center">
-          <div class="hamburger">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
+          <div class="grid-mobileMenu">
+            <!-- grid 1 -->
+            <div class="nav-mobileMenu flexRow-center">
+              <div class="nav-mobile">
+                <div class="hamburger">
+                  <span class="bar"></span>
+                  <span class="bar"></span>
+                  <span class="bar"></span>
+                </div>
+              </div>
+              <div class="title-nav">hehe</div>
+            </div>
+            <!-- grid 2 -->
+            <div class="nav-mobileMenu flexRow-center">
+              <div class="nav-mobile">
+                <div class="hamburger">
+                  <span class="bar"></span>
+                  <span class="bar"></span>
+                  <span class="bar"></span>
+                </div>
+              </div>
+              <div class="title-nav">hehe</div>
+            </div>
+            <!-- grid 3 -->
+            <div class="nav-mobileMenu flexRow-center">
+              <div class="nav-mobile">
+                <div class="hamburger">
+                  <span class="bar"></span>
+                  <span class="bar"></span>
+                  <span class="bar"></span>
+                </div>
+              </div>
+              <div class="title-nav">hehe</div>
+            </div>
+            <!-- grid 4 -->
+            <div class="nav-mobileMenu flexRow-center">
+              <div class="nav-mobile">
+                <div class="hamburger">
+                  <span class="bar"></span>
+                  <span class="bar"></span>
+                  <span class="bar"></span>
+                </div>
+              </div>
+              <div class="title-nav">hehe</div>
+            </div>
+            <!-- grid 5 -->
+            <div class="nav-mobileMenu flexRow-center">
+              <div class="nav-mobile">
+                <div class="hamburger">
+                  <span class="bar"></span>
+                  <span class="bar"></span>
+                  <span class="bar"></span>
+                </div>
+              </div>
+              <div class="title-nav">hehe</div>
+            </div>
           </div>
           <div class="logo">
             <img src="./src/img/icon/logo_headerDesktop.svg" alt="icon" />
@@ -830,6 +975,7 @@
     </div>
     <!-- JS -->
     <script src="./src/js/main.js"></script>
+    <script src="./src/js/mobile.js"></script>
     <script
       src="https://kit.fontawesome.com/6abea2bdfc.js"
       crossorigin="anonymous"
