@@ -273,3 +273,95 @@
     font-size: 11px !important;
   }
 }
+/* ================= FOOTER RESPONSIVE ================= */
+.footer-full {
+  background: #ffffff;
+  padding: 45px 0 30px;
+  margin-top: 50px;
+  border-top: 1px solid #eeeeee;
+  font-size: 13.5px;
+  color: #444444;
+}
+
+.footer-full .footer-grid {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr 1fr 1fr;
+  gap: 32px;
+  line-height: 1.6;
+}
+
+.footer-full .footer-title {
+  font-size: 15px;
+  font-weight: 800;
+  margin: 0 0 12px;
+  color: #111111;
+}
+
+.footer-full .footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.footer-full .footer-links a {
+  text-decoration: none;
+  color: #555555;
+  transition: color 0.2s;
+}
+
+.footer-full .footer-links a:hover {
+  color: #e5a800;
+}
+
+.footer-full .payment-tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 22px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.footer-full .payment-badge {
+  background: #f1f2f6;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.footer-full .copyright-bar {
+  border-top: 1px solid #f0f0f0;
+  margin-top: 30px;
+  padding-top: 18px;
+  text-align: center;
+  color: #888888;
+  font-size: 12px;
+}
+
+/* Tablet (<= 992px): Chuyển thành lưới 2 cột */
+@media (max-width: 992px) {
+  .footer-full .footer-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+  }
+}
+
+/* Mobile (<= 768px): Xếp dọc 1 cột và tạo đệm tránh che thanh bottom nav */
+@media (max-width: 768px) {
+  .footer-full {
+    display: block !important; /* Đảm bảo không bị ẩn trên mobile */
+    padding: 30px 14px 85px;  /* Cách đáy 85px để không bị che bởi mobile-bottom-nav */
+    margin-top: 30px;
+  }
+
+  .footer-full .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .footer-full .footer-title {
+    margin-bottom: 8px;
+  }
+}

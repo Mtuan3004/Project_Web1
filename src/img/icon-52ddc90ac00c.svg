@@ -1,0 +1,88 @@
+<svg width="88" height="16" viewBox="0 0 88 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g clip-path="url(#clip0_33688_50942)">
+              <path
+                d="M8.00491 12.6081L3.67845 15L4.50491 9.93382L1 6.34629L5.83677 5.60917L8 1L10.1632 5.60917L15 6.34629L11.4951 9.93382L12.3216 15L8.00491 12.6081Z"
+                fill="#FED519"
+                stroke="#FED519"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </g>
+            <g clip-path="url(#clip1_33688_50942)">
+              <path
+                d="M26.0049 12.6081L21.6784 15L22.5049 9.93382L19 6.34629L23.8368 5.60917L26 1L28.1632 5.60917L33 6.34629L29.4951 9.93382L30.3216 15L26.0049 12.6081Z"
+                fill="#FED519"
+                stroke="#FED519"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </g>
+            <g clip-path="url(#clip2_33688_50942)">
+              <path
+                d="M44.0049 12.6081L39.6784 15L40.5049 9.93382L37 6.34629L41.8368 5.60917L44 1L46.1632 5.60917L51 6.34629L47.4951 9.93382L48.3216 15L44.0049 12.6081Z"
+                fill="#FED519"
+                stroke="#FED519"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </g>
+            <g clip-path="url(#clip3_33688_50942)">
+              <path
+                d="M62.0049 12.6081L57.6784 15L58.5049 9.93382L55 6.34629L59.8368 5.60917L62 1L64.1632 5.60917L69 6.34629L65.4951 9.93382L66.3216 15L62.0049 12.6081Z"
+                fill="#FED519"
+                stroke="#FED519"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </g>
+            <g clip-path="url(#clip4_33688_50942)">
+              <path
+                d="M80.0049 12.6081L75.6784 15L76.5049 9.93382L73 6.34629L77.8368 5.60917L80 1L82.1632 5.60917L87 6.34629L83.4951 9.93382L84.3216 15L80.0049 12.6081Z"
+                fill="#FED519"
+                stroke="#FED519"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </g>
+            <defs>
+              <clipPath id="clip0_33688_50942">
+                <rect
+                  width="16"
+                  height="16"
+                  fill="white"
+                />
+              </clipPath>
+              <clipPath id="clip1_33688_50942">
+                <rect
+                  width="16"
+                  height="16"
+                  fill="white"
+                  transform="translate(18)"
+                />
+              </clipPath>
+              <clipPath id="clip2_33688_50942">
+                <rect
+                  width="16"
+                  height="16"
+                  fill="white"
+                  transform="translate(36)"
+                />
+              </clipPath>
+              <clipPath id="clip3_33688_50942">
+                <rect
+                  width="16"
+                  height="16"
+                  fill="white"
+                  transform="translate(54)"
+                />
+              </clipPath>
+              <clipPath id="clip4_33688_50942">
+                <rect
+                  width="16"
+                  height="16"
+                  fill="white"
+                  transform="translate(72)"
+                />
+              </clipPath>
+            </defs>
+          </svg>
