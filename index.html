@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>PETPET - Cửa Hàng Thú Cưng</title>
+    <title>PETPET | Cửa Hàng Thú Cưng</title>
     <link rel="icon" type="image/png" href="./src/img/icon/favicon.ico" />
     <link
       href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css"
@@ -13,7 +13,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
 
@@ -549,6 +549,107 @@
         font-size: 11px;
       }
 
+      /* ================= VIEW 5: THƯƠNG HIỆU ================= */
+      .brands-page-wrapper {
+        padding: 24px 0 60px;
+      }
+      .brands-banner {
+        background: linear-gradient(90deg, #ffd700 0%, #ffc400 100%);
+        border-radius: 14px;
+        padding: 24px 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 30px;
+        position: relative;
+        overflow: hidden;
+      }
+      /* Banner vàng thương hiệu chuẩn theo mẫu */
+      .brands-banner {
+        background: #ffcc00; /* Màu nền vàng tươi theo ảnh mẫu */
+        border-radius: 12px;
+        padding: 24px 32px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 30px;
+        position: relative;
+        overflow: hidden;
+        font-family: 'Be Vietnam Pro', sans-serif !important;
+      }
+
+      .brands-banner h1 {
+        font-family: 'Be Vietnam Pro', sans-serif !important;
+        font-size: 32px !important;
+        font-weight: 800 !important; /* Đậm nét tròn đều, không bị lỗi chân */
+        color: #000000 !important;
+        margin: 0 0 6px 0 !important;
+        letter-spacing: -0.5px;
+        line-height: 1.2;
+      }
+
+      .brands-banner p {
+        font-family: 'Be Vietnam Pro', sans-serif !important;
+        font-size: 15px !important;
+        color: #1a1a1a !important;
+        font-weight: 500 !important;
+        margin: 0 !important;
+        letter-spacing: -0.2px;
+      }
+      .brands-grid-layout {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 16px;
+      }
+      @media (max-width: 992px) {
+        .brands-grid-layout {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+      @media (max-width: 600px) {
+        .brands-grid-layout {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      .brand-card {
+        border: 1px solid #e7e7e7;
+        border-radius: 12px;
+        padding: 18px 12px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: #ffffff;
+        cursor: pointer;
+        transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+        min-height: 125px;
+        text-align: center;
+        box-sizing: border-box;
+      }
+      .brand-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.07);
+        border-color: #ffd700;
+      }
+      .brand-card .brand-img-wrap {
+        width: 100%;
+        height: 52px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 10px;
+      }
+      .brand-card img {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+      }
+      .brand-card span {
+        font-size: 14px;
+        font-weight: 600;
+        color: #222;
+      }
+
       /* Popup QC */
       .app-qc-container {
         display: none;
@@ -607,7 +708,9 @@
           <div class="nav-item" id="navShopBtn">
             <a href="javascript:void(0)" onclick="switchView('products')">Sản phẩm</a>
           </div>
-          <div class="nav-item"><a href="#Thươnghiệu" onclick="switchView('home')">Thương hiệu</a></div>
+          <div class="nav-item" id="navBrandsBtn">
+            <a href="javascript:void(0)" onclick="switchView('brands')">Thương hiệu</a>
+          </div>
         </div>
 
         <div class="right-bar flexRow-center">
@@ -735,35 +838,35 @@
             <div class="brand-header">
               <div class="brand-title-group">
                 <h2>Top 10 thương hiệu yêu thích</h2>
-                <p>Sơn chọn đúng gu - Boss thích mê ly</p>
+                <p>Sen chọn đúng gu - Boss thích mê ly</p>
               </div>
-              <a href="javascript:void(0)" onclick="switchView('products')" class="brand-view-more">
+              <a href="javascript:void(0)" onclick="switchView('brands')" class="brand-view-more">
                 Xem thêm <i class="ri-arrow-right-s-line"></i>
               </a>
             </div>
 
             <div class="brand-grid">
-              <a href="javascript:void(0)" onclick="switchView('products')" class="brand-item">
+              <a href="javascript:void(0)" onclick="switchView('brands')" class="brand-item">
                 <div class="brand-img-box"><img src="./src/img/img-branch/Logo Royal Canin_240x120.webp" alt="" /></div>
                 <span class="brand-name">Royal Canin</span>
               </a>
-              <a href="javascript:void(0)" onclick="switchView('products')" class="brand-item">
+              <a href="javascript:void(0)" onclick="switchView('brands')" class="brand-item">
                 <div class="brand-img-box"><img src="./src/img/img-branch/zenith-300x300_240x120.webp" alt="" /></div>
                 <span class="brand-name">Zenith</span>
               </a>
-              <a href="javascript:void(0)" onclick="switchView('products')" class="brand-item">
+              <a href="javascript:void(0)" onclick="switchView('brands')" class="brand-item">
                 <div class="brand-img-box"><img src="./src/img/img-branch/Logo LuvCare_240x120.webp" alt="" /></div>
                 <span class="brand-name">Luvcare</span>
               </a>
-              <a href="javascript:void(0)" onclick="switchView('products')" class="brand-item">
+              <a href="javascript:void(0)" onclick="switchView('brands')" class="brand-item">
                 <div class="brand-img-box"><img src="./src/img/img-branch/Logo Ganador_240x120.webp" alt="" /></div>
                 <span class="brand-name">Ganador</span>
               </a>
-              <a href="javascript:void(0)" onclick="switchView('products')" class="brand-item">
+              <a href="javascript:void(0)" onclick="switchView('brands')" class="brand-item">
                 <div class="brand-img-box"><img src="./src/img/img-branch/Logo PetQ_240x120.webp" alt="" /></div>
                 <span class="brand-name">PetQ</span>
               </a>
-              <a href="javascript:void(0)" onclick="switchView('products')" class="brand-item">
+              <a href="javascript:void(0)" onclick="switchView('brands')" class="brand-item">
                 <div class="brand-img-box"><img src="./src/img/img-branch/Logo Pedigree_240x120.webp" alt="" /></div>
                 <span class="brand-name">Pedigree</span>
               </a>
@@ -771,7 +874,7 @@
           </div>
         </section>
 
-        <!-- SECTION 1: GIÁ TỐT HÔM NAY (CLICK MỞ THẲNG CHI TIẾT) -->
+        <!-- SECTION 1: GIÁ TỐT HÔM NAY -->
         <section class="product-section">
           <div class="site-container">
             <div class="section-header">
@@ -867,7 +970,7 @@
           </div>
         </section>
 
-        <!-- SECTION 2: COMBO TIẾT KIỆM & BÁN CHẠY (CLICK MỞ THẲNG CHI TIẾT) -->
+        <!-- SECTION 2: COMBO TIẾT KIỆM & BÁN CHẠY -->
         <section class="product-section">
           <div class="site-container">
             <div class="section-header">
@@ -1132,13 +1235,31 @@
                 </div>
               </div>
               <div class="info-sp-content" id="detailFullContent">
-                <!-- Nội dung mô tả chi tiết được JS đọc từ JSON render vào -->
+                <!-- Nội dung mô tả chi tiết nạp qua JS -->
               </div>
             </div>
 
             <div class="side-sp" id="detailSideList">
-              <!-- Cột gợi ý sản phẩm liên quan bên cạnh -->
+              <!-- Cột gợi ý sản phẩm -->
             </div>
+          </div>
+        </main>
+      </section>
+
+      <!-- VIEW 5: THƯƠNG HIỆU (BRAND DIRECTORY) -->
+      <section id="view-brands" class="app-view d-none">
+        <main class="site-container brands-page-wrapper">
+          <!-- Banner -->
+          <div class="brands-banner">
+            <div>
+              <h1>Thương hiệu nổi tiếng</h1>
+              <p>Thương hiệu thú cưng chính hãng tại PETPET</p>
+            </div>
+          </div>
+
+          <!-- Lưới thương hiệu -->
+          <div class="brands-grid-layout" id="brandsContainer">
+            <div style="grid-column: 1/-1; text-align: center; color: #888; padding: 40px 0;">Đang tải danh sách thương hiệu...</div>
           </div>
         </main>
       </section>
@@ -1158,6 +1279,7 @@
               <h3>Về PETPET</h3>
               <a href="javascript:void(0)" onclick="switchView('home')">Trang chủ</a>
               <a href="javascript:void(0)" onclick="switchView('products')">Tất cả sản phẩm</a>
+              <a href="javascript:void(0)" onclick="switchView('brands')">Thương hiệu</a>
               <a href="javascript:void(0)" onclick="switchView('account')">Cài đặt tài khoản</a>
             </div>
             <div class="footer-info f3">
@@ -1179,15 +1301,17 @@
       </div>
     </div>
 
-    <!-- JAVASCRIPT ĐỌC TRỰC TIẾP PRODUCTS.JSON VÀ SPA -->
+    <!-- JAVASCRIPT ĐIỀU HƯỚNG SPA & RENDER DỮ LIỆU TỪ FILE JSON -->
     <script>
       let productsData = [];
+      let brandsData = [];
 
-      // 1. Tải toàn bộ dữ liệu từ products.json
+      // 1. Tải dữ liệu từ products.json và brands.json
       document.addEventListener('DOMContentLoaded', () => {
+        // Tải danh sách sản phẩm
         fetch('./src/js/products.json')
           .then(res => {
-            if (!res.ok) throw new Error(`Lỗi tải JSON: ${res.status}`);
+            if (!res.ok) throw new Error(`Lỗi tải products.json: ${res.status}`);
             return res.json();
           })
           .then(data => {
@@ -1196,11 +1320,24 @@
           .catch(err => {
             console.error('Không thể đọc file ./src/js/products.json:', err);
           });
+
+        // Tải danh sách thương hiệu
+        fetch('./src/js/brand.json')
+          .then(res => {
+            if (!res.ok) throw new Error(`Lỗi tải brands.json: ${res.status}`);
+            return res.json();
+          })
+          .then(data => {
+            brandsData = data || [];
+          })
+          .catch(err => {
+            console.error('Không thể đọc file ./src/js/brands.json:', err);
+          });
       });
 
       // 2. Chuyển đổi giữa các View SPA
       window.switchView = function(viewName) {
-        const views = ['view-home', 'view-products', 'view-account', 'view-detail'];
+        const views = ['view-home', 'view-products', 'view-account', 'view-detail', 'view-brands'];
         views.forEach(v => {
           const el = document.getElementById(v);
           if (el) el.classList.add('d-none');
@@ -1211,12 +1348,39 @@
 
         if (viewName === 'products') {
           renderProductsPage();
+        } else if (viewName === 'brands') {
+          renderBrandsPage();
         }
 
         window.scrollTo({ top: 0, behavior: 'smooth' });
       };
 
-      // 3. Render danh sách sản phẩm ở View 2 (Sản phẩm)
+      // 3. Render danh sách thương hiệu từ brandsData (View 5)
+      let hasRenderedBrands = false;
+      function renderBrandsPage() {
+        if (hasRenderedBrands && document.getElementById('brandsContainer').children.length > 1) return;
+
+        const container = document.getElementById('brandsContainer');
+        if (!container) return;
+
+        if (brandsData.length === 0) {
+          container.innerHTML = `<div style="grid-column: 1/-1; text-align: center; color: #888; padding: 40px 0;">Đang tải danh sách thương hiệu...</div>`;
+          setTimeout(renderBrandsPage, 150);
+          return;
+        }
+
+        container.innerHTML = brandsData.map(b => `
+          <div class="brand-card" onclick="switchView('products')">
+            <div class="brand-img-wrap">
+              <img src="${b.image}" alt="${b.name}" loading="lazy" onerror="this.src='./src/img/Avatar-icon.png'" />
+            </div>
+            <span>${b.name}</span>
+          </div>
+        `).join('');
+        hasRenderedBrands = true;
+      }
+
+      // 4. Render danh sách sản phẩm ở View 2 (Sản phẩm)
       let hasRenderedShop = false;
       function renderProductsPage() {
         if (hasRenderedShop && document.getElementById('productList').children.length > 0) return;
@@ -1259,27 +1423,23 @@
         hasRenderedShop = true;
       }
 
-      // 4. Mở View Chi Tiết: Bay thẳng vào trang chi tiết từ ID sản phẩm
+      // 5. Mở View Chi Tiết Sản Phẩm
       window.openProductDetail = function(productId) {
         if (!productsData || productsData.length === 0) {
-          // Thử lại nếu dữ liệu JSON đang nạp dở
           setTimeout(() => openProductDetail(productId), 100);
           return;
         }
 
         const item = productsData.find(p => p.id === productId) || productsData[0];
 
-        // Cập nhật Breadcrumb & Tiêu đề
         document.getElementById('detailBreadcrumbName').textContent = item.name;
         document.getElementById('detailBreadcrumbCategory').textContent = item.category || 'Thức ăn';
         document.getElementById('detailTitle').textContent = item.name;
         document.getElementById('detailSubTitle').textContent = item.name;
 
-        // Cập nhật Ảnh
         document.getElementById('detailImg').src = item.image;
         document.getElementById('detailThumb1').src = item.image;
 
-        // Cập nhật Giá bán & Giá cũ
         document.getElementById('detailSalesPrice').textContent = `${Number(item.price).toLocaleString('vi-VN')}đ`;
         const oldVal = item.originalPrice || item.oldPrice;
         const discountEl = document.getElementById('detailDiscount');
@@ -1294,7 +1454,6 @@
           oldPriceEl.style.display = 'none';
         }
 
-        // Cập nhật Thông số
         document.getElementById('detailStock').textContent = item.stock || 'Còn hàng';
         document.getElementById('detailSoldText').textContent = `| Đã bán Online: ${item.sold || item.reviewCount || 10}`;
         document.getElementById('detailBrand').textContent = item.brand || 'PETPET';
@@ -1302,17 +1461,14 @@
         document.getElementById('detailWeight').textContent = item.weight || '1kg';
         document.getElementById('detailOrigin').textContent = item.origin || 'Nhật Bản';
 
-        // Đọc mảng highlights từ JSON
         const highlightsHtml = Array.isArray(item.highlights) && item.highlights.length > 0
           ? `<ul>${item.highlights.map(h => `<li><span>${h}</span></li>`).join('')}</ul>`
           : '';
 
-        // Đọc mảng instructions từ JSON
         const instructionsHtml = Array.isArray(item.instructions) && item.instructions.length > 0
           ? `<ul>${item.instructions.map(ins => `<li><span>${ins}</span></li>`).join('')}</ul>`
           : '';
 
-        // Chèn nội dung chi tiết
         document.getElementById('detailFullContent').innerHTML = `
           <p><span><strong>${item.name}</strong> - ${item.description || ''}</span></p>
           ${highlightsHtml ? `<p><span><strong>Đặc điểm nổi bật:</strong></span></p>${highlightsHtml}` : ''}
@@ -1320,17 +1476,12 @@
           ${instructionsHtml ? `<p><br /><span><strong>Hướng dẫn sử dụng:</strong></span></p>${instructionsHtml}` : ''}
         `;
 
-        // Reset số lượng về 1
         document.getElementById('quantity').textContent = '1';
-
-        // Render các sản phẩm liên quan bên phải
         renderSideProducts(productsData, item.id);
-
-        // Chuyển sang View Chi Tiết
         switchView('detail');
       };
 
-      // 5. Render danh sách sản phẩm liên quan bên cạnh
+      // 6. Cột gợi ý sản phẩm liên quan
       function renderSideProducts(list, currentId) {
         const sideContainer = document.getElementById('detailSideList');
         if (!sideContainer) return;
@@ -1360,7 +1511,6 @@
         }).join('');
       }
 
-      // Tăng giảm số lượng sản phẩm
       function changeQuantity(amount) {
         const qtyEl = document.getElementById('quantity');
         let currentQty = Number(qtyEl.textContent) || 1;
@@ -1369,7 +1519,6 @@
         qtyEl.textContent = currentQty;
       }
 
-      // Hiển thị / Ẩn QC Tải App
       function showQC() {
         document.getElementById('appQcContainer').classList.add('show');
       }

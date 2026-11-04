@@ -144,32 +144,7 @@
       "Đóng kín miệng bao sau khi lấy hạt để tránh ẩm ướt."
     ]
   },
-  {
-    "id": "sp6",
-    "name": "Combo 10 Pate Silver Spoon Vị Cá Ngừ Cho Mèo Gói 60g",
-    "brand": "Silver Spoon",
-    "category": "Pate / Thức ăn ướt",
-    "pet": "Mèo cưng",
-    "weight": "600g (10 gói)",
-    "origin": "Nhật Bản",
-    "image": "./src/img/img-products/C10CBSIS03__main__20260927_220246_q97r6q_400x400.webp",
-    "price": 180500,
-    "oldPrice": 190000,
-    "discount": "-5%",
-    "stock": "Còn 18 sản phẩm",
-    "sold": 55,
-    "description": "Pate Silver Spoon chuyên vị cá ngừ đại dương tươi ngon, thạch dẻo mềm mịn, giàu vitamin E và Taurine hỗ trợ phát triển thị giác và tim mạch.",
-    "highlights": [
-      "100% nguyên liệu cá ngừ đánh bắt tự nhiên giàu đạm sạch.",
-      "Độ ẩm dồi dào trên 88% bổ sung nước cho cơ thể mèo.",
-      "Không sử dụng phẩm màu tổng hợp hay chất bảo quản độc hại."
-    ],
-    "ingredients": "Cá ngừ, chiết xuất cá ngừ bào khô, oligosaccharides, vitamin E, chất làm đông nguồn gốc thực vật.",
-    "instructions": [
-      "Mở gói dùng liền cho bữa ăn hàng ngày.",
-      "Bảo quản ngăn mát phần dư và dùng hết trong ngày."
-    ]
-  },
+ 
   {
     "id": "sp7",
     "name": "Combo 5 Pate DoggyMan Cho Cún Sốt Kem Gói 70g",
