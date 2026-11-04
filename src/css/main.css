@@ -1,12 +1,12 @@
 @font-face {
-  font-family: 'SVN-DK Longreach';
-  src: url('../fonts/SVN-DK Longreach/SVN-DKLongreach.otf') format('opentype');
+  font-family: "SVN-DK Longreach";
+  src: url("../fonts/SVN-DK Longreach/SVN-DKLongreach.otf") format("opentype");
 }
 :root {
   --color-primary: rgb(253, 214, 53);
   --color-font: rgb(65 69 69);
-  --font-primary: 'Google Sans', sans-serif;
-  --font-LuckiestGuy: 'SVN-DK Longreach', sans-serif;
+  --font-primary: "Google Sans", sans-serif;
+  --font-LuckiestGuy: "SVN-DK Longreach", sans-serif;
 }
 /* Components */
 *,
@@ -29,6 +29,12 @@ body {
   margin: 0 auto;
   max-width: 1280px;
   padding: 0 15px;
+}
+.app-view {
+  display: block;
+}
+.d-none {
+  display: none !important;
 }
 
 /* Topbar */
@@ -100,7 +106,7 @@ header {
 }
 
 .nav-item::after {
-  content: '';
+  content: "";
   position: absolute;
   left: 0;
   bottom: -6px;
@@ -414,7 +420,7 @@ li .btn .btn-content {
   font-size: 33px;
 }
 .account::after {
-  content: '';
+  content: "";
   position: absolute;
   right: 17px;
   top: calc(100% + 8px);
