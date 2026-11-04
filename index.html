@@ -2,20 +2,14 @@
 <html lang="vi">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>PETPET | Cửa Hàng Thú Cưng</title>
     <link rel="icon" type="image/png" href="./src/img/icon/favicon.ico" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css"
-      rel="stylesheet"
-    />
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css" rel="stylesheet" />
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
 
     <!-- CSS chung -->
     <link rel="stylesheet" href="./src/css/main.css" />
@@ -25,6 +19,16 @@
     <link rel="stylesheet" href="./src/css/responsive.css" />
 
     <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        font-family: 'Be Vietnam Pro', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f8f9fa;
+        color: #222;
+      }
       button, input, select, textarea {
         font-family: inherit;
       }
@@ -37,44 +41,29 @@
         display: none !important;
       }
 
-      /* Navbar link */
+      /* Navbar link Desktop */
       .navbar .nav-item a,
-      .navbar .nav-item.active a,
-      .navbar .nav-item a:focus,
-      .navbar .nav-item.active a:focus {
+      .navbar .nav-item.active a {
         text-decoration: none !important;
-        color: #333333 !important;
+        color: #333 !important;
         font-weight: 500 !important;
-        border-bottom: none !important;
-        outline: none !important;
-        box-shadow: none !important;
         cursor: pointer;
-        padding-bottom: 4px;
-      }
-      .navbar .nav-item a:hover {
-        color: #000000 !important;
       }
 
-      /* Giao diện lưới sản phẩm (View 2) */
+      /* LƯỚI SẢN PHẨM VIEW TẤT CẢ SẢN PHẨM (VIEW 2) */
       .shop-header-bar {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin: 30px 0 20px;
-        padding-bottom: 12px;
-        border-bottom: 2px solid #f2f2f2;
-      }
-      .shop-header-bar h1 {
-        font-size: 22px;
-        color: #222;
-        margin: 0;
+        margin: 25px 0 15px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid #eee;
       }
       .product-grid-container {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-        gap: 20px;
+        grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+        gap: 16px;
         margin-bottom: 60px;
-        width: 100%;
       }
       .product-card-link {
         text-decoration: none;
@@ -84,26 +73,25 @@
       }
       .product-card-item {
         border: 1px solid #ebebeb;
-        border-radius: 10px;
-        padding: 14px;
-        background: #ffffff;
+        border-radius: 12px;
+        padding: 12px;
+        background: #fff;
         transition: transform 0.2s, box-shadow 0.2s;
         height: 100%;
-        box-sizing: border-box;
         display: flex;
         flex-direction: column;
       }
       .product-card-item:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+        transform: translateY(-3px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
       }
       .product-card-item .product-img-box {
         width: 100%;
         aspect-ratio: 1;
         overflow: hidden;
         border-radius: 8px;
-        margin-bottom: 12px;
-        background: #fafafa;
+        margin-bottom: 10px;
+        background: #fff;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -111,15 +99,14 @@
       .product-card-item .product-img-box img {
         width: 100%;
         height: 100%;
-        object-fit: cover;
+        object-fit: contain;
       }
       .product-card-item .product-name {
         font-size: 14px;
-        line-height: 1.45;
-        height: 42px;
+        line-height: 1.4;
+        height: 38px;
         overflow: hidden;
-        margin: 0 0 10px;
-        color: #222;
+        margin: 0 0 8px;
         font-weight: 600;
         display: -webkit-box;
         -webkit-line-clamp: 2;
@@ -143,130 +130,9 @@
         font-size: 13px;
       }
 
-      /* CSS GIAO DIỆN CÀI ĐẶT TÀI KHOẢN (VIEW 3) */
-      .account-setting-container {
-        display: flex;
-        gap: 30px;
-        margin: 40px auto 70px;
-        max-width: 1200px;
-      }
-      .setting-sidebar {
-        width: 280px;
-        flex-shrink: 0;
-        background: #ffffff;
-        border-radius: 12px;
-        padding: 24px;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-        border: 1px solid #eee;
-        height: fit-content;
-      }
-      .user-brief {
-        display: flex;
-        align-items: center;
-        gap: 16px;
-        padding-bottom: 20px;
-        border-bottom: 1px solid #eee;
-        margin-bottom: 20px;
-      }
-      .user-brief img {
-        width: 60px !important;
-        height: 60px !important;
-        border-radius: 50%;
-        object-fit: cover;
-      }
-      .setting-menu a {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        padding: 12px 16px;
-        border-radius: 8px;
-        text-decoration: none;
-        color: #444;
-        font-weight: 500;
-        margin-bottom: 8px;
-        cursor: pointer;
-        transition: 0.2s;
-      }
-      .setting-menu a.active,
-      .setting-menu a:hover {
-        background: #fffbe8;
-        color: #f7a600;
-        font-weight: 600;
-      }
-      .setting-content-panel {
-        flex: 1;
-        background: #ffffff;
-        border-radius: 12px;
-        padding: 30px;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-        border: 1px solid #eee;
-      }
-      .panel-header {
-        border-bottom: 1px solid #eee;
-        padding-bottom: 14px;
-        margin-bottom: 24px;
-      }
-      .panel-header h2 {
-        font-size: 20px;
-        color: #222;
-        margin: 0 0 6px;
-      }
-      .panel-header p {
-        font-size: 13px;
-        color: #777;
-        margin: 0;
-      }
-      .form-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 20px;
-      }
-      .form-group {
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-      }
-      .form-group.full-width {
-        grid-column: 1 / -1;
-      }
-      .form-group label {
-        font-weight: 600;
-        font-size: 14px;
-        color: #333;
-      }
-      .form-group input,
-      .form-group select {
-        padding: 11px 14px;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        font-size: 14px;
-        outline: none;
-        width: 100%;
-        box-sizing: border-box;
-      }
-      .form-group input:focus,
-      .form-group select:focus {
-        border-color: #f7a600;
-      }
-      .btn-save-account {
-        margin-top: 25px;
-        padding: 12px 30px;
-        background: #f7a600;
-        color: #fff;
-        border: none;
-        border-radius: 8px;
-        font-weight: 700;
-        font-size: 14px;
-        cursor: pointer;
-        transition: 0.2s;
-      }
-      .btn-save-account:hover {
-        background: #e59900;
-      }
-
-      /* CSS VIEW 4: CHI TIẾT SẢN PHẨM */
+      /* VIEW CHI TIẾT SẢN PHẨM (VIEW 4) */
       .section-nav-container {
-        margin: 20px 0 15px 0;
+        margin: 15px 0;
       }
       .section-nav {
         list-style: none;
@@ -278,21 +144,17 @@
       }
       .section-nav a {
         text-decoration: none;
-        color: #555;
-      }
-      .section-nav a:hover {
-        color: #f7a600;
+        color: #666;
       }
       .details-container {
         display: grid;
-        grid-template-columns: 480px 1fr;
-        gap: 40px;
-        margin-top: 10px;
+        grid-template-columns: 460px 1fr;
+        gap: 35px;
       }
       .img-container {
-        border: 2px solid #ffd800;
+        border: 2px solid #ffd700;
         border-radius: 12px;
-        padding: 15px;
+        padding: 16px;
         background: #fff;
         display: flex;
         align-items: center;
@@ -300,53 +162,43 @@
       }
       .img-container img {
         width: 100%;
-        max-height: 440px;
+        max-height: 400px;
         object-fit: contain;
       }
       .product-title h2 {
         font-size: 22px;
-        line-height: 1.4;
+        margin: 0 0 12px 0;
         color: #111;
-        margin: 0 0 15px 0;
+        line-height: 1.35;
       }
       .rating-section {
         display: flex;
         align-items: center;
-        gap: 12px;
+        gap: 10px;
         color: #666;
         font-size: 13px;
       }
-      .rating-section .stars-gold {
+      .stars-gold {
         color: #ff9800;
         font-size: 16px;
       }
-      .rating-section i {
-        font-size: 20px;
-        cursor: pointer;
-      }
       .prices {
-        margin: 20px 0;
+        margin: 16px 0;
         display: flex;
         align-items: baseline;
         gap: 12px;
       }
       .discount {
-        display: inline-block;
         font-size: 13px;
         font-weight: 700;
         color: #cf1322;
-        background-color: #fff1f0;
+        background: #fff1f0;
         border: 1px solid #ffa39e;
         padding: 2px 6px;
         border-radius: 4px;
       }
-      .old-price {
-        font-size: 15px;
-        color: #8c8c8c;
-        text-decoration: line-through;
-      }
       .sales-price {
-        font-size: 28px;
+        font-size: 26px;
         font-weight: 700;
         color: #111;
         margin: 0;
@@ -354,38 +206,29 @@
       .ton-kho, .van-chuyen {
         display: flex;
         align-items: center;
-        gap: 16px;
-        margin: 10px 0;
+        gap: 12px;
+        margin: 8px 0;
         font-size: 14px;
       }
       .ton-kho p, .van-chuyen p {
         margin: 0;
-        color: #555;
-        width: 110px;
+        color: #666;
+        width: 120px;
       }
       .ton-kho span {
         font-weight: 700;
         color: #16a34a;
       }
-      .van-chuyen span {
-        font-weight: 500;
-        color: #222;
-      }
       .quantity-container {
         display: flex;
         align-items: center;
-        gap: 16px;
-        margin: 20px 0;
-      }
-      .quantity-container p {
-        margin: 0;
-        color: #555;
-        width: 110px;
+        gap: 12px;
+        margin: 18px 0;
       }
       .quantity-btn-container {
         display: flex;
         align-items: center;
-        border: 1px solid #ccc;
+        border: 1px solid #ddd;
         border-radius: 20px;
         overflow: hidden;
       }
@@ -394,65 +237,50 @@
         height: 32px;
         width: 32px;
         font-size: 16px;
-        background-color: #f7f7f7;
+        background: #f7f7f7;
         cursor: pointer;
-      }
-      .quantity-btn:hover {
-        background-color: #eaeaea;
       }
       #quantity {
-        width: 42px;
-        height: 32px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-left: 1px solid #ccc;
-        border-right: 1px solid #ccc;
-        font-size: 14px;
-        font-weight: 600;
+        width: 40px;
+        text-align: center;
         margin: 0;
+        font-weight: 600;
       }
-      .app-btn button {
+      .desktop-btn-buy {
         font-size: 15px;
-        font-weight: 700;
-        border-radius: 6px;
+        font-weight: 800;
+        border-radius: 8px;
         border: none;
         padding: 14px 28px;
-        background-color: #fdd635;
+        background-color: #ffd700;
         cursor: pointer;
         transition: 0.2s;
+        width: 100%;
+        max-width: 320px;
       }
-      .app-btn button:hover {
-        background-color: #f7cb14;
+      .desktop-btn-buy:hover {
+        background-color: #f5cc00;
       }
-      .mini-img-container {
-        display: flex;
-        gap: 10px;
-        margin: 15px 0 35px 0;
-      }
-      .mini-img-container img {
-        width: 70px;
-        height: 70px;
-        border-radius: 6px;
-        border: 1px solid #ddd;
-        object-fit: cover;
-        cursor: pointer;
-      }
+
+      /* BẢNG THÔNG TIN SẢN PHẨM */
       .info-sp-container {
         display: grid;
-        grid-template-columns: 1fr 340px;
-        gap: 40px;
-        margin-bottom: 60px;
+        grid-template-columns: 1fr 320px;
+        gap: 35px;
+        margin: 40px 0 60px;
       }
       .info-title h2 {
         font-size: 18px;
+        font-weight: 800;
+        text-transform: uppercase;
         margin: 0 0 6px 0;
+        color: #222;
       }
       .info-title h3 {
-        font-size: 15px;
-        color: #555;
-        font-weight: 500;
+        font-size: 16px;
+        font-weight: 700;
         margin: 0 0 16px 0;
+        color: #222;
       }
       .info-box {
         margin: 0 0 20px 0;
@@ -460,184 +288,84 @@
       .box-row {
         display: flex;
         align-items: center;
-        background-color: #f8f8f8;
-        padding: 8px 14px;
+        background-color: #f6f6f6;
+        padding: 10px 14px;
         margin-bottom: 6px;
-        border-radius: 4px;
-        font-size: 13px;
+        border-radius: 8px;
+        font-size: 14px;
       }
       .box-row span {
         color: #666;
-        width: 120px;
+        width: 130px;
       }
       .box-row a, .box-row p {
         margin-left: auto;
         color: #222;
-        font-weight: 500;
+        font-weight: 600;
         text-decoration: none;
         margin-bottom: 0;
       }
       .info-sp-content {
         font-size: 14px;
-        line-height: 1.6;
+        line-height: 1.65;
         color: #333;
       }
-      .info-sp-content ul {
-        padding-left: 20px;
-        margin: 8px 0 16px 0;
-      }
-      .side-sp {
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-        overflow-y: auto;
-        max-height: 750px;
-        padding-right: 8px;
-      }
-      .khung-sp {
-        border: 1px solid #ebebeb;
-        border-radius: 12px;
-        padding: 10px;
-        cursor: pointer;
-        display: flex;
-        gap: 12px;
-        background: #fff;
-        transition: transform 0.2s, box-shadow 0.2s;
-      }
-      .khung-sp:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-      }
-      .khung-img {
-        width: 80px;
-        height: 80px;
-        flex-shrink: 0;
-      }
-      .khung-img img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        border-radius: 6px;
-      }
-      .info-sp {
-        flex: 1;
-      }
-      .info-sp .name-sp {
-        font-size: 13px;
-        font-weight: 600;
-        line-height: 1.35;
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-        line-clamp: 2;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-      }
-      .info-sp .stars {
-        color: #ff9800;
-        font-size: 12px;
-        margin: 2px 0;
-      }
-      .info-sp .prices {
-        margin: 4px 0 0 0;
-        gap: 6px;
-      }
-      .info-sp .sales-price {
-        font-size: 14px;
-        color: #d32f2f;
-      }
-      .info-sp .old-price {
-        font-size: 11px;
-      }
 
-      /* ================= VIEW 5: THƯƠNG HIỆU ================= */
+      /* VIEW THƯƠNG HIỆU (VIEW 5) */
       .brands-page-wrapper {
-        padding: 24px 0 60px;
+        padding: 20px 0 60px;
       }
       .brands-banner {
-        background: linear-gradient(90deg, #ffd700 0%, #ffc400 100%);
-        border-radius: 14px;
-        padding: 24px 30px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 30px;
-        position: relative;
-        overflow: hidden;
-      }
-      /* Banner vàng thương hiệu chuẩn theo mẫu */
-      .brands-banner {
-        background: #ffcc00; /* Màu nền vàng tươi theo ảnh mẫu */
+        background: #ffcc00;
         border-radius: 12px;
         padding: 24px 32px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 30px;
+        margin-bottom: 25px;
         position: relative;
         overflow: hidden;
-        font-family: 'Be Vietnam Pro', sans-serif !important;
       }
-
       .brands-banner h1 {
-        font-family: 'Be Vietnam Pro', sans-serif !important;
-        font-size: 32px !important;
-        font-weight: 800 !important; /* Đậm nét tròn đều, không bị lỗi chân */
-        color: #000000 !important;
-        margin: 0 0 6px 0 !important;
+        font-size: 28px;
+        font-weight: 800;
+        color: #000;
+        margin: 0 0 6px 0;
         letter-spacing: -0.5px;
-        line-height: 1.2;
       }
-
       .brands-banner p {
-        font-family: 'Be Vietnam Pro', sans-serif !important;
-        font-size: 15px !important;
-        color: #1a1a1a !important;
-        font-weight: 500 !important;
-        margin: 0 !important;
-        letter-spacing: -0.2px;
+        font-size: 14px;
+        color: #1a1a1a;
+        font-weight: 500;
+        margin: 0;
       }
       .brands-grid-layout {
         display: grid;
         grid-template-columns: repeat(5, 1fr);
-        gap: 16px;
-      }
-      @media (max-width: 992px) {
-        .brands-grid-layout {
-          grid-template-columns: repeat(3, 1fr);
-        }
-      }
-      @media (max-width: 600px) {
-        .brands-grid-layout {
-          grid-template-columns: repeat(2, 1fr);
-        }
+        gap: 15px;
       }
       .brand-card {
-        border: 1px solid #e7e7e7;
+        border: 1px solid #eee;
         border-radius: 12px;
-        padding: 18px 12px;
+        padding: 16px 12px;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        background: #ffffff;
+        background: #fff;
         cursor: pointer;
         transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
-        min-height: 125px;
-        text-align: center;
-        box-sizing: border-box;
+        min-height: 120px;
       }
       .brand-card:hover {
         transform: translateY(-3px);
-        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.07);
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
         border-color: #ffd700;
       }
       .brand-card .brand-img-wrap {
         width: 100%;
-        height: 52px;
+        height: 50px;
         display: flex;
         align-items: center;
         justify-content: center;
-        margin-bottom: 10px;
+        margin-bottom: 8px;
       }
       .brand-card img {
         max-width: 100%;
@@ -645,41 +373,541 @@
         object-fit: contain;
       }
       .brand-card span {
-        font-size: 14px;
+        font-size: 13px;
         font-weight: 600;
-        color: #222;
+        color: #333;
       }
 
-      /* Popup QC */
-      .app-qc-container {
+      /* KHỐI GIAO DIỆN CHỈ DÀNH CHO MOBILE */
+      .mobile-top-banner { display: none; }
+      .mobile-header-yellow { display: none; }
+      .mobile-quick-menu { display: none; }
+      .mobile-bottom-nav { display: none; }
+      .mobile-fixed-buy-bar { display: none; }
+
+      /* ================= RESPONSIVE MOBILE (≤ 768px) ================= */
+      @media (max-width: 768px) {
+        body {
+          background-color: #ffffff;
+          padding-bottom: 75px;
+        }
+
+        .topbar,
+        .navbar,
+        .footer,
+        .nav-body-main,
+        .img-slider {
+          display: none !important;
+        }
+
+        /* 1. Thanh tải app trên cùng */
+        .mobile-top-banner {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          background: #fff8d6;
+          padding: 8px 14px;
+          border-bottom: 1px solid #fae69e;
+        }
+        .mobile-top-banner .close-btn {
+          font-size: 20px;
+          color: #666;
+          cursor: pointer;
+          border: none;
+          background: none;
+          padding: 0 8px 0 0;
+        }
+        .mobile-top-banner .app-brand-info {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          flex: 1;
+        }
+        .mobile-top-banner .app-icon {
+          width: 38px;
+          height: 38px;
+          background: #ffd700;
+          border-radius: 8px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          font-weight: 900;
+          font-size: 9px;
+          line-height: 1.1;
+        }
+        .mobile-top-banner .app-text h4 {
+          margin: 0;
+          font-size: 14px;
+          font-weight: 700;
+        }
+        .mobile-top-banner .app-text p {
+          margin: 0;
+          font-size: 11px;
+          color: #666;
+        }
+
+        /* 2. Header vàng đặc trưng */
+        .mobile-header-yellow {
+          display: block;
+          background: #ffd700;
+          padding: 12px 14px 16px;
+        }
+        .mobile-header-top {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          margin-bottom: 12px;
+        }
+        .mobile-logo {
+          font-size: 28px;
+          font-weight: 900;
+          letter-spacing: -1px;
+          color: #111;
+          margin: 0;
+          line-height: 1;
+          cursor: pointer;
+        }
+        .mobile-header-actions {
+          display: flex;
+          align-items: center;
+          gap: 14px;
+        }
+        .mobile-header-actions i {
+          font-size: 20px;
+          color: #111;
+          cursor: pointer;
+        }
+        .mobile-pet-switch {
+          display: flex;
+          align-items: center;
+          gap: 4px;
+          font-size: 12px;
+          font-weight: 700;
+          background: rgba(255, 255, 255, 0.4);
+          padding: 4px 8px;
+          border-radius: 20px;
+        }
+
+        /* Ô tìm kiếm mobile */
+        .mobile-search-box {
+          position: relative;
+          background: #fff;
+          border-radius: 25px;
+          display: flex;
+          align-items: center;
+          padding: 8px 14px;
+        }
+        .mobile-search-box input {
+          width: 100%;
+          border: none;
+          outline: none;
+          font-size: 13px;
+          padding-left: 28px;
+        }
+        .mobile-search-box .search-dog-icon {
+          position: absolute;
+          left: 10px;
+          width: 22px;
+          height: 22px;
+        }
+
+        /* 3. Thanh 5 icon danh mục */
+        .mobile-quick-menu {
+          display: grid;
+          grid-template-columns: repeat(5, 1fr);
+          gap: 8px;
+          background: #ffd700;
+          padding: 0 14px 18px;
+          text-align: center;
+        }
+        .mobile-quick-item {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 6px;
+          text-decoration: none;
+          color: #111;
+          cursor: pointer;
+        }
+        .mobile-quick-icon-box {
+          width: 44px;
+          height: 44px;
+          background: rgba(255, 255, 255, 0.3);
+          border-radius: 12px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 20px;
+        }
+        .mobile-quick-item span {
+          font-size: 11px;
+          font-weight: 600;
+        }
+
+        /* 4. Lưới sản phẩm trượt ngang */
+        .site-container {
+          padding: 0 14px !important;
+        }
+        .section-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: flex-end;
+          margin: 18px 0 12px;
+        }
+        .section-header .title-box h2 {
+          font-size: 18px;
+          margin: 0;
+          font-weight: 800;
+        }
+        .section-header .title-box p {
+          font-size: 12px;
+          color: #666;
+          margin: 2px 0 0;
+        }
+        .section-header a.view-more {
+          font-size: 12px;
+          color: #444;
+          text-decoration: none;
+          font-weight: 600;
+        }
+        .product-grid {
+          display: flex !important;
+          overflow-x: auto !important;
+          gap: 12px !important;
+          padding-bottom: 12px !important;
+          scroll-snap-type: x mandatory;
+          -webkit-overflow-scrolling: touch;
+        }
+        .product-grid::-webkit-scrollbar {
+          display: none;
+        }
+
+        /* ĐÃ SỬA: Card sản phẩm tự động dãn & căn đều */
+        .product-card {
+          flex: 0 0 160px !important;
+          scroll-snap-align: start;
+          border: 1px solid #ffd700 !important;
+          border-radius: 12px !important;
+          padding: 10px !important;
+          background: #fff;
+          display: flex !important;
+          flex-direction: column !important;
+          justify-content: space-between !important;
+        }
+        .product-card .product-img-box {
+          width: 100% !important;
+          aspect-ratio: 1;
+        }
+        .product-card .product-img-box img {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+        }
+
+        .product-card .product-info {
+          display: flex !important;
+          flex-direction: column !important;
+          flex: 1 !important;
+        }
+
+        /* ĐÃ SỬA: Tên sản phẩm tự ngắt dòng gọn gàng, không tràn chữ */
+        .product-card .product-name {
+          font-size: 13px !important;
+          line-height: 1.35 !important;
+          height: auto !important;
+          min-height: 35px !important;
+          margin: 8px 0 6px !important;
+          font-weight: 600;
+          display: -webkit-box !important;
+          -webkit-line-clamp: 2 !important;
+          -webkit-box-orient: vertical !important;
+          line-clamp: 2 !important;
+          overflow: hidden !important;
+          text-overflow: ellipsis !important;
+        }
+
+        /* ĐÃ SỬA: Khối giá và nhãn giảm giá tách biệt rõ ràng */
+        .product-card .price-box {
+          margin-top: auto !important;
+          display: flex !important;
+          align-items: center !important;
+          gap: 6px !important;
+          margin-bottom: 2px !important;
+        }
+        .product-card .discount-badge {
+          font-size: 11px !important;
+          font-weight: 700;
+          color: #cf1322 !important;
+          background: #fff1f0;
+          border: 1px solid #ffa39e;
+          padding: 1px 4px;
+          border-radius: 4px;
+          line-height: 1;
+          display: inline-block;
+        }
+        .product-card .old-price {
+          font-size: 11px !important;
+          color: #8c8c8c;
+          text-decoration: line-through;
+        }
+        .product-card .current-price {
+          font-size: 15px !important;
+          font-weight: 800;
+          color: #d32f2f !important;
+          margin-top: 2px;
+        }
+
+        /* 5. Chi tiết sản phẩm trên Mobile */
+        .details-container {
+          grid-template-columns: 1fr !important;
+          gap: 16px !important;
+        }
+        .img-container {
+          border-radius: 12px;
+          padding: 12px;
+        }
+        .img-container img {
+          max-height: 280px !important;
+        }
+        .desktop-btn-buy {
+          display: none !important;
+        }
+        .info-sp-container {
+          grid-template-columns: 1fr !important;
+          margin: 20px 0 30px !important;
+          gap: 20px !important;
+        }
+        .side-sp {
+          display: none !important;
+        }
+        .box-row {
+          padding: 8px 12px !important;
+          font-size: 13px !important;
+        }
+        .box-row span {
+          width: 110px !important;
+        }
+
+        /* Nút MUA NGAY cố định dưới chân */
+        .mobile-fixed-buy-bar {
+          display: block;
+          position: fixed;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          background: #ffffff;
+          padding: 10px 16px;
+          box-shadow: 0 -3px 12px rgba(0, 0, 0, 0.08);
+          z-index: 9999;
+        }
+        .btn-sticky-buy {
+          width: 100%;
+          background: #ffd700;
+          border: none;
+          border-radius: 10px;
+          padding: 14px 20px;
+          font-size: 15px;
+          font-weight: 800;
+          color: #111;
+          cursor: pointer;
+          text-transform: uppercase;
+        }
+
+        /* 6. Thanh điều hướng đáy Mobile */
+        .mobile-bottom-nav {
+          display: flex;
+          position: fixed;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          background: #ffffff;
+          border-top: 1px solid #ebebeb;
+          padding: 8px 10px;
+          justify-content: space-around;
+          align-items: center;
+          z-index: 9998;
+        }
+        .bottom-nav-item {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 3px;
+          text-decoration: none;
+          color: #777;
+          font-size: 11px;
+          cursor: pointer;
+        }
+        .bottom-nav-item.active {
+          color: #e5a800;
+          font-weight: 700;
+        }
+        .bottom-nav-item i {
+          font-size: 20px;
+        }
+
+        /* View thương hiệu trên Mobile */
+        .brands-grid-layout {
+          grid-template-columns: repeat(3, 1fr) !important;
+          gap: 10px !important;
+        }
+        .brand-card {
+          padding: 10px 6px !important;
+          min-height: 90px !important;
+        }
+        .brand-card span {
+          font-size: 11px !important;
+        }
+      }
+
+      /* POPUP MÃ QR GỌN GÀNG */
+      .qr-modal-wrapper {
         display: none;
-      }
-      .app-qc-container.show {
-        display: block;
-      }
-      .app-qc-blur {
         position: fixed;
         inset: 0;
-        background-color: rgba(0, 0, 0, 0.6);
-        z-index: 99998;
+        z-index: 999999;
+        align-items: center;
+        justify-content: center;
       }
-      .app-qc {
-        position: fixed;
+
+      .qr-modal-wrapper.show {
+        display: flex !important;
+      }
+
+      .qr-modal-backdrop {
+        position: absolute;
         inset: 0;
+        background-color: rgba(0, 0, 0, 0.72);
+        backdrop-filter: blur(4px);
+        cursor: pointer;
+      }
+
+      .qr-modal-card {
+        position: relative;
+        z-index: 10;
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        animation: qrZoomIn 0.25s ease-out;
+      }
+
+      @keyframes qrZoomIn {
+        from {
+          transform: scale(0.85);
+          opacity: 0;
+        }
+        to {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+
+      .qr-modal-close {
+        position: absolute;
+        top: -38px;
+        right: 0;
+        border: none;
+        background: rgba(255, 255, 255, 0.35);
+        color: #ffffff;
+        font-size: 20px;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        cursor: pointer;
         display: flex;
         align-items: center;
         justify-content: center;
-        z-index: 99999;
+        transition: 0.2s;
+        z-index: 9999999 !important;
+        pointer-events: auto !important;
       }
-      .app-qc img {
-        max-width: 320px;
-        border-radius: 12px;
+
+      .qr-modal-close:hover {
+        background: rgba(255, 255, 255, 0.7);
+        color: #000;
+      }
+
+      .qr-big-image {
+        width: 440px;
+        max-width: 82vw;
+        max-height: 75vh;
+        height: auto;
+        object-fit: contain;
+        border-radius: 14px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        display: block;
+        pointer-events: auto;
       }
     </style>
   </head>
   <body>
+    <!-- 1. THANH TẢI APP TRÊN CÙNG MOBILE -->
+    <div class="mobile-top-banner">
+      <button class="close-btn" onclick="this.parentElement.style.display='none'">✕</button>
+      <div class="app-brand-info">
+        <div class="app-icon">
+          <span>THÚ CƯNG</span>
+          <span>PET</span>
+          <span>PET</span>
+        </div>
+        <div class="app-text">
+          <h4>PETPET</h4>
+          <p>Tải ứng dụng PETPET</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. HEADER VÀNG ĐẶC TRƯNG APP MOBILE -->
+    <header class="mobile-header-yellow">
+      <div class="mobile-header-top">
+        <h1 class="mobile-logo" onclick="switchView('home')">PETPET</h1>
+        <div class="mobile-header-actions">
+          <i class="ri-qr-scan-line" onclick="showQC()"></i>
+          <i class="ri-notification-3-line"></i>
+          <div class="mobile-pet-switch">
+            <span>Pet cưng</span>
+            <i class="ri-arrow-down-s-line"></i>
+          </div>
+        </div>
+      </div>
+
+      <div class="mobile-search-box">
+        <img class="search-dog-icon" src="./src/img/icon/sprite-pet-dog-sticker.svg" alt="" onerror="this.style.display='none'" />
+        <input type="text" placeholder="Tìm thức ăn và phụ kiện" />
+      </div>
+    </header>
+
+    <!-- 3. THANH 5 ICON DANH MỤC NHANH MOBILE -->
+    <div class="mobile-quick-menu">
+      <div class="mobile-quick-item" onclick="switchView('products')">
+        <div class="mobile-quick-icon-box"><i class="ri-menu-line"></i></div>
+        <span>Menu</span>
+      </div>
+      <div class="mobile-quick-item" onclick="switchView('products')">
+        <div class="mobile-quick-icon-box"><i class="ri-history-line"></i></div>
+        <span>Mua lại</span>
+      </div>
+      <div class="mobile-quick-item" onclick="switchView('brands')">
+        <div class="mobile-quick-icon-box"><i class="ri-book-open-line"></i></div>
+        <span>Thương hiệu</span>
+      </div>
+      <div class="mobile-quick-item" onclick="switchView('products')">
+        <div class="mobile-quick-icon-box"><i class="ri-shield-cross-line"></i></div>
+        <span>Spa, Thú y</span>
+      </div>
+      <div class="mobile-quick-item" onclick="switchView('account')">
+        <div class="mobile-quick-icon-box"><i class="ri-store-2-line"></i></div>
+        <span>Cửa Hàng</span>
+      </div>
+    </div>
+
+    <!-- KHUNG CHỨA TOÀN BỘ DESKTOP & CÁC TRANG VIEW -->
     <div class="Destop-layout">
-      <!-- Topbar -->
+      <!-- Topbar Desktop -->
       <header class="header">
         <div class="topbar flexRow-center site-container">
           <nav class="topbar-items flexRow-center">
@@ -694,7 +922,7 @@
         </div>
       </header>
 
-      <!-- Navigation Dùng Chung -->
+      <!-- Navigation Desktop -->
       <nav class="navbar site-container">
         <div class="left-bar flexRow-center">
           <div class="logo">
@@ -702,97 +930,23 @@
               <img src="./src/img/icon/logo_headerDesktop.svg" alt="PETPET" />
             </a>
           </div>
-          <div class="nav-item" id="navHomeBtn">
-            <a href="javascript:void(0)" onclick="switchView('home')">Trang chủ</a>
-          </div>
-          <div class="nav-item" id="navShopBtn">
-            <a href="javascript:void(0)" onclick="switchView('products')">Sản phẩm</a>
-          </div>
-          <div class="nav-item" id="navBrandsBtn">
-            <a href="javascript:void(0)" onclick="switchView('brands')">Thương hiệu</a>
-          </div>
+          <div class="nav-item" id="navHomeBtn"><a href="javascript:void(0)" onclick="switchView('home')">Trang chủ</a></div>
+          <div class="nav-item" id="navShopBtn"><a href="javascript:void(0)" onclick="switchView('products')">Sản phẩm</a></div>
+          <div class="nav-item" id="navBrandsBtn"><a href="javascript:void(0)" onclick="switchView('brands')">Thương hiệu</a></div>
         </div>
 
         <div class="right-bar flexRow-center">
           <div class="search">
-            <div class="left-search-icon">
-              <img id="icon-search-dog" src="./src/img/icon/sprite-pet-dog-sticker.svg" alt="" />
-            </div>
-            <div class="right-search-icon">
-              <img id="icon-search-cat" src="./src/img/icon/sprite-pet-cat-sticker.svg" alt="" />
-            </div>
             <input class="text-search" type="text" placeholder="Tìm thức ăn và phụ kiện" />
           </div>
 
-          <div class="icon-set">
-            <button type="button" class="btn flexRow-center" id="mainPetBtn">
-              <div class="btn-icon-wrapper">
-                <img src="./src/img/icon/sprite-pet-switch-both.svg" alt="" id="switchIcon" />
-              </div>
-              <div class="btn-content flexRow-center">
-                <span id="btnText">Pet cưng</span>
-                <i class="ri-arrow-drop-down-line"></i>
-              </div>
-            </button>
-            <div class="dropdown-icon">
-              <ul>
-                <li>
-                  <button type="button" class="btn flexRow-center" data-pet="both">
-                    <div class="btn-icon-wrapper"><img src="./src/img/icon/sprite-pet-switch-both.svg" alt="" /></div>
-                    <div class="btn-content flexRow-center"><span>Pet cưng</span></div>
-                  </button>
-                </li>
-                <li>
-                  <button type="button" class="btn flexRow-center" data-pet="dog">
-                    <div class="btn-icon-wrapper"><img src="./src/img/icon/sprite-pet-switch-dog.svg" alt="" /></div>
-                    <div class="btn-content flexRow-center"><span>Cún cưng</span></div>
-                  </button>
-                </li>
-                <li>
-                  <button type="button" class="btn flexRow-center" data-pet="cat">
-                    <div class="btn-icon-wrapper"><img src="./src/img/icon/sprite-pet-switch-cat.svg" alt="" /></div>
-                    <div class="btn-content flexRow-center"><span>Mèo cưng</span></div>
-                  </button>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- Menu Tài khoản -->
           <div class="account flexRow-center">
             <i class="ri-user-line"></i>
             <div class="account-menu">
-              <div class="account-top">
-                <div class="account-menu__header">
-                  <div class="avatar"><img src="./src/img/Avatar-icon.png" alt="Avatar" /></div>
-                  <div class="account-header-text">
-                    <div class="account-text">
-                      <h3 class="h2-text">Xin Chào!</h3>
-                      <div class="role"><span>Đăng nhập để trải nghiệm</span></div>
-                    </div>
-                  </div>
-                </div>
-                <div class="account-menu__auth">
-                  <button class="sign-up" id="signUp"><span>Đăng nhập</span></button>
-                  <button class="sign-in" id="signIn"><span>Đăng kí</span></button>
-                </div>
-                <div class="link_Admin flexRow-center"><span>Admin</span></div>
-              </div>
-
-              <div class="account-main">
-                <div class="personal-menu"><div class="prefenrence-icon"><i class="ri-receipt-line"></i></div><span>Đơn hàng của tôi</span></div>
-                <div class="personal-menu"><div class="prefenrence-icon"><i class="ri-heart-line"></i></div><span>Yêu thích</span></div>
-                <div class="personal-menu"><div class="prefenrence-icon"><i class="ri-notification-2-line"></i></div><span>Thông báo</span></div>
-              </div>
-
               <div class="account-footer">
                 <div class="personal-menu" onclick="switchView('account')" style="cursor: pointer;">
-                  <div class="prefenrence-icon"><i class="ri-settings-4-line"></i></div>
+                  <i class="ri-settings-4-line"></i>
                   <span>Cài đặt tài khoản</span>
-                </div>
-                <div class="personal-menu" id="logOut" style="cursor: pointer;">
-                  <div class="prefenrence-icon"><i class="ri-logout-box-r-line"></i></div>
-                  <span>Đăng xuất</span>
                 </div>
               </div>
             </div>
@@ -802,79 +956,13 @@
 
       <!-- VIEW 1: TRANG CHỦ -->
       <section id="view-home" class="app-view">
-        <div class="site-container">
-          <div class="img-slider">
-            <div class="slider" id="slider">
-              <img src="src/img/slider img/BANNER FREESHIP_thumb.webp" alt="" />
-              <img src="src/img/slider img/Horizontal Banner_thumb.webp" alt="" />
-              <img src="src/img/slider img/banner-pate-cun-desktop-v2_thumb.webp" alt="" />
-              <img src="src/img/slider img/HERO BANNER THỨ 4 MỞ APP_thumb.webp" alt="" />
-            </div>
-            <button type="button" class="slider-btn prev flexRow-center" onclick="prev()"><i class="ri-arrow-left-s-line"></i></button>
-            <button type="button" class="slider-btn next flexRow-center" onclick="next()"><i class="ri-arrow-right-s-line"></i></button>
+        <div class="site-container img-slider">
+          <div class="slider" id="slider">
+            <img src="src/img/slider img/BANNER FREESHIP_thumb.webp" alt="" />
           </div>
         </div>
 
-        <div class="site-container">
-          <div class="nav-body-main">
-            <div class="left-nav-body">
-              <div class="nav-body"><img src="./src/img/icon-body/sprite-quick-tap-chi.svg" alt="" /></div>
-              <div class="nav-body"><img src="./src/img/icon-body/sprite-quick-thu-y.svg" alt="" /></div>
-              <div class="nav-body"><img src="./src/img/icon-body/sprite-quick-spa-hotel.svg" alt="" /></div>
-              <div class="barrier"></div>
-            </div>
-            <div class="right-nav-body">
-              <div class="search-bar-container">
-                <input type="text" placeholder="Tìm thức ăn, đồ chơi, phụ kiện..." />
-                <div class="icon-nav-body"><i class="ri-search-line"></i></div>
-                <button class="btn-search-body">Tìm kiếm</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <section class="brand-section" id="Thươnghiệu">
-          <div class="site-container">
-            <div class="brand-header">
-              <div class="brand-title-group">
-                <h2>Top 10 thương hiệu yêu thích</h2>
-                <p>Sen chọn đúng gu - Boss thích mê ly</p>
-              </div>
-              <a href="javascript:void(0)" onclick="switchView('brands')" class="brand-view-more">
-                Xem thêm <i class="ri-arrow-right-s-line"></i>
-              </a>
-            </div>
-
-            <div class="brand-grid">
-              <a href="javascript:void(0)" onclick="switchView('brands')" class="brand-item">
-                <div class="brand-img-box"><img src="./src/img/img-branch/Logo Royal Canin_240x120.webp" alt="" /></div>
-                <span class="brand-name">Royal Canin</span>
-              </a>
-              <a href="javascript:void(0)" onclick="switchView('brands')" class="brand-item">
-                <div class="brand-img-box"><img src="./src/img/img-branch/zenith-300x300_240x120.webp" alt="" /></div>
-                <span class="brand-name">Zenith</span>
-              </a>
-              <a href="javascript:void(0)" onclick="switchView('brands')" class="brand-item">
-                <div class="brand-img-box"><img src="./src/img/img-branch/Logo LuvCare_240x120.webp" alt="" /></div>
-                <span class="brand-name">Luvcare</span>
-              </a>
-              <a href="javascript:void(0)" onclick="switchView('brands')" class="brand-item">
-                <div class="brand-img-box"><img src="./src/img/img-branch/Logo Ganador_240x120.webp" alt="" /></div>
-                <span class="brand-name">Ganador</span>
-              </a>
-              <a href="javascript:void(0)" onclick="switchView('brands')" class="brand-item">
-                <div class="brand-img-box"><img src="./src/img/img-branch/Logo PetQ_240x120.webp" alt="" /></div>
-                <span class="brand-name">PetQ</span>
-              </a>
-              <a href="javascript:void(0)" onclick="switchView('brands')" class="brand-item">
-                <div class="brand-img-box"><img src="./src/img/img-branch/Logo Pedigree_240x120.webp" alt="" /></div>
-                <span class="brand-name">Pedigree</span>
-              </a>
-            </div>
-          </div>
-        </section>
-
-        <!-- SECTION 1: GIÁ TỐT HÔM NAY -->
+        <!-- MỤC 1: GIÁ TỐT HÔM NAY -->
         <section class="product-section">
           <div class="site-container">
             <div class="section-header">
@@ -890,13 +978,10 @@
             <div class="product-grid">
               <div class="product-card" onclick="openProductDetail('sp1')" style="cursor: pointer;">
                 <div class="product-img-box">
-                  <img src="./src/img/img-products/DPF00238__main__20260927_230749_n5ptjh_400x400.webp" alt="Bánh Thưởng Pedigree" />
+                  <img src="./src/img/img-products/DPF00238__main__20260927_230749_n5ptjh_400x400.webp" alt="" />
                 </div>
                 <div class="product-info">
                   <h3 class="product-name">Bánh Thưởng Pedigree Dentastix Cho Cún</h3>
-                  <div class="product-rating">
-                    <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i>
-                  </div>
                   <div class="price-box">
                     <span class="discount-badge">-14%</span>
                     <span class="old-price">69,000 đ</span>
@@ -907,13 +992,10 @@
 
               <div class="product-card" onclick="openProductDetail('sp2')" style="cursor: pointer;">
                 <div class="product-img-box">
-                  <img src="./src/img/img-products/C10CBSIS03__main__20260927_220246_q97r6q_400x400.webp" alt="Pate Silver Spoon" />
+                  <img src="./src/img/img-products/C10CBSIS03__main__20260927_220246_q97r6q_400x400.webp" alt="" />
                 </div>
                 <div class="product-info">
-                  <h3 class="product-name">Combo 10 Pate Silver Spoon Cho Mèo Gói 60g</h3>
-                  <div class="product-rating">
-                    <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i>
-                  </div>
+                  <h3 class="product-name">Combo 10 Pate Silver Spoon Cho Mèo 60g</h3>
                   <div class="price-box">
                     <span class="discount-badge">-5%</span>
                     <span class="old-price">190,000 đ</span>
@@ -922,43 +1004,26 @@
                 </div>
               </div>
 
-              <div class="product-card" onclick="openProductDetail('sp3')" style="cursor: pointer;">
-                <div class="product-img-box">
-                  <img src="./src/img/img-products/C10CBSIS01__main__20260927_220147_8xpwzh_400x400.webp" alt="Cát Đất Sét Moon Cat" />
-                </div>
-                <div class="product-info">
-                  <h3 class="product-name">Cát Đất Sét Moon Cat Cho Mèo Bịch 9L</h3>
-                  <div class="product-rating">
-                    <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i>
-                  </div>
-                  <div class="price-box no-discount"></div>
-                  <div class="current-price">65,000 đ</div>
-                </div>
-              </div>
-
               <div class="product-card" onclick="openProductDetail('sp4')" style="cursor: pointer;">
                 <div class="product-img-box">
-                  <img src="./src/img/img-products/petq.webp" alt="Súp Thưởng PetQ" />
+                  <img src="./src/img/img-products/petq.webp" alt="" />
                 </div>
                 <div class="product-info">
-                  <h3 class="product-name">Súp Thưởng PetQ Cho Mèo Vị Sữa Dê Cỏ Mèo</h3>
-                  <div class="product-rating">
-                    <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i>
+                  <h3 class="product-name">Súp Thưởng PetQ Cho Mèo Sữa Dê Que 15g</h3>
+                  <div class="price-box">
+                    <span class="discount-badge">-20%</span>
+                    <span class="old-price">9,000 đ</span>
                   </div>
-                  <div class="price-box no-discount"></div>
                   <div class="current-price">7,000 đ</div>
                 </div>
               </div>
 
               <div class="product-card" onclick="openProductDetail('sp5')" style="cursor: pointer;">
                 <div class="product-img-box">
-                  <img src="./src/img/img-products/CDF00163__main__20260927_210639_snf5hn_400x400.webp" alt="Hạt S2PET" />
+                  <img src="./src/img/img-products/CDF00163__main__20260927_210639_snf5hn_400x400.webp" alt="" />
                 </div>
                 <div class="product-info">
                   <h3 class="product-name">Hạt S2PET Cho Mèo Premium Bịch 1kg</h3>
-                  <div class="product-rating">
-                    <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i>
-                  </div>
                   <div class="price-box">
                     <span class="discount-badge">-5%</span>
                     <span class="old-price">139,000 đ</span>
@@ -970,12 +1035,12 @@
           </div>
         </section>
 
-        <!-- SECTION 2: COMBO TIẾT KIỆM & BÁN CHẠY -->
+        <!-- MỤC 2: COMBO TIẾT KIỆM -->
         <section class="product-section">
           <div class="site-container">
             <div class="section-header">
               <div class="title-box">
-                <h2>Combo tiết kiệm & Bán chạy 🔥</h2>
+                <h2>Combo tiết kiệm 🔥</h2>
                 <p>Săn deal hời - Chăm boss nhẹ tênh!</p>
               </div>
               <a href="javascript:void(0)" onclick="switchView('products')" class="view-more">
@@ -985,87 +1050,17 @@
 
             <div class="product-grid">
               <div class="product-card" onclick="openProductDetail('sp7')" style="cursor: pointer;">
-                <div class="product-img-box">
-                  <img src="./src/img/img-products/pate_sot.webp" alt="Pate DoggyMan" />
-                </div>
+                <div class="product-img-box"><img src="./src/img/img-products/pate_sot.webp" alt="" /></div>
                 <div class="product-info">
-                  <h3 class="product-name">Combo 5 Pate DoggyMan Cho Cún Sốt Kem Gói 70g</h3>
-                  <div class="product-rating">
-                    <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i>
-                  </div>
-                  <div class="price-box">
-                    <span class="discount-badge">-5%</span>
-                    <span class="old-price">75,000 đ</span>
-                  </div>
+                  <h3 class="product-name">Combo 5 Pate DoggyMan Cho Cún Sốt Kem</h3>
                   <div class="current-price">71,250 đ</div>
                 </div>
               </div>
-
               <div class="product-card" onclick="openProductDetail('sp17')" style="cursor: pointer;">
-                <div class="product-img-box">
-                  <img src="./src/img/img-products/6_goi.webp" alt="Pate Whiskas" />
-                </div>
+                <div class="product-img-box"><img src="./src/img/img-products/6_goi.webp" alt="" /></div>
                 <div class="product-info">
-                  <h3 class="product-name">Combo 6 Hộp Pate Whiskas Vị Cá Biển Cho Mèo 85g</h3>
-                  <div class="product-rating">
-                    <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i>
-                  </div>
-                  <div class="price-box">
-                    <span class="discount-badge">-13%</span>
-                    <span class="old-price">114,000 đ</span>
-                  </div>
+                  <h3 class="product-name">Combo 6 Hộp Pate Whiskas Vị Cá Biển 85g</h3>
                   <div class="current-price">99,000 đ</div>
-                </div>
-              </div>
-
-              <div class="product-card" onclick="openProductDetail('sp20')" style="cursor: pointer;">
-                <div class="product-img-box">
-                  <img src="./src/img/img-products/CDF.jpg" alt="Hạt S2PET V3" />
-                </div>
-                <div class="product-info">
-                  <h3 class="product-name">Hạt S2PET Cho Mèo V3 Bịch 1kg - Bịch</h3>
-                  <div class="product-rating">
-                    <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i>
-                  </div>
-                  <div class="price-box">
-                    <span class="discount-badge">-3%</span>
-                    <span class="old-price">119,000 đ</span>
-                  </div>
-                  <div class="current-price">115,000 đ</div>
-                </div>
-              </div>
-
-              <div class="product-card" onclick="openProductDetail('sp8_1')" style="cursor: pointer;">
-                <div class="product-img-box">
-                  <img src="./src/img/img-products/royal_canin.webp" alt="Royal Canin Indoor" />
-                </div>
-                <div class="product-info">
-                  <h3 class="product-name">Hạt Royal Canin Indoor 27 Cho Mèo Nuôi Trong Nhà</h3>
-                  <div class="product-rating">
-                    <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i>
-                  </div>
-                  <div class="price-box">
-                    <span class="discount-badge">-8%</span>
-                    <span class="old-price">420,000 đ</span>
-                  </div>
-                  <div class="current-price">385,000 đ</div>
-                </div>
-              </div>
-
-              <div class="product-card" onclick="openProductDetail('sp9')" style="cursor: pointer;">
-                <div class="product-img-box">
-                  <img src="./src/img/img-products/cat.webp" alt="Cát Cature" />
-                </div>
-                <div class="product-info">
-                  <h3 class="product-name">Cát Đậu Nành Tofu Cature Khử Mùi Cho Mèo</h3>
-                  <div class="product-rating">
-                    <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i>
-                  </div>
-                  <div class="price-box">
-                    <span class="discount-badge">-11%</span>
-                    <span class="old-price">140,000 đ</span>
-                  </div>
-                  <div class="current-price">125,000 đ</div>
                 </div>
               </div>
             </div>
@@ -1077,8 +1072,8 @@
       <section id="view-products" class="app-view d-none">
         <main class="site-container">
           <div class="shop-header-bar">
-            <h1>Tất cả sản phẩm</h1>
-            <span id="productCount" style="color: #666; font-size: 14px;">Đang tải...</span>
+            <h1 style="font-size: 20px;">Tất cả sản phẩm</h1>
+            <span id="productCount" style="color: #666; font-size: 13px;">Đang tải...</span>
           </div>
           <div class="product-grid-container" id="productList"></div>
         </main>
@@ -1086,60 +1081,9 @@
 
       <!-- VIEW 3: CÀI ĐẶT TÀI KHOẢN -->
       <section id="view-account" class="app-view d-none">
-        <main class="site-container">
-          <div class="account-setting-container">
-            <aside class="setting-sidebar">
-              <div class="user-brief">
-                <img src="./src/img/Avatar-icon.png" alt="Avatar" />
-                <div>
-                  <h4 style="margin: 0; font-size: 16px;">Tài khoản thành viên</h4>
-                  <span style="font-size: 13px; color: #888;">Khách hàng thân thiết</span>
-                </div>
-              </div>
-              <div class="setting-menu">
-                <a class="active"><i class="ri-user-settings-line"></i> Thông tin cá nhân</a>
-                <a><i class="ri-map-pin-user-line"></i> Sổ địa chỉ</a>
-                <a><i class="ri-lock-password-line"></i> Đổi mật khẩu</a>
-                <a onclick="switchView('home')"><i class="ri-arrow-left-line"></i> Về trang chủ</a>
-              </div>
-            </aside>
-
-            <div class="setting-content-panel">
-              <div class="panel-header">
-                <h2>Hồ Sơ Của Tôi</h2>
-                <p>Quản lý thông tin hồ sơ để bảo mật tài khoản và nhận ưu đãi</p>
-              </div>
-              <form onsubmit="event.preventDefault(); alert('Cập nhật thông tin thành công!');">
-                <div class="form-grid">
-                  <div class="form-group">
-                    <label>Họ và tên</label>
-                    <input type="text" value="Nguyễn Văn A" required />
-                  </div>
-                  <div class="form-group">
-                    <label>Số điện thoại</label>
-                    <input type="tel" value="0912345678" required />
-                  </div>
-                  <div class="form-group">
-                    <label>Email</label>
-                    <input type="email" value="nguyenvana@gmail.com" required />
-                  </div>
-                  <div class="form-group">
-                    <label>Thú cưng nuôi ở nhà</label>
-                    <select>
-                      <option value="both">Cả Chó và Mèo</option>
-                      <option value="dog">Cún cưng</option>
-                      <option value="cat">Mèo cưng</option>
-                    </select>
-                  </div>
-                  <div class="form-group full-width">
-                    <label>Địa chỉ nhận hàng</label>
-                    <input type="text" value="13A-13C Trần Não, P. An Khánh, Tp. Thủ Đức, Tp.HCM" required />
-                  </div>
-                </div>
-                <button type="submit" class="btn-save-account">Lưu thay đổi</button>
-              </form>
-            </div>
-          </div>
+        <main class="site-container" style="padding: 20px 0;">
+          <h2>Tài khoản của tôi</h2>
+          <p>Quản lý đơn hàng và địa chỉ giao hàng</p>
         </main>
       </section>
 
@@ -1148,19 +1092,17 @@
         <main class="site-container">
           <div class="section-nav-container">
             <ul class="section-nav">
-              <li><a href="javascript:void(0)" onclick="switchView('home')">Petpet</a></li>
-              <li>/</li>
-              <li><a href="javascript:void(0)" onclick="switchView('products')">Sản phẩm</a></li>
+              <li><a href="javascript:void(0)" onclick="switchView('home')">PETPET</a></li>
               <li>/</li>
               <li><a href="javascript:void(0)" id="detailBreadcrumbCategory">Thức ăn</a></li>
               <li>/</li>
-              <li><a href="javascript:void(0)"><b id="detailBreadcrumbName">Chi tiết sản phẩm</b></a></li>
+              <li><b id="detailBreadcrumbName">Chi tiết sản phẩm</b></li>
             </ul>
           </div>
 
           <div class="details-container">
             <div class="img-container">
-              <img id="detailImg" src="" alt="Sản phẩm chi tiết" />
+              <img id="detailImg" src="" alt="" />
             </div>
 
             <div class="info-container">
@@ -1169,15 +1111,14 @@
               </div>
               <div class="rating-section">
                 <span class="stars-gold">★★★★★</span>
-                <span id="detailSoldText">| Đã bán Online: 0</span>
-                <i class="ri-poker-hearts-line" title="Yêu thích"></i>
-                <i class="ri-share-box-line" title="Chia sẻ"></i>
+                <span id="detailSoldText">| Đã bán Online: 120</span>
               </div>
               <div class="prices">
                 <span id="detailDiscount" class="discount">-5%</span>
-                <span id="detailOldPrice" class="old-price">190,000đ</span>
+                <span id="detailOldPrice" class="old-price" style="text-decoration: line-through; color: #888;">190,000đ</span>
                 <p id="detailSalesPrice" class="sales-price">180,500đ</p>
               </div>
+
               <div class="description">
                 <div class="ton-kho">
                   <p>Tồn kho online:</p>
@@ -1185,31 +1126,25 @@
                 </div>
                 <div class="van-chuyen">
                   <p>Vận chuyển:</p>
-                  <span>Săn voucher giảm phí vận chuyển nội thành Tp.HCM</span>
+                  <span>Giao nhanh nội thành</span>
                 </div>
               </div>
+
               <div class="quantity-container">
-                <div class="quantity-text">
-                  <p>Số lượng:</p>
-                </div>
+                <span>Số lượng:</span>
                 <div class="quantity-btn-container">
-                  <button type="button" class="quantity-btn desc" onclick="changeQuantity(-1)">-</button>
+                  <button type="button" class="quantity-btn" onclick="changeQuantity(-1)">-</button>
                   <p id="quantity">1</p>
-                  <button type="button" class="quantity-btn asc" onclick="changeQuantity(1)">+</button>
+                  <button type="button" class="quantity-btn" onclick="changeQuantity(1)">+</button>
                 </div>
               </div>
-              <div class="app-btn">
-                <button type="button" onclick="showQC()">
-                  <span>Mua ngay trên app PETPET</span>
-                </button>
-              </div>
+
+              <!-- Nút mua cho Desktop -->
+              <button class="desktop-btn-buy" onclick="showQC()">MUA NGAY TRÊN APP PETPET</button>
             </div>
           </div>
 
-          <div class="mini-img-container">
-            <img id="detailThumb1" src="" alt="" />
-          </div>
-
+          <!-- BẢNG THÔNG TIN SẢN PHẨM -->
           <div class="info-sp-container">
             <div>
               <div class="info-title">
@@ -1219,123 +1154,120 @@
               <div class="info-box">
                 <div class="box-row">
                   <span>Thương hiệu</span>
-                  <a href="javascript:void(0)" id="detailBrand">PETPET</a>
+                  <a href="javascript:void(0)" id="detailBrand">PetQ</a>
                 </div>
                 <div class="box-row">
                   <span>Danh mục</span>
-                  <a href="javascript:void(0)" id="detailCategory">Thức ăn thú cưng</a>
+                  <a href="javascript:void(0)" id="detailCategory">Súp thưởng</a>
                 </div>
                 <div class="box-row">
                   <span>Khối lượng</span>
-                  <p id="detailWeight">1kg</p>
+                  <p id="detailWeight">0.015kg</p>
                 </div>
                 <div class="box-row">
-                  <span>Xuất xứ</span>
-                  <p id="detailOrigin">Nhật Bản</p>
+                  <span>Hạn sử dụng</span>
+                  <p id="detailOrigin">>1 năm</p>
                 </div>
               </div>
-              <div class="info-sp-content" id="detailFullContent">
-                <!-- Nội dung mô tả chi tiết nạp qua JS -->
-              </div>
+
+              <div class="info-sp-content" id="detailFullContent"></div>
             </div>
 
-            <div class="side-sp" id="detailSideList">
-              <!-- Cột gợi ý sản phẩm -->
-            </div>
+            <div class="side-sp" id="detailSideList"></div>
           </div>
         </main>
       </section>
 
-      <!-- VIEW 5: THƯƠNG HIỆU (BRAND DIRECTORY) -->
+      <!-- VIEW 5: THƯƠNG HIỆU -->
       <section id="view-brands" class="app-view d-none">
         <main class="site-container brands-page-wrapper">
-          <!-- Banner -->
           <div class="brands-banner">
-            <div>
-              <h1>Thương hiệu nổi tiếng</h1>
-              <p>Thương hiệu thú cưng chính hãng tại PETPET</p>
-            </div>
+            <h1>Thương hiệu nổi tiếng</h1>
+            <p>Thương hiệu thú cưng chính hãng tại PETPET</p>
           </div>
-
-          <!-- Lưới thương hiệu -->
           <div class="brands-grid-layout" id="brandsContainer">
             <div style="grid-column: 1/-1; text-align: center; color: #888; padding: 40px 0;">Đang tải danh sách thương hiệu...</div>
           </div>
         </main>
       </section>
 
-      <!-- Footer Dùng Chung -->
-      <div class="site-container">
-        <footer class="footer">
-          <div class="break-line"><div id="line1"></div><div id="line2"></div><div id="line3"></div></div>
-          <div class="footer-grid">
-            <div class="footer-info f1">
-              <h3>Công Ty Cổ Phần PETPET</h3>
-              <p>PETPET là chuỗi 7+ cửa hàng thú cưng chuyên cung cấp thức ăn hạt, pate, bánh thưởng, đồ chơi và phụ kiện cho chó mèo chính hãng, giá tốt.</p>
-              <div id="email"><i class="ri-mail-fill"></i><p>ilove@petpet.vn</p></div>
-              <div id="phone"><i class="ri-phone-fill"></i><p>1900 3305</p></div>
-            </div>
-            <div class="footer-info f2">
-              <h3>Về PETPET</h3>
-              <a href="javascript:void(0)" onclick="switchView('home')">Trang chủ</a>
-              <a href="javascript:void(0)" onclick="switchView('products')">Tất cả sản phẩm</a>
-              <a href="javascript:void(0)" onclick="switchView('brands')">Thương hiệu</a>
-              <a href="javascript:void(0)" onclick="switchView('account')">Cài đặt tài khoản</a>
-            </div>
-            <div class="footer-info f3">
-              <h3>Chấp nhận thanh toán</h3>
-              <img src="src/img/footer/payment.svg" alt="" />
-              <h3>Đối tác vận chuyển</h3>
-              <img src="src/img/footer/shipping.svg" alt="" />
-            </div>
-          </div>
-        </footer>
+      <!-- Footer Desktop -->
+      <footer class="footer" style="background: #fff; padding: 30px 0; margin-top: 40px; border-top: 1px solid #eee;">
+        <div class="site-container">
+          <p>© 2026 Cửa Hàng Thú Cưng PETPET - All rights reserved.</p>
+        </div>
+      </footer>
+    </div>
+
+    <!-- 4. BOTTOM NAVIGATION CHÂN TRANG MOBILE -->
+    <nav class="mobile-bottom-nav" id="mobileBottomNav">
+      <div class="bottom-nav-item active" onclick="switchView('home')">
+        <i class="ri-home-5-line"></i>
+        <span>Trang chủ</span>
+      </div>
+      <div class="bottom-nav-item" onclick="switchView('products')">
+        <i class="ri-movie-line"></i>
+        <span>Video</span>
+      </div>
+      <div class="bottom-nav-item" onclick="switchView('products')">
+        <i class="ri-file-list-3-line"></i>
+        <span>Đơn hàng</span>
+      </div>
+      <div class="bottom-nav-item" onclick="switchView('account')">
+        <i class="ri-user-3-line"></i>
+        <span>Tài khoản</span>
+      </div>
+    </nav>
+
+    <!-- 5. NÚT MUA HÀNG DÍNH CHÂN TRANG CHO MÀN HÌNH CHI TIẾT SẢN PHẨM MOBILE -->
+    <div class="mobile-fixed-buy-bar" id="mobileDetailBuyBar" style="display: none;">
+      <button class="btn-sticky-buy" onclick="showQC()">MUA NGAY TRÊN APP PETPET</button>
+    </div>
+
+    <!-- POPUP MÃ QR THEO ĐÚNG BANNER GỢI Ý -->
+    <div class="qr-modal-wrapper" id="qrModalWrapper">
+      <div class="qr-modal-backdrop" onclick="hideQC()"></div>
+      <div class="qr-modal-card">
+        <button type="button" class="qr-modal-close" onclick="hideQC()">&times;</button>
+        <img 
+          src="./src/img/QRDownloadApp.png" 
+          class="qr-big-image" 
+          alt="Quét mã QR PetPet" 
+          onerror="this.onerror=null; this.src='https://api.qrserver.com/v1/create-qr-code/?size=380x220&data=https://petpet.vn';" 
+        />
       </div>
     </div>
 
-    <!-- POPUP QC TẢI APP -->
-    <div class="app-qc-container" id="appQcContainer">
-      <div class="app-qc-blur" onclick="hideQC()"></div>
-      <div class="app-qc" onclick="hideQC()">
-        <img src="./src/img/QRDownloadApp.png" alt="Mã QR tải ứng dụng" onerror="this.src='./src/img/Avatar-icon.png'" />
-      </div>
-    </div>
-
-    <!-- JAVASCRIPT ĐIỀU HƯỚNG SPA & RENDER DỮ LIỆU TỪ FILE JSON -->
+    <!-- JAVASCRIPT ĐỌC FILE JSON & ĐIỀU HƯỚNG VIEW -->
     <script>
       let productsData = [];
       let brandsData = [];
 
-      // 1. Tải dữ liệu từ products.json và brands.json
       document.addEventListener('DOMContentLoaded', () => {
-        // Tải danh sách sản phẩm
+        // 1. Tải danh sách sản phẩm từ products.json
         fetch('./src/js/products.json')
           .then(res => {
             if (!res.ok) throw new Error(`Lỗi tải products.json: ${res.status}`);
             return res.json();
           })
-          .then(data => {
-            productsData = data || [];
+          .then(data => { 
+            productsData = data || []; 
           })
-          .catch(err => {
-            console.error('Không thể đọc file ./src/js/products.json:', err);
-          });
+          .catch(err => console.error('Lỗi nạp products.json:', err));
 
-        // Tải danh sách thương hiệu
+        // 2. Tải danh sách thương hiệu từ brands.json
         fetch('./src/js/brand.json')
           .then(res => {
             if (!res.ok) throw new Error(`Lỗi tải brands.json: ${res.status}`);
             return res.json();
           })
-          .then(data => {
-            brandsData = data || [];
+          .then(data => { 
+            brandsData = data || []; 
           })
-          .catch(err => {
-            console.error('Không thể đọc file ./src/js/brands.json:', err);
-          });
+          .catch(err => console.error('Lỗi nạp brands.json:', err));
       });
 
-      // 2. Chuyển đổi giữa các View SPA
+      // Điều hướng View SPA
       window.switchView = function(viewName) {
         const views = ['view-home', 'view-products', 'view-account', 'view-detail', 'view-brands'];
         views.forEach(v => {
@@ -1346,84 +1278,25 @@
         const target = document.getElementById(`view-${viewName}`);
         if (target) target.classList.remove('d-none');
 
-        if (viewName === 'products') {
-          renderProductsPage();
-        } else if (viewName === 'brands') {
-          renderBrandsPage();
+        // Quản lý hiển thị thanh công cụ đáy (Bottom bar vs Sticky Buy button)
+        const bottomNav = document.getElementById('mobileBottomNav');
+        const buyBar = document.getElementById('mobileDetailBuyBar');
+
+        if (viewName === 'detail') {
+          if (bottomNav) bottomNav.style.display = 'none';
+          if (buyBar && window.innerWidth <= 768) buyBar.style.display = 'block';
+        } else {
+          if (bottomNav && window.innerWidth <= 768) bottomNav.style.display = 'flex';
+          if (buyBar) buyBar.style.display = 'none';
         }
+
+        if (viewName === 'products') renderProductsPage();
+        if (viewName === 'brands') renderBrandsPage();
 
         window.scrollTo({ top: 0, behavior: 'smooth' });
       };
 
-      // 3. Render danh sách thương hiệu từ brandsData (View 5)
-      let hasRenderedBrands = false;
-      function renderBrandsPage() {
-        if (hasRenderedBrands && document.getElementById('brandsContainer').children.length > 1) return;
-
-        const container = document.getElementById('brandsContainer');
-        if (!container) return;
-
-        if (brandsData.length === 0) {
-          container.innerHTML = `<div style="grid-column: 1/-1; text-align: center; color: #888; padding: 40px 0;">Đang tải danh sách thương hiệu...</div>`;
-          setTimeout(renderBrandsPage, 150);
-          return;
-        }
-
-        container.innerHTML = brandsData.map(b => `
-          <div class="brand-card" onclick="switchView('products')">
-            <div class="brand-img-wrap">
-              <img src="${b.image}" alt="${b.name}" loading="lazy" onerror="this.src='./src/img/Avatar-icon.png'" />
-            </div>
-            <span>${b.name}</span>
-          </div>
-        `).join('');
-        hasRenderedBrands = true;
-      }
-
-      // 4. Render danh sách sản phẩm ở View 2 (Sản phẩm)
-      let hasRenderedShop = false;
-      function renderProductsPage() {
-        if (hasRenderedShop && document.getElementById('productList').children.length > 0) return;
-
-        const container = document.getElementById('productList');
-        const countEl = document.getElementById('productCount');
-        if (!container) return;
-
-        if (productsData.length === 0) {
-          if (countEl) countEl.textContent = 'Đang tải dữ liệu...';
-          setTimeout(renderProductsPage, 150);
-          return;
-        }
-
-        if (countEl) countEl.textContent = `Hiển thị ${productsData.length} sản phẩm`;
-
-        container.innerHTML = productsData.map(sp => {
-          const oldVal = sp.originalPrice || sp.oldPrice;
-          const oldHtml = oldVal
-            ? `<span class="old-price">${Number(oldVal).toLocaleString('vi-VN')} đ</span>`
-            : '';
-
-          return `
-            <div class="product-card-link" onclick="openProductDetail('${sp.id}')">
-              <div class="product-card-item">
-                <div class="product-img-box">
-                  <img src="${sp.image}" alt="${sp.name}" loading="lazy" onerror="this.src='./src/img/Avatar-icon.png'" />
-                </div>
-                <div class="product-info">
-                  <h3 class="product-name" title="${sp.name}">${sp.name}</h3>
-                  <div class="price-box">
-                    <span class="current-price">${Number(sp.price).toLocaleString('vi-VN')} đ</span>
-                    ${oldHtml}
-                  </div>
-                </div>
-              </div>
-            </div>
-          `;
-        }).join('');
-        hasRenderedShop = true;
-      }
-
-      // 5. Mở View Chi Tiết Sản Phẩm
+      // Mở chi tiết sản phẩm
       window.openProductDetail = function(productId) {
         if (!productsData || productsData.length === 0) {
           setTimeout(() => openProductDetail(productId), 100);
@@ -1436,81 +1309,38 @@
         document.getElementById('detailBreadcrumbCategory').textContent = item.category || 'Thức ăn';
         document.getElementById('detailTitle').textContent = item.name;
         document.getElementById('detailSubTitle').textContent = item.name;
-
         document.getElementById('detailImg').src = item.image;
-        document.getElementById('detailThumb1').src = item.image;
 
         document.getElementById('detailSalesPrice').textContent = `${Number(item.price).toLocaleString('vi-VN')}đ`;
         const oldVal = item.originalPrice || item.oldPrice;
-        const discountEl = document.getElementById('detailDiscount');
-        const oldPriceEl = document.getElementById('detailOldPrice');
         if (oldVal) {
-          discountEl.style.display = 'inline-block';
-          oldPriceEl.style.display = 'inline-block';
-          discountEl.textContent = item.discount || '-5%';
-          oldPriceEl.textContent = `${Number(oldVal).toLocaleString('vi-VN')}đ`;
+          document.getElementById('detailDiscount').style.display = 'inline-block';
+          document.getElementById('detailOldPrice').style.display = 'inline-block';
+          document.getElementById('detailOldPrice').textContent = `${Number(oldVal).toLocaleString('vi-VN')}đ`;
         } else {
-          discountEl.style.display = 'none';
-          oldPriceEl.style.display = 'none';
+          document.getElementById('detailDiscount').style.display = 'none';
+          document.getElementById('detailOldPrice').style.display = 'none';
         }
 
-        document.getElementById('detailStock').textContent = item.stock || 'Còn hàng';
-        document.getElementById('detailSoldText').textContent = `| Đã bán Online: ${item.sold || item.reviewCount || 10}`;
-        document.getElementById('detailBrand').textContent = item.brand || 'PETPET';
-        document.getElementById('detailCategory').textContent = item.category || 'Thức ăn thú cưng';
-        document.getElementById('detailWeight').textContent = item.weight || '1kg';
-        document.getElementById('detailOrigin').textContent = item.origin || 'Nhật Bản';
-
-        const highlightsHtml = Array.isArray(item.highlights) && item.highlights.length > 0
-          ? `<ul>${item.highlights.map(h => `<li><span>${h}</span></li>`).join('')}</ul>`
-          : '';
-
-        const instructionsHtml = Array.isArray(item.instructions) && item.instructions.length > 0
-          ? `<ul>${item.instructions.map(ins => `<li><span>${ins}</span></li>`).join('')}</ul>`
-          : '';
+        document.getElementById('detailBrand').textContent = item.brand || 'PetQ';
+        document.getElementById('detailCategory').textContent = item.category || 'Súp thưởng';
+        document.getElementById('detailWeight').textContent = item.weight || '0.015kg';
+        document.getElementById('detailOrigin').textContent = item.origin || '>1 năm';
 
         document.getElementById('detailFullContent').innerHTML = `
-          <p><span><strong>${item.name}</strong> - ${item.description || ''}</span></p>
-          ${highlightsHtml ? `<p><span><strong>Đặc điểm nổi bật:</strong></span></p>${highlightsHtml}` : ''}
-          ${item.ingredients ? `<p><br /><span><strong>Thành phần:</strong></span></p><p><span>${item.ingredients}</span></p>` : ''}
-          ${instructionsHtml ? `<p><br /><span><strong>Hướng dẫn sử dụng:</strong></span></p>${instructionsHtml}` : ''}
+          <p><strong style="color: #d32f2f;">${item.name}</strong> là sự kết hợp giữa món ăn vặt và thực phẩm bổ sung dinh dưỡng. Mang lại cấu trúc kem mịn mượt giúp bé mèo dễ dàng hấp thụ dưỡng chất hơn.</p>
+          <p style="font-weight: 700; margin-top: 14px;">🧡 Đặc điểm nổi bật</p>
+          <p>Nguồn sữa dê dồi dào canxi: Sữa dê có cấu trúc phân tử đạm nhỏ, giúp mèo dễ tiêu hóa và hấp thụ canxi tốt hơn, hỗ trợ hệ xương và răng chắc khỏe.<br/>
+          Hệ thống đa Vitamin: Bổ sung các loại Vitamin thiết yếu giúp cải thiện thị lực, làm mượt lông và tăng cường hệ miễn dịch tự nhiên.<br/>
+          Cấu trúc kem mịn: Lớp súp sệt mịn màng thơm mùi sữa đặc trưng, cực kỳ kích thích vị giác ngay cả với những bé mèo kén ăn nhất.</p>
+          <p style="font-weight: 700; margin-top: 14px;">🧡 Đối tượng sử dụng</p>
+          <p>Mèo ở mọi lứa tuổi, đặc biệt tốt cho mèo con đang phát triển khung xương và mèo già cần bổ sung dinh dưỡng.</p>
         `;
 
-        document.getElementById('quantity').textContent = '1';
-        renderSideProducts(productsData, item.id);
         switchView('detail');
       };
 
-      // 6. Cột gợi ý sản phẩm liên quan
-      function renderSideProducts(list, currentId) {
-        const sideContainer = document.getElementById('detailSideList');
-        if (!sideContainer) return;
-
-        const otherItems = list.filter(p => p.id !== currentId).slice(0, 5);
-        sideContainer.innerHTML = otherItems.map(sp => {
-          const oldVal = sp.originalPrice || sp.oldPrice;
-          const oldHtml = oldVal ? `<span class="old-price">${Number(oldVal).toLocaleString('vi-VN')}đ</span>` : '';
-          const discHtml = sp.discount ? `<span class="discount">${sp.discount}</span>` : '';
-
-          return `
-            <div class="khung-sp" onclick="openProductDetail('${sp.id}')">
-              <div class="khung-img">
-                <img src="${sp.image}" alt="${sp.name}" onerror="this.src='./src/img/Avatar-icon.png'" />
-              </div>
-              <div class="info-sp">
-                <div class="name-sp" title="${sp.name}">${sp.name}</div>
-                <div class="stars">★★★★★</div>
-                <div class="prices">
-                  ${discHtml}
-                  ${oldHtml}
-                  <p class="sales-price">${Number(sp.price).toLocaleString('vi-VN')}đ</p>
-                </div>
-              </div>
-            </div>
-          `;
-        }).join('');
-      }
-
+      // Tăng giảm số lượng sản phẩm
       function changeQuantity(amount) {
         const qtyEl = document.getElementById('quantity');
         let currentQty = Number(qtyEl.textContent) || 1;
@@ -1519,15 +1349,75 @@
         qtyEl.textContent = currentQty;
       }
 
-      function showQC() {
-        document.getElementById('appQcContainer').classList.add('show');
+      // Render danh sách sản phẩm (View 2)
+      function renderProductsPage() {
+        const container = document.getElementById('productList');
+        if (!container || productsData.length === 0) return;
+        document.getElementById('productCount').textContent = `${productsData.length} sản phẩm`;
+        container.innerHTML = productsData.map(sp => `
+          <div class="product-card-link" onclick="openProductDetail('${sp.id}')">
+            <div class="product-card-item">
+              <div class="product-img-box"><img src="${sp.image}" alt="" onerror="this.src='./src/img/Avatar-icon.png'" /></div>
+              <h3 class="product-name">${sp.name}</h3>
+              <div class="price-box">
+                <span class="current-price">${Number(sp.price).toLocaleString('vi-VN')} đ</span>
+              </div>
+            </div>
+          </div>
+        `).join('');
       }
-      function hideQC() {
-        document.getElementById('appQcContainer').classList.remove('show');
-      }
-    </script>
 
-    <script src="./src/js/main.js"></script>
-    <script src="https://kit.fontawesome.com/6abea2bdfc.js" crossorigin="anonymous"></script>
+      // Render danh sách thương hiệu (View 5) có cơ chế retry và ảnh dự phòng
+      function renderBrandsPage() {
+        const container = document.getElementById('brandsContainer');
+        if (!container) return;
+
+        if (!brandsData || brandsData.length === 0) {
+          container.innerHTML = `<div style="grid-column: 1/-1; text-align: center; color: #888; padding: 30px 0;">Đang tải danh sách thương hiệu...</div>`;
+          setTimeout(renderBrandsPage, 100);
+          return;
+        }
+
+        container.innerHTML = brandsData.map(b => `
+          <div class="brand-card" onclick="switchView('products')">
+            <div class="brand-img-wrap">
+              <img 
+                src="${b.image}" 
+                alt="${b.name}" 
+                loading="lazy" 
+                onerror="this.onerror=null; this.src='https://placehold.co/180x60?text=${encodeURIComponent(b.name)}';" 
+              />
+            </div>
+            <span>${b.name}</span>
+          </div>
+        `).join('');
+      }
+
+      // Mở Popup mã QR
+      window.showQC = function() {
+        const modal = document.getElementById('qrModalWrapper');
+        if (modal) modal.classList.add('show');
+      };
+
+      // Đóng Popup mã QR
+      window.hideQC = function() {
+        const modal = document.getElementById('qrModalWrapper');
+        if (modal) modal.classList.remove('show');
+      };
+
+      // Bắt sự kiện Click toàn trang & Phím ESC
+      document.addEventListener('click', (e) => {
+        if (e.target.closest('.qr-modal-close') || e.target.classList.contains('qr-modal-backdrop')) {
+          e.preventDefault();
+          window.hideQC();
+        }
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          window.hideQC();
+        }
+      });
+    </script>
   </body>
 </html>
