@@ -1,0 +1,414 @@
+/* Thiết lập tổng thể */
+:root {
+  --yellow-main: #ffc91b;
+  --yellow-light: #fff8e1;
+  --yellow-banner: #fac12d;
+  --text-title: #221f20;
+  --text-para: #4a4a4a;
+  --white: #ffffff;
+  --icon-red: #ea3943;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
+  background-color: #ffffff;
+  color: var(--text-title);
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Breadcrumb */
+.breadcrumb-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #f7f7f8;
+  padding: 12px 24px;
+  border-radius: 8px;
+  margin: 20px 0;
+  font-size: 14px;
+}
+
+.breadcrumb-bar a {
+  text-decoration: none;
+  color: #666;
+  font-weight: 600;
+}
+
+.breadcrumb-bar .divider {
+  color: #bbb;
+}
+
+.breadcrumb-bar .active-page {
+  font-weight: 800;
+  color: var(--text-title);
+}
+
+/* 1. Hero Banner */
+.hero-banner {
+  background: var(--yellow-banner);
+  background-image: radial-gradient(#ffd663 15%, transparent 20%);
+  background-size: 45px 45px;
+  border-radius: 24px;
+  padding: 50px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 50px;
+}
+
+.hero-title {
+  color: var(--white);
+  font-size: clamp(32px, 5vw, 52px);
+  font-weight: 900;
+  letter-spacing: 1px;
+}
+
+.hero-tag {
+  display: inline-block;
+  background-color: var(--white);
+  color: var(--text-title);
+  padding: 4px 32px;
+  font-size: 24px;
+  font-weight: 900;
+  border-radius: 50px;
+  margin-top: 8px;
+}
+
+/* 2. Tiêu đề chung */
+.block-title {
+  font-size: 30px;
+  font-weight: 900;
+  text-align: center;
+  letter-spacing: 0.5px;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+}
+
+/* Tầm Nhìn */
+.vision-block {
+  text-align: center;
+  max-width: 780px;
+  margin: 0 auto 60px;
+}
+
+.highlight-slogan {
+  color: #f59e0b;
+  font-size: 19px;
+  font-weight: 800;
+  margin-bottom: 14px;
+}
+
+.block-desc {
+  font-size: 15.5px;
+  line-height: 1.7;
+  color: var(--text-para);
+}
+
+/* 3. Sứ Mệnh (Grid 3 thẻ) */
+.mission-block {
+  margin-bottom: 70px;
+}
+
+.mission-cards-wrap {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  margin-top: 35px;
+}
+
+.mission-box {
+  background-color: #fbfbfb;
+  border: 1px solid #f0f0f0;
+  border-radius: 20px;
+  padding: 40px 25px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.25s ease;
+}
+
+.mission-box:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.05);
+}
+
+.icon-wrap {
+  width: 48px;
+  height: 48px;
+  color: var(--icon-red);
+  margin-bottom: 18px;
+}
+
+.icon-wrap svg {
+  width: 100%;
+  height: 100%;
+}
+
+.mission-tag {
+  font-size: 15px;
+  font-weight: 900;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+
+.mission-heading {
+  font-size: 14.5px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 12px;
+}
+
+.mission-text {
+  font-size: 14px;
+  color: #666;
+  line-height: 1.6;
+}
+
+/* 4. Giá Trị Cốt Lõi */
+.values-banner {
+  background-color: var(--yellow-main);
+  border-radius: 30px;
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 80px;
+  min-height: 480px;
+}
+
+/* Cột trái chiếm 55% trên Desktop */
+.values-content {
+  flex: 0 0 55%;
+  max-width: 55%;
+  padding: 48px 40px 48px 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  z-index: 2;
+}
+
+.values-main-title {
+  font-size: 34px;
+  font-weight: 900;
+  letter-spacing: 0.5px;
+  margin-bottom: 24px;
+}
+
+.values-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.value-card {
+  background-color: var(--yellow-light);
+  border-radius: 18px;
+  padding: 16px 20px;
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+}
+
+.item-icon {
+  width: 26px;
+  min-width: 26px;
+  flex-shrink: 0;
+  color: var(--icon-red);
+  margin-top: 2px;
+}
+
+.item-icon svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.item-body h4 {
+  font-size: 15px;
+  font-weight: 900;
+  margin-bottom: 4px;
+}
+
+.item-body p {
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: #444;
+}
+
+/* Cột phải chứa ảnh chiếm 45% trên Desktop */
+.values-graphic {
+  flex: 0 0 45%;
+  max-width: 45%;
+  position: relative;
+  display: flex;
+  align-self: stretch;
+}
+
+.graphic-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: right bottom;
+  display: block;
+}
+
+/* =======================================
+   RESPONSIVE (Mobile & Tablet)
+   ======================================= */
+
+/* Tablet (Dưới 992px) */
+@media (max-width: 992px) {
+  .mission-cards-wrap {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .values-banner {
+    flex-direction: column;
+    min-height: auto;
+  }
+
+  .values-content {
+    flex: 1 1 100%;
+    max-width: 100%;
+    padding: 36px 24px 24px;
+  }
+
+  .values-graphic {
+    flex: 1 1 100%;
+    max-width: 100%;
+    width: 100%;
+    height: 380px;
+  }
+
+  .graphic-img {
+    object-position: center bottom;
+  }
+}
+
+/* =======================================
+   RESPONSIVE (Mobile & Tablet)
+   ======================================= */
+
+/* Tablet & Mobile (Dưới 992px) */
+@media (max-width: 992px) {
+  .mission-cards-wrap {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Chuyển banner thành khối dọc tuần tự (khắc phục lỗi bị lệch ngang) */
+  .values-banner {
+    display: block !important;
+    min-height: auto;
+    padding: 0;
+  }
+
+  .values-content {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 36px 24px 20px 24px;
+    box-sizing: border-box;
+  }
+
+  .values-main-title {
+    text-align: center;
+  }
+
+  /* Khung ảnh chiếm trọn 100% chiều rộng banner */
+  .values-graphic {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 320px;
+    margin: 10px 0 0 0;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  /* Ảnh tự động phóng to lấp đầy 100% bề ngang, căn giữa */
+  .graphic-img {
+    width: 100% !important;
+    min-width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center bottom !important;
+    display: block !important;
+  }
+}
+
+/* Điện thoại di động (Dưới 600px) */
+@media (max-width: 600px) {
+  .wrapper {
+    padding: 0 16px;
+  }
+
+  .hero-banner {
+    padding: 40px 15px;
+  }
+
+  .hero-tag {
+    font-size: 18px;
+    padding: 2px 20px;
+  }
+
+  .mission-cards-wrap {
+    grid-template-columns: 1fr;
+  }
+
+  .values-banner {
+    border-radius: 24px;
+  }
+
+  .values-content {
+    padding: 30px 16px 16px 16px;
+  }
+
+  .values-main-title {
+    font-size: 26px;
+    margin-bottom: 18px;
+  }
+
+  /* Căn giữa toàn bộ nội dung trong từng thẻ */
+  .value-card {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 14px 16px;
+  }
+
+  /* Đưa icon vào chính giữa */
+  .item-icon {
+    margin: 0 auto !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .item-body {
+    text-align: center;
+    width: 100%;
+  }
+
+  /* Kích thước ảnh vừa vặn trên màn hình điện thoại nhỏ */
+  .values-graphic {
+    height: 250px;
+  }
+}

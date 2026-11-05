@@ -29,6 +29,7 @@
     <link rel="stylesheet" href="./src/css/brand.css" />
     <link rel="stylesheet" href="./src/css/detail-product.css" />
     <link rel="stylesheet" href="./src/css/resposive.css" />
+    <link rel="stylesheet" href="./src/css/gthieu.css" />
     <!--------->
   </head>
   <body>
@@ -243,11 +244,20 @@
           <div class="logo">
             <img src="./src/img/icon/logo_headerDesktop.svg" alt="icon" />
           </div>
+          <!-- 4 nút navbar -->
           <ul class="nav-menu flexRow-center">
-            <li class="nav-item"><a href="#Trangchủ">Trang chủ</a></li>
-            <li class="nav-item"><a href="#Giớithiệu">Giới thiệu</a></li>
-            <li class="nav-item"><a href="#Sảnphẩm">Sản phẩm</a></li>
-            <li class="nav-item"><a href="#Thươnghiệu">Thương hiệu</a></li>
+            <li class="nav-item active" data-view="view-home">
+              <a href="#Trangchủ">Trang chủ</a>
+            </li>
+            <li class="nav-item" data-view="view-about">
+              <a href="#Giớithiệu">Giới thiệu</a>
+            </li>
+            <li class="nav-item" data-view="view-products">
+              <a href="#Sảnphẩm">Sản phẩm</a>
+            </li>
+            <li class="nav-item" data-view="view-brand">
+              <a href="#Thươnghiệu">Thương hiệu</a>
+            </li>
           </ul>
         </div>
 
@@ -929,22 +939,9 @@
                   <span class="brand-name">Whiskas</span>
                 </a>
               </div>
-              <!-- Banner -->
-              <div class="deals-banner">
-                <div class="deals-content">
-                  <h2 class="deals-title">Giá tốt hôm nay</h2>
-
-                  <p class="deals-subtitle">
-                    Càng mua - Càng hời - Càng tiết kiệm!
-                  </p>
-                </div>
-
-                <div class="deals-mascot">
-                  <img src="./src/img/banner/GiaTot.svg" alt="Mascot PETPET" />
-                </div>
-              </div>
             </div>
           </section>
+          <div class="screen-product"></div>
         </main>
       </section>
 
@@ -990,20 +987,7 @@
               </button>
             </div>
           </div>
-          <!-- Banner -->
-          <div class="deals-banner">
-            <div class="deals-content">
-              <h2 class="deals-title">Giá tốt hôm nay</h2>
 
-              <p class="deals-subtitle">
-                Càng mua - Càng hời - Càng tiết kiệm!
-              </p>
-            </div>
-
-            <div class="deals-mascot">
-              <img src="./src/img/banner/Brand.svg" alt="Mascot PETPET" />
-            </div>
-          </div>
           <!-- Lưới danh sách các thương hiệu -->
           <div class="brand-grid">
             <!-- Item 1 -->
@@ -1119,8 +1103,195 @@
         </main>
       </section>
 
+      <!-- 4. MÀN HÌNH GIỚI THIỆU -->
+      <section id="view-brand" class="app-view d-none">
+        <div class="site-container">
+          <div class="wrapper">
+            <!-- Breadcrumb điều hướng -->
+            <nav class="breadcrumb-bar" aria-label="Breadcrumb">
+              <a href="index.html">Petpet</a>
+              <span class="divider">/</span>
+              <span class="active-page">Giới thiệu</span>
+            </nav>
+
+            <!-- 1. BANNER HERO -->
+            <header class="hero-banner">
+              <div class="hero-content">
+                <h1 class="hero-title">GIỚI THIỆU</h1>
+                <span class="hero-tag">PETPET</span>
+              </div>
+              <!-- SVG bóng chó và mèo trang trí hai bên -->
+              <div class="pet-shadow left-cat"></div>
+              <div class="pet-shadow right-dog"></div>
+            </header>
+
+            <!-- 2. PHẦN TẦM NHÌN -->
+            <section class="vision-block">
+              <h2 class="block-title">TẦM NHÌN</h2>
+              <p class="highlight-slogan">“ Happy PET – Healthy PET ”</p>
+              <p class="block-desc">
+                PETPET định hướng trở thành hệ thống chăm – nuôi – dinh dưỡng
+                thú cưng số 1 trong khu vực, nơi mọi người nuôi đều tìm thấy sản
+                phẩm tốt và giải pháp đúng cho sức khỏe boss.
+              </p>
+            </section>
+
+            <!-- 3. PHẦN SỨ MỆNH -->
+            <section class="mission-block">
+              <h2 class="block-title">SỨ MỆNH</h2>
+
+              <div class="mission-cards-wrap">
+                <!-- Card 1 -->
+                <article class="mission-box">
+                  <div class="icon-wrap">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path
+                        d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+                      />
+                    </svg>
+                  </div>
+                  <p class="mission-tag">BEST VALUE</p>
+                  <h3 class="mission-heading">Giá tốt, sản phẩm chuẩn</h3>
+                  <p class="mission-text">
+                    Mang đến sản phẩm chính hãng – chọn lọc – giá hợp lý, phù
+                    hợp cho mọi nhu cầu của boss.
+                  </p>
+                </article>
+
+                <!-- Card 2 -->
+                <article class="mission-box">
+                  <div class="icon-wrap">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <circle cx="12" cy="12" r="10"></circle>
+                      <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
+                      <line x1="9" y1="9" x2="9.01" y2="9"></line>
+                      <line x1="15" y1="9" x2="15.01" y2="9"></line>
+                    </svg>
+                  </div>
+                  <p class="mission-tag">BEST CARE</p>
+                  <h3 class="mission-heading">Chăm sóc tận tâm</h3>
+                  <p class="mission-text">
+                    Tư vấn đúng, dịch vụ tốt, hỗ trợ liên tục để bạn yên tâm
+                    chăm boss mỗi ngày.
+                  </p>
+                </article>
+
+                <!-- Card 3 -->
+                <article class="mission-box">
+                  <div class="icon-wrap">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <polyline points="1 4 1 10 7 10"></polyline>
+                      <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path>
+                    </svg>
+                  </div>
+                  <p class="mission-tag">BEST R&D</p>
+                  <h3 class="mission-heading">Liên tục cải tiến</h3>
+                  <p class="mission-text">
+                    Phát triển giải pháp dinh dưỡng & sản phẩm thương hiệu
+                    riêng, an toàn – hiệu quả – phù hợp thú cưng Việt Nam.
+                  </p>
+                </article>
+              </div>
+            </section>
+
+            <!-- 4. PHẦN GIÁ TRỊ CỐT LÕI -->
+            <section class="values-banner">
+              <div class="values-content">
+                <h2 class="values-main-title">GIÁ TRỊ CỐT LÕI</h2>
+
+                <div class="values-stack">
+                  <!-- Item 1 -->
+                  <div class="value-card">
+                    <div class="item-icon red-accent">
+                      <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                          d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+                        />
+                      </svg>
+                    </div>
+                    <div class="item-body">
+                      <h4>TÔN TRỌNG</h4>
+                      <p>
+                        Tôn trọng khách hàng, đối tác và từng bé thú cưng - tạo
+                        nền tảng cho sự phát triển bền vững.
+                      </p>
+                    </div>
+                  </div>
+
+                  <!-- Item 2 -->
+                  <div class="value-card">
+                    <div class="item-icon red-accent">
+                      <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                      >
+                        <path
+                          d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"
+                        ></path>
+                        <line x1="16" y1="8" x2="2" y2="22"></line>
+                        <line x1="17.5" y1="15" x2="9" y2="15"></line>
+                      </svg>
+                    </div>
+                    <div class="item-body">
+                      <h4>THỰC TẾ</h4>
+                      <p>
+                        Lựa chọn giải pháp thiết thực, hiệu quả, xuất phát từ
+                        nhu cầu thật của boss và sen.
+                      </p>
+                    </div>
+                  </div>
+
+                  <!-- Item 3 -->
+                  <div class="value-card">
+                    <div class="item-icon red-accent">
+                      <svg viewBox="0 0 24 24" fill="currentColor">
+                        <polygon
+                          points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"
+                        ></polygon>
+                      </svg>
+                    </div>
+                    <div class="item-body">
+                      <h4>TỐC ĐỘ</h4>
+                      <p>
+                        Hành động nhanh, đổi mới liên tục để mang lại trải
+                        nghiệm ngày càng tốt hơn.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Cột ảnh tràn viền phía bên phải -->
+              <div class="values-graphic">
+                <img
+                  src="quality.svg"
+                  alt="PETPET Cửa hàng & Boss"
+                  class="graphic-img"
+                />
+              </div>
+            </section>
+          </div>
+        </div>
+      </section>
+
       <!-- *.SẢN PHẨM CHI TIẾT -->
-      <section id="view-detail" class="app-view">
+      <section id="view-detail" class="app-view d-none">
         <main class="site-container">
           <!-- DETAILS MAIN CONTAINER (Ảnh chính & Thông tin sản phẩm) -->
           <div class="details-container">
@@ -1305,6 +1476,14 @@
         </main>
       </section>
 
+      <!-- GIỚI THIỆU -->
+      <section id="view-about" class="app-view d-none">
+        <main class="site-container">
+          <h2>Giới thiệu về PETPET</h2>
+          <p>Nội dung giới thiệu sẽ viết ở đây.</p>
+        </main>
+      </section>
+
       <!-- Footer -->
       <div class="site-container">
         <footer class="footer">
@@ -1404,6 +1583,7 @@
     <script type="module" src="./src/js/product.js"></script>
     <script type="module" src="./src/js/detail-product.js"></script>
     <script src="./src/js/main.js"></script>
+    <script type="module" src="./src/js/test.js"></script>
     <script src="./src/js/mobile.js"></script>
     <script
       src="https://kit.fontawesome.com/6abea2bdfc.js"
