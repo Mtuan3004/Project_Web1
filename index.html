@@ -25,6 +25,8 @@
     <link rel="stylesheet" href="./src/css/body-main.css" />
     <link rel="stylesheet" href="./src/css/section-branch.css" />
     <link rel="stylesheet" href="./src/css/mobile.css" />
+    <link rel="stylesheet" href="./src/css/product.css" />
+    <link rel="stylesheet" href="./src/css/brand.css" />
     <link rel="stylesheet" href="./src/css/resposive.css" />
     <!--------->
   </head>
@@ -799,7 +801,7 @@
       </section>
 
       <!-- 2. MÀN HÌNH SẢN PHẨM -->
-      <section id="view-products" class="app-view">
+      <section id="view-products" class="app-view d-none">
         <main class="site-container">
           <!-- Brand-section -->
           <section class="brand-section">
@@ -926,8 +928,193 @@
                   <span class="brand-name">Whiskas</span>
                 </a>
               </div>
+              <!-- Banner -->
+              <div class="deals-banner">
+                <div class="deals-content">
+                  <h2 class="deals-title">Giá tốt hôm nay</h2>
+
+                  <p class="deals-subtitle">
+                    Càng mua - Càng hời - Càng tiết kiệm!
+                  </p>
+                </div>
+
+                <div class="deals-mascot">
+                  <img src="./src/img/banner/GiaTot.svg" alt="Mascot PETPET" />
+                </div>
+              </div>
             </div>
           </section>
+        </main>
+      </section>
+
+      <!-- 3. MÀN HÌNH THƯƠNG HIỆU -->
+      <section id="view-brand" class="app-view">
+        <main class="site-container">
+          <!-- Image Slider -->
+          <div class="site-container">
+            <div class="img-slider">
+              <div class="slider" id="slider">
+                <img
+                  src="src/img/slider img/BANNER FREESHIP_thumb.webp"
+                  alt=""
+                />
+                <img
+                  src="src/img/slider img/Horizontal Banner_thumb.webp"
+                  alt=""
+                />
+                <img
+                  src="src/img/slider img/banner-pate-cun-desktop-v2_thumb.webp"
+                  alt=""
+                />
+                <img
+                  src="src/img/slider img/HERO BANNER THỨ 4 MỞ APP_thumb.webp"
+                  alt=""
+                />
+              </div>
+              <button
+                type="button"
+                class="slider-btn prev flexRow-center"
+                onclick="prev()"
+                aria-label="Ảnh trước"
+              >
+                <i class="ri-arrow-left-s-line"></i>
+              </button>
+              <button
+                type="button"
+                class="slider-btn next flexRow-center"
+                onclick="next()"
+                aria-label="Ảnh sau"
+              >
+                <i class="ri-arrow-right-s-line"></i>
+              </button>
+            </div>
+          </div>
+          <!-- Banner -->
+          <div class="deals-banner">
+            <div class="deals-content">
+              <h2 class="deals-title">Giá tốt hôm nay</h2>
+
+              <p class="deals-subtitle">
+                Càng mua - Càng hời - Càng tiết kiệm!
+              </p>
+            </div>
+
+            <div class="deals-mascot">
+              <img src="./src/img/banner/Brand.svg" alt="Mascot PETPET" />
+            </div>
+          </div>
+          <!-- Lưới danh sách các thương hiệu -->
+          <div class="brand-grid">
+            <!-- Item 1 -->
+            <a href="#" class="brand-item">
+              <div class="brand-img-box">
+                <img
+                  src="./src/img/img-branch/Logo Royal Canin_240x120.webp"
+                  alt="Royal Canin"
+                />
+              </div>
+              <span class="brand-name">Royal Canin</span>
+            </a>
+
+            <!-- Item 2 -->
+            <a href="#" class="brand-item">
+              <div class="brand-img-box">
+                <img
+                  src="./src/img/img-branch/zenith-300x300_240x120.webp"
+                  alt="Zenith"
+                />
+              </div>
+              <span class="brand-name">Zenith</span>
+            </a>
+
+            <!-- Item 3 -->
+            <a href="#" class="brand-item">
+              <div class="brand-img-box">
+                <img
+                  src="./src/img/img-branch/Logo LuvCare_240x120.webp"
+                  alt="Luvcare"
+                />
+              </div>
+              <span class="brand-name">Luvcare</span>
+            </a>
+
+            <!-- Item 4 -->
+            <a href="#" class="brand-item">
+              <div class="brand-img-box">
+                <img
+                  src="./src/img/img-branch/Logo Ganador_240x120.webp"
+                  alt="Ganador"
+                />
+              </div>
+              <span class="brand-name">Ganador</span>
+            </a>
+
+            <!-- Item 5 -->
+            <a href="#" class="brand-item">
+              <div class="brand-img-box">
+                <img
+                  src="./src/img/img-branch/Logo PetQ_240x120.webp"
+                  alt="PetQ"
+                />
+              </div>
+              <span class="brand-name">PetQ</span>
+            </a>
+
+            <!-- Item 6 -->
+            <a href="#" class="brand-item">
+              <div class="brand-img-box">
+                <img
+                  src="./src/img/img-branch/Logo Pedigree_240x120.webp"
+                  alt="Pedigree"
+                />
+              </div>
+              <span class="brand-name">Pedigree</span>
+            </a>
+
+            <!-- Item 7 -->
+            <a href="#" class="brand-item">
+              <div class="brand-img-box">
+                <img
+                  src="./src/img/img-branch/Logo SnappyTom_240x120.webp"
+                  alt="Snappy Tom"
+                />
+              </div>
+              <span class="brand-name">Snappy Tom</span>
+            </a>
+
+            <!-- Item 8 -->
+            <a href="#" class="brand-item">
+              <div class="brand-img-box">
+                <img
+                  src="./src/img/img-branch/Logo Natural Core_240x120.webp"
+                  alt="Natural Core"
+                />
+              </div>
+              <span class="brand-name">Natural Core</span>
+            </a>
+
+            <!-- Item 9 -->
+            <a href="#" class="brand-item">
+              <div class="brand-img-box">
+                <img
+                  src="./src/img/img-branch/Logo Whiskas_240x120.webp"
+                  alt="Whiskas"
+                />
+              </div>
+              <span class="brand-name">Whiskas</span>
+            </a>
+
+            <!-- Item 10 -->
+            <a href="#" class="brand-item">
+              <div class="brand-img-box">
+                <img
+                  src="./src/img/img-branch/Logo Reflex_240x120.webp"
+                  alt="Reflex"
+                />
+              </div>
+              <span class="brand-name">Whiskas</span>
+            </a>
+          </div>
         </main>
       </section>
 
@@ -1029,6 +1216,7 @@
     <!-- JS -->
     <script src="./src/js/main.js"></script>
     <script src="./src/js/mobile.js"></script>
+    <script src="./src/js/productScreen.js"></script>
     <script type="module" src="./src/js/product.js"></script>
     <script
       src="https://kit.fontawesome.com/6abea2bdfc.js"
