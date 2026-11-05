@@ -1,36 +1,13 @@
-// ===== SERVICE: Dữ liệu và xử lý nghiệp vụ =====
-var orders = [
-  {
-    id: '#PP2481',
-    customer: 'Minh Anh',
-    product: 'Royal Canin Mini Adult',
-    total: 845000,
-    status: 'Đã giao',
-  },
-  {
-    id: '#PP2480',
-    customer: 'Tuấn Khang',
-    product: 'Cát vệ sinh Cature',
-    total: 325000,
-    status: 'Đang giao',
-  },
-  {
-    id: '#PP2479',
-    customer: 'Phương Nhi',
-    product: 'Balo vận chuyển',
-    total: 590000,
-    status: 'Chờ xử lý',
-  },
-  {
-    id: '#PP2478',
-    customer: 'Hoàng Nam',
-    product: 'Pate mèo Catchy',
-    total: 275000,
-    status: 'Đã giao',
-  },
-];
+// ===== SERVICE: Dữ liệu và xử lý localStorage =====
+// Trang khách hàng và trang đăng ký dùng chung khóa "users".
 
-var products = [
+var STORAGE_KEYS = {
+  orders: 'petpetOrders',
+  products: 'petpetProducts',
+  users: 'users',
+};
+
+var defaultProducts = [
   {
     id: 'SPC001',
     name: 'Royal Canin Mini Adult',
@@ -39,59 +16,114 @@ var products = [
     pet: 'Chó',
     weight: 'Túi 2kg',
     combo: null,
-    desc: 'Hạt cho chó trưởng thành giống nhỏ, túi 2kg',
-    image: '', // Chưa có đường dẫn ảnh thì hiển thị chữ RC
+    image: '',
     price: 180000,
-    stock: 4,
+    stock: 10,
+    desc: 'Hạt cho chó trưởng thành giống nhỏ',
+    highlights: ['Hỗ trợ tiêu hóa', 'Bảo vệ da lông'],
     discount: null,
     hidden: 0,
   },
 ];
 
-// Số thứ tự hiện tại của từng loại
+var defaultUsers = [
+  {
+    id: 'KH001',
+    fullName: 'Minh Anh',
+    phone: '0901234567',
+    email: 'minhanh@example.com',
+    address: 'Quận 1, TP.HCM',
+    username: 'minhanh',
+    password: '123456',
+    locked: false,
+  },
+];
 
-async function loadProductData() {
-  var savedProducts = localStorage.getItem('petpetProducts');
+function readStorage(key, fallbackValue) {
+  var savedValue = localStorage.getItem(key);
 
-  // Ưu tiên dữ liệu đã được thêm trong trình duyệt
-  if (savedProducts) {
-    products = JSON.parse(savedProducts);
-    return;
+  if (savedValue === null) {
+    return fallbackValue;
   }
 
-  // Nếu chưa có dữ liệu localStorage thì đọc từ JSON
   try {
-    var response = await fetch('./src/data/products.json');
-
-    if (!response.ok) {
-      throw new Error('Không thể đọc products.json');
-    }
-
-    products = await response.json();
+    var parsedValue = JSON.parse(savedValue);
+    return Array.isArray(parsedValue) ? parsedValue : fallbackValue;
   } catch (error) {
-    console.error(error);
-    products = [
-      {
-        id: 'SPC001',
-        name: 'Royal Canin Mini Adult',
-        brand: 'Royal Canin',
-        category: 'L001',
-        pet: 'Chó',
-        weight: 'Túi 2kg',
-        combo: null,
-        desc: 'Hạt cho chó trưởng thành giống nhỏ, túi 2kg',
-        image: '', // Chưa có đường dẫn ảnh thì hiển thị chữ RC
-        price: 180000,
-        stock: 4,
-        discount: null,
-        hidden: 0,
-      },
-    ];
+    console.warn('Dữ liệu localStorage không hợp lệ tại khóa:', key);
+    return fallbackValue;
   }
 }
 
-function saveProducts() {
-  localStorage.setItem('petpetProducts', JSON.stringify(products));
+var orders = readStorage(STORAGE_KEYS.orders, defaultOrders);
+var products = readStorage(STORAGE_KEYS.products, defaultProducts);
+
+// Hỗ trợ dữ liệu cũ nếu trước đây khách hàng được lưu ở petpetCustomers.
+var legacyUsers = readStorage('petpetCustomers', defaultUsers);
+var customers =
+  localStorage.getItem(STORAGE_KEYS.users) !== null
+    ? readStorage(STORAGE_KEYS.users, [])
+    : legacyUsers;
+
+function normalizeCustomers() {
+  customers = customers.map(function (user, index) {
+    var customerNumber = String(index + 1).padStart(3, '0');
+    var locked =
+      user.locked === true ||
+      user.hidden === 1 ||
+      user.status === 'Đã khóa' ||
+      user.status === 'locked';
+
+    return Object.assign({}, user, {
+      id: user.id || user.customerId || 'KH' + customerNumber,
+      fullName:
+        user.fullName || user.name || user.customerName || 'Chưa cập nhật',
+      phone: user.phone || user.phoneNumber || '',
+      email: user.email || '',
+      address: user.address || '',
+      username: user.username || user.account || user.userName || '',
+      locked: locked,
+    });
+  });
+}
+
+function saveLocalStorageOrders() {
+  localStorage.setItem(STORAGE_KEYS.orders, JSON.stringify(orders));
+}
+
+function saveLocalStorageProducts() {
+  localStorage.setItem(STORAGE_KEYS.products, JSON.stringify(products));
+}
+
+function saveLocalStorageCustomers() {
+  // Ghi lại đúng khóa "users" để trang người dùng và admin luôn thống nhất.
+  localStorage.setItem(STORAGE_KEYS.users, JSON.stringify(customers));
+}
+
+function loadProductData() {
+  products = readStorage(STORAGE_KEYS.products, defaultProducts);
+}
+
+function addProduct(newProduct) {
+  if (!newProduct || typeof newProduct !== 'object') {
+    return false;
+  }
+
+  var duplicated = products.some(function (item) {
+    return item && item.id === newProduct.id;
+  });
+
+  if (duplicated) {
+    newProduct.id = generateProductID(newProduct.category);
+  }
+
+  if (!newProduct.id) {
+    return false;
+  }
+
+  products.unshift(newProduct);
+  saveLocalStorageProducts();
+  return true;
 }
 
 function generateProductID(category) {
@@ -105,13 +137,16 @@ function generateProductID(category) {
   if (!prefix) {
     return null;
   }
+
   var maxID = 0;
 
   products.forEach(function (product) {
-    if (product.id.startsWith(prefix)) {
-      var number = Number(product.id.substring(3));
+    var id = product && product.id ? String(product.id) : '';
 
-      if (number > maxID) {
+    if (id.indexOf(prefix) === 0) {
+      var number = parseInt(id.substring(prefix.length), 10);
+
+      if (!isNaN(number) && number > maxID) {
         maxID = number;
       }
     }
@@ -119,6 +154,7 @@ function generateProductID(category) {
 
   return prefix + String(maxID + 1).padStart(3, '0');
 }
+
 function getStatusClass(status) {
   if (status === 'Đã giao') {
     return 'done';
@@ -130,12 +166,27 @@ function getStatusClass(status) {
 
   return 'waiting';
 }
+
 function formatMoney(number) {
-  return number.toLocaleString('vi-VN') + 'đ';
+  return Number(number || 0).toLocaleString('vi-VN') + 'đ';
+}
+
+function escapeHTML(value) {
+  return String(value === undefined || value === null ? '' : value)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
 }
 
 function showMessage(text) {
   var message = document.getElementById('message');
+
+  if (!message) {
+    return;
+  }
+
   message.innerText = text;
   message.classList.add('show');
 
@@ -144,60 +195,7 @@ function showMessage(text) {
   }, 2000);
 }
 
-
-function exportProductsJSON() {
-  var json = JSON.stringify(products, null, 2);
-
-  var blob = new Blob([json], {
-    type: 'application/json',
-  });
-
-  var url = URL.createObjectURL(blob);
-  var link = document.createElement('a');
-
-  link.href = url;
-  link.download = 'product.json';
-
-  link.click();
-
-  URL.revokeObjectURL(url);
-}
-async function saveProductsToFile() {
-  // Trình duyệt không hỗ trợ File System Access API: tải JSON xuống thay thế.
-  if (!window.showSaveFilePicker) {
-    exportProductsJSON();
-    showMessage('Đã tải file product.json xuống máy.');
-    return;
-  }
-
-  try {
-    const handle = await window.showSaveFilePicker({
-      suggestedName: 'product.json',
-      types: [
-        {
-          description: 'JSON file',
-          accept: {
-            'application/json': ['.json'],
-          },
-        },
-      ],
-    });
-
-    const writable = await handle.createWritable();
-    await writable.write(JSON.stringify(products, null, 2));
-    await writable.close();
-
-    showMessage('Đã cập nhật product.json!');
-  } catch (error) {
-    // Người dùng bấm Hủy: dữ liệu vẫn đã được lưu trong localStorage.
-    if (error.name === 'AbortError') {
-      showMessage('Sản phẩm đã lưu trong trình duyệt.');
-      return;
-    }
-
-    console.error('Lỗi lưu product.json:', error);
-    // Nếu không ghi được file đã chọn, vẫn xuất bản JSON để người dùng không mất dữ liệu.
-    exportProductsJSON();
-    showMessage('Không ghi được file đã chọn, đã tải product.json xuống máy.');
-  }
-}
+normalizeCustomers();
+saveLocalStorageOrders();
+saveLocalStorageProducts();
+saveLocalStorageCustomers();
