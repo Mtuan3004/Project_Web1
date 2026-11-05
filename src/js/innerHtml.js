@@ -5,22 +5,22 @@ var pages = {
     <section class="stat-list">
       <article class="stat-card">
         <div class="stat-icon yellow"><i class="ri-shopping-basket-2-line"></i></div>
-        <div><p>Đơn hàng hôm nay</p><h2>12</h2></div>
+        <div><p>Đơn hàng hiện có</p><h2 id="dashboardOrderCount">0</h2></div>
         <p class="stat-desc"><span class="trend-up">↑ 12%</span> so với hôm qua</p>
       </article>
       <article class="stat-card">
         <div class="stat-icon purple"><i class="ri-shopping-cart-line"></i></div>
-        <div><p>Tổng sản phẩm</p><h2>86</h2></div>
+        <div><p>Tổng sản phẩm</p><h2 id="dashboardProductCount">0</h2></div>
         <p class="stat-desc"><span class="trend-up">↑ 12%</span> so với hôm qua</p>
       </article>
       <article class="stat-card">
         <div class="stat-icon blue"><i class="ri-user-line"></i></div>
-        <div><p>Khách hàng</p><h2>245</h2></div>
+        <div><p>Khách hàng</p><h2 id="dashboardCustomerCount">0</h2></div>
         <p class="stat-desc"><span class="trend-up">↑ 12%</span> so với hôm qua</p>
       </article>
       <article class="stat-card">
         <div class="stat-icon red"><i class="ri-coupon-line"></i></div>
-        <div><p>Sắp hết hàng</p><h2>1000</h2></div>
+        <div><p>Sắp hết hàng</p><h2 id="dashboardStockCount">0</h2></div>
         <p class="stat-desc"><span class="trend-up">↑ 12%</span> so với hôm qua</p>
       </article>
     </section>
@@ -84,27 +84,8 @@ var pages = {
             <option value="Đang giao">Đang giao</option>
             <option value="Đã giao">Đã giao</option>
           </select>
-          <button class="add-button" id="showFormButton">Thêm đơn</button>
         </div>
       </div>
-
-      <form class="order-form hidden" id="orderForm">
-        <h3>Thêm đơn hàng mới</h3>
-        <div class="form-fields">
-          <input id="customerName" required placeholder="Tên khách hàng" />
-          <input id="productName" required placeholder="Tên sản phẩm" />
-          <input id="orderTotal" required type="number" min="1000" placeholder="Tổng tiền" />
-          <select id="orderStatus">
-            <option>Chờ xử lý</option>
-            <option>Đang giao</option>
-            <option>Đã giao</option>
-          </select>
-        </div>
-        <div class="form-buttons">
-          <button type="button" class="cancel-button" id="cancelButton">Hủy</button>
-          <button type="submit" class="add-button">Lưu đơn hàng</button>
-        </div>
-      </form>
 
       <div class="table-wrapper">
         <table>
@@ -325,76 +306,51 @@ var pages = {
             </div>
           </section>`,
   khachHang: `<section class="box">
-          <div class="box-title pp-toolbar">
-            <div>
-              <h2>Quản lý khách hàng</h2>
-              <p>Danh sách tài khoản khách hàng</p>
-            </div>
-            <div class="pp-tools">
-              <input
-                type="text"
-                id="fQ"
-                data-filter=""
-                placeholder="Tìm tên, SĐT, email, tài khoản..."
-              />
-              <select id="fS" data-filter="">
-                <option value="">Tất cả trạng thái</option>
-                <option value="0">Hoạt động</option>
-                <option value="1">Đã khóa</option>
-              </select>
-            </div>
-          </div>
-          <div id="ppList">
-            <div class="table-wrapper pp-table-wrap">
-              <table class="pp-table">
-                <thead>
-                  <tr>
-                    <th>Mã KH</th>
-                    <th>Họ tên</th>
-                    <th>Điện thoại</th>
-                    <th>Email</th>
-                    <th>Địa chỉ</th>
-                    <th>Tài khoản</th>
-                    <th>Trạng thái</th>
-                    <th>Thao tác</th>
-                  </tr>
-                </thead>
-                <tbody id="customerTable">
-                  <tr data-hidden="0">
-                    <td>KH001</td>
-                    <td>Minh Anh</td>
-                    <td>0901234567</td>
-                    <td>minhanh@example.com</td>
-                    <td>Quận 1, TP.HCM</td>
-                    <td>minhanh</td>
-                    <td>
-                      <span class="pp-badge pp-badge--done">Hoạt động</span>
-                    </td>
-                    <td>
-                      <div class="pp-actions">
-                        <button
-                          type="button"
-                          class="pp-btn pp-btn--small"
-                          data-act="cus-reset"
-                          data-id="KH001"
-                        >
-                          Reset mật khẩu</button
-                        ><button
-                          type="button"
-                          class="pp-btn pp-btn--small pp-btn--danger"
-                          data-act="cus-lock"
-                          data-id="KH001"
-                        >
-                          Khóa
-                        </button>
-                      </div>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </section>`,
+    <div class="box-title pp-toolbar">
+      <div>
+        <h2>Quản lý khách hàng</h2>
+        <p>Danh sách tài khoản được lấy trực tiếp từ localStorage</p>
+      </div>
+      <div class="pp-tools">
+        <input type="text" id="fQ" placeholder="Tìm tên, SĐT, email, tài khoản..." />
+        <select id="fS">
+          <option value="">Tất cả trạng thái</option>
+          <option value="0">Hoạt động</option>
+          <option value="1">Đã khóa</option>
+        </select>
+      </div>
+    </div>
+    <div class="table-wrapper pp-table-wrap">
+      <table class="pp-table">
+        <thead>
+          <tr>
+            <th>Mã KH</th>
+            <th>Họ tên</th>
+            <th>Điện thoại</th>
+            <th>Email</th>
+            <th>Địa chỉ</th>
+            <th>Tài khoản</th>
+            <th>Trạng thái</th>
+            <th>Thao tác</th>
+          </tr>
+        </thead>
+        <tbody id="customerTable"></tbody>
+      </table>
+      <p id="customerEmpty" class="empty-message hidden">
+        Không tìm thấy khách hàng phù hợp.
+      </p>
+    </div>
+  </section>`,
+
+  khuyenMai: `<section class="box">
+    <div class="box-title">
+      <div>
+        <h2>Quản lý khuyến mãi</h2>
+        <p>Chức năng đang được cập nhật</p>
+      </div>
+    </div>
+    <p class="empty-message">Chưa có chương trình khuyến mãi nào.</p>
+  </section>`,
 
   caiDat: `<section class="box">
           <div class="box-title pp-toolbar">
@@ -418,6 +374,10 @@ var pageContent = document.getElementById('pageContent');
 function loadPage(pageName) {
   pageContent.innerHTML = pages[pageName];
 
+  if (pageName === 'tongQuan') {
+    showDashboardNumbers();
+  }
+
   if (pageName === 'donHang') {
     showOrders(); // đổ dữ liệu vào bảng sau khi trang đã được vẽ
   }
@@ -425,6 +385,21 @@ function loadPage(pageName) {
   if (pageName === 'sanPham') {
     showProducts();
   }
+
+  if (pageName === 'khachHang') {
+    showCustomers();
+  }
+}
+
+function showDashboardNumbers() {
+  var lowStockCount = products.filter(function (product) {
+    return Number(product.stock) <= 10;
+  }).length;
+
+  document.getElementById('dashboardOrderCount').innerText = orders.length;
+  document.getElementById('dashboardProductCount').innerText = products.length;
+  document.getElementById('dashboardCustomerCount').innerText = customers.length;
+  document.getElementById('dashboardStockCount').innerText = lowStockCount;
 }
 
 // ===== PHẦN 3: Hiển thị đơn hàng (lấy phần tử mỗi lần chạy) =====
@@ -472,6 +447,77 @@ function showOrders() {
     .getElementById('emptyMessage')
     .classList.toggle('hidden', resultCount !== 0);
 }
+
+// Hiển thị khách hàng từ mảng customers đã đọc từ khóa localStorage "users".
+function showCustomers() {
+  var searchBox = document.getElementById('fQ');
+  var statusBox = document.getElementById('fS');
+  var customerTable = document.getElementById('customerTable');
+
+  if (!searchBox || !statusBox || !customerTable) {
+    return;
+  }
+
+  var keyword = searchBox.value.trim().toLowerCase();
+  var status = statusBox.value;
+  var html = '';
+  var count = 0;
+
+  customers.forEach(function (customer) {
+    var searchableText = [
+      customer.id,
+      customer.fullName,
+      customer.phone,
+      customer.email,
+      customer.username,
+    ]
+      .join(' ')
+      .toLowerCase();
+    var matchesKeyword = searchableText.includes(keyword);
+    var matchesStatus =
+      status === '' || (status === '1' && customer.locked) || (status === '0' && !customer.locked);
+
+    if (!matchesKeyword || !matchesStatus) {
+      return;
+    }
+
+    count++;
+    html += `
+      <tr>
+        <td>${escapeHTML(customer.id)}</td>
+        <td>${escapeHTML(customer.fullName)}</td>
+        <td>${escapeHTML(customer.phone || '—')}</td>
+        <td>${escapeHTML(customer.email || '—')}</td>
+        <td><span class="pp-wrap">${escapeHTML(customer.address || '—')}</span></td>
+        <td>${escapeHTML(customer.username || '—')}</td>
+        <td>
+          <span class="pp-badge ${customer.locked ? 'pp-badge--locked' : 'pp-badge--done'}">
+            ${customer.locked ? 'Đã khóa' : 'Hoạt động'}
+          </span>
+        </td>
+        <td>
+          <div class="pp-actions">
+            <button class="pp-btn pp-btn--small" data-act="cus-reset" data-id="${escapeHTML(customer.id)}">
+              Reset mật khẩu
+            </button>
+            <button class="pp-btn pp-btn--small" data-act="cus-lock" data-id="${escapeHTML(customer.id)}">
+              ${customer.locked ? 'Mở khóa' : 'Khóa'}
+            </button>
+            <button class="pp-btn pp-btn--small pp-btn--danger" data-act="cus-del" data-id="${escapeHTML(customer.id)}">
+              Xóa
+            </button>
+          </div>
+        </td>
+      </tr>
+    `;
+  });
+
+  customerTable.innerHTML = html;
+  document
+    .getElementById('customerEmpty')
+    .classList.toggle('hidden', count !== 0);
+}
+
 function showProducts() {
   var keyword = document.getElementById('fQ').value.trim().toLowerCase();
   var category = document.getElementById('fC').value;

@@ -1,90 +1,112 @@
-// ===== SERVICE: Dữ liệu và xử lý nghiệp vụ =====
+// ===== SERVICE: Dữ liệu và xử lý localStorage =====
+// Trang khách hàng và trang đăng ký dùng chung khóa "users".
 
-// Khởi tạo hoặc lấy dữ liệu Đơn hàng từ localStorage
-var orders = JSON.parse(localStorage.getItem('petpetOrders')) || [
+var STORAGE_KEYS = {
+  orders: 'petpetOrders',
+  products: 'petpetProducts',
+  users: 'users',
+};
+
+var defaultProducts = [
   {
-    id: '#PP2481',
-    customer: 'Minh Anh',
-    product: 'Royal Canin Mini Adult',
-    total: 845000,
-    status: 'Đã giao',
-  },
-  {
-    id: '#PP2480',
-    customer: 'Tuấn Khang',
-    product: 'Cát vệ sinh Cature',
-    total: 325000,
-    status: 'Đang giao',
-  },
-  {
-    id: '#PP2479',
-    customer: 'Phương Nhi',
-    product: 'Balo vận chuyển',
-    total: 590000,
-    status: 'Chờ xử lý',
-  },
-  {
-    id: '#PP2478',
-    customer: 'Hoàng Nam',
-    product: 'Pate mèo Catchy',
-    total: 275000,
-    status: 'Đã giao',
+    id: 'SPC001',
+    name: 'Royal Canin Mini Adult',
+    brand: 'Royal Canin',
+    category: 'L001',
+    pet: 'Chó',
+    weight: 'Túi 2kg',
+    combo: null,
+    image: '',
+    price: 180000,
+    stock: 10,
+    desc: 'Hạt cho chó trưởng thành giống nhỏ',
+    highlights: ['Hỗ trợ tiêu hóa', 'Bảo vệ da lông'],
+    discount: null,
+    hidden: 0,
   },
 ];
 
-var products = [];
+var defaultUsers = [
+  {
+    id: 'KH001',
+    fullName: 'Minh Anh',
+    phone: '0901234567',
+    email: 'minhanh@example.com',
+    address: 'Quận 1, TP.HCM',
+    username: 'minhanh',
+    password: '123456',
+    locked: false,
+  },
+];
 
-// Hàm lưu danh sách sản phẩm xuống localStorage
-function saveLocalStorageProducts() {
-  localStorage.setItem('petpetProducts', JSON.stringify(products));
-}
+function readStorage(key, fallbackValue) {
+  var savedValue = localStorage.getItem(key);
 
-// Kiểm tra và load dữ liệu sản phẩm CHỈ TỪ localStorage (Có dữ liệu mẫu mặc định nếu trống)
-function loadProductData() {
-  var localProducts = localStorage.getItem('petpetProducts');
-  
-  if (localProducts) {
-    try {
-      products = JSON.parse(localProducts);
-    } catch (e) {
-      products = [];
-    }
-  } else {
-    // Nếu localStorage chưa có gì, khởi tạo luôn mảng sản phẩm mẫu mặc định ở đây
-    products = [
-      {
-        id: "SPC001",
-        name: "Royal Canin Mini Adult",
-        brand: "Royal Canin",
-        category: "L001",
-        pet: "Chó",
-        weight: "Túi 2kg",
-        combo: null,
-        image: "./src/img/img-products/DPF00238__main__20260927_230749_n5ptjh_400x400.webp",
-        price: 180000,
-        stock: 10,
-        desc: "Hạt cho chó trưởng thành giống nhỏ",
-        highlights: ["Hỗ trợ tiêu hóa", "Bảo vệ da lông"],
-        discount: null,
-        hidden: 0
-      }
-    ];
-    // Lưu ngay vào localStorage
-    saveLocalStorageProducts();
+  if (savedValue === null) {
+    return fallbackValue;
+  }
+
+  try {
+    var parsedValue = JSON.parse(savedValue);
+    return Array.isArray(parsedValue) ? parsedValue : fallbackValue;
+  } catch (error) {
+    console.warn('Dữ liệu localStorage không hợp lệ tại khóa:', key);
+    return fallbackValue;
   }
 }
 
-// Gọi hàm load dữ liệu khi khởi động
-loadProductData();
+var orders = readStorage(STORAGE_KEYS.orders, defaultOrders);
+var products = readStorage(STORAGE_KEYS.products, defaultProducts);
 
-// Chèn thêm 1 phần tử vào mảng products và cập nhật localStorage
+// Hỗ trợ dữ liệu cũ nếu trước đây khách hàng được lưu ở petpetCustomers.
+var legacyUsers = readStorage('petpetCustomers', defaultUsers);
+var customers =
+  localStorage.getItem(STORAGE_KEYS.users) !== null
+    ? readStorage(STORAGE_KEYS.users, [])
+    : legacyUsers;
+
+function normalizeCustomers() {
+  customers = customers.map(function (user, index) {
+    var customerNumber = String(index + 1).padStart(3, '0');
+    var locked =
+      user.locked === true ||
+      user.hidden === 1 ||
+      user.status === 'Đã khóa' ||
+      user.status === 'locked';
+
+    return Object.assign({}, user, {
+      id: user.id || user.customerId || 'KH' + customerNumber,
+      fullName:
+        user.fullName || user.name || user.customerName || 'Chưa cập nhật',
+      phone: user.phone || user.phoneNumber || '',
+      email: user.email || '',
+      address: user.address || '',
+      username: user.username || user.account || user.userName || '',
+      locked: locked,
+    });
+  });
+}
+
+function saveLocalStorageOrders() {
+  localStorage.setItem(STORAGE_KEYS.orders, JSON.stringify(orders));
+}
+
+function saveLocalStorageProducts() {
+  localStorage.setItem(STORAGE_KEYS.products, JSON.stringify(products));
+}
+
+function saveLocalStorageCustomers() {
+  // Ghi lại đúng khóa "users" để trang người dùng và admin luôn thống nhất.
+  localStorage.setItem(STORAGE_KEYS.users, JSON.stringify(customers));
+}
+
+function loadProductData() {
+  products = readStorage(STORAGE_KEYS.products, defaultProducts);
+}
+
 function addProduct(newProduct) {
   if (!newProduct || typeof newProduct !== 'object') {
     return false;
-  }
-
-  if (!Array.isArray(products)) {
-    products = [];
   }
 
   var duplicated = products.some(function (item) {
@@ -92,15 +114,15 @@ function addProduct(newProduct) {
   });
 
   if (duplicated) {
-    var newId = generateProductID(newProduct.category);
-    if (!newId) {
-      return false;
-    }
-    newProduct.id = newId;
+    newProduct.id = generateProductID(newProduct.category);
+  }
+
+  if (!newProduct.id) {
+    return false;
   }
 
   products.unshift(newProduct);
-  saveLocalStorageProducts(); // Cập nhật ngay vào localStorage
+  saveLocalStorageProducts();
   return true;
 }
 
@@ -137,14 +159,25 @@ function getStatusClass(status) {
   if (status === 'Đã giao') {
     return 'done';
   }
+
   if (status === 'Đang giao') {
     return 'shipping';
   }
+
   return 'waiting';
 }
 
 function formatMoney(number) {
-  return number.toLocaleString('vi-VN') + 'đ';
+  return Number(number || 0).toLocaleString('vi-VN') + 'đ';
+}
+
+function escapeHTML(value) {
+  return String(value === undefined || value === null ? '' : value)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
 }
 
 function showMessage(text) {
@@ -161,3 +194,8 @@ function showMessage(text) {
     message.classList.remove('show');
   }, 2000);
 }
+
+normalizeCustomers();
+saveLocalStorageOrders();
+saveLocalStorageProducts();
+saveLocalStorageCustomers();

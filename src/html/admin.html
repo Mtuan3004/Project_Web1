@@ -66,16 +66,6 @@
             </div>
             <span class="menu-text">Khách hàng</span>
           </button>
-          <button
-            class="menu-item"
-            data-title="Khuyến mãi"
-            data-page="khuyenMai"
-          >
-            <div class="menu-icon flexRow-center">
-              <i class="ri-price-tag-3-line"></i>
-            </div>
-            <span class="menu-text">Khuyến mãi</span>
-          </button>
 
           <p class="menu-label">HỆ THỐNG</p>
           <button class="menu-item" data-title="Cài đặt" data-page="caiDat">
@@ -109,7 +99,107 @@
           </div>
         </header>
 
-        <div class="page-content" id="pageContent"></div>
+        <div class="page-content" id="pageContent">
+          <section class="stat-list">
+            <article class="stat-card">
+              <div class="stat-icon yellow">
+                <i class="ri-shopping-basket-2-line"></i>
+              </div>
+              <div>
+                <p>Đơn hàng hiện có</p>
+                <h2 id="dashboardOrderCount">0</h2>
+              </div>
+              <p class="stat-desc">
+                <span class="trend-up">↑ 12%</span> so với hôm qua
+              </p>
+            </article>
+            <article class="stat-card">
+              <div class="stat-icon purple">
+                <i class="ri-shopping-cart-line"></i>
+              </div>
+              <div>
+                <p>Tổng sản phẩm</p>
+                <h2 id="dashboardProductCount">0</h2>
+              </div>
+              <p class="stat-desc">
+                <span class="trend-up">↑ 12%</span> so với hôm qua
+              </p>
+            </article>
+            <article class="stat-card">
+              <div class="stat-icon blue"><i class="ri-user-line"></i></div>
+              <div>
+                <p>Khách hàng</p>
+                <h2 id="dashboardCustomerCount">0</h2>
+              </div>
+              <p class="stat-desc">
+                <span class="trend-up">↑ 12%</span> so với hôm qua
+              </p>
+            </article>
+            <article class="stat-card">
+              <div class="stat-icon red"><i class="ri-coupon-line"></i></div>
+              <div>
+                <p>Sắp hết hàng</p>
+                <h2 id="dashboardStockCount">0</h2>
+              </div>
+              <p class="stat-desc">
+                <span class="trend-up">↑ 12%</span> so với hôm qua
+              </p>
+            </article>
+          </section>
+
+          <section class="two-columns">
+            <article class="box">
+              <div class="box-title">
+                <div>
+                  <h2>Sản phẩm bán chạy</h2>
+                  <p>Các sản phẩm được mua nhiều trong tháng</p>
+                </div>
+                <span class="note">Ghi chú</span>
+              </div>
+              <div class="product-list">
+                <div class="product">
+                  <span class="product-image yellow">RC</span>
+                  <div>
+                    <strong>Royal Canin Mini Adult</strong>
+                    <p>Thức ăn cho chó</p>
+                  </div>
+                  <b>Đã bán: 56</b>
+                </div>
+                <div class="product">
+                  <span class="product-image purple">CT</span>
+                  <div>
+                    <strong>Cát vệ sinh Cature</strong>
+                    <p>Đồ dùng cho mèo</p>
+                  </div>
+                  <b>Đã bán: 43</b>
+                </div>
+                <div class="product">
+                  <span class="product-image blue">PM</span>
+                  <div>
+                    <strong>Pate mèo Catchy</strong>
+                    <p>Thức ăn cho mèo</p>
+                  </div>
+                  <b>Đã bán: 38</b>
+                </div>
+              </div>
+            </article>
+
+            <article class="box">
+              <div class="box-title">
+                <div>
+                  <h2>Cảnh báo tồn kho</h2>
+                  <p>Sản phẩm cần nhập thêm</p>
+                </div>
+              </div>
+              <div class="stock-list">
+                <div><span>Royal Canin Mini Adult</span><b>Còn 4</b></div>
+                <div><span>Cát vệ sinh Cature</span><b>Còn 6</b></div>
+                <div><span>Balo vận chuyển</span><b>Còn 3</b></div>
+                <div><span>Vòng cổ thú cưng</span><b>Còn 5</b></div>
+              </div>
+            </article>
+          </section>
+        </div>
       </main>
     </div>
 
