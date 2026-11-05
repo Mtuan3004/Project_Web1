@@ -25,6 +25,9 @@
     <link rel="stylesheet" href="./src/css/body-main.css" />
     <link rel="stylesheet" href="./src/css/section-branch.css" />
     <link rel="stylesheet" href="./src/css/mobile.css" />
+    <link rel="stylesheet" href="./src/css/product.css" />
+    <link rel="stylesheet" href="./src/css/brand.css" />
+    <link rel="stylesheet" href="./src/css/detail-product.css" />
     <link rel="stylesheet" href="./src/css/resposive.css" />
     <!--------->
   </head>
@@ -415,240 +418,592 @@
           </div>
         </div>
       </nav>
-      <!-- Image Slider -->
-      <div class="site-container">
-        <div class="img-slider">
-          <div class="slider" id="slider">
-            <img src="src/img/slider img/BANNER FREESHIP_thumb.webp" alt="" />
-            <img src="src/img/slider img/Horizontal Banner_thumb.webp" alt="" />
-            <img
-              src="src/img/slider img/banner-pate-cun-desktop-v2_thumb.webp"
-              alt=""
-            />
-            <img
-              src="src/img/slider img/HERO BANNER THỨ 4 MỞ APP_thumb.webp"
-              alt=""
-            />
-          </div>
-          <button
-            type="button"
-            class="slider-btn prev flexRow-center"
-            onclick="prev()"
-            aria-label="Ảnh trước"
-          >
-            <i class="ri-arrow-left-s-line"></i>
-          </button>
-          <button
-            type="button"
-            class="slider-btn next flexRow-center"
-            onclick="next()"
-            aria-label="Ảnh sau"
-          >
-            <i class="ri-arrow-right-s-line"></i>
-          </button>
-        </div>
-      </div>
-      <!--  SECTION 1: GIÁ TỐT HÔM NAY  -->
-      <section class="product-section">
+      <!-- 1. MÀN HÌNH TRANG CHỦ (HOME) -->
+      <section id="view-home" class="app-view">
+        <!-- Image Slider -->
         <div class="site-container">
-          <!-- Section Header -->
-          <div class="section-header">
-            <div class="title-box">
-              <h2>Giá tốt hôm nay ⚡</h2>
-              <p>Càng mua - Càng hời - Càng tiết kiệm!</p>
+          <div class="img-slider">
+            <div class="slider" id="slider">
+              <img src="src/img/slider img/BANNER FREESHIP_thumb.webp" alt="" />
+              <img
+                src="src/img/slider img/Horizontal Banner_thumb.webp"
+                alt=""
+              />
+              <img
+                src="src/img/slider img/banner-pate-cun-desktop-v2_thumb.webp"
+                alt=""
+              />
+              <img
+                src="src/img/slider img/HERO BANNER THỨ 4 MỞ APP_thumb.webp"
+                alt=""
+              />
             </div>
-            <a href="#" class="view-more"
-              >Xem thêm <i class="ri-arrow-right-s-line"></i
-            ></a>
+            <button
+              type="button"
+              class="slider-btn prev flexRow-center"
+              onclick="prev()"
+              aria-label="Ảnh trước"
+            >
+              <i class="ri-arrow-left-s-line"></i>
+            </button>
+            <button
+              type="button"
+              class="slider-btn next flexRow-center"
+              onclick="next()"
+              aria-label="Ảnh sau"
+            >
+              <i class="ri-arrow-right-s-line"></i>
+            </button>
           </div>
+        </div>
+        <!--  SECTION 1: GIÁ TỐT HÔM NAY  -->
+        <section class="product-section">
+          <div class="site-container">
+            <!-- Section Header -->
+            <div class="section-header">
+              <div class="title-box">
+                <h2>Giá tốt hôm nay ⚡</h2>
+                <p>Càng mua - Càng hời - Càng tiết kiệm!</p>
+              </div>
+              <a href="#" class="view-more"
+                >Xem thêm <i class="ri-arrow-right-s-line"></i
+              ></a>
+            </div>
 
-          <!-- Product Grid -->
-          <div class="product-grid">
-            <div class="product-card">
-              <div class="product-img-box">
+            <!-- Product Grid -->
+            <div class="product-grid" id="todayProducts"></div>
+          </div>
+        </section>
+        <!--  SECTION 2: COMBO TIẾT KIỆM  -->
+        <section class="product-section">
+          <div class="site-container">
+            <!-- Section Header -->
+            <div class="section-header">
+              <div class="title-box">
+                <h2>Combo tiết kiệm</h2>
+                <p>Săn deal hời - Chăm boss nhẹ tênh!</p>
+              </div>
+              <a href="#" class="view-more"
+                >Xem thêm <i class="ri-arrow-right-s-line"></i
+              ></a>
+            </div>
+
+            <!-- Product Grid -->
+            <div class="product-grid">
+              <!-- SP 1 -->
+              <div class="product-card">
+                <div class="product-img-box">
+                  <img src="" alt="Pate Silver Spoon" />
+                </div>
+                <div class="product-info">
+                  <h3 class="product-name">
+                    Combo 10 Pate Silver Spoon Cho Mèo Gói 60g
+                  </h3>
+                  <div class="product-rating">
+                    <i class="ri-star-fill"></i><i class="ri-star-fill"></i
+                    ><i class="ri-star-fill"></i><i class="ri-star-fill"></i
+                    ><i class="ri-star-fill"></i>
+                  </div>
+                  <div class="price-box">
+                    <span class="discount-badge">-5%</span>
+                    <span class="old-price">190,000 đ</span>
+                  </div>
+                  <div class="current-price">180,500 đ</div>
+                </div>
+              </div>
+
+              <!-- SP 2 -->
+              <div class="product-card">
+                <div class="product-img-box">
+                  <img src="" alt="Pate DoggyMan" />
+                </div>
+                <div class="product-info">
+                  <h3 class="product-name">
+                    Combo 5 Pate DoggyMan Cho Cún Sốt Kem Gói 70g
+                  </h3>
+                  <div class="product-rating">
+                    <i class="ri-star-fill"></i><i class="ri-star-fill"></i
+                    ><i class="ri-star-fill"></i><i class="ri-star-fill"></i
+                    ><i class="ri-star-fill"></i>
+                  </div>
+                  <div class="price-box">
+                    <span class="discount-badge">-5%</span>
+                    <span class="old-price">75,000 đ</span>
+                  </div>
+                  <div class="current-price">71,250 đ</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Brand-section -->
+        <section class="brand-section">
+          <div class="site-container">
+            <!-- Header của phần (Tiêu đề và nút Xem thêm) -->
+            <div class="brand-header">
+              <div class="brand-title-group">
+                <h2>Top 10 thương hiệu yêu thích</h2>
+                <p>Sơn chọn đúng gu - Boss thích mê ly</p>
+              </div>
+              <a href="#" class="brand-view-more">
+                Xem thêm <i class="ri-arrow-right-s-line"></i>
+              </a>
+            </div>
+
+            <!-- Lưới danh sách các thương hiệu -->
+            <div class="brand-grid">
+              <!-- Item 1 -->
+              <a href="#" class="brand-item">
+                <div class="brand-img-box">
+                  <img
+                    src="./src/img/img-branch/Logo Royal Canin_240x120.webp"
+                    alt="Royal Canin"
+                  />
+                </div>
+                <span class="brand-name">Royal Canin</span>
+              </a>
+
+              <!-- Item 2 -->
+              <a href="#" class="brand-item">
+                <div class="brand-img-box">
+                  <img
+                    src="./src/img/img-branch/zenith-300x300_240x120.webp"
+                    alt="Zenith"
+                  />
+                </div>
+                <span class="brand-name">Zenith</span>
+              </a>
+
+              <!-- Item 3 -->
+              <a href="#" class="brand-item">
+                <div class="brand-img-box">
+                  <img
+                    src="./src/img/img-branch/Logo LuvCare_240x120.webp"
+                    alt="Luvcare"
+                  />
+                </div>
+                <span class="brand-name">Luvcare</span>
+              </a>
+
+              <!-- Item 4 -->
+              <a href="#" class="brand-item">
+                <div class="brand-img-box">
+                  <img
+                    src="./src/img/img-branch/Logo Ganador_240x120.webp"
+                    alt="Ganador"
+                  />
+                </div>
+                <span class="brand-name">Ganador</span>
+              </a>
+
+              <!-- Item 5 -->
+              <a href="#" class="brand-item">
+                <div class="brand-img-box">
+                  <img
+                    src="./src/img/img-branch/Logo PetQ_240x120.webp"
+                    alt="PetQ"
+                  />
+                </div>
+                <span class="brand-name">PetQ</span>
+              </a>
+
+              <!-- Item 6 -->
+              <a href="#" class="brand-item">
+                <div class="brand-img-box">
+                  <img
+                    src="./src/img/img-branch/Logo Pedigree_240x120.webp"
+                    alt="Pedigree"
+                  />
+                </div>
+                <span class="brand-name">Pedigree</span>
+              </a>
+
+              <!-- Item 7 -->
+              <a href="#" class="brand-item">
+                <div class="brand-img-box">
+                  <img
+                    src="./src/img/img-branch/Logo SnappyTom_240x120.webp"
+                    alt="Snappy Tom"
+                  />
+                </div>
+                <span class="brand-name">Snappy Tom</span>
+              </a>
+
+              <!-- Item 8 -->
+              <a href="#" class="brand-item">
+                <div class="brand-img-box">
+                  <img
+                    src="./src/img/img-branch/Logo Natural Core_240x120.webp"
+                    alt="Natural Core"
+                  />
+                </div>
+                <span class="brand-name">Natural Core</span>
+              </a>
+
+              <!-- Item 9 -->
+              <a href="#" class="brand-item">
+                <div class="brand-img-box">
+                  <img
+                    src="./src/img/img-branch/Logo Whiskas_240x120.webp"
+                    alt="Whiskas"
+                  />
+                </div>
+                <span class="brand-name">Whiskas</span>
+              </a>
+
+              <!-- Item 10 -->
+              <a href="#" class="brand-item">
+                <div class="brand-img-box">
+                  <img
+                    src="./src/img/img-branch/Logo Reflex_240x120.webp"
+                    alt="Reflex"
+                  />
+                </div>
+                <span class="brand-name">Whiskas</span>
+              </a>
+            </div>
+          </div>
+        </section>
+        <!-- Nav-body -->
+        <div class="site-container">
+          <div class="nav-body-main">
+            <div class="left-nav-body">
+              <div class="nav-body">
                 <img
-                  src="./src/img/img-products/DPF00238__main__20260927_230749_n5ptjh_400x400.webp"
-                  alt="Bánh Thưởng Pedigree"
+                  src="./src/img/icon-body/sprite-quick-tap-chi.svg"
+                  alt=""
                 />
               </div>
-              <div class="product-info">
-                <h3 class="product-name">
-                  Bánh Thưởng Pedigree Dentastix Cho Cún
-                </h3>
-                <div class="product-rating">
-                  <i class="ri-star-fill"></i><i class="ri-star-fill"></i
-                  ><i class="ri-star-fill"></i><i class="ri-star-fill"></i
-                  ><i class="ri-star-fill"></i>
-                </div>
-                <div class="price-box">
-                  <span class="discount-badge">-14%</span>
-                  <span class="old-price">69,000 đ</span>
-                </div>
-                <div class="current-price">59,000 đ</div>
+              <div class="nav-body">
+                <img src="./src/img/icon-body/sprite-quick-thu-y.svg" alt="" />
               </div>
-            </div>
-
-            <div class="product-card">
-              <div class="product-img-box">
+              <div class="nav-body">
                 <img
-                  src="./src/img/img-products/C10CBSIS03__main__20260927_220246_q97r6q_400x400.webp"
-                  alt="Pate Silver Spoon"
+                  src="./src/img/icon-body/sprite-quick-spa-hotel.svg"
+                  alt=""
                 />
               </div>
-              <div class="product-info">
-                <h3 class="product-name">
-                  Combo 10 Pate Silver Spoon Cho Mèo Gói 60g
-                </h3>
-                <div class="product-rating">
-                  <i class="ri-star-fill"></i><i class="ri-star-fill"></i
-                  ><i class="ri-star-fill"></i> <i class="ri-star-fill"></i
-                  ><i class="ri-star-fill"></i>
-                </div>
-                <div class="price-box">
-                  <span class="discount-badge">-5%</span>
-                  <span class="old-price">190,000 đ</span>
-                </div>
-                <div class="current-price">180,500 đ</div>
-              </div>
+              <div class="barrier"></div>
             </div>
-
-            <div class="product-card">
-              <div class="product-img-box">
-                <img
-                  src="./src/img/img-products/C10CBSIS01__main__20260927_220147_8xpwzh_400x400.webp"
-                  alt="Cát Đất Sét Moon Cat"
+            <div class="right-nav-body">
+              <div class="search-bar-container">
+                <input
+                  type="text"
+                  name="search"
+                  id="search-body"
+                  placeholder="Tìm thức ăn, đồ chơi, phụ kiện..."
                 />
+                <div class="icon-nav-body"><i class="ri-search-line"></i></div>
+                <button class="btn-search-body">Tìm kiếm</button>
               </div>
-              <div class="product-info">
-                <h3 class="product-name">
-                  Cát Đất Sét Moon Cat Cho Mèo Bịch 9L
-                </h3>
-                <div class="product-rating">
-                  <i class="ri-star-fill"></i><i class="ri-star-fill"></i
-                  ><i class="ri-star-fill"></i><i class="ri-star-fill"></i
-                  ><i class="ri-star-fill"></i>
-                </div>
-                <div class="price-box no-discount"></div>
-                <div class="current-price">65,000đ</div>
-              </div>
-            </div>
+              <div class="search-keyword-input">
+                <div class="selects" id="products">
+                  <div class="content">
+                    <i class="ri-box-3-line"></i><span>Loại sản phẩm</span>
+                  </div>
+                  <div class="icon-select">
+                    <i class="ri-arrow-up-s-line"></i>
+                  </div>
 
-            <div class="product-card">
-              <div class="product-img-box">
-                <img src="" alt="Súp Thưởng PetQ" />
-              </div>
-              <div class="product-info">
-                <h3 class="product-name">
-                  Súp Thưởng PetQ Cho Mèo Vị Sữa Dê Cỏ Mèo...
-                </h3>
-                <div class="product-rating">
-                  <i class="ri-star-fill"></i><i class="ri-star-fill"></i
-                  ><i class="ri-star-fill"></i><i class="ri-star-fill"></i
-                  ><i class="ri-star-fill"></i>
+                  <div class="dropdown-menu">
+                    <div class="dropdown-pointer"></div>
+                    <div class="dropdown-header">
+                      <i class="ri-box-3-line"></i> Loại sản phẩm
+                    </div>
+                    <label
+                      class="dropdown-item"
+                      onclick="event.stopPropagation()"
+                    >
+                      <input type="checkbox" checked /> Thức ăn
+                    </label>
+                    <label
+                      class="dropdown-item"
+                      onclick="event.stopPropagation()"
+                    >
+                      <input type="checkbox" /> Đồ chơi
+                    </label>
+                    <label
+                      class="dropdown-item"
+                      onclick="event.stopPropagation()"
+                    >
+                      <input type="checkbox" /> Phụ kiện
+                    </label>
+                  </div>
                 </div>
-                <div class="price-box no-discount"></div>
-                <div class="current-price">7,000đ</div>
-              </div>
-            </div>
+                <div class="selects" id="pet">
+                  <div class="content">
+                    <i class="fa-solid fa-paw"></i><span>Dành cho</span>
+                  </div>
+                  <div class="icon-select">
+                    <i class="ri-arrow-up-s-line"></i>
+                  </div>
+                  <div class="dropdown-menu">
+                    <div class="dropdown-pointer"></div>
+                    <div class="dropdown-header">
+                      <i class="ri-paw-print-line"></i> Đối tượng thú cưng
+                    </div>
+                    <label
+                      class="dropdown-item"
+                      onclick="event.stopPropagation()"
+                    >
+                      <input type="checkbox" /> Chó
+                    </label>
+                    <label
+                      class="dropdown-item"
+                      onclick="event.stopPropagation()"
+                    >
+                      <input type="checkbox" /> Mèo
+                    </label>
+                    <label
+                      class="dropdown-item"
+                      onclick="event.stopPropagation()"
+                    >
+                      <input type="checkbox" /> Chó và Mèo
+                    </label>
+                  </div>
+                </div>
+                <div class="selects" id="price">
+                  <div class="content">
+                    <i class="ri-price-tag-3-line"></i><span>Khoảng giá</span>
+                  </div>
+                  <div class="icon-select">
+                    <i class="ri-arrow-up-s-line"></i>
+                  </div>
+                  <div
+                    class="dropdown-menu price-range-menu"
+                    onclick="event.stopPropagation()"
+                  >
+                    <div class="dropdown-pointer"></div>
 
-            <div class="product-card">
-              <div class="product-img-box">
-                <img src="" alt="Hạt S2PET" />
-              </div>
-              <div class="product-info">
-                <h3 class="product-name">Hạt S2PET Cho Mèo Premium Bịch 1kg</h3>
-                <div class="product-rating">
-                  <i class="ri-star-fill"></i><i class="ri-star-fill"></i
-                  ><i class="ri-star-fill"></i><i class="ri-star-fill"></i
-                  ><i class="ri-star-fill"></i>
+                    <div class="price-title">Chọn khoảng giá tối đa</div>
+                    <div class="price-display">
+                      Từ 0đ đến <span id="price-value">250.000đ</span>
+                    </div>
+                    <!-- Thẻ input dạng range -->
+                    <input
+                      type="range"
+                      min="0"
+                      max="1000000"
+                      step="10000"
+                      value="250000"
+                      class="range-slider"
+                      oninput="
+                        document.getElementById('price-value').innerText =
+                          Number(this.value).toLocaleString() + 'đ'
+                      "
+                    />
+                  </div>
                 </div>
-                <div class="price-box">
-                  <span class="discount-badge">-5%</span>
-                  <span class="old-price">139,000 đ</span>
-                </div>
-                <div class="current-price">132,050 đ</div>
               </div>
             </div>
           </div>
         </div>
       </section>
-      <!--  SECTION 2: COMBO TIẾT KIỆM  -->
-      <section class="product-section">
-        <div class="site-container">
-          <!-- Section Header -->
-          <div class="section-header">
-            <div class="title-box">
-              <h2>Combo tiết kiệm</h2>
-              <p>Săn deal hời - Chăm boss nhẹ tênh!</p>
-            </div>
-            <a href="#" class="view-more"
-              >Xem thêm <i class="ri-arrow-right-s-line"></i
-            ></a>
-          </div>
 
-          <!-- Product Grid -->
-          <div class="product-grid">
-            <!-- SP 1 -->
-            <div class="product-card">
-              <div class="product-img-box">
-                <img src="" alt="Pate Silver Spoon" />
-              </div>
-              <div class="product-info">
-                <h3 class="product-name">
-                  Combo 10 Pate Silver Spoon Cho Mèo Gói 60g
-                </h3>
-                <div class="product-rating">
-                  <i class="ri-star-fill"></i><i class="ri-star-fill"></i
-                  ><i class="ri-star-fill"></i><i class="ri-star-fill"></i
-                  ><i class="ri-star-fill"></i>
+      <!-- 2. MÀN HÌNH SẢN PHẨM -->
+      <section id="view-products" class="app-view d-none">
+        <main class="site-container">
+          <!-- Brand-section -->
+          <section class="brand-section">
+            <div class="site-container">
+              <!-- Header của phần (Tiêu đề và nút Xem thêm) -->
+              <div class="brand-header">
+                <div class="brand-title-group">
+                  <h1>Thương hiệu yêu thích</h1>
                 </div>
-                <div class="price-box">
-                  <span class="discount-badge">-5%</span>
-                  <span class="old-price">190,000 đ</span>
-                </div>
-                <div class="current-price">180,500 đ</div>
+                <a href="#" class="brand-view-more">
+                  Xem thêm <i class="ri-arrow-right-s-line"></i>
+                </a>
               </div>
-            </div>
 
-            <!-- SP 2 -->
-            <div class="product-card">
-              <div class="product-img-box">
-                <img src="" alt="Pate DoggyMan" />
+              <!-- Lưới danh sách các thương hiệu -->
+              <div class="brand-grid">
+                <!-- Item 1 -->
+                <a href="#" class="brand-item">
+                  <div class="brand-img-box">
+                    <img
+                      src="./src/img/img-branch/Logo Royal Canin_240x120.webp"
+                      alt="Royal Canin"
+                    />
+                  </div>
+                  <span class="brand-name">Royal Canin</span>
+                </a>
+
+                <!-- Item 2 -->
+                <a href="#" class="brand-item">
+                  <div class="brand-img-box">
+                    <img
+                      src="./src/img/img-branch/zenith-300x300_240x120.webp"
+                      alt="Zenith"
+                    />
+                  </div>
+                  <span class="brand-name">Zenith</span>
+                </a>
+
+                <!-- Item 3 -->
+                <a href="#" class="brand-item">
+                  <div class="brand-img-box">
+                    <img
+                      src="./src/img/img-branch/Logo LuvCare_240x120.webp"
+                      alt="Luvcare"
+                    />
+                  </div>
+                  <span class="brand-name">Luvcare</span>
+                </a>
+
+                <!-- Item 4 -->
+                <a href="#" class="brand-item">
+                  <div class="brand-img-box">
+                    <img
+                      src="./src/img/img-branch/Logo Ganador_240x120.webp"
+                      alt="Ganador"
+                    />
+                  </div>
+                  <span class="brand-name">Ganador</span>
+                </a>
+
+                <!-- Item 5 -->
+                <a href="#" class="brand-item">
+                  <div class="brand-img-box">
+                    <img
+                      src="./src/img/img-branch/Logo PetQ_240x120.webp"
+                      alt="PetQ"
+                    />
+                  </div>
+                  <span class="brand-name">PetQ</span>
+                </a>
+
+                <!-- Item 6 -->
+                <a href="#" class="brand-item">
+                  <div class="brand-img-box">
+                    <img
+                      src="./src/img/img-branch/Logo Pedigree_240x120.webp"
+                      alt="Pedigree"
+                    />
+                  </div>
+                  <span class="brand-name">Pedigree</span>
+                </a>
+
+                <!-- Item 7 -->
+                <a href="#" class="brand-item">
+                  <div class="brand-img-box">
+                    <img
+                      src="./src/img/img-branch/Logo SnappyTom_240x120.webp"
+                      alt="Snappy Tom"
+                    />
+                  </div>
+                  <span class="brand-name">Snappy Tom</span>
+                </a>
+
+                <!-- Item 8 -->
+                <a href="#" class="brand-item">
+                  <div class="brand-img-box">
+                    <img
+                      src="./src/img/img-branch/Logo Natural Core_240x120.webp"
+                      alt="Natural Core"
+                    />
+                  </div>
+                  <span class="brand-name">Natural Core</span>
+                </a>
+
+                <!-- Item 9 -->
+                <a href="#" class="brand-item">
+                  <div class="brand-img-box">
+                    <img
+                      src="./src/img/img-branch/Logo Whiskas_240x120.webp"
+                      alt="Whiskas"
+                    />
+                  </div>
+                  <span class="brand-name">Whiskas</span>
+                </a>
+
+                <!-- Item 10 -->
+                <a href="#" class="brand-item">
+                  <div class="brand-img-box">
+                    <img
+                      src="./src/img/img-branch/Logo Reflex_240x120.webp"
+                      alt="Reflex"
+                    />
+                  </div>
+                  <span class="brand-name">Whiskas</span>
+                </a>
               </div>
-              <div class="product-info">
-                <h3 class="product-name">
-                  Combo 5 Pate DoggyMan Cho Cún Sốt Kem Gói 70g
-                </h3>
-                <div class="product-rating">
-                  <i class="ri-star-fill"></i><i class="ri-star-fill"></i
-                  ><i class="ri-star-fill"></i><i class="ri-star-fill"></i
-                  ><i class="ri-star-fill"></i>
+              <!-- Banner -->
+              <div class="deals-banner">
+                <div class="deals-content">
+                  <h2 class="deals-title">Giá tốt hôm nay</h2>
+
+                  <p class="deals-subtitle">
+                    Càng mua - Càng hời - Càng tiết kiệm!
+                  </p>
                 </div>
-                <div class="price-box">
-                  <span class="discount-badge">-5%</span>
-                  <span class="old-price">75,000 đ</span>
+
+                <div class="deals-mascot">
+                  <img src="./src/img/banner/GiaTot.svg" alt="Mascot PETPET" />
                 </div>
-                <div class="current-price">71,250 đ</div>
               </div>
             </div>
-          </div>
-        </div>
+          </section>
+        </main>
       </section>
 
-      <!-- Brand-section -->
-      <section class="brand-section">
-        <div class="site-container">
-          <!-- Header của phần (Tiêu đề và nút Xem thêm) -->
-          <div class="brand-header">
-            <div class="brand-title-group">
-              <h2>Top 10 thương hiệu yêu thích</h2>
-              <p>Sơn chọn đúng gu - Boss thích mê ly</p>
+      <!-- 3. MÀN HÌNH THƯƠNG HIỆU -->
+      <section id="view-brand" class="app-view d-none">
+        <main class="site-container">
+          <!-- Image Slider -->
+          <div class="site-container">
+            <div class="img-slider">
+              <div class="slider" id="slider">
+                <img
+                  src="src/img/slider img/BANNER FREESHIP_thumb.webp"
+                  alt=""
+                />
+                <img
+                  src="src/img/slider img/Horizontal Banner_thumb.webp"
+                  alt=""
+                />
+                <img
+                  src="src/img/slider img/banner-pate-cun-desktop-v2_thumb.webp"
+                  alt=""
+                />
+                <img
+                  src="src/img/slider img/HERO BANNER THỨ 4 MỞ APP_thumb.webp"
+                  alt=""
+                />
+              </div>
+              <button
+                type="button"
+                class="slider-btn prev flexRow-center"
+                onclick="prev()"
+                aria-label="Ảnh trước"
+              >
+                <i class="ri-arrow-left-s-line"></i>
+              </button>
+              <button
+                type="button"
+                class="slider-btn next flexRow-center"
+                onclick="next()"
+                aria-label="Ảnh sau"
+              >
+                <i class="ri-arrow-right-s-line"></i>
+              </button>
             </div>
-            <a href="#" class="brand-view-more">
-              Xem thêm <i class="ri-arrow-right-s-line"></i>
-            </a>
           </div>
+          <!-- Banner -->
+          <div class="deals-banner">
+            <div class="deals-content">
+              <h2 class="deals-title">Giá tốt hôm nay</h2>
 
+              <p class="deals-subtitle">
+                Càng mua - Càng hời - Càng tiết kiệm!
+              </p>
+            </div>
+
+            <div class="deals-mascot">
+              <img src="./src/img/banner/Brand.svg" alt="Mascot PETPET" />
+            </div>
+          </div>
           <!-- Lưới danh sách các thương hiệu -->
           <div class="brand-grid">
             <!-- Item 1 -->
@@ -761,139 +1116,194 @@
               <span class="brand-name">Whiskas</span>
             </a>
           </div>
-        </div>
+        </main>
       </section>
-      <!-- Nav-body -->
-      <div class="site-container">
-        <div class="nav-body-main">
-          <div class="left-nav-body">
-            <div class="nav-body">
-              <img src="./src/img/icon-body/sprite-quick-tap-chi.svg" alt="" />
-            </div>
-            <div class="nav-body">
-              <img src="./src/img/icon-body/sprite-quick-thu-y.svg" alt="" />
-            </div>
-            <div class="nav-body">
+
+      <!-- *.SẢN PHẨM CHI TIẾT -->
+      <section id="view-detail" class="app-view">
+        <main class="site-container">
+          <!-- DETAILS MAIN CONTAINER (Ảnh chính & Thông tin sản phẩm) -->
+          <div class="details-container">
+            <div class="img-container">
               <img
-                src="./src/img/icon-body/sprite-quick-spa-hotel.svg"
-                alt=""
+                id="detailImg"
+                src="./src/img/img-products/C10CBSIS03__main__20260927_220246_q97r6q_400x400.webp"
+                alt="Product Image"
               />
             </div>
-            <div class="barrier"></div>
-          </div>
-          <div class="right-nav-body">
-            <div class="search-bar-container">
-              <input
-                type="text"
-                name="search"
-                id="search-body"
-                placeholder="Tìm thức ăn, đồ chơi, phụ kiện..."
-              />
-              <div class="icon-nav-body"><i class="ri-search-line"></i></div>
-              <button class="btn-search-body">Tìm kiếm</button>
-            </div>
-            <div class="search-keyword-input">
-              <div class="selects" id="products">
-                <div class="content">
-                  <i class="ri-box-3-line"></i><span>Loại sản phẩm</span>
-                </div>
-                <div class="icon-select">
-                  <i class="ri-arrow-up-s-line"></i>
-                </div>
 
-                <div class="dropdown-menu">
-                  <div class="dropdown-pointer"></div>
-                  <div class="dropdown-header">
-                    <i class="ri-box-3-line"></i> Loại sản phẩm
-                  </div>
-                  <label
-                    class="dropdown-item"
-                    onclick="event.stopPropagation()"
-                  >
-                    <input type="checkbox" checked /> Thức ăn
-                  </label>
-                  <label
-                    class="dropdown-item"
-                    onclick="event.stopPropagation()"
-                  >
-                    <input type="checkbox" /> Đồ chơi
-                  </label>
-                  <label
-                    class="dropdown-item"
-                    onclick="event.stopPropagation()"
-                  >
-                    <input type="checkbox" /> Phụ kiện
-                  </label>
+            <div class="info-container">
+              <div class="product-title">
+                <h2 id="detailTitle">
+                  Combo 5 Pate DoggyMan Cho Cún Sốt Kem Gói 70g Vị Gan Vịt Rau
+                  Củ
+                </h2>
+              </div>
+
+              <div class="rating-section">
+                <img
+                  src="./src/img/icon-52ddc90ac00c.svg"
+                  alt="rating"
+                  onerror="
+                    this.outerHTML = '<span class=\'stars\'>⭐⭐⭐⭐⭐</span>'
+                  "
+                />
+                <span id="detailSoldText">| Đã bán Online: 88</span>
+                <i
+                  class="ri-poker-hearts-line"
+                  style="cursor: pointer"
+                  title="Yêu thích"
+                ></i>
+                <i
+                  class="ri-share-box-line"
+                  style="cursor: pointer"
+                  title="Chia sẻ"
+                ></i>
+              </div>
+
+              <div class="prices">
+                <span id="detailDiscount" class="discount">-5%</span>
+                <span id="detailOldPrice" class="old-price">75,000 đ</span>
+                <p id="detailSalesPrice" class="sales-price">71,250 đ</p>
+              </div>
+
+              <div class="description">
+                <div class="ton-kho">
+                  <p>Tồn kho Online:</p>
+                  <span id="detailStock">Còn hàng</span>
+                </div>
+                <div class="van-chuyen">
+                  <p>Vận chuyển:</p>
+                  <span>Săn voucher giảm phí vận chuyển nội thành Tp.HCM</span>
                 </div>
               </div>
-              <div class="selects" id="pet">
-                <div class="content">
-                  <i class="fa-solid fa-paw"></i><span>Dành cho</span>
+
+              <div class="quantity-container">
+                <div class="quantity-text">
+                  <p>Số lượng:</p>
                 </div>
-                <div class="icon-select">
-                  <i class="ri-arrow-up-s-line"></i>
-                </div>
-                <div class="dropdown-menu">
-                  <div class="dropdown-pointer"></div>
-                  <div class="dropdown-header">
-                    <i class="ri-paw-print-line"></i> Đối tượng thú cưng
-                  </div>
-                  <label
-                    class="dropdown-item"
-                    onclick="event.stopPropagation()"
+                <div class="quantity-btn-container">
+                  <button
+                    type="button"
+                    class="quantity-btn desc"
+                    onclick="changeQuantity(-1)"
                   >
-                    <input type="checkbox" /> Chó
-                  </label>
-                  <label
-                    class="dropdown-item"
-                    onclick="event.stopPropagation()"
+                    -
+                  </button>
+                  <p id="quantity">1</p>
+                  <button
+                    type="button"
+                    class="quantity-btn asc"
+                    onclick="changeQuantity(1)"
                   >
-                    <input type="checkbox" /> Mèo
-                  </label>
-                  <label
-                    class="dropdown-item"
-                    onclick="event.stopPropagation()"
-                  >
-                    <input type="checkbox" /> Chó và Mèo
-                  </label>
+                    +
+                  </button>
                 </div>
               </div>
-              <div class="selects" id="price">
-                <div class="content">
-                  <i class="ri-price-tag-3-line"></i><span>Khoảng giá</span>
-                </div>
-                <div class="icon-select">
-                  <i class="ri-arrow-up-s-line"></i>
-                </div>
-                <div
-                  class="dropdown-menu price-range-menu"
-                  onclick="event.stopPropagation()"
+
+              <div class="app-btn">
+                <button type="button" onclick="showQC()">
+                  <span>Mua ngay trên app PETPET</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- ẢNH THUMBNAIL NHỎ -->
+          <div class="mini-img-container">
+            <img
+              id="detailMiniImg"
+              src="./src/img/img-products/C10CBSIS03__main__20260927_220246_q97r6q_400x400.webp"
+              alt="Thumbnail"
+            />
+          </div>
+
+          <!-- THÔNG TIN CHI TIẾT SẢN PHẨM (Chỉ giữ Description & Highlight) -->
+          <div class="info-sp-container">
+            <div class="info-title">
+              <h2>THÔNG TIN SẢN PHẨM</h2>
+              <h3 id="detailSubTitle">
+                Combo 5 Pate DoggyMan Cho Cún Sốt Kem Gói 70g Vị Gan Vịt Rau Củ
+              </h3>
+            </div>
+
+            <div class="info-box">
+              <div class="box-row">
+                <span>Thương hiệu</span>
+                <a href="javascript:void(0)" id="detailBrand">DoggyMan</a>
+              </div>
+              <div class="box-row">
+                <span>Danh mục</span>
+                <a href="javascript:void(0)" id="detailCategory"
+                  >Thức ăn cho cún</a
                 >
-                  <div class="dropdown-pointer"></div>
-
-                  <div class="price-title">Chọn khoảng giá tối đa</div>
-                  <div class="price-display">
-                    Từ 0đ đến <span id="price-value">250.000đ</span>
-                  </div>
-                  <!-- Thẻ input dạng range -->
-                  <input
-                    type="range"
-                    min="0"
-                    max="1000000"
-                    step="10000"
-                    value="250000"
-                    class="range-slider"
-                    oninput="
-                      document.getElementById('price-value').innerText =
-                        Number(this.value).toLocaleString() + 'đ'
-                    "
-                  />
-                </div>
+              </div>
+              <div class="box-row">
+                <span>Khối lượng</span>
+                <p id="detailWeight">350g</p>
+              </div>
+              <div class="box-row">
+                <span>Hạn sử dụng</span>
+                <p id="detailOrigin">> 1 năm</p>
               </div>
             </div>
+
+            <div class="info-sp-content" id="detailFullContent">
+              <p>
+                <span
+                  ><strong id="contentTitleBold"
+                    >Combo 5 Pate DoggyMan Cho Cún Sốt Kem Gói 70g Vị Gan Vịt
+                    Rau Củ</strong
+                  >
+                  là dòng thức ăn ướt cao cấp dành cho cún cưng với kết cấu sốt
+                  kem thơm béo, giúp kích thích vị giác tối đa và cung cấp đầy
+                  đủ độ ẩm, dưỡng chất thiết yếu cho bữa ăn hằng ngày của
+                  cún.</span
+                >
+              </p>
+              <p>
+                <span><strong>Đặc điểm nổi bật (Highlight):</strong></span>
+              </p>
+              <ul>
+                <li>
+                  <span
+                    >Kết cấu sốt kem mịn màng, thơm ngon đặc biệt, dễ dàng trộn
+                    chung với hạt khô.</span
+                  >
+                </li>
+                <li>
+                  <span
+                    >Hương vị gan vịt kết hợp rau củ đổi mới khẩu vị, giúp cún
+                    ăn ngon miệng hơn.</span
+                  >
+                </li>
+                <li>
+                  <span
+                    >Bổ sung lượng nước và độ ẩm tự nhiên, tốt cho hệ tiêu hóa
+                    và thận của cún.</span
+                  >
+                </li>
+                <li>
+                  <span
+                    >Đóng gói tiện lợi dạng gói 70g dễ dàng chia khẩu phần mỗi
+                    bữa.</span
+                  >
+                </li>
+              </ul>
+            </div>
           </div>
-        </div>
-      </div>
+
+          <!-- KHU VỰC DIV ĐỂ RENDER SẢN PHẨM SAU NÀY (Thay thế cột gợi ý cũ) -->
+          <div class="render-products-section">
+            <div class="section-heading">
+              <h3>SẢN PHẨM LIÊN QUAN / GỢI Ý</h3>
+            </div>
+            <div id="related-products-container" class="products-grid">
+              <!-- Sau này bạn dùng JavaScript render danh sách sản phẩm vào đây -->
+            </div>
+          </div>
+        </main>
+      </section>
 
       <!-- Footer -->
       <div class="site-container">
@@ -991,6 +1401,8 @@
       </div>
     </div>
     <!-- JS -->
+    <script type="module" src="./src/js/product.js"></script>
+    <script type="module" src="./src/js/detail-product.js"></script>
     <script src="./src/js/main.js"></script>
     <script src="./src/js/mobile.js"></script>
     <script

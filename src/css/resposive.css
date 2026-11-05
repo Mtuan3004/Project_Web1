@@ -121,7 +121,7 @@
   .product-info {
     display: flex;
     flex-direction: column;
-    gap: 4px; 
+    gap: 4px;
     width: 100%;
   }
 
@@ -133,7 +133,7 @@
     color: #333;
     display: -webkit-box;
     overflow: hidden;
-    height: 32px; 
+    height: 32px;
     margin: 0;
   }
 
@@ -147,7 +147,7 @@
     display: flex;
     flex-direction: column;
     gap: 2px;
-    margin-top: auto; 
+    margin-top: auto;
   }
 
   .product-price {
@@ -157,14 +157,11 @@
   }
 }
 
-
-
 /* =================================
    RESPONSIVE SEARCH - MOBILE
 ================================= */
 
 @media screen and (max-width: 768px) {
-
   .right-nav-body {
     margin: 0px;
     width: 100%;
@@ -281,13 +278,11 @@
     width: 100%;
     box-sizing: border-box;
   }
-
 }
 
 /* Điện thoại màn hình nhỏ */
 
 @media screen and (max-width: 380px) {
-
   .search-bar-container {
     gap: 5px;
     padding: 5px;
@@ -314,7 +309,6 @@
   .selects .content span {
     font-size: 12px;
   }
-
 }
 @media (max-width: 600px) {
   .slider-btn {
@@ -334,12 +328,6 @@
   }
   .search-keyword-input {
     display: block;
-  }
-  .brand-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-  .product-grid {
-    grid-template-columns: repeat(3, 1fr);
   }
   .footer-grid {
     display: flex !important;
