@@ -55,4 +55,63 @@ async function xemChiTietSanPham(productId) {
 }
 
 // Gán ra toàn cục để onclick trong HTML gọi được
+
+
+
+function renderProductsToScreen() {
+  // 1. Lấy dữ liệu sản phẩm từ localStorage
+  var data = localStorage.getItem('petpetProducts');
+  var products = data ? JSON.parse(data) : [];
+
+  // 2. Tìm đến phần tử có class là .screen-product trên trang chủ
+  var screenProductContainer = document.querySelector('.screen-product');
+  
+  if (!screenProductContainer) {
+    return; // Nếu không tìm thấy khung này thì dừng lại
+  }
+
+  // 3. Nếu chưa có sản phẩm nào trong localStorage
+  if (products.length === 0) {
+    screenProductContainer.innerHTML = '<p style="text-align:center; padding: 20px;">Chưa có sản phẩm nào.</p>';
+    return;
+  }
+
+  // 4. Duyệt qua mảng sản phẩm để tạo chuỗi HTML cho từng product-card
+  var html = '<div class="product-grid">'; // Tạo lưới chứa các card
+
+  products.forEach(function (product) {
+    // Xử lý linh hoạt tên các thuộc tính (tránh trường hợp key ở admin và trang chủ đặt khác tên nhau)
+    var name = product.name || 'Sản phẩm thú cưng';
+    var image = product.image || product.img || './src/img/img-products/default.webp';
+    var price = product.price || product.price_vnd || product.original_price_vnd || 0;
+    var formattedPrice = Number(price).toLocaleString('vi-VN') + ' đ';
+
+    html += `
+      <div class="product-card" onclick="xemChiTietSanPham('${product.id}')">
+        <div class="product-img-box">
+          <img src="${image}" alt="${name}" />
+        </div>
+        <div class="product-info">
+          <h3 class="product-name">${name}</h3>
+          <div class="product-rating">
+            <i class="ri-star-fill"></i><i class="ri-star-fill"></i>
+            <i class="ri-star-fill"></i><i class="ri-star-fill"></i>
+            <i class="ri-star-fill"></i>
+          </div>
+          <div class="current-price">${formattedPrice}</div>
+        </div>
+      </div>
+    `;
+  });
+
+  html += '</div>';
+
+  // 5. InnerHTML vào trong .screen-product
+  screenProductContainer.innerHTML = html;
+}
+
+// Chạy hàm ngay khi trang được tải xong
+document.addEventListener('DOMContentLoaded', function () {
+  renderProductsToScreen();
+});
 window.xemChiTietSanPham = xemChiTietSanPham;

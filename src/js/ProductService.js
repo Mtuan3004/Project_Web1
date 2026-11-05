@@ -1,5 +1,5 @@
 // Thêm hàm này vào ProductService.js
-const STORAGE_KEY = 'products';
+const STORAGE_KEY = 'petpetProducts';
 
 export async function getProducts() {
   try {
