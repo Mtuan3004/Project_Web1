@@ -60,7 +60,7 @@ async function xemChiTietSanPham(productId) {
 
 function renderProductsToScreen() {
   // 1. Lấy dữ liệu sản phẩm từ localStorage
-  var data = localStorage.getItem('petpetProducts');
+  var data = localStorage.getItem('products');
   var products = data ? JSON.parse(data) : [];
 
   // 2. Tìm đến phần tử có class là .screen-product trên trang chủ
