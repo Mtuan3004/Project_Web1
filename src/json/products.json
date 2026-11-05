@@ -6,26 +6,17 @@
     "category": "Bánh thưởng & Chăm sóc răng",
     "pet": "Cún cưng",
     "weight": "Gói 112g",
-    "origin": "Thái Lan",
     "image": "./src/img/img-products/DPF00238__main__20260927_230749_n5ptjh_400x400.webp",
     "price": 59000,
     "oldPrice": 69000,
-    "discount": "-14%",
+    "discount": "",
     "stock": "Còn 15 sản phẩm",
-    "sold": 48,
     "description": "Bánh thưởng dạng thanh chữ X độc đáo giúp làm sạch sâu kẽ răng, giảm tích tụ cao răng và mảng bám lên đến 80%, bổ sung Canxi giúp xương và răng chắc khỏe, hương vị thịt bò thơm ngon hấp dẫn cún cưng.",
     "highlights": [
       "Thiết kế thanh chữ X đặc trưng giúp chà sát kẽ răng khi nhai, hỗ trợ làm sạch răng tự nhiên.",
       "Giảm tích tụ mảng bám và vôi răng lên đến 80% khi sử dụng thường xuyên.",
       "Bổ sung Canxi và Kẽm giúp xương hàm và hàm răng chắc khỏe.",
       "Hương vị thịt bò thơm lừng, kích thích cún cưng nhai lâu hơn."
-    ],
-    "ingredients": "Bột ngũ cốc, bột thịt phụ phẩm gia súc (thịt bò), glycerin, chất xơ, khoáng chất (Kẽm sunfat, Canxi photphat), chất tạo màu thực phẩm và vitamin tổng hợp.",
-    "instructions": [
-      "Cho cún ăn trực tiếp 1 thanh mỗi ngày sau bữa ăn chính.",
-      "Phù hợp cho chó trưởng thành trên 1 năm tuổi có trọng lượng từ 5kg - 10kg.",
-      "Luôn chuẩn bị sẵn nước uống sạch cạnh khu vực ăn.",
-      "Bảo quản túi bánh nơi khô ráo, kéo kín miệng zip sau khi sử dụng."
     ]
   },
   {
