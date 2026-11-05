@@ -1,5 +1,7 @@
 // ===== SERVICE: Dữ liệu và xử lý nghiệp vụ =====
-var orders = [
+
+// Khởi tạo hoặc lấy dữ liệu Đơn hàng từ localStorage
+var orders = JSON.parse(localStorage.getItem('petpetOrders')) || [
   {
     id: '#PP2481',
     customer: 'Minh Anh',
@@ -30,68 +32,76 @@ var orders = [
   },
 ];
 
-var products = [
-  {
-    id: 'SPC001',
-    name: 'Royal Canin Mini Adult',
-    brand: 'Royal Canin',
-    category: 'L001',
-    pet: 'Chó',
-    weight: 'Túi 2kg',
-    combo: null,
-    desc: 'Hạt cho chó trưởng thành giống nhỏ, túi 2kg',
-    image: '', // Chưa có đường dẫn ảnh thì hiển thị chữ RC
-    price: 180000,
-    stock: 4,
-    discount: null,
-    hidden: 0,
-  },
-];
+var products = [];
 
-// Số thứ tự hiện tại của từng loại
+// Hàm lưu danh sách sản phẩm xuống localStorage
+function saveLocalStorageProducts() {
+  localStorage.setItem('petpetProducts', JSON.stringify(products));
+}
 
-async function loadProductData() {
-  var savedProducts = localStorage.getItem('petpetProducts');
-
-  // Ưu tiên dữ liệu đã được thêm trong trình duyệt
-  if (savedProducts) {
-    products = JSON.parse(savedProducts);
-    return;
-  }
-
-  // Nếu chưa có dữ liệu localStorage thì đọc từ JSON
-  try {
-    var response = await fetch('./src/data/products.json');
-
-    if (!response.ok) {
-      throw new Error('Không thể đọc products.json');
+// Kiểm tra và load dữ liệu sản phẩm CHỈ TỪ localStorage (Có dữ liệu mẫu mặc định nếu trống)
+function loadProductData() {
+  var localProducts = localStorage.getItem('petpetProducts');
+  
+  if (localProducts) {
+    try {
+      products = JSON.parse(localProducts);
+    } catch (e) {
+      products = [];
     }
-
-    products = await response.json();
-  } catch (error) {
-    console.error(error);
+  } else {
+    // Nếu localStorage chưa có gì, khởi tạo luôn mảng sản phẩm mẫu mặc định ở đây
     products = [
       {
-        id: 'SPC001',
-        name: 'Royal Canin Mini Adult',
-        brand: 'Royal Canin',
-        category: 'L001',
-        pet: 'Chó',
-        weight: 'Túi 2kg',
+        id: "SPC001",
+        name: "Royal Canin Mini Adult",
+        brand: "Royal Canin",
+        category: "L001",
+        pet: "Chó",
+        weight: "Túi 2kg",
         combo: null,
-        desc: 'Hạt cho chó trưởng thành giống nhỏ, túi 2kg',
-        image: '', // Chưa có đường dẫn ảnh thì hiển thị chữ RC
+        image: "./src/img/img-products/DPF00238__main__20260927_230749_n5ptjh_400x400.webp",
         price: 180000,
-        stock: 4,
+        stock: 10,
+        desc: "Hạt cho chó trưởng thành giống nhỏ",
+        highlights: ["Hỗ trợ tiêu hóa", "Bảo vệ da lông"],
         discount: null,
-        hidden: 0,
-      },
+        hidden: 0
+      }
     ];
+    // Lưu ngay vào localStorage
+    saveLocalStorageProducts();
   }
 }
 
-function saveProducts() {
-  localStorage.setItem('petpetProducts', JSON.stringify(products));
+// Gọi hàm load dữ liệu khi khởi động
+loadProductData();
+
+// Chèn thêm 1 phần tử vào mảng products và cập nhật localStorage
+function addProduct(newProduct) {
+  if (!newProduct || typeof newProduct !== 'object') {
+    return false;
+  }
+
+  if (!Array.isArray(products)) {
+    products = [];
+  }
+
+  var duplicated = products.some(function (item) {
+    return item && item.id === newProduct.id;
+  });
+
+  if (duplicated) {
+    var newId = generateProductID(newProduct.category);
+    if (!newId) {
+      return false;
+    }
+    newProduct.id = newId;
+  }
+
+  products.unshift(newProduct);
+  saveLocalStorageProducts(); // Cập nhật ngay vào localStorage
+  return true;
 }
 
 function generateProductID(category) {
@@ -105,13 +115,16 @@ function generateProductID(category) {
   if (!prefix) {
     return null;
   }
+
   var maxID = 0;
 
   products.forEach(function (product) {
-    if (product.id.startsWith(prefix)) {
-      var number = Number(product.id.substring(3));
+    var id = product && product.id ? String(product.id) : '';
 
-      if (number > maxID) {
+    if (id.indexOf(prefix) === 0) {
+      var number = parseInt(id.substring(prefix.length), 10);
+
+      if (!isNaN(number) && number > maxID) {
         maxID = number;
       }
     }
@@ -119,85 +132,32 @@ function generateProductID(category) {
 
   return prefix + String(maxID + 1).padStart(3, '0');
 }
+
 function getStatusClass(status) {
   if (status === 'Đã giao') {
     return 'done';
   }
-
   if (status === 'Đang giao') {
     return 'shipping';
   }
-
   return 'waiting';
 }
+
 function formatMoney(number) {
   return number.toLocaleString('vi-VN') + 'đ';
 }
 
 function showMessage(text) {
   var message = document.getElementById('message');
+
+  if (!message) {
+    return;
+  }
+
   message.innerText = text;
   message.classList.add('show');
 
   setTimeout(function () {
     message.classList.remove('show');
   }, 2000);
-}
-
-
-function exportProductsJSON() {
-  var json = JSON.stringify(products, null, 2);
-
-  var blob = new Blob([json], {
-    type: 'application/json',
-  });
-
-  var url = URL.createObjectURL(blob);
-  var link = document.createElement('a');
-
-  link.href = url;
-  link.download = 'product.json';
-
-  link.click();
-
-  URL.revokeObjectURL(url);
-}
-async function saveProductsToFile() {
-  // Trình duyệt không hỗ trợ File System Access API: tải JSON xuống thay thế.
-  if (!window.showSaveFilePicker) {
-    exportProductsJSON();
-    showMessage('Đã tải file product.json xuống máy.');
-    return;
-  }
-
-  try {
-    const handle = await window.showSaveFilePicker({
-      suggestedName: 'product.json',
-      types: [
-        {
-          description: 'JSON file',
-          accept: {
-            'application/json': ['.json'],
-          },
-        },
-      ],
-    });
-
-    const writable = await handle.createWritable();
-    await writable.write(JSON.stringify(products, null, 2));
-    await writable.close();
-
-    showMessage('Đã cập nhật product.json!');
-  } catch (error) {
-    // Người dùng bấm Hủy: dữ liệu vẫn đã được lưu trong localStorage.
-    if (error.name === 'AbortError') {
-      showMessage('Sản phẩm đã lưu trong trình duyệt.');
-      return;
-    }
-
-    console.error('Lỗi lưu product.json:', error);
-    // Nếu không ghi được file đã chọn, vẫn xuất bản JSON để người dùng không mất dữ liệu.
-    exportProductsJSON();
-    showMessage('Không ghi được file đã chọn, đã tải product.json xuống máy.');
-  }
 }

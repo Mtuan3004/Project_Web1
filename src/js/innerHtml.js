@@ -395,73 +395,7 @@ var pages = {
             </div>
           </div>
         </section>`,
-  khuyenMai: `<section class="box">
-          <div class="box-title pp-toolbar">
-            <div>
-              <h2>Quản lý khuyến mãi</h2>
-              <p>
-                Đặt % giảm giá hiển thị ở trang chủ.
-                Giá bán = Giá gốc × (1 − % giảm)
-              </p>
-            </div>
-            <div class="pp-tools">
-              <input
-                type="text"
-                id="fQ"
-                data-filter=""
-                placeholder="Tìm mã, tên sản phẩm..."
-              /><select id="fC" data-filter="">
-                <option value="">Tất cả loại</option>
-                <option value="L001">Thức ăn cho chó</option>
-                <option value="L002">Thức ăn cho mèo</option>
-                <option value="L003">Đồ dùng</option>
-                <option value="L004">Phụ kiện</option>
-              </select>
-              <button class="pp-btn pp-btn--primary" data-act="promo-add">
-                + Thêm khuyến mãi
-              </button>
-            </div>
-          </div>
-          <div id="ppList">
-            <div class="table-wrapper pp-table-wrap">
-              <table class="pp-table">
-                <thead>
-                  <tr data-cat="L001">
-                    <th>Mã</th>
-                    <th>Tên sản phẩm</th>
-                    <th>Loại</th>
-                    <th>Giá vốn</th>
-                    <th>Giá gốc</th>
-                    <th>% giảm giá</th>
-                    <th>Giá bán</th>
-                    <th>Thao tác</th>
-                  </tr>
-                </thead>
-                <tbody id="promotionTable">
-                  <tr>
-                    <td>SPC001</td>
-                    <td>Royal Canin Mini Adult</td>
-                    <td>Thức ăn cho chó</td>
-                    <td>150.000đ</td>
-                    <td>180.000đ</td>
-                    <td>—</td>
-                    <td><b>180.000đ</b></td>
-                    <td>
-                      <button
-                        type="button"
-                        class="pp-btn pp-btn--small"
-                        data-act="prod-margin"
-                        data-id="SP001"
-                      >
-                        Sửa giá
-                      </button>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </section>`,
+
   caiDat: `<section class="box">
           <div class="box-title pp-toolbar">
             <div>
