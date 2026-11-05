@@ -290,3 +290,13 @@ function bindGoTo(selector, viewId) {
 
 bindGoTo('.view-more', 'view-products');
 bindGoTo('.brand-view-more', 'view-brand');
+
+
+// hahah
+
+const myOrder = document.querySelector('.personal-menu');
+
+myOrder.addEventListener('click', (e) => {
+  e.preventDefault(); // nếu .personal-menu là thẻ <a>, chặn nó nhảy trang/cuộn lên đầu
+  showView('view-cart');
+});
