@@ -1,0 +1,28 @@
+[
+  {
+    "id": "SPC002",
+    "name": "tên",
+    "brand": "brand",
+    "category": "L001",
+    "pet": "Chó",
+    "weight": "",
+    "combo": null,
+    "image": "",
+    "price": 123123,
+    "stock": 123123,
+    "desc": "",
+    "highlights": [],
+    "discount": null,
+    "hidden": 0
+  },
+  {
+    "id": "SPC001",
+    "name": "Royal Canin Mini Adult",
+    "category": "L001",
+    "desc": "Hạt cho chó trưởng thành giống nhỏ, túi 2kg",
+    "group": "Giá tốt hôm nay",
+    "status": 0,
+    "image": "RC",
+    "hidden": 0
+  }
+]
