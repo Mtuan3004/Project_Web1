@@ -317,7 +317,7 @@
   display: inline-block;
 }
 
-.products-grid {
+.suggest_products{
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 15px;

@@ -137,6 +137,7 @@
 
 /* Lưới sản phẩm (5 sản phẩm trên 1 hàng) */
 .product-grid {
+  padding: 3px;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 16px;
