@@ -30,7 +30,7 @@ select {
 }
 
 .sidebar {
-  background-image: url('../img/Gemini_Generated_Image_7vc9mu7vc9mu7vc9.png');
+  background-image: url("../img/Gemini_Generated_Image_7vc9mu7vc9mu7vc9.png");
   background-position: center;
   background-size: cover;
 
@@ -955,17 +955,23 @@ body.sidebar-collapsed .collapse-arrow {
   padding-top: 18px;
   border-top: 1px solid #eee;
 }
+.inv-section {
+  margin-bottom: 18px;
+}
 
-@media (max-width: 650px) {
-  .product-form-grid {
-    grid-template-columns: 1fr;
-  }
+.inv-total {
+  margin-top: 12px;
+  color: #77777d;
+  font-size: 11px;
+}
 
-  .form-full {
-    grid-column: auto;
-  }
+.inv-summary-item span {
+  display: block;
+  margin-bottom: 6px;
+  color: #818187;
+  font-size: 11px;
+}
 
-  .product-modal-content {
-    padding: 18px;
-  }
+.inv-summary-item b {
+  font-size: 20px;
 }

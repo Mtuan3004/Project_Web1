@@ -3,12 +3,15 @@
 
 // ===== ADMIN: Điều hướng và các sự kiện tương tác =====
 
-pageContent.addEventListener('input', function (event) {
-  if (event.target.id === 'searchInput') {
+pageContent.addEventListener("input", function (event) {
+  if (event.target.id === "searchInput") {
     showOrders();
   }
-  if (event.target.id === 'fQ') {
-    if (document.getElementById('customerTable')) {
+  if (event.target.id === "invReportProduct") {
+    showInventory();
+  }
+  if (event.target.id === "fQ") {
+    if (document.getElementById("customerTable")) {
       showCustomers();
     } else {
       showProducts();
@@ -16,12 +19,20 @@ pageContent.addEventListener('input', function (event) {
   }
 });
 
-pageContent.addEventListener('change', function (event) {
-  if (event.target.id === 'statusFilter') {
+pageContent.addEventListener("change", function (event) {
+  if (event.target.id === "statusFilter") {
     showOrders();
   }
-  if (event.target.id === 'fC' || event.target.id === 'fS') {
-    if (document.getElementById('customerTable')) {
+  if (
+    event.target.id === "invCategory" ||
+    event.target.id === "invDate" ||
+    event.target.id === "invFrom" ||
+    event.target.id === "invTo"
+  ) {
+    showInventory();
+  }
+  if (event.target.id === "fC" || event.target.id === "fS") {
+    if (document.getElementById("customerTable")) {
       showCustomers();
     } else {
       showProducts();
@@ -29,45 +40,50 @@ pageContent.addEventListener('change', function (event) {
   }
 });
 
-pageContent.addEventListener('click', function (event) {
-  var actionButton = event.target.closest('[data-act]');
-  var action = actionButton ? actionButton.dataset.act : '';
-  var orderForm = document.getElementById('orderForm');
+pageContent.addEventListener("click", function (event) {
+  var actionButton = event.target.closest("[data-act]");
+  var action = actionButton ? actionButton.dataset.act : "";
+  var orderForm = document.getElementById("orderForm");
 
-  if (event.target.id === 'showFormButton' && orderForm) {
-    orderForm.classList.remove('hidden');
+  if (event.target.id === "showFormButton" && orderForm) {
+    orderForm.classList.remove("hidden");
   }
 
-  if (event.target.id === 'cancelButton' && orderForm) {
-    orderForm.classList.add('hidden');
+  if (event.target.id === "cancelButton" && orderForm) {
+    orderForm.classList.add("hidden");
     orderForm.reset();
   }
 
   // Nút khôi phục dữ liệu mẫu ở trang Cài đặt
-  if (action === 'reset') {
-    if (confirm('Bạn có chắc chắn muốn khôi phục lại dữ liệu ban đầu? Mọi thay đổi sẽ bị xóa.')) {
-      localStorage.removeItem('petpetProducts');
-      localStorage.removeItem('petpetOrders');
-      localStorage.removeItem('users');
-      localStorage.removeItem('petpetCustomers');
+  if (action === "reset") {
+    if (
+      confirm(
+        "Bạn có chắc chắn muốn khôi phục lại dữ liệu ban đầu? Mọi thay đổi sẽ bị xóa.",
+      )
+    ) {
+      localStorage.removeItem("products");
+      localStorage.removeItem("orders");
+      localStorage.removeItem("stocks");
+      localStorage.removeItem("users");
+      localStorage.removeItem("customers");
       location.reload();
     }
   }
 
   // Mở form thêm sản phẩm
-  if (action === 'prod-add') {
-    document.getElementById('productModal').classList.remove('hidden');
+  if (action === "prod-add") {
+    document.getElementById("productModal").classList.remove("hidden");
   }
 
   // Đóng form thêm sản phẩm
-  if (action === 'prod-cancel') {
-    var productForm = document.getElementById('productForm');
+  if (action === "prod-cancel") {
+    var productForm = document.getElementById("productForm");
     productForm.reset();
-    document.getElementById('productModal').classList.add('hidden');
+    document.getElementById("productModal").classList.add("hidden");
   }
 
   // Ẩn / hiện sản phẩm
-  if (action === 'prod-toggle') {
+  if (action === "prod-toggle") {
     var toggleId = actionButton.dataset.id;
 
     var product = products.find(function (item) {
@@ -82,10 +98,10 @@ pageContent.addEventListener('click', function (event) {
   }
 
   // Xóa sản phẩm
-  if (action === 'prod-del') {
+  if (action === "prod-del") {
     var delId = actionButton.dataset.id;
 
-    if (confirm('Bạn có chắc muốn xóa sản phẩm ' + delId + '?')) {
+    if (confirm("Bạn có chắc muốn xóa sản phẩm " + delId + "?")) {
       var delIndex = products.findIndex(function (item) {
         return item.id === delId;
       });
@@ -93,15 +109,16 @@ pageContent.addEventListener('click', function (event) {
       if (delIndex !== -1) {
         products.splice(delIndex, 1);
         saveLocalStorageProducts(); // Cập nhật lại localStorage sau khi xóa
+        removeStockLogsOfProduct(delId);
       }
 
       showProducts();
-      showMessage('Đã xóa sản phẩm.');
+      showMessage("Đã xóa sản phẩm.");
     }
   }
 
   // Khóa hoặc mở khóa khách hàng và cập nhật cùng khóa "users".
-  if (action === 'cus-lock') {
+  if (action === "cus-lock") {
     var lockId = actionButton.dataset.id;
     var lockCustomer = customers.find(function (item) {
       return item.id === lockId;
@@ -111,12 +128,14 @@ pageContent.addEventListener('click', function (event) {
       lockCustomer.locked = !lockCustomer.locked;
       saveLocalStorageCustomers();
       showCustomers();
-      showMessage(lockCustomer.locked ? 'Đã khóa khách hàng.' : 'Đã mở khóa khách hàng.');
+      showMessage(
+        lockCustomer.locked ? "Đã khóa khách hàng." : "Đã mở khóa khách hàng.",
+      );
     }
   }
 
   // Đặt lại mật khẩu ngay trên dữ liệu user trong localStorage.
-  if (action === 'cus-reset') {
+  if (action === "cus-reset") {
     var resetId = actionButton.dataset.id;
     var resetCustomer = customers.find(function (item) {
       return item.id === resetId;
@@ -124,16 +143,18 @@ pageContent.addEventListener('click', function (event) {
 
     if (
       resetCustomer &&
-      confirm('Đặt lại mật khẩu của ' + resetCustomer.fullName + ' thành 123456?')
+      confirm(
+        "Đặt lại mật khẩu của " + resetCustomer.fullName + " thành 123456?",
+      )
     ) {
-      resetCustomer.password = '123456';
+      resetCustomer.password = "123456";
       saveLocalStorageCustomers();
-      showMessage('Đã đặt lại mật khẩu thành 123456.');
+      showMessage("Đã đặt lại mật khẩu thành 123456.");
     }
   }
 
   // Xóa khỏi mảng rồi lưu lại localStorage nên trang user cũng mất tài khoản này.
-  if (action === 'cus-del') {
+  if (action === "cus-del") {
     var customerId = actionButton.dataset.id;
     var customerIndex = customers.findIndex(function (item) {
       return item.id === customerId;
@@ -141,98 +162,102 @@ pageContent.addEventListener('click', function (event) {
 
     if (
       customerIndex !== -1 &&
-      confirm('Bạn có chắc muốn xóa khách hàng ' + customers[customerIndex].fullName + '?')
+      confirm(
+        "Bạn có chắc muốn xóa khách hàng " +
+          customers[customerIndex].fullName +
+          "?",
+      )
     ) {
       customers.splice(customerIndex, 1);
       saveLocalStorageCustomers();
       showCustomers();
-      showMessage('Đã xóa khách hàng khỏi localStorage.');
+      showMessage("Đã xóa khách hàng khỏi localStorage.");
     }
   }
 });
 
-pageContent.addEventListener('submit', function (event) {
+pageContent.addEventListener("submit", function (event) {
   event.preventDefault();
 
   var form = event.target;
 
-  if (form.id === 'orderForm') {
+  if (form.id === "orderForm") {
     var newOrder = {
-      id: '#PP' + (2482 + orders.length - 4),
-      customer: document.getElementById('customerName').value,
-      product: document.getElementById('productName').value,
-      total: Number(document.getElementById('orderTotal').value),
-      status: document.getElementById('orderStatus').value,
+      id: "#PP" + (2482 + orders.length - 4),
+      customer: document.getElementById("customerName").value,
+      product: document.getElementById("productName").value,
+      total: Number(document.getElementById("orderTotal").value),
+      status: document.getElementById("orderStatus").value,
     };
 
     orders.unshift(newOrder);
     saveLocalStorageOrders(); // Lưu đơn hàng mới vào localStorage
     updateOrderCount();
     form.reset();
-    form.classList.add('hidden');
-    document.getElementById('searchInput').value = '';
-    document.getElementById('statusFilter').value = 'Tất cả';
+    form.classList.add("hidden");
+    document.getElementById("searchInput").value = "";
+    document.getElementById("statusFilter").value = "Tất cả";
     showOrders();
-    showMessage('Đã thêm đơn hàng mới.');
-  } else if (form.id === 'productForm') {
-    var comboValue = document.getElementById('prodCombo').value;
-    var category = document.getElementById('prodCategory').value;
+    showMessage("Đã thêm đơn hàng mới.");
+  } else if (form.id === "productForm") {
+    var comboValue = document.getElementById("prodCombo").value;
+    var category = document.getElementById("prodCategory").value;
 
     var newProduct = {
       id: generateProductID(category),
-      name: document.getElementById('prodName').value.trim(),
-      brand: document.getElementById('prodBrand').value.trim(),
+      name: document.getElementById("prodName").value.trim(),
+      brand: document.getElementById("prodBrand").value.trim(),
       category: category,
-      pet: document.getElementById('prodPet').value,
-      weight: document.getElementById('prodWeight').value.trim(),
-      combo: comboValue === '' ? null : comboValue,
-      image: document.getElementById('prodImage').value.trim(),
-      price: Number(document.getElementById('prodPrice').value),
-      stock: Number(document.getElementById('prodStock').value),
-      desc: document.getElementById('prodDesc').value.trim(),
+      pet: document.getElementById("prodPet").value,
+      weight: document.getElementById("prodWeight").value.trim(),
+      combo: comboValue === "" ? null : comboValue,
+      image: document.getElementById("prodImage").value.trim(),
+      price: Number(document.getElementById("prodPrice").value),
+      stock: Number(document.getElementById("prodStock").value),
+      desc: document.getElementById("prodDesc").value.trim(),
       highlights: document
-        .getElementById('prodHighlights')
-        .value.split('\n')
+        .getElementById("prodHighlights")
+        .value.split("\n")
         .map(function (item) {
           return item.trim();
         })
         .filter(function (item) {
-          return item !== '';
+          return item !== "";
         }),
       discount: null,
       hidden: 0,
     };
 
     if (!newProduct.id || newProduct.price < 0 || newProduct.stock < 0) {
-      showMessage('Thông tin sản phẩm không hợp lệ.');
+      showMessage("Thông tin sản phẩm không hợp lệ.");
       return;
     }
 
     if (!addProduct(newProduct)) {
-      showMessage('Không thêm được sản phẩm.');
+      showMessage("Không thêm được sản phẩm.");
       return;
     }
 
     form.reset();
-    document.getElementById('productModal').classList.add('hidden');
+    document.getElementById("productModal").classList.add("hidden");
     showProducts();
 
-    showMessage('Đã thêm sản phẩm vào mảng.');
+    showMessage("Đã thêm sản phẩm vào mảng.");
   }
 });
 
 // ===== Menu: đổi trang =====
-var menuItems = document.querySelectorAll('.menu-item');
+var menuItems = document.querySelectorAll(".menu-item");
 
 for (var i = 0; i < menuItems.length; i++) {
-  menuItems[i].addEventListener('click', function () {
-    var activeItem = document.querySelector('.menu-item.active');
+  menuItems[i].addEventListener("click", function () {
+    var activeItem = document.querySelector(".menu-item.active");
 
     if (activeItem) {
-      activeItem.classList.remove('active');
+      activeItem.classList.remove("active");
     }
 
-    this.classList.add('active');
+    this.classList.add("active");
     setPageTitle(this.dataset.title);
     closeSidebar();
 
@@ -240,18 +265,18 @@ for (var i = 0; i < menuItems.length; i++) {
   });
 }
 
-document.getElementById('mobileMenu').addEventListener('click', function () {
-  document.getElementById('sidebar').classList.toggle('open');
+document.getElementById("mobileMenu").addEventListener("click", function () {
+  document.getElementById("sidebar").classList.toggle("open");
 });
 
 document
-  .getElementById('collapseButton')
-  .addEventListener('click', function () {
-    document.body.classList.toggle('sidebar-collapsed');
+  .getElementById("collapseButton")
+  .addEventListener("click", function () {
+    document.body.classList.toggle("sidebar-collapsed");
   });
 
 function setPageTitle(title) {
-  var pageTitle = document.getElementById('pageTitle');
+  var pageTitle = document.getElementById("pageTitle");
 
   if (pageTitle && title) {
     pageTitle.innerText = title;
@@ -259,15 +284,15 @@ function setPageTitle(title) {
 }
 
 function closeSidebar() {
-  var sidebar = document.getElementById('sidebar');
+  var sidebar = document.getElementById("sidebar");
 
   if (sidebar) {
-    sidebar.classList.remove('open');
+    sidebar.classList.remove("open");
   }
 }
 
 function updateOrderCount() {
-  var orderCount = document.querySelector('.menu-count');
+  var orderCount = document.querySelector(".menu-count");
 
   if (orderCount) {
     orderCount.innerText = orders.length;
@@ -275,29 +300,29 @@ function updateOrderCount() {
 }
 
 function openHomePage() {
-  var items = document.querySelectorAll('.menu-item');
+  var items = document.querySelectorAll(".menu-item");
   var homeItem = null;
 
   for (var j = 0; j < items.length; j++) {
-    items[j].classList.remove('active');
+    items[j].classList.remove("active");
 
-    if (items[j].dataset.page === 'tongQuan') {
+    if (items[j].dataset.page === "tongQuan") {
       homeItem = items[j];
     }
   }
 
   if (homeItem) {
-    homeItem.classList.add('active');
+    homeItem.classList.add("active");
     setPageTitle(homeItem.dataset.title);
   }
 
   closeSidebar();
-  loadPage('tongQuan');
+  loadPage("tongQuan");
   window.scrollTo(0, 0);
 }
 
-if ('scrollRestoration' in history) {
-  history.scrollRestoration = 'manual';
+if ("scrollRestoration" in history) {
+  history.scrollRestoration = "manual";
 }
 
 loadProductData();
