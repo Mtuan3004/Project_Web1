@@ -98,9 +98,11 @@ var pages = {
               <th>Trạng thái</th>
             </tr>
           </thead>
-          <tbody id="orderTable"></tbody>
+          <tbody id="orderTable">
+          
+          </tbody>
         </table>
-        <p class="empty-message hidden" id="emptyMessage">Không tìm thấy đơn hàng phù hợp.</p>
+        <p class="empty-message hidden" id="orderEmpty">Không tìm thấy đơn hàng phù hợp.</p>
       </div>
     </section>
   `,
