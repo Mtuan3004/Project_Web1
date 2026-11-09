@@ -243,12 +243,7 @@ nav {
   display: flex;
   align-items: center;
   gap: 13px;
-  padding: 20px 20px 40px;
-}
-.stat-card .stat-desc {
-  position: absolute;
-  bottom: 9px;
-  left: 25%;
+  padding: 20px 20px;
 }
 
 .stat-icon {
@@ -271,21 +266,6 @@ nav {
 
 .stat-card h2 {
   font-size: 24px;
-}
-.trend-up {
-  color: #10b981;
-  font-weight: 600;
-}
-
-.trend-down {
-  color: #ef4444;
-  font-weight: 600;
-}
-
-.stat-desc {
-  font-size: 13px;
-  color: #6b7280;
-  margin-top: 4px;
 }
 
 .two-columns {
@@ -974,4 +954,12 @@ body.sidebar-collapsed .collapse-arrow {
 
 .inv-summary-item b {
   font-size: 20px;
+}
+
+.price-section {
+  margin-bottom: 18px;
+}
+
+.price-input {
+  width: 90px;
 }

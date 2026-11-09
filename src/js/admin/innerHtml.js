@@ -6,22 +6,18 @@ var pages = {
       <article class="stat-card">
         <div class="stat-icon yellow"><i class="ri-shopping-basket-2-line"></i></div>
         <div><p>Đơn hàng hiện có</p><h2 id="dashboardOrderCount">0</h2></div>
-        <p class="stat-desc"><span class="trend-up">↑ 12%</span> so với hôm qua</p>
       </article>
       <article class="stat-card">
         <div class="stat-icon purple"><i class="ri-shopping-cart-line"></i></div>
         <div><p>Tổng sản phẩm</p><h2 id="dashboardProductCount">0</h2></div>
-        <p class="stat-desc"><span class="trend-up">↑ 12%</span> so với hôm qua</p>
       </article>
       <article class="stat-card">
         <div class="stat-icon blue"><i class="ri-user-line"></i></div>
         <div><p>Khách hàng</p><h2 id="dashboardCustomerCount">0</h2></div>
-        <p class="stat-desc"><span class="trend-up">↑ 12%</span> so với hôm qua</p>
       </article>
       <article class="stat-card">
         <div class="stat-icon red"><i class="ri-coupon-line"></i></div>
         <div><p>Sắp hết hàng</p><h2 id="dashboardStockCount">0</h2></div>
-        <p class="stat-desc"><span class="trend-up">↑ 12%</span> so với hôm qua</p>
       </article>
     </section>
 
@@ -96,6 +92,7 @@ var pages = {
               <th>Sản phẩm</th>
               <th>Tổng tiền</th>
               <th>Trạng thái</th>
+              <th>Cập nhật</th>
             </tr>
           </thead>
           <tbody id="orderTable">
@@ -144,7 +141,7 @@ var pages = {
             <form class="product-modal-content" id="productForm">
               <div class="product-modal-header">
                 <div>
-                  <h2>Thêm sản phẩm mới</h2>
+                  <h2 id="productFormTitle">Thêm sản phẩm mới</h2>
                   <p>Nhập thông tin chi tiết của sản phẩm</p>
                 </div>
                 <button type="button" class="modal-close" data-act="prod-cancel">
@@ -445,6 +442,85 @@ var pages = {
     </div>
   </section>`,
 
+  giaBan: `
+  <!-- 1) % LỢI NHUẬN THEO LOẠI (có list chọn loại + thanh tìm kiếm) -->
+  <section class="box price-section">
+    <div class="box-title pp-toolbar">
+      <div>
+        <h2>Tỉ lệ % lợi nhuận theo loại sản phẩm</h2>
+        <p>Bấm Lưu để cập nhật % lợi nhuận và tính lại giá bán của các sản phẩm trong loại.</p>
+      </div>
+      <div class="pp-tools">
+        <select id="priceCategory">
+          <option value="">Tất cả loại</option>
+          <option value="L001">Thức ăn cho chó</option>
+          <option value="L002">Thức ăn cho mèo</option>
+          <option value="L003">Đồ dùng</option>
+          <option value="L004">Phụ kiện</option>
+        </select>
+        <input
+          type="text"
+          id="priceCatSearch"
+          data-filter=""
+          placeholder="Tìm mã, tên loại..."
+        />
+      </div>
+    </div>
+    <div class="table-wrapper pp-table-wrap">
+      <table class="pp-table">
+        <thead>
+          <tr>
+            <th>Mã loại</th>
+            <th>Tên loại</th>
+            <th>Số sản phẩm</th>
+            <th>% lợi nhuận</th>
+            <th>Thao tác</th>
+          </tr>
+        </thead>
+        <tbody id="priceCategoryTable"></tbody>
+      </table>
+      <p id="priceCategoryEmpty" class="empty-message hidden">
+        Không có thông tin loại sản phẩm.
+      </p>
+    </div>
+  </section>
+
+  <!-- 2) TRA CỨU GIÁ VỐN, % LỢI NHUẬN, GIÁ BÁN -->
+  <section class="box price-section">
+    <div class="box-title pp-toolbar">
+      <div>
+        <h2>Tra cứu giá vốn, % lợi nhuận, giá bán</h2>
+        <p>Tìm theo mã hoặc tên sản phẩm</p>
+      </div>
+      <div class="pp-tools">
+        <input
+          type="text"
+          id="priceSearch"
+          data-filter=""
+          placeholder="Tìm mã, tên sản phẩm..."
+        />
+      </div>
+    </div>
+    <div class="table-wrapper pp-table-wrap">
+      <table class="pp-table">
+        <thead>
+          <tr>
+            <th>Mã</th>
+            <th>Tên sản phẩm</th>
+            <th>Loại</th>
+            <th>Giá vốn</th>
+            <th>% lợi nhuận</th>
+            <th>Giá bán</th>
+          </tr>
+        </thead>
+        <tbody id="priceLookupTable"></tbody>
+      </table>
+      <p id="priceLookupEmpty" class="empty-message hidden">
+        Không có thông tin sản phẩm.
+      </p>
+    </div>
+  </section>`,
+
   caiDat: `<section class="box">
           <div class="box-title pp-toolbar">
             <div>
@@ -484,6 +560,9 @@ function loadPage(pageName) {
   }
   if (pageName === "tonKho") {
     showInventory();
+  }
+  if (pageName === "giaBan") {
+    showPrices();
   }
 }
 
@@ -535,13 +614,20 @@ function showOrders() {
         '">' +
         order.status +
         "</span></td>" +
+        '<td><select class="order-status-select" data-order-id="' +
+        order.id +
+        '">' +
+        '<option value="Chờ xử lý" ' + (order.status === "Chờ xử lý" ? "selected" : "") + '>Chờ xử lý</option>' +
+        '<option value="Đang giao" ' + (order.status === "Đang giao" ? "selected" : "") + '>Đang giao</option>' +
+        '<option value="Đã giao" ' + (order.status === "Đã giao" ? "selected" : "") + '>Đã giao</option>' +
+        "</select></td>" +
         "</tr>";
     }
   }
 
   document.getElementById("orderTable").innerHTML = html;
   document
-    .getElementById("emptyMessage")
+    .getElementById("orderEmpty")
     .classList.toggle("hidden", resultCount !== 0);
 }
 
@@ -672,6 +758,11 @@ function showProducts() {
 
         <td>
           <div class="pp-actions">
+            <button class="pp-btn pp-btn--small"
+                    data-act="prod-edit"
+                    data-id="${product.id}">
+              Sửa
+            </button>
             <button class="pp-btn pp-btn--small"
                     data-act="prod-toggle"
                     data-id="${product.id}">
@@ -805,10 +896,6 @@ function showInventory() {
   document
     .getElementById("invWarnEmpty")
     .classList.toggle("hidden", html !== "");
-  if (html === "") {
-    html = emptyRow(5, "Không có sản phẩm nào sắp hết hàng");
-  }
-  document.getElementById("invWarnTable").innerHTML = html;
 
   // 3) Nhập - xuất - tồn của 1 sản phẩm trong khoảng thời gian
   var summary = document.getElementById("invReportSummary");
@@ -871,7 +958,7 @@ function showInventory() {
     product.stock;
 
   html = "";
-  var balance = report.opening; // tồn chạy: bắt đầu từ tồn đầu kỳ
+  var balance = report.opening;
   for (i = 0; i < report.logs.length; i++) {
     var log = report.logs[i];
     balance += Number(log.inStock) || 0;
@@ -888,9 +975,8 @@ function showInventory() {
       Math.abs(log.inStock) +
       "</td>" +
       "<td>" +
-      (log.note || "—") + // [TỒN KHO - SỬA] thêm ngoặc: trước đây mất </td></tr> khi có ghi chú
+      (log.note || "—") +
       "</td>" +
-      // [TỒN KHO - THÊM MỚI] ô "Tình trạng" là ô cuối cùng của dòng
       '<td><span class="pp-badge ' +
       logStatus.cls +
       '">' +
@@ -901,6 +987,104 @@ function showInventory() {
   reportEmpty.innerText =
     "Không có thông tin nhập/xuất trong khoảng thời gian này.";
   reportEmpty.classList.toggle("hidden", html !== "");
+}
+// Bảng 1: % lợi nhuận theo loại (lọc theo list chọn loại và ô tìm kiếm)
+function showPriceCategories() {
+  var categoryBox = document.getElementById("priceCategory");
+  var keyword = document
+    .getElementById("priceCatSearch")
+    .value.trim()
+    .toLowerCase();
+  var codes = Object.keys(CATEGORY_NAMES);
+  var html = "";
+
+  for (var i = 0; i < codes.length; i++) {
+    var code = codes[i];
+    var text = (code + " " + CATEGORY_NAMES[code]).toLowerCase();
+
+    if (categoryBox.value !== "" && code !== categoryBox.value) {
+      continue;
+    }
+
+    if (keyword !== "" && !text.includes(keyword)) {
+      continue;
+    }
+
+    var total = products.filter(function (p) {
+      return p.category === code;
+    }).length;
+
+    html +=
+      "<tr><td>" +
+      code +
+      "</td>" +
+      "<td>" +
+      CATEGORY_NAMES[code] +
+      "</td>" +
+      "<td>" +
+      total +
+      "</td>" +
+      '<td><input type="number" class="price-input" min="0" max="500" step="0.1" value="' +
+      getRate(code) +
+      '" /> %</td>' +
+      '<td><button type="button" class="pp-btn pp-btn--small pp-btn--primary" data-act="price-save-cat" data-id="' +
+      code +
+      '">Lưu</button></td></tr>';
+  }
+
+  document.getElementById("priceCategoryTable").innerHTML = html;
+  document
+    .getElementById("priceCategoryEmpty")
+    .classList.toggle("hidden", html !== "");
+}
+
+// Bảng 2: tra cứu giá vốn, % lợi nhuận, giá bán (gõ tới đâu lọc tới đó)
+function showPriceLookup() {
+  var keyword = document
+    .getElementById("priceSearch")
+    .value.trim()
+    .toLowerCase();
+  var html = "";
+
+  for (var i = 0; i < products.length; i++) {
+    var p = products[i];
+    var text = (p.id + " " + p.name).toLowerCase();
+
+    if (keyword !== "" && !text.includes(keyword)) {
+      continue;
+    }
+
+    html +=
+      "<tr><td>" +
+      p.id +
+      "</td>" +
+      "<td>" +
+      p.name +
+      "</td>" +
+      "<td>" +
+      getCategoryName(p.category) +
+      "</td>" +
+      "<td>" +
+      formatMoney(p.cost) +
+      "</td>" +
+      "<td>" +
+      getRate(p.category) +
+      "%</td>" +
+      "<td><b>" +
+      formatMoney(p.price) +
+      "</b></td></tr>";
+  }
+
+  document.getElementById("priceLookupTable").innerHTML = html;
+  document
+    .getElementById("priceLookupEmpty")
+    .classList.toggle("hidden", html !== "");
+}
+
+// Mở trang Giá bán: vẽ bảng 1 và bảng 2 (tra cứu)
+function showPrices() {
+  showPriceCategories();
+  showPriceLookup();
 }
 
 function filterProducts() {

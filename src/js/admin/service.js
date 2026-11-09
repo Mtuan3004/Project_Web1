@@ -6,6 +6,7 @@ var STORAGE_KEYS = {
   products: "products",
   users: "users",
   stocks: "stocks",
+  sales: "sales",
 };
 
 var defaultOrders = [
@@ -28,6 +29,7 @@ var defaultProducts = [
     weight: "Túi 2kg",
     combo: null,
     image: "",
+    cost: 150000,
     price: 180000,
     stock: 10,
     desc: "Hạt cho chó trưởng thành giống nhỏ",
@@ -61,17 +63,24 @@ var defaultStocks = [
   {
     id: "SL002",
     productId: "SPC001",
-    inStock: -12, // xuất kho = số ÂM
+    inStock: -12,
     date: "2026-10-20",
     note: "Bán lẻ",
   },
   {
     id: "SL003",
     productId: "SPC001",
-    inStock: -8, // xuất kho = số ÂM
+    inStock: -8,
     date: "2026-11-02",
     note: "",
   },
+];
+
+var defaultSales = [
+  { category: "L001", rate: 20 },
+  { category: "L002", rate: 20 },
+  { category: "L003", rate: 25 },
+  { category: "L004", rate: 30 },
 ];
 
 var LOW_STOCK_LIMIT = 10;
@@ -110,6 +119,7 @@ function readStorage(key, fallbackValue) {
 var orders = readStorage(STORAGE_KEYS.orders, defaultOrders);
 var products = readStorage(STORAGE_KEYS.products, defaultProducts);
 var stocks = readStorage(STORAGE_KEYS.stocks, defaultStocks);
+var sales = readStorage(STORAGE_KEYS.sales, defaultSales);
 
 // Hỗ trợ dữ liệu cũ nếu trước đây khách hàng được lưu ở petpetCustomers.
 var legacyUsers = readStorage("customers", defaultUsers);
@@ -185,6 +195,10 @@ function saveLocalStorageStockLogs() {
   localStorage.setItem(STORAGE_KEYS.stocks, JSON.stringify(stocks));
 }
 
+function saveLocalStorageSales() {
+  localStorage.setItem(STORAGE_KEYS.sales, JSON.stringify(sales));
+}
+
 function loadProductData() {
   products = readStorage(STORAGE_KEYS.products, defaultProducts);
 }
@@ -206,6 +220,9 @@ function addProduct(newProduct) {
     return false;
   }
 
+  newProduct.cost = Math.round(
+    Number(newProduct.price || 0) / (1 + getRate(newProduct.category) / 100),
+  );
   products.unshift(newProduct);
   saveLocalStorageProducts();
 
@@ -374,6 +391,49 @@ function removeStockLogsOfProduct(productId) {
     return log && log.productId !== productId;
   });
   saveLocalStorageStockLogs();
+}
+
+// % lợi nhuận của 1 loại sản phẩm (lấy từ sales)
+function getRate(category) {
+  var item = sales.find(function (row) {
+    return row.category === category;
+  });
+
+  return item ? Number(item.rate) : 0;
+}
+
+// Giá bán = giá vốn x (1 + % lợi nhuận / 100)
+function calcPrice(product) {
+  return Math.round(product.cost * (1 + getRate(product.category) / 100));
+}
+
+// Lưu % lợi nhuận của 1 loại rồi tính lại giá bán các sản phẩm trong loại
+function setRate(category, value) {
+  var rate = Number(value);
+
+  if (value === "" || isNaN(rate) || rate < 0 || rate > 500) {
+    return false;
+  }
+
+  var item = sales.find(function (row) {
+    return row.category === category;
+  });
+
+  if (item) {
+    item.rate = rate;
+  } else {
+    sales.push({ category: category, rate: rate });
+  }
+
+  products.forEach(function (p) {
+    if (p.category === category && p.cost > 0) {
+      p.price = calcPrice(p);
+    }
+  });
+
+  saveLocalStorageSales();
+  saveLocalStorageProducts();
+  return true;
 }
 
 normalizeCustomers();
