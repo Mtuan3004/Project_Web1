@@ -28,6 +28,7 @@ var defaultProducts = [
     pet: "Chó",
     weight: "Túi 2kg",
     combo: null,
+    type: "Thức ăn",
     image: "",
     cost: 150000,
     price: 180000,
@@ -220,9 +221,6 @@ function addProduct(newProduct) {
     return false;
   }
 
-  newProduct.cost = Math.round(
-    Number(newProduct.price || 0) / (1 + getRate(newProduct.category) / 100),
-  );
   products.unshift(newProduct);
   saveLocalStorageProducts();
 

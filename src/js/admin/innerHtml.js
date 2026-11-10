@@ -101,7 +101,7 @@ var pages = {
     </section>
   `,
   sanPham: `
-          <section class="box">
+           <section class="box">
             <div class="box-title pp-toolbar">
               <div>
                 <h2>Quản lý sản phẩm</h2>
@@ -195,6 +195,20 @@ var pages = {
                 <div class="form-group">
                   <label>Đường dẫn hình ảnh</label>
                   <input id="prodImage" placeholder="./src/img/img-products/...">
+                </div>
+                <div class="form-group">
+                  <label>Loại sản phẩm *</label>
+                  <select id="prodType" required>
+                    <option value="">-- Chọn loại sản phẩm --</option>
+                    <option value="Thức ăn">Thức ăn</option>
+                    <option value="Đồ chơi">Đồ chơi</option>
+                    <option value="Phụ kiện">Phụ kiện</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label>Giá vốn *</label>
+                  <input id="prodCost" type="number" min="0" required>
                 </div>
 
                 <div class="form-group">
