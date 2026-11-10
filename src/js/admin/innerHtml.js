@@ -188,8 +188,7 @@ var pages = {
                   <select id="prodCombo">
                     <option value="">Không thuộc combo</option>
                     <option value="Combo tiết kiệm">Combo tiết kiệm</option>
-                    <option value="Combo chăm sóc">Combo chăm sóc</option>
-                    <option value="Combo thức ăn">Combo thức ăn</option>
+                    <option value="Giá tốt">Giá tốt</option>
                   </select>
                 </div>
 
