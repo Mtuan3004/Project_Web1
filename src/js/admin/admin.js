@@ -106,13 +106,24 @@ pageContent.addEventListener("click", function (event) {
       showMessage("% lợi nhuận phải là số từ 0 đến 500.");
     }
   }
+  if (action === "price-save-discount") {
+    var discountInput = actionButton.closest("tr").querySelector("input");
+
+    if (setDiscount(actionButton.dataset.id, discountInput.value)) {
+      showMessage("Đã lưu khuyến mãi cho sản phẩm.");
+      showPriceLookup(); // chỉ vẽ lại bảng tra cứu, giữ nguyên từ khóa đang tìm
+    } else {
+      showMessage("Khuyến mãi phải là số từ 0 đến 100.");
+    }
+  }
   // Mở form thêm sản phẩm
   if (action === "prod-add") {
     editingProductId = null;
     var addForm = document.getElementById("productForm");
     addForm.reset();
     document.getElementById("productFormTitle").innerText = "Thêm sản phẩm mới";
-    document.querySelector('#productForm button[type="submit"]').innerText = "Lưu sản phẩm";
+    document.querySelector('#productForm button[type="submit"]').innerText =
+      "Lưu sản phẩm";
     document.getElementById("productModal").classList.remove("hidden");
   }
 
@@ -127,17 +138,23 @@ pageContent.addEventListener("click", function (event) {
       editingProductId = editId;
       document.getElementById("prodName").value = editProduct.name || "";
       document.getElementById("prodBrand").value = editProduct.brand || "";
-      document.getElementById("prodCategory").value = editProduct.category || "";
+      document.getElementById("prodCategory").value =
+        editProduct.category || "";
       document.getElementById("prodPet").value = editProduct.pet || "";
       document.getElementById("prodWeight").value = editProduct.weight || "";
       document.getElementById("prodCombo").value = editProduct.combo || "";
       document.getElementById("prodImage").value = editProduct.image || "";
       document.getElementById("prodPrice").value = editProduct.price || 0;
       document.getElementById("prodStock").value = editProduct.stock || 0;
-      document.getElementById("prodDesc").value = editProduct.desc || editProduct.description || "";
-      document.getElementById("prodHighlights").value = (editProduct.highlights || []).join("\n");
-      document.getElementById("productFormTitle").innerText = "Sửa thông tin sản phẩm";
-      document.querySelector('#productForm button[type="submit"]').innerText = "Lưu thay đổi";
+      document.getElementById("prodDesc").value =
+        editProduct.desc || editProduct.description || "";
+      document.getElementById("prodHighlights").value = (
+        editProduct.highlights || []
+      ).join("\n");
+      document.getElementById("productFormTitle").innerText =
+        "Sửa thông tin sản phẩm";
+      document.querySelector('#productForm button[type="submit"]').innerText =
+        "Lưu thay đổi";
       document.getElementById("productModal").classList.remove("hidden");
     }
   }
@@ -281,10 +298,15 @@ pageContent.addEventListener("submit", function (event) {
       price: Number(document.getElementById("prodPrice").value),
       stock: Number(document.getElementById("prodStock").value),
       desc: document.getElementById("prodDesc").value.trim(),
-      highlights: document.getElementById("prodHighlights").value
-        .split("\n")
-        .map(function (item) { return item.trim(); })
-        .filter(function (item) { return item !== ""; }),
+      highlights: document
+        .getElementById("prodHighlights")
+        .value.split("\n")
+        .map(function (item) {
+          return item.trim();
+        })
+        .filter(function (item) {
+          return item !== "";
+        }),
     };
 
     if (!category || productData.price < 0 || productData.stock < 0) {
@@ -306,7 +328,7 @@ pageContent.addEventListener("submit", function (event) {
       var oldStock = Number(productToEdit.stock) || 0;
       Object.assign(productToEdit, productData);
       productToEdit.cost = Math.round(
-        productData.price / (1 + getRate(category) / 100)
+        productData.price / (1 + getRate(category) / 100),
       );
       saveLocalStorageProducts();
 
@@ -325,11 +347,14 @@ pageContent.addEventListener("submit", function (event) {
 
       showMessage("Đã cập nhật thông tin sản phẩm.");
     } else {
-      var newProduct = Object.assign({
-        id: generateProductID(category),
-        discount: null,
-        hidden: 0,
-      }, productData);
+      var newProduct = Object.assign(
+        {
+          id: generateProductID(category),
+          discount: null,
+          hidden: 0,
+        },
+        productData,
+      );
 
       if (!newProduct.id || !addProduct(newProduct)) {
         showMessage("Không thêm được sản phẩm.");

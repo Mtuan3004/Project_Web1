@@ -56,11 +56,8 @@ var pages = {
             <p>Sản phẩm cần nhập thêm</p>
           </div>
         </div>
-        <div class="stock-list">
-          <div><span>Royal Canin Mini Adult</span><b>Còn 4</b></div>
-          <div><span>Cát vệ sinh Cature</span><b>Còn 6</b></div>
-          <div><span>Balo vận chuyển</span><b>Còn 3</b></div>
-          <div><span>Vòng cổ thú cưng</span><b>Còn 5</b></div>
+        <div class="stock-list" id="stockWarningList">
+          <!-- Danh sách cảnh báo được lấy trực tiếp từ dữ liệu sản phẩm -->
         </div>
       </article>
     </section>
@@ -511,6 +508,7 @@ var pages = {
             <th>Giá vốn</th>
             <th>% lợi nhuận</th>
             <th>Giá bán</th>
+            <th>Khuyến mãi (%)</th>
           </tr>
         </thead>
         <tbody id="priceLookupTable"></tbody>
@@ -566,16 +564,43 @@ function loadPage(pageName) {
   }
 }
 
+// Dùng chung một danh sách cảnh báo cho Tổng quan và Tồn kho.
+function getLowStockProducts() {
+  return products.filter(function (product) {
+    return (Number(product.stock) || 0) <= LOW_STOCK_LIMIT;
+  });
+}
+
 function showDashboardNumbers() {
-  var lowStockCount = products.filter(function (product) {
-    return Number(product.stock) <= 10;
-  }).length;
+  var lowStockProducts = getLowStockProducts();
+  var stockWarningList = document.getElementById("stockWarningList");
 
   document.getElementById("dashboardOrderCount").innerText = orders.length;
   document.getElementById("dashboardProductCount").innerText = products.length;
   document.getElementById("dashboardCustomerCount").innerText =
     customers.length;
-  document.getElementById("dashboardStockCount").innerText = lowStockCount;
+  document.getElementById("dashboardStockCount").innerText =
+    lowStockProducts.length;
+
+  if (stockWarningList) {
+    if (lowStockProducts.length === 0) {
+      stockWarningList.innerHTML = "<p>Không có sản phẩm sắp hết hàng.</p>";
+    } else {
+      stockWarningList.innerHTML = lowStockProducts
+        .map(function (product) {
+          var stock = Number(product.stock) || 0;
+          var status = getStockStatus(stock, LOW_STOCK_LIMIT);
+
+          return `
+          <div>
+            <span>${product.name}</span>
+            <b class="${status.cls}">Còn ${stock}</b>
+          </div>
+        `;
+        })
+        .join("");
+    }
+  }
 }
 
 // ===== PHẦN 3: Hiển thị đơn hàng (lấy phần tử mỗi lần chạy) =====
@@ -617,9 +642,15 @@ function showOrders() {
         '<td><select class="order-status-select" data-order-id="' +
         order.id +
         '">' +
-        '<option value="Chờ xử lý" ' + (order.status === "Chờ xử lý" ? "selected" : "") + '>Chờ xử lý</option>' +
-        '<option value="Đang giao" ' + (order.status === "Đang giao" ? "selected" : "") + '>Đang giao</option>' +
-        '<option value="Đã giao" ' + (order.status === "Đã giao" ? "selected" : "") + '>Đã giao</option>' +
+        '<option value="Chờ xử lý" ' +
+        (order.status === "Chờ xử lý" ? "selected" : "") +
+        ">Chờ xử lý</option>" +
+        '<option value="Đang giao" ' +
+        (order.status === "Đang giao" ? "selected" : "") +
+        ">Đang giao</option>" +
+        '<option value="Đã giao" ' +
+        (order.status === "Đã giao" ? "selected" : "") +
+        ">Đã giao</option>" +
         "</select></td>" +
         "</tr>";
     }
@@ -859,18 +890,13 @@ function showInventory() {
     .getElementById("invStockEmpty")
     .classList.toggle("hidden", html !== "");
 
-  // 2) Cảnh báo sắp hết hàng (tồn hiện tại <= ngưỡng)
+  // 2) Cảnh báo sắp hết hàng: dùng cùng danh sách với trang Tổng quan.
   var limit = LOW_STOCK_LIMIT;
+  var lowStockProducts = getLowStockProducts();
 
   html = "";
-  for (count = 0; count < products.length; count++) {
-    var q = products[count];
+  lowStockProducts.forEach(function (q) {
     var qStock = Number(q.stock) || 0;
-
-    if (qStock > limit) {
-      continue;
-    }
-
     var qStatus = getStockStatus(qStock, limit);
 
     html +=
@@ -891,7 +917,7 @@ function showInventory() {
       '">' +
       qStatus.text +
       "</span></td></tr>";
-  }
+  });
   document.getElementById("invWarnTable").innerHTML = html;
   document
     .getElementById("invWarnEmpty")
@@ -1053,6 +1079,7 @@ function showPriceLookup() {
     if (keyword !== "" && !text.includes(keyword)) {
       continue;
     }
+    var discount = p.discount === null ? "" : p.discount;
 
     html +=
       "<tr><td>" +
@@ -1072,7 +1099,13 @@ function showPriceLookup() {
       "%</td>" +
       "<td><b>" +
       formatMoney(p.price) +
-      "</b></td></tr>";
+      "</b></td>" +
+      '<td><input type="number" class="price-input" min="0" max="100" value="' +
+      discount +
+      '" /> % ' +
+      '<button class="pp-btn pp-btn--small pp-btn--primary" data-act="price-save-discount" data-id="' +
+      p.id +
+      '">Lưu</button></td></tr>';
   }
 
   document.getElementById("priceLookupTable").innerHTML = html;

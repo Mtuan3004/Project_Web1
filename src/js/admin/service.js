@@ -436,6 +436,31 @@ function setRate(category, value) {
   return true;
 }
 
+function setDiscount(productId, value) {
+  var product = products.find(function (item) {
+    return item.id === productId;
+  });
+
+  if (!product) {
+    return false;
+  }
+
+  if (String(value).trim() === "") {
+    product.discount = null;
+  } else {
+    var discount = Number(value);
+
+    if (isNaN(discount) || discount < 0 || discount > 100) {
+      return false;
+    }
+
+    product.discount = discount;
+  }
+
+  saveLocalStorageProducts();
+  return true;
+}
+
 normalizeCustomers();
 saveLocalStorageOrders();
 saveLocalStorageProducts();
