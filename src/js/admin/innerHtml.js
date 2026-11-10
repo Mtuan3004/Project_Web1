@@ -559,7 +559,7 @@ function loadPage(pageName) {
   }
 
   if (pageName === "donHang") {
-    showOrders(); // đổ dữ liệu vào bảng sau khi trang đã được vẽ
+    showOrders();
   }
 
   if (pageName === "sanPham") {
@@ -577,13 +577,6 @@ function loadPage(pageName) {
   }
 }
 
-// Dùng chung một danh sách cảnh báo cho Tổng quan và Tồn kho.
-function getLowStockProducts() {
-  return products.filter(function (product) {
-    return (Number(product.stock) || 0) <= LOW_STOCK_LIMIT;
-  });
-}
-
 function showDashboardNumbers() {
   var lowStockProducts = getLowStockProducts();
   var stockWarningList = document.getElementById("stockWarningList");
@@ -595,28 +588,25 @@ function showDashboardNumbers() {
   document.getElementById("dashboardStockCount").innerText =
     lowStockProducts.length;
 
-  if (stockWarningList) {
-    if (lowStockProducts.length === 0) {
-      stockWarningList.innerHTML = "<p>Không có sản phẩm sắp hết hàng.</p>";
-    } else {
-      stockWarningList.innerHTML = lowStockProducts
-        .map(function (product) {
-          var stock = Number(product.stock) || 0;
-          var status = getStockStatus(stock, LOW_STOCK_LIMIT);
+  if (lowStockProducts.length === 0) {
+    stockWarningList.innerHTML = "<p>Không có sản phẩm sắp hết hàng.</p>";
+  } else {
+    stockWarningList.innerHTML = lowStockProducts
+      .map(function (product) {
+        var stock = Number(product.stock) || 0;
+        var status = getStockStatus(stock, LOW_STOCK_LIMIT);
 
-          return `
+        return `
           <div>
             <span>${product.name}</span>
             <b class="${status.cls}">Còn ${stock}</b>
           </div>
         `;
-        })
-        .join("");
-    }
+      })
+      .join("");
   }
 }
 
-// ===== PHẦN 3: Hiển thị đơn hàng (lấy phần tử mỗi lần chạy) =====
 function showOrders() {
   var keyword = document.getElementById("searchInput").value.toLowerCase();
   var selectedStatus = document.getElementById("statusFilter").value;
@@ -681,10 +671,6 @@ function showCustomers() {
   var statusBox = document.getElementById("fS");
   var customerTable = document.getElementById("customerTable");
 
-  if (!searchBox || !statusBox || !customerTable) {
-    return;
-  }
-
   var keyword = searchBox.value.trim().toLowerCase();
   var status = statusBox.value;
   var html = "";
@@ -706,39 +692,48 @@ function showCustomers() {
       (status === "1" && customer.locked) ||
       (status === "0" && !customer.locked);
 
-    if (!matchesKeyword || !matchesStatus) {
-      return;
+    if (matchesKeyword && matchesStatus) {
+      count++;
+      html +=
+        "<tr>" +
+        "<td>" +
+        customer.id +
+        "</td>" +
+        "<td>" +
+        customer.fullName +
+        "</td>" +
+        "<td>" +
+        (customer.phone || "—") +
+        "</td>" +
+        "<td>" +
+        (customer.email || "—") +
+        "</td>" +
+        '<td><span class="pp-wrap">' +
+        (customer.address || "—") +
+        "</span></td>" +
+        "<td>" +
+        (customer.username || "—") +
+        "</td>" +
+        '<td><span class="pp-badge ' +
+        (customer.locked ? "pp-badge--locked" : "pp-badge--done") +
+        '">' +
+        (customer.locked ? "Đã khóa" : "Hoạt động") +
+        "</span></td>" +
+        '<td><div class="pp-actions">' +
+        '<button class="pp-btn pp-btn--small" data-act="cus-reset" data-id="' +
+        customer.id +
+        '">Reset mật khẩu</button>' +
+        '<button class="pp-btn pp-btn--small" data-act="cus-lock" data-id="' +
+        customer.id +
+        '">' +
+        (customer.locked ? "Mở khóa" : "Khóa") +
+        "</button>" +
+        '<button class="pp-btn pp-btn--small pp-btn--danger" data-act="cus-del" data-id="' +
+        customer.id +
+        '">Xóa</button>' +
+        "</div></td>" +
+        "</tr>";
     }
-
-    count++;
-    html += `
-      <tr>
-        <td>${customer.id}</td>
-        <td>${customer.fullName}</td>
-        <td>${customer.phone || "—"}</td>
-        <td>${customer.email || "—"}</td>
-        <td><span class="pp-wrap">${customer.address || "—"}</span></td>
-        <td>${customer.username || "—"}</td>
-        <td>
-          <span class="pp-badge ${customer.locked ? "pp-badge--locked" : "pp-badge--done"}">
-            ${customer.locked ? "Đã khóa" : "Hoạt động"}
-          </span>
-        </td>
-        <td>
-          <div class="pp-actions">
-            <button class="pp-btn pp-btn--small" data-act="cus-reset" data-id="${customer.id}">
-              Reset mật khẩu
-            </button>
-            <button class="pp-btn pp-btn--small" data-act="cus-lock" data-id="${customer.id}">
-              ${customer.locked ? "Mở khóa" : "Khóa"}
-            </button>
-            <button class="pp-btn pp-btn--small pp-btn--danger" data-act="cus-del" data-id="${customer.id}">
-              Xóa
-            </button>
-          </div>
-        </td>
-      </tr>
-    `;
   });
 
   customerTable.innerHTML = html;
@@ -766,62 +761,67 @@ function showProducts() {
 
     var matchesStatus = status === "" || String(hidden) === status;
 
-    if (!matchesKeyword || !matchesCategory || !matchesStatus) {
-      return;
+    if (matchesKeyword && matchesCategory && matchesStatus) {
+      count++;
+
+      var imageHTML = product.image
+        ? '<img src="' +
+          product.image +
+          '" alt="' +
+          product.name +
+          '" style="width:50px;height:50px;object-fit:contain">'
+        : '<div class="pp-thumb-ph">' + product.id.substring(0, 3) + "</div>";
+
+      html +=
+        '<tr data-cat="' +
+        product.category +
+        '" data-hidden="' +
+        hidden +
+        '">' +
+        "<td>" +
+        imageHTML +
+        "</td>" +
+        "<td>" +
+        product.id +
+        "</td>" +
+        "<td>" +
+        product.name +
+        "</td>" +
+        "<td>" +
+        (CATEGORY_NAMES[product.category] || product.category) +
+        "</td>" +
+        "<td>" +
+        (product.desc || product.description || "—") +
+        "</td>" +
+        "<td>" +
+        (product.combo || "—") +
+        "</td>" +
+        "<td>" +
+        '<span class="pp-badge pp-badge--done">' +
+        (hidden === 0 ? "Đang bán" : "Đã ẩn") +
+        "</span>" +
+        "</td>" +
+        "<td>" +
+        '<div class="pp-actions">' +
+        '<button class="pp-btn pp-btn--small" data-act="prod-edit" data-id="' +
+        product.id +
+        '">' +
+        "Sửa" +
+        "</button>" +
+        '<button class="pp-btn pp-btn--small" data-act="prod-toggle" data-id="' +
+        product.id +
+        '">' +
+        (hidden === 0 ? "Ẩn" : "Hiện") +
+        "</button>" +
+        '<button class="pp-btn pp-btn--small pp-btn--danger" data-act="prod-del" data-id="' +
+        product.id +
+        '">' +
+        "Xóa" +
+        "</button>" +
+        "</div>" +
+        "</td>" +
+        "</tr>";
     }
-
-    count++;
-
-    var categoryName =
-      {
-        L001: "Thức ăn cho chó",
-        L002: "Thức ăn cho mèo",
-        L003: "Đồ dùng",
-        L004: "Phụ kiện",
-      }[product.category] || product.category;
-
-    var imageHTML = product.image
-      ? `<img src="${product.image}" alt="${product.name}"
-             style="width:50px;height:50px;object-fit:contain">`
-      : `<div class="pp-thumb-ph">${product.id.substring(0, 3)}</div>`;
-
-    html += `
-      <tr data-cat="${product.category}" data-hidden="${hidden}">
-        <td>${imageHTML}</td>
-        <td>${product.id}</td>
-        <td>${product.name}</td>
-        <td>${categoryName}</td>
-        <td>${product.desc || product.description || ""}</td>
-        <td>${product.combo || "—"}</td>
-
-        <td>
-          <span class="pp-badge pp-badge--done">
-            ${hidden === 0 ? "Đang bán" : "Đã ẩn"}
-          </span>
-        </td>
-
-        <td>
-          <div class="pp-actions">
-            <button class="pp-btn pp-btn--small"
-                    data-act="prod-edit"
-                    data-id="${product.id}">
-              Sửa
-            </button>
-            <button class="pp-btn pp-btn--small"
-                    data-act="prod-toggle"
-                    data-id="${product.id}">
-              ${hidden === 0 ? "Ẩn" : "Hiện"}
-            </button>
-
-            <button class="pp-btn pp-btn--small pp-btn--danger"
-                    data-act="prod-del"
-                    data-id="${product.id}">
-              Xóa
-            </button>
-          </div>
-        </td>
-      </tr>
-    `;
   });
 
   document.getElementById("productTable").innerHTML = html;
@@ -1131,29 +1131,4 @@ function showPriceLookup() {
 function showPrices() {
   showPriceCategories();
   showPriceLookup();
-}
-
-function filterProducts() {
-  var keyword = document.getElementById("fQ").value.trim().toLowerCase();
-  var categoryBox = document.getElementById("fC");
-  var statusBox = document.getElementById("fS");
-  var category = categoryBox ? categoryBox.value : "";
-  var status = statusBox ? statusBox.value : "";
-  var rows = document.querySelectorAll(".pp-table tbody tr");
-
-  for (var count = 0; count < rows.length; count++) {
-    var row = rows[count];
-
-    var matchesKeyword = (row.cells[1].innerText + " " + row.cells[2].innerText)
-      .toLowerCase()
-      .includes(keyword);
-    var matchesCategory = category === "" || row.dataset.cat === category;
-    var matchesStatus = status === "" || row.dataset.hidden === status;
-
-    if (matchesKeyword && matchesCategory && matchesStatus) {
-      row.classList.remove("hidden");
-    } else {
-      row.classList.add("hidden");
-    }
-  }
 }

@@ -122,7 +122,6 @@ var products = readStorage(STORAGE_KEYS.products, defaultProducts);
 var stocks = readStorage(STORAGE_KEYS.stocks, defaultStocks);
 var sales = readStorage(STORAGE_KEYS.sales, defaultSales);
 
-// Hỗ trợ dữ liệu cũ nếu trước đây khách hàng được lưu ở petpetCustomers.
 var legacyUsers = readStorage("customers", defaultUsers);
 var customers =
   localStorage.getItem(STORAGE_KEYS.users) !== null
@@ -341,7 +340,12 @@ function getStockAt(product, dateStr) {
 
   return stock;
 }
-
+// Lấy mảng products <= LOW_STOCK_LIMIT
+function getLowStockProducts() {
+  return products.filter(function (product) {
+    return (Number(product.stock) || 0) <= LOW_STOCK_LIMIT;
+  });
+}
 // Báo cáo nhập - xuất - tồn của 1 sản phẩm từ ngày fromDate đến hết ngày toDate
 function getStockReport(product, fromDate, toDate) {
   var report = { opening: 0, totalIn: 0, totalOut: 0, closing: 0, logs: [] };
