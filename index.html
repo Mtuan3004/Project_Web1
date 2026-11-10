@@ -483,7 +483,7 @@
             </div>
 
             <!-- Product Grid -->
-            <div class="product-grid" id="todayProducts"></div>
+            <div class="product-grid" id="GiaTotProducts"></div>
           </div>
         </section>
         <!--  SECTION 2: COMBO TIẾT KIỆM  -->
@@ -501,7 +501,7 @@
             </div>
 
             <!-- Product Grid -->
-            <div class="product-grid" id="todayProducts"></div>
+            <div class="product-grid" id="TietKiemProducts"></div>
           </div>
         </section>
 
@@ -679,22 +679,13 @@
                     <div class="dropdown-header">
                       <i class="ri-box-3-line"></i> Loại sản phẩm
                     </div>
-                    <label
-                      class="dropdown-item"
-                      onclick="event.stopPropagation()"
-                    >
+                    <label class="dropdown-item">
                       <input type="checkbox" checked /> Thức ăn
                     </label>
-                    <label
-                      class="dropdown-item"
-                      onclick="event.stopPropagation()"
-                    >
+                    <label class="dropdown-item">
                       <input type="checkbox" /> Đồ chơi
                     </label>
-                    <label
-                      class="dropdown-item"
-                      onclick="event.stopPropagation()"
-                    >
+                    <label class="dropdown-item">
                       <input type="checkbox" /> Phụ kiện
                     </label>
                   </div>
@@ -711,22 +702,13 @@
                     <div class="dropdown-header">
                       <i class="ri-paw-print-line"></i> Đối tượng thú cưng
                     </div>
-                    <label
-                      class="dropdown-item"
-                      onclick="event.stopPropagation()"
-                    >
+                    <label class="dropdown-item">
                       <input type="checkbox" /> Chó
                     </label>
-                    <label
-                      class="dropdown-item"
-                      onclick="event.stopPropagation()"
-                    >
+                    <label class="dropdown-item">
                       <input type="checkbox" /> Mèo
                     </label>
-                    <label
-                      class="dropdown-item"
-                      onclick="event.stopPropagation()"
-                    >
+                    <label class="dropdown-item">
                       <input type="checkbox" /> Chó và Mèo
                     </label>
                   </div>
@@ -766,6 +748,9 @@
               </div>
             </div>
           </div>
+        </div>
+        <div class="site-container">
+          <div id="productsMain" class="product-grid"></div>
         </div>
       </section>
 
@@ -907,7 +892,9 @@
               <img src="./src/img/banner/Combo.svg" alt="Combo quà tặng" />
             </div>
           </div>
-          <div class="screen-product" id="products-full"></div>
+          <div class="site-container" style="margin-top: 30px">
+            <div id="products-full" class="product-grid"></div>
+          </div>
         </main>
       </section>
 
@@ -1454,7 +1441,7 @@
 
       <!-- 5. ACCOUNT -->
       <section id="view-account" class="app-view d-none">
-        <div class="site-container">
+        <div class="site-container acs">
           <div class="acs-page-head">
             <h1>Cài đặt tài khoản</h1>
             <p>Quản lý thông tin và bảo mật tài khoản của bạn</p>

@@ -1,9 +1,42 @@
-const productContainer = document.getElementById("todayProducts");
+const productContainer = document.getElementById("GiaTotProducts");
+const productnewContainer = document.getElementById("TietKiemProducts");
 const suggestProducts = document.getElementById("related-products-container");
+const productsMain = document.getElementById("productsMain");
+const productsview = document.querySelector("#products-full");
 
 function formatCurrency(amount) {
   const num = Math.max(0, Number(amount) || 0);
   return num.toLocaleString("vi-VN") + " đ";
+<<<<<<< HEAD
+=======
+}
+
+// 1. Đưa productCardTemplate ra ngoài để có thể gọi ở bất cứ đâu trong file
+function productCardTemplate(product) {
+  const finalPrice = getFinalPrice(product); // giá sau giảm (hoặc giá gốc)
+  const hasDiscount = finalPrice < Number(product.price);
+
+  return `
+  <div class="product-card" onclick="xemChiTietSanPham('${product.id}')">
+    <div class="product-img-box">
+      <img src="${product.image || "./src/img/default-product.png"}" alt="${product.name || "Sản phẩm"}" />
+    </div>
+    <div class="product-info">
+      <h3 class="product-name">${product.name || "Tên sản phẩm"}</h3>
+      <div class="product-rating">
+        <i class="ri-star-fill"></i><i class="ri-star-fill"></i>
+        <i class="ri-star-fill"></i><i class="ri-star-fill"></i>
+        <i class="ri-star-fill"></i>
+      </div>
+      <div class="price-box">
+        ${hasDiscount ? `<span class="discount-badge">${product.discount}</span>` : ""}
+        ${hasDiscount ? `<span class="old-price">${formatCurrency(product.price)}</span>` : ""}
+      </div>
+      <div class="current-price">${formatCurrency(finalPrice)}</div>
+    </div>
+  </div>
+`;
+>>>>>>> eefaf670f07cffd182c75e3d3f5223ccc510fe77
 }
 
 // Hàm render tổng quát (Nhận vào container, mảng data, và một hàm callback để tự thiết kế HTML)
@@ -29,10 +62,17 @@ function renderToContainer(
     .join("");
 }
 
+// 1. Mảng chứa các sản phẩm có combo là null
+const productsTietKiem = products.filter((p) => p.combo === null);
+
+// 2. Mảng chứa các sản phẩm có combo khác null (có giá trị)
+const productsNotCombo = products.filter((p) => p.combo !== null);
+
 // Gọi hàm render khi trang được tải xong
 document.addEventListener("DOMContentLoaded", () => {
   renderToContainer(
     productContainer,
+<<<<<<< HEAD
     products,
     (product) => {
       const priceStr = formatCurrency(product.price);
@@ -90,7 +130,50 @@ document.addEventListener("DOMContentLoaded", () => {
                 </div>
             `;
   });
+=======
+    productsTietKiem,
+    (product) => productCardTemplate(product),
+    5,
+  );
+  renderToContainer(
+    productnewContainer,
+    productsNotCombo,
+    (product) => productCardTemplate(product),
+    5,
+  );
+  renderToContainer(suggestProducts, products, (product) =>
+    productCardTemplate(product),
+  );
+>>>>>>> eefaf670f07cffd182c75e3d3f5223ccc510fe77
 });
+renderToContainer(productsview, products, (product) =>
+  productCardTemplate(product),
+);
+console.log("productsMain", productsview);
+function renderProductsMain(list) {
+  renderToContainer(productsMain, list, productCardTemplate);
+}
+
+// Lần đầu vào trang: hiện tất cả sản phẩm đang hiển thị
+renderProductsMain(getAllProducts());
+
+// Bấm "Tìm kiếm" -> lọc rồi render lại
+const btnSearch = document.querySelector(".btn-search-body");
+const inputSearch = document.getElementById("search-body");
+
+if (btnSearch) {
+  btnSearch.addEventListener("click", () => {
+    const result = filterFromUI(); // mảng đã lọc
+    renderProductsMain(result); // chỉ vẽ lại #productsMain
+  });
+}
+
+// Nhấn Enter trong ô tìm kiếm
+if (inputSearch) {
+  inputSearch.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") btnSearch.click();
+  });
+}
 
 // Hàm xem chi tiết sản phẩm và đổ dữ liệu vào HTML
 function xemChiTietSanPham(id) {
@@ -173,6 +256,7 @@ function xemChiTietSanPham(id) {
   const quantityEl = document.getElementById("quantity");
   if (quantityEl) quantityEl.textContent = 1;
 
+<<<<<<< HEAD
   const addCartBtn = document.querySelector("#view-detail .app-btn button");
   if (addCartBtn) {
     addCartBtn.setAttribute("data-id", p.id);
@@ -181,4 +265,9 @@ function xemChiTietSanPham(id) {
   if (typeof showView === "function") {
     showView("view-detail");
   }
+=======
+  if (typeof showView === "function") {
+    showView("view-detail");
+  }
+>>>>>>> eefaf670f07cffd182c75e3d3f5223ccc510fe77
 }
