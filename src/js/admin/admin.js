@@ -144,6 +144,8 @@ pageContent.addEventListener("click", function (event) {
       document.getElementById("prodWeight").value = editProduct.weight || "";
       document.getElementById("prodCombo").value = editProduct.combo || "";
       document.getElementById("prodImage").value = editProduct.image || "";
+      document.getElementById("prodType").value = editProduct.type || "";
+      document.getElementById("prodCost").value = editProduct.cost || 0;
       document.getElementById("prodPrice").value = editProduct.price || 0;
       document.getElementById("prodStock").value = editProduct.stock || 0;
       document.getElementById("prodDesc").value =
@@ -294,7 +296,9 @@ pageContent.addEventListener("submit", function (event) {
       pet: document.getElementById("prodPet").value,
       weight: document.getElementById("prodWeight").value.trim(),
       combo: comboValue === "" ? null : comboValue,
+      type: document.getElementById("prodType").value,
       image: document.getElementById("prodImage").value.trim(),
+      cost: Number(document.getElementById("prodCost").value),
       price: Number(document.getElementById("prodPrice").value),
       stock: Number(document.getElementById("prodStock").value),
       desc: document.getElementById("prodDesc").value.trim(),
@@ -309,7 +313,13 @@ pageContent.addEventListener("submit", function (event) {
         }),
     };
 
-    if (!category || productData.price < 0 || productData.stock < 0) {
+    if (
+      !category ||
+      !productData.type ||
+      productData.cost < 0 ||
+      productData.price < 0 ||
+      productData.stock < 0
+    ) {
       showMessage("Thông tin sản phẩm không hợp lệ.");
       return;
     }
@@ -327,9 +337,6 @@ pageContent.addEventListener("submit", function (event) {
       // Giữ nguyên mã sản phẩm, trạng thái ẩn/hiện và các thông tin khác.
       var oldStock = Number(productToEdit.stock) || 0;
       Object.assign(productToEdit, productData);
-      productToEdit.cost = Math.round(
-        productData.price / (1 + getRate(category) / 100),
-      );
       saveLocalStorageProducts();
 
       // Ghi nhận chênh lệch tồn kho để báo cáo nhập - xuất vẫn đúng.
