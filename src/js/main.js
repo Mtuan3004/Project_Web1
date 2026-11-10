@@ -355,7 +355,9 @@ function btnDealBanner() {
 // hahah
 
 const myOrder = document.querySelector("#my-order");
-const myAccount = document.querySelector("#my-settings");
+const myAccount = document.querySelector("#my-setting");
+
+console.log(myAccount);
 
 myOrder.addEventListener("click", (e) => {
   e.preventDefault();
