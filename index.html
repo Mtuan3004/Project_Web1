@@ -392,7 +392,7 @@
                 <div class="link_Admin flexRow-center"><span>Admin</span></div>
               </div>
               <div class="account-main">
-                <div class="personal-menu">
+                <div class="personal-menu" id="my-order">
                   <div class="prefenrence-icon">
                     <i class="ri-receipt-line"></i>
                   </div>
@@ -412,7 +412,7 @@
                 </div>
               </div>
               <div class="account-footer">
-                <div class="personal-menu">
+                <div class="personal-menu" id="my-setting">
                   <div class="prefenrence-icon">
                     <i class="ri-settings-4-line"></i>
                   </div>
@@ -476,7 +476,7 @@
                 <h2>Giá tốt hôm nay ⚡</h2>
                 <p>Càng mua - Càng hời - Càng tiết kiệm!</p>
               </div>
-              <a href="#" class="view-more gia-tot"
+              <a href="#" class="view-more gia-tot" onclick="btnDealBanner()"
                 >Xem thêm <i class="ri-arrow-right-s-line"></i
               ></a>
             </div>
@@ -494,7 +494,7 @@
                 <h2>Combo tiết kiệm</h2>
                 <p>Săn deal hời - Chăm boss nhẹ tênh!</p>
               </div>
-              <a href="#" class="view-more combo"
+              <a href="#" class="view-more combo" onclick="btnDealBanner()"
                 >Xem thêm <i class="ri-arrow-right-s-line"></i
               ></a>
             </div>
@@ -903,7 +903,7 @@
 
             <!-- Khu vực ảnh bên phải đặt relative để bạn tự chèn img -->
             <div class="banner-img-relative">
-              <img src="" alt="Combo quà tặng" />
+              <img src="./src/img/banner/Combo.svg" alt="Combo quà tặng" />
             </div>
           </div>
           <div class="screen-product" id="products-full"></div>
@@ -1715,19 +1715,479 @@
         <div class="site-container">
           <!-- PHẦN 1: GIỎ HÀNG VÀ THANH TOÁN -->
           <section class="section-box">
-            <h2>
-              <i class="ri-shopping-cart-2-line"></i> Giỏ Hàng & Thanh Toán
-            </h2>
-            <div id="cartAndCheckoutContainer"></div>
+            <div
+              style="
+                display: flex;
+                height: 100px;
+                background: white;
+                margin-top: 20px;
+                align-items: center;
+              "
+            >
+              <button
+                id="bnt-thoat"
+                style="
+                  background: #ffc83d;
+                  border-color: 1px solid #ffc83d;
+                  border-radius: 20px;
+                  color: white;
+                  height: 30px;
+                  width: 60px;
+                  margin-left: 50px;
+                  text-align: center;
+                  padding: 5px;
+                "
+              >
+                Thoát
+              </button>
+              <span
+                style="
+                  border-left: 1px solid #ffc83d;
+                  padding-left: 10px;
+                  color: #ffc83d;
+                  margin-left: 50px;
+                  font-size: 25px;
+                "
+              >
+                Giỏ Hàng
+              </span>
+              <div
+                style="
+                  border: 2px solid #ffc83d;
+                  display: flex;
+                  margin-left: 300px;
+                "
+              >
+                <input
+                  type="text"
+                  style="
+                    margin-left: 400px;
+                    width: 500px;
+                    margin-left: 0px;
+                    padding: 10px;
+                    border: none;
+                    outline: none;
+                  "
+                  placeholder="Tìm kiếm sản phẩm trong giỏ hàng (VD: Hạt S2PET Cho Mèo Premiu, Hạt D2PE ..."
+                />
+                <button
+                  style="
+                    padding: 0px 30px;
+                    background: #ffc83d;
+                    border: none;
+                    cursor: pointer;
+                  "
+                >
+                  <i class="ri-search-line" style="color: white"></i>
+                </button>
+              </div>
+            </div>
+
+            <div id="cartContainer"></div>
+            <div id="cart-summary">
+              <div class="cart-summary-bar">
+                <div class="summary-left">
+                  <label class="select-all-wrapper">
+                    <input type="checkbox" id="selectAllCheckbox" />
+                    <span
+                      >Chọn tất cả (<span id="total-selected-count">0</span
+                      >)</span
+                    >
+                  </label>
+                  <button id="delete-selected-btn" class="text-btn">Xóa</button>
+                </div>
+
+                <div class="summary-right">
+                  <div class="total-price-text">
+                    Tổng cộng (<span id="total-product-count">0</span> sản
+                    phẩm):
+                    <strong id="sub-total">0 đ</strong>
+                  </div>
+                  <button id="myPayment" class="checkout-btn">Mua hàng</button>
+                </div>
+              </div>
+            </div>
           </section>
 
           <!-- PHẦN 2: ĐƠN HÀNG CỦA TÔI -->
-          <section class="section-box">
-            <h2><i class="ri-receipt-line"></i> Lịch Sử Đơn Hàng Của Tôi</h2>
-            <div id="myOrdersPageContainer"></div>
+          <section class="section-box" style="margin-top: 40px">
+            <div class="my-orders-header">
+              <h3><i class="ri-file-list-3-line"></i> Đơn Hàng Của Tôi</h3>
+            </div>
+            <div id="myOrdersContainer" style="padding: 10px 0"></div>
           </section>
         </div>
       </section>
+
+      <section id="view-payment" class="app-view d-none">
+        <div class="site-container">
+          <section class="section-box">
+            <div class="payment-header">
+              <button
+                id="bnt-trolaigiohang"
+                style="
+                  background: #ffc83d;
+                  border-color: 1px solid #ffc83d;
+                  border-radius: 20px;
+                  color: white;
+                  height: 30px;
+                  width: 120px;
+                  margin-left: 50px;
+                  text-align: center;
+                  padding: 5px;
+                "
+              >
+                Trở lại giỏ hàng
+              </button>
+              <span
+                style="
+                  border-left: 1px solid #ffc83d;
+                  padding-left: 10px;
+                  color: #ffc83d;
+                  margin-left: 50px;
+                  font-size: 25px;
+                "
+              >
+                Thanh toán
+              </span>
+            </div>
+
+            <div class="paymentTable">
+              <div class="paymentTable info">
+                <div style="position: absolute; top: 30px">
+                  <i
+                    class="ri-map-pin-fill"
+                    style="color: #ffc83d; font-size: 18px; margin-left: 100px"
+                  ></i>
+                  <span
+                    class="cartTableHeaderItem"
+                    style="margin-left: 15px; color: #ffc83d; font-size: 20px"
+                    >Địa chỉ nhận hàng</span
+                  >
+                  <div
+                    class="info-customer"
+                    style="
+                      display: flex;
+                      margin-left: 100px;
+                      align-items: center;
+                      margin-top: 20px;
+                    "
+                  >
+                    <div
+                      class="Name"
+                      style="font-weight: bold; font-size: 15px"
+                    >
+                      Bùi Hùng Vỹ
+                    </div>
+                    <div
+                      class="phoneNumber"
+                      style="
+                        margin-left: 5px;
+                        font-weight: bold;
+                        font-size: 15px;
+                      "
+                    >
+                      (+84) 83870663
+                    </div>
+                    <div
+                      class="address"
+                      style="margin-left: 10px; font-size: 15px"
+                    >
+                      57/9, Lý Thường Kiệt, Phường Hòa Hưng, Thành phố Hồ Chí
+                      Minh
+                    </div>
+                    <div
+                      style="
+                        color: red;
+                        border: 1px solid red;
+                        padding: 2px;
+                        margin-left: 10px;
+                        font-size: 10px;
+                      "
+                    >
+                      Mặc định
+                    </div>
+                    <div
+                      style="color: blue; margin-left: 50px"
+                      id="change-address"
+                    >
+                      Thay đổi
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="payTable">
+              <!-- Tiêu đề bảng -->
+              <div class="pay-table-header">
+                <div class="col-product">Sản phẩm</div>
+                <div class="col-price">Đơn giá</div>
+                <div class="col-quantity">Số lượng</div>
+                <div class="col-subtotal">Thành tiền</div>
+              </div>
+
+              <!-- Danh sách sản phẩm thanh toán -->
+              <div id="payProductContainer">
+                <!--trong-->
+              </div>
+            </div>
+
+            <!-- Phần tổng bill thanh toán -->
+            <div class="totalBill">
+              <div class="total-text-group">
+                <span
+                  >Tổng cộng (<span id="pay-total-count">3</span> sản
+                  phẩm):</span
+                >
+                <strong id="pay-total-amount" class="total-price-number"
+                  >2.000.000 đ</strong
+                >
+              </div>
+            </div>
+            <!-- SUB4: Phương thức thanh toán -->
+            <div class="payment-method-bar">
+              <div class="method-label">Phương thức thanh toán</div>
+              <div class="method-name" id="selectedPaymentMethod">
+                Thanh toán khi nhận hàng
+              </div>
+              <div class="method-change" id="change-payment">THAY ĐỔI</div>
+            </div>
+
+            <!-- SUB5: Bảng tổng chi phí thanh toán -->
+            <div class="checkout-summary-card">
+              <div class="summary-row">
+                <span>Tổng tiền hàng</span>
+                <span id="summary-subtotal" class="summary-value"
+                  >135.000 đ</span
+                >
+              </div>
+              <div class="summary-row">
+                <span>Tổng cộng giảm giá</span>
+                <span id="summary-discount" class="summary-value discount"
+                  >-28.700 đ</span
+                >
+              </div>
+              <div class="summary-row total-row">
+                <span>Tổng thanh toán</span>
+                <span id="summary-final" class="summary-value final-price"
+                  >156.950 đ</span
+                >
+              </div>
+            </div>
+
+            <!-- SUB6: Điều khoản và Nút Đặt hàng -->
+            <div class="checkout-footer-bar">
+              <div class="terms-text">
+                Nhấn "Đặt hàng" đồng nghĩa với việc bạn đồng ý tuân theo
+                <span class="terms-link">Điều khoản của PetPet shop</span>
+              </div>
+              <button class="place-order-btn">Đặt hàng</button>
+            </div>
+          </section>
+        </div>
+      </section>
+      <!-- 1. MODAL DANH SÁCH ĐỊA CHỈ CỦA TÔI -->
+      <div id="addressListModal" class="address-modal" style="display: none">
+        <div
+          class="address-modal-overlay"
+          onclick="closeAddressListModal()"
+        ></div>
+        <div class="address-modal-content address-list-box">
+          <div class="address-modal-header">
+            <h3>Địa Chỉ Của Tôi</h3>
+            <span class="close-modal-btn" onclick="closeAddressListModal()"
+              >&times;</span
+            >
+          </div>
+
+          <div class="address-modal-body">
+            <!-- Danh sách địa chỉ sẽ render động ở đây -->
+            <div id="addressItemsContainer" class="address-items-list"></div>
+
+            <div class="address-modal-footer">
+              <button
+                type="button"
+                class="btn-add-new-address"
+                onclick="openAddAddressForm()"
+              >
+                <i class="ri-add-line"></i> Thêm Địa Chỉ Mới
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. MODAL FORM THÊM / CẬP NHẬT ĐỊA CHỈ (ĐÃ BỎ ĐỊNH VỊ) -->
+      <div id="addressFormModal" class="address-modal" style="display: none">
+        <div
+          class="address-modal-overlay"
+          onclick="closeAddressFormModal()"
+        ></div>
+        <div class="address-modal-content address-form-box">
+          <div class="address-modal-header">
+            <h3 id="addressFormTitle">Địa chỉ mới</h3>
+            <span class="close-modal-btn" onclick="closeAddressFormModal()"
+              >&times;</span
+            >
+          </div>
+
+          <div class="address-modal-body">
+            <form id="addressDetailForm">
+              <input type="hidden" id="editAddressId" value="" />
+
+              <div class="form-row-2">
+                <input
+                  type="text"
+                  id="inputName"
+                  placeholder="Họ và tên"
+                  required
+                />
+                <input
+                  type="text"
+                  id="inputPhone"
+                  placeholder="Số điện thoại"
+                  required
+                />
+              </div>
+
+              <div class="form-group-single">
+                <input
+                  type="text"
+                  id="inputCity"
+                  placeholder="Tỉnh/Thành Phố, Quận/Huyện, Phường/Xã"
+                  required
+                />
+              </div>
+
+              <div class="form-group-single">
+                <textarea
+                  id="inputStreet"
+                  rows="2"
+                  placeholder="Địa chỉ cụ thể (Số nhà, tên đường...)"
+                  required
+                ></textarea>
+              </div>
+
+              <div class="address-type-section">
+                <label class="section-label">Loại địa chỉ:</label>
+                <div class="type-buttons">
+                  <button
+                    type="button"
+                    class="btn-type-option active"
+                    data-type="Nhà Riêng"
+                  >
+                    Nhà Riêng
+                  </button>
+                  <button
+                    type="button"
+                    class="btn-type-option"
+                    data-type="Văn Phòng"
+                  >
+                    Văn Phòng
+                  </button>
+                </div>
+              </div>
+
+              <div class="default-checkbox-wrap">
+                <label>
+                  <input type="checkbox" id="inputIsDefault" />
+                  <span>Đặt làm địa chỉ mặc định</span>
+                </label>
+              </div>
+
+              <div class="form-actions-right">
+                <button
+                  type="button"
+                  class="btn-back"
+                  onclick="closeAddressFormModal()"
+                >
+                  Trở Lại
+                </button>
+                <button type="submit" class="btn-submit-orange">
+                  Hoàn thành
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- MODAL THAY ĐỔI PHƯƠNG THỨC THANH TOÁN -->
+      <div id="paymentModal" class="address-modal" style="display: none">
+        <div class="address-modal-overlay" id="paymentModalOverlay"></div>
+        <div class="address-modal-content">
+          <div class="address-modal-header">
+            <h3>Chọn phương thức thanh toán</h3>
+            <span class="close-payment-btn">&times;</span>
+          </div>
+
+          <div class="address-modal-body">
+            <form id="paymentForm">
+              <div class="form-group" style="gap: 12px">
+                <label
+                  style="
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    cursor: pointer;
+                    font-size: 15px;
+                  "
+                >
+                  <input
+                    type="radio"
+                    name="paymentMethod"
+                    value="Thanh toán khi nhận hàng"
+                    checked
+                    style="transform: scale(1.2); accent-color: #ffc83d"
+                  />
+                  Thanh toán khi nhận hàng
+                </label>
+                <label
+                  style="
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    cursor: pointer;
+                    font-size: 15px;
+                  "
+                >
+                  <input
+                    type="radio"
+                    name="paymentMethod"
+                    value="Chuyển khoản ngân hàng"
+                    style="transform: scale(1.2); accent-color: #ffc83d"
+                  />
+                  Chuyển khoản ngân hàng
+                </label>
+                <label
+                  style="
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    cursor: pointer;
+                    font-size: 15px;
+                  "
+                >
+                  <input
+                    type="radio"
+                    name="paymentMethod"
+                    value="Thanh toán trực tuyến"
+                    style="transform: scale(1.2); accent-color: #ffc83d"
+                  />
+                  Thanh toán trực tuyến
+                </label>
+              </div>
+
+              <div class="form-actions">
+                <button type="button" class="btn-cancel" id="btnCancelPayment">
+                  Hủy
+                </button>
+                <button type="submit" class="btn-save">Xác nhận</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
       <!-- Footer -->
       <div class="site-container">
         <footer class="footer">
@@ -1830,6 +2290,7 @@
     <script src="./src/data/Products.js"></script>
     <script src="./src/js/home/render.js"></script>
     <script src="./src/js/home/account.js"></script>
+    <script type="module" src="./src/js/test.js"></script>
     <script
       src="https://kit.fontawesome.com/6abea2bdfc.js"
       crossorigin="anonymous"
