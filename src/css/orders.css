@@ -1,9 +1,3 @@
-body {
-  margin-left: 0;
-  width: 100%;
-  background: rgb(242, 241, 241);
-}
-
 .cart-Header {
   display: flex;
   align-items: center;
@@ -787,4 +781,103 @@ body {
 
 .btn-submit-orange:hover {
   background: #d73211;
+}
+
+/* Thanh header giỏ hàng */
+.cart-header-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #ffffff;
+  padding: 16px 24px;
+  border-radius: 12px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.left-cart-title {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Nút Trở về / Thoát */
+.btn-back-home {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background-color: #fff4d6;
+  color: #d97706;
+  border: 1px solid #fde68a;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-back-home:hover {
+  background-color: #ffc83d;
+  color: #ffffff;
+  border-color: #ffc83d;
+}
+
+/* Vạch phân cách */
+.divider-vertical {
+  width: 1.5px;
+  height: 24px;
+  background-color: #e5e7eb;
+}
+
+/* Tiêu đề Giỏ Hàng */
+.cart-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #ffc83d;
+  margin: 0;
+  white-space: nowrap;
+}
+
+/* Thanh tìm kiếm */
+.cart-search-box {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 480px;
+  border: 2px solid #ffc83d;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #ffffff;
+}
+
+.cart-search-input {
+  flex: 1;
+  padding: 10px 14px;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  color: #333333;
+}
+
+.cart-search-input::placeholder {
+  color: #9ca3af;
+}
+
+.cart-search-btn {
+  background: #ffc83d;
+  border: none;
+  padding: 10px 18px;
+  color: #ffffff;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease;
+}
+
+.cart-search-btn:hover {
+  background: #e6b333;
 }

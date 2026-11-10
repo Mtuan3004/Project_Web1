@@ -31,6 +31,7 @@
     <link rel="stylesheet" href="./src/css/resposive.css" />
     <link rel="stylesheet" href="./src/css/gthieu.css" />
     <link rel="stylesheet" href="./src/css/account.css" />
+    <link rel="stylesheet" href="./src/css/orders.css" />
     <!--------->
   </head>
   <body>
@@ -1162,7 +1163,7 @@
               </div>
 
               <div class="app-btn">
-                <button type="button" onclick="showQC()">
+                <button type="button" onclick="addToCartFromDetail()">
                   <span>Thêm vào giỏ hàng </span>
                 </button>
               </div>
@@ -1714,114 +1715,77 @@
       <!-- Hung-vy -->
       <!---------------------------------->
       <!-- ORDERING -->
-      <section id="view-cart" class="app-view d-none">
-        <div class="site-container">
-          <!-- PHẦN 1: GIỎ HÀNG VÀ THANH TOÁN -->
-          <section class="section-box">
-            <div
-              style="
-                display: flex;
-                height: 100px;
-                background: white;
-                margin-top: 20px;
-                align-items: center;
-              "
-            >
-              <button
-                id="bnt-thoat"
-                style="
-                  background: #ffc83d;
-                  border-color: 1px solid #ffc83d;
-                  border-radius: 20px;
-                  color: white;
-                  height: 30px;
-                  width: 60px;
-                  margin-left: 50px;
-                  text-align: center;
-                  padding: 5px;
-                "
-              >
-                Thoát
-              </button>
-              <span
-                style="
-                  border-left: 1px solid #ffc83d;
-                  padding-left: 10px;
-                  color: #ffc83d;
-                  margin-left: 50px;
-                  font-size: 25px;
-                "
-              >
-                Giỏ Hàng
-              </span>
-              <div
-                style="
-                  border: 2px solid #ffc83d;
-                  display: flex;
-                  margin-left: 300px;
-                "
-              >
-                <input
-                  type="text"
-                  style="
-                    margin-left: 400px;
-                    width: 500px;
-                    margin-left: 0px;
-                    padding: 10px;
-                    border: none;
-                    outline: none;
-                  "
-                  placeholder="Tìm kiếm sản phẩm trong giỏ hàng (VD: Hạt S2PET Cho Mèo Premiu, Hạt D2PE ..."
-                />
-                <button
-                  style="
-                    padding: 0px 30px;
-                    background: #ffc83d;
-                    border: none;
-                    cursor: pointer;
-                  "
-                >
-                  <i class="ri-search-line" style="color: white"></i>
-                </button>
-              </div>
-            </div>
-
-            <div id="cartContainer"></div>
-            <div id="cart-summary">
-              <div class="cart-summary-bar">
-                <div class="summary-left">
-                  <label class="select-all-wrapper">
-                    <input type="checkbox" id="selectAllCheckbox" />
-                    <span
-                      >Chọn tất cả (<span id="total-selected-count">0</span
-                      >)</span
-                    >
-                  </label>
-                  <button id="delete-selected-btn" class="text-btn">Xóa</button>
+      <div style="margin-left: 0; width: 100%; background: rgb(242, 241, 241)">
+        <section id="view-cart" class="app-view d-none">
+          <div class="site-container">
+            <!-- PHẦN 1: GIỎ HÀNG VÀ THANH TOÁN -->
+            <section class="section-box">
+              <div class="cart-header-bar flexRow-center">
+                <div class="left-cart-title">
+                  <button
+                    id="bnt-thoat"
+                    class="btn-back-home"
+                    title="Trở về trang chủ"
+                  >
+                    <i class="ri-arrow-left-line"></i>
+                    <span>Trở về</span>
+                  </button>
+                  <div class="divider-vertical"></div>
+                  <h2 class="cart-title">Giỏ Hàng</h2>
                 </div>
 
-                <div class="summary-right">
-                  <div class="total-price-text">
-                    Tổng cộng (<span id="total-product-count">0</span> sản
-                    phẩm):
-                    <strong id="sub-total">0 đ</strong>
+                <div class="cart-search-box">
+                  <input
+                    type="text"
+                    placeholder="Tìm kiếm sản phẩm trong giỏ hàng..."
+                    class="cart-search-input"
+                  />
+                  <button class="cart-search-btn">
+                    <i class="ri-search-line"></i>
+                  </button>
+                </div>
+              </div>
+
+              <div id="cartContainer"></div>
+              <div id="cart-summary">
+                <div class="cart-summary-bar">
+                  <div class="summary-left">
+                    <label class="select-all-wrapper">
+                      <input type="checkbox" id="selectAllCheckbox" />
+                      <span
+                        >Chọn tất cả (<span id="total-selected-count">0</span
+                        >)</span
+                      >
+                    </label>
+                    <button id="delete-selected-btn" class="text-btn">
+                      Xóa
+                    </button>
                   </div>
-                  <button id="myPayment" class="checkout-btn">Mua hàng</button>
+
+                  <div class="summary-right">
+                    <div class="total-price-text">
+                      Tổng cộng (<span id="total-product-count">0</span> sản
+                      phẩm):
+                      <strong id="sub-total">0 đ</strong>
+                    </div>
+                    <button id="myPayment" class="checkout-btn">
+                      Mua hàng
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
-          </section>
+            </section>
 
-          <!-- PHẦN 2: ĐƠN HÀNG CỦA TÔI -->
-          <section class="section-box" style="margin-top: 40px">
-            <div class="my-orders-header">
-              <h3><i class="ri-file-list-3-line"></i> Đơn Hàng Của Tôi</h3>
-            </div>
-            <div id="myOrdersContainer" style="padding: 10px 0"></div>
-          </section>
-        </div>
-      </section>
-
+            <!-- PHẦN 2: ĐƠN HÀNG CỦA TÔI -->
+            <section class="section-box" style="margin-top: 40px">
+              <div class="my-orders-header">
+                <h3><i class="ri-file-list-3-line"></i> Đơn Hàng Của Tôi</h3>
+              </div>
+              <div id="myOrdersContainer" style="padding: 10px 0"></div>
+            </section>
+          </div>
+        </section>
+      </div>
       <section id="view-payment" class="app-view d-none">
         <div class="site-container">
           <section class="section-box">

@@ -388,7 +388,7 @@
     });
     data.fullName = data.fullName.replace(/\s+/g, " ");
 
-    // [SỬA] Lưu bản 'petpet_account' như cũ + đồng bộ sang currentUser / users
+    // Lưu bản 'petpet_account' + đồng bộ sang currentUser / users
     var saved = writeData(data);
     var synced = syncUser(data);
 
@@ -396,12 +396,46 @@
       $("fullName").value = data.fullName;
       updateSidebar();
       showMessage("Đã lưu thay đổi!", true);
-      // Phần khác của web (header, giỏ hàng...) có thể lắng nghe sự kiện này để cập nhật tên
+
+      // BẮN SỰ KIỆN ĐỂ TRANG THANH TOÁN TỰ CẬP NHẬT GIAO DIỆN CỦA ĐỊA CHỈ MẶC ĐỊNH
       window.dispatchEvent(
         new CustomEvent("account:updated", { detail: data }),
       );
     } else {
       showMessage("Không thể lưu, trình duyệt đang chặn lưu dữ liệu.", false);
+    }
+
+    // Cập nhật hoặc tạo mới địa chỉ mặc định trong userAddressList
+    if (data.phone && data.street && data.city) {
+      let userAddressList =
+        JSON.parse(localStorage.getItem("userAddressList")) || [];
+      let fullCityStr = [data.ward, data.district, data.city]
+        .filter(Boolean)
+        .join(", ");
+
+      let existingDefaultIndex = userAddressList.findIndex((a) => a.isDefault);
+
+      if (existingDefaultIndex !== -1) {
+        // Nếu đã có địa chỉ mặc định -> Cập nhật thông tin nhưng GIỮ NGUYÊN ID cũ
+        userAddressList[existingDefaultIndex].name = data.fullName;
+        userAddressList[existingDefaultIndex].phone = data.phone;
+        userAddressList[existingDefaultIndex].street = data.street;
+        userAddressList[existingDefaultIndex].city = fullCityStr;
+      } else {
+        // Nếu chưa có -> Tạo địa chỉ mặc định mới
+        let defaultAddr = {
+          id: "addr_default_user",
+          name: data.fullName,
+          phone: data.phone,
+          street: data.street,
+          city: fullCityStr,
+          type: "Nhà Riêng",
+          isDefault: true,
+        };
+        userAddressList.unshift(defaultAddr);
+      }
+
+      localStorage.setItem("userAddressList", JSON.stringify(userAddressList));
     }
   });
 
@@ -548,3 +582,22 @@
 
   applyData(readData());
 })();
+
+window.addEventListener("account:updated", function (e) {
+  if (e.detail) {
+    var data = e.detail;
+    if (data.fullName && document.getElementById("acs-fullName")) {
+      document.getElementById("acs-fullName").value = data.fullName;
+    }
+    if (data.phone && document.getElementById("acs-phone")) {
+      document.getElementById("acs-phone").value = data.phone;
+    }
+    if (data.street && document.getElementById("acs-street")) {
+      document.getElementById("acs-street").value = data.street;
+    }
+    // Cập nhật lại tên trên sidebar của trang tài khoản
+    if (typeof updateSidebar === "function") {
+      updateSidebar();
+    }
+  }
+});
