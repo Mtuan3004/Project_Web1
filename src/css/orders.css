@@ -881,3 +881,8 @@
 .cart-search-btn:hover {
   background: #e6b333;
 }
+
+.delete-all-btn:hover,
+.delete-all-btn.active {
+  color: #e6b333;
+}

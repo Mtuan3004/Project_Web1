@@ -765,3 +765,45 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+
+// XÓA CÁC SẢN PHẨM ĐƯỢC CHỌN (HOẶC XÓA TẤT CẢ NẾU CHỌN TẤT CẢ)
+const clearCartBtn = document.querySelector(".delete-all-btn"); // Hoặc dùng id của nút Xóa
+if (clearCartBtn) {
+  clearCartBtn.addEventListener("click", () => {
+    let cart = getCart();
+    if (cart.length === 0) {
+      alert("Giỏ hàng của bạn đang trống!");
+      return;
+    }
+
+    // Lấy tất cả các checkbox sản phẩm đang được tick chọn
+    let checkboxes = document.querySelectorAll(".product-checkbox:checked");
+
+    if (checkboxes.length === 0) {
+      alert("Vui lòng chọn ít nhất một sản phẩm cần xóa!");
+      return;
+    }
+
+    if (
+      confirm(
+        `Bạn có chắc chắn muốn xóa ${checkboxes.length} sản phẩm đã chọn khỏi giỏ hàng không?`,
+      )
+    ) {
+      // Lấy danh sách ID của những sản phẩm được tick chọn
+      let selectedIds = Array.from(checkboxes).map((chk) =>
+        String(chk.getAttribute("data-id")),
+      );
+
+      // Lọc giỏ hàng: chỉ giữ lại những sản phẩm KHÔNG nằm trong danh sách bị xóa
+      let newCart = cart.filter(
+        (item) => !selectedIds.includes(String(item.id)),
+      );
+
+      // Lưu lại giỏ hàng mới vào localStorage
+      saveCart(newCart);
+
+      // Vẽ lại giao diện giỏ hàng
+      renderCart();
+    }
+  });
+}

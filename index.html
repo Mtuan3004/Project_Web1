@@ -1711,6 +1711,10 @@
                 <div class="left-cart-title">
                   <button
                     id="bnt-thoat"
+                    onclick="
+                      showView('view-home');
+                      return false;
+                    "
                     class="btn-back-home"
                     title="Trở về trang chủ"
                   >
@@ -1744,9 +1748,11 @@
                         >)</span
                       >
                     </label>
-                    <button id="delete-selected-btn" class="text-btn">
-                      Xóa
-                    </button>
+                    <span
+                      class="delete-all-btn"
+                      style="cursor: pointer; margin-left: 10px;"
+                      >Xóa</span
+                    >
                   </div>
 
                   <div class="summary-right">
@@ -1779,6 +1785,10 @@
             <div class="payment-header">
               <button
                 id="bnt-trolaigiohang"
+                onclick="
+                  showView('view-cart');
+                  return false;
+                "
                 style="
                   background: #ffc83d;
                   border-color: 1px solid #ffc83d;

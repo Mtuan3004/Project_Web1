@@ -7,8 +7,6 @@ const productsview = document.querySelector("#products-full");
 function formatCurrency(amount) {
   const num = Math.max(0, Number(amount) || 0);
   return num.toLocaleString("vi-VN") + " đ";
-<<<<<<< HEAD
-=======
 }
 
 // 1. Đưa productCardTemplate ra ngoài để có thể gọi ở bất cứ đâu trong file
@@ -36,7 +34,6 @@ function productCardTemplate(product) {
     </div>
   </div>
 `;
->>>>>>> eefaf670f07cffd182c75e3d3f5223ccc510fe77
 }
 
 // Hàm render tổng quát (Nhận vào container, mảng data, và một hàm callback để tự thiết kế HTML)
@@ -72,65 +69,6 @@ const productsNotCombo = products.filter((p) => p.combo !== null);
 document.addEventListener("DOMContentLoaded", () => {
   renderToContainer(
     productContainer,
-<<<<<<< HEAD
-    products,
-    (product) => {
-      const priceStr = formatCurrency(product.price);
-      const oldPriceStr = product.oldPrice
-        ? formatCurrency(product.oldPrice)
-        : "";
-
-      return `
-    <div class="product-card" onclick="xemChiTietSanPham('${product.id}')">
-                    <div class="product-img-box">
-                        <img src="${product.image || "./src/img/default-product.png"}" alt="${product.name || "Sản phẩm"}" />
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-name">${product.name || "Tên sản phẩm"}</h3>
-                        <div class="product-rating">
-                            <i class="ri-star-fill"></i><i class="ri-star-fill"></i>
-                            <i class="ri-star-fill"></i><i class="ri-star-fill"></i>
-                            <i class="ri-star-fill"></i>
-                        </div>
-                        <div class="price-box">
-                            ${product.discount ? `<span class="discount-badge">${product.discount}</span>` : ""}
-                            ${oldPriceStr ? `<span class="old-price">${product.oldPrice}</span>` : ""}
-                        </div>
-                        <div class="current-price">${priceStr}</div>
-                    </div>
-                </div>
-            `;
-    },
-    5,
-  );
-  renderToContainer(suggestProducts, products, (product) => {
-    const priceStr = formatCurrency(product.price);
-    const oldPriceStr = product.oldPrice
-      ? formatCurrency(product.oldPrice)
-      : "";
-
-    return `
-    <div class="product-card" onclick="xemChiTietSanPham('${product.id}')">
-                    <div class="product-img-box">
-                        <img src="${product.image || "./src/img/default-product.png"}" alt="${product.name || "Sản phẩm"}" />
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-name">${product.name || "Tên sản phẩm"}</h3>
-                        <div class="product-rating">
-                            <i class="ri-star-fill"></i><i class="ri-star-fill"></i>
-                            <i class="ri-star-fill"></i><i class="ri-star-fill"></i>
-                            <i class="ri-star-fill"></i>
-                        </div>
-                        <div class="price-box">
-                            ${product.discount ? `<span class="discount-badge">${product.discount}</span>` : ""}
-                            ${oldPriceStr ? `<span class="old-price">${product.oldPrice}</span>` : ""}
-                        </div>
-                        <div class="current-price">${priceStr}</div>
-                    </div>
-                </div>
-            `;
-  });
-=======
     productsTietKiem,
     (product) => productCardTemplate(product),
     5,
@@ -144,7 +82,6 @@ document.addEventListener("DOMContentLoaded", () => {
   renderToContainer(suggestProducts, products, (product) =>
     productCardTemplate(product),
   );
->>>>>>> eefaf670f07cffd182c75e3d3f5223ccc510fe77
 });
 renderToContainer(productsview, products, (product) =>
   productCardTemplate(product),
@@ -256,7 +193,6 @@ function xemChiTietSanPham(id) {
   const quantityEl = document.getElementById("quantity");
   if (quantityEl) quantityEl.textContent = 1;
 
-<<<<<<< HEAD
   const addCartBtn = document.querySelector("#view-detail .app-btn button");
   if (addCartBtn) {
     addCartBtn.setAttribute("data-id", p.id);
@@ -265,9 +201,4 @@ function xemChiTietSanPham(id) {
   if (typeof showView === "function") {
     showView("view-detail");
   }
-=======
-  if (typeof showView === "function") {
-    showView("view-detail");
-  }
->>>>>>> eefaf670f07cffd182c75e3d3f5223ccc510fe77
 }
