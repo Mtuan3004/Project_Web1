@@ -1,0 +1,413 @@
+/* Section tài khoản (#view-account)
+   Dùng biến sẵn có trong main.css: --color-primary, --color-font, --font-primary
+   Mọi class đều có tiền tố "acs-" để không đụng với .account, .avatar, .btn... đã có. */
+
+#view-account {
+  --acs-line: #eeeeea;
+  --acs-muted: #7a7f7f;
+  --acs-danger: #d92d20;
+  --acs-ok: #1a7f4b;
+  --acs-soft: #fffbe8;
+  background: #fafaf7;
+  min-height: 100vh;
+  padding-bottom: 60px;
+  font-family: var(--font-primary);
+  color: var(--color-font);
+}
+
+#view-account .acs {
+  padding-top: 32px;
+}
+
+/* Tiêu đề trang */
+#view-account .acs-page-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 28px;
+}
+#view-account .acs-page-head h1 {
+  font-size: 30px;
+  color: #2b2f2f;
+}
+#view-account .acs-page-head h1::after {
+  content: '';
+  display: block;
+  width: 56px;
+  height: 5px;
+  border-radius: 4px;
+  background: var(--color-primary);
+  margin-top: 8px;
+}
+#view-account .acs-page-head p {
+  font-size: 14px;
+  color: var(--acs-muted);
+}
+
+#view-account .acs-layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+/* Thanh bên */
+#view-account .acs-sidebar {
+  background: #fff;
+  border: 1px solid var(--acs-line);
+  border-radius: 20px;
+  overflow: hidden;
+}
+#view-account .acs-profile {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 22px 20px;
+  border-bottom: 1px solid var(--acs-line);
+}
+#view-account .acs-avatar {
+  width: 54px;
+  height: 54px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--color-primary);
+  color: #2b2f2f;
+  display: grid;
+  place-items: center;
+  font-size: 22px;
+  font-weight: 700;
+}
+#view-account .acs-profile-text {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+#view-account .acs-profile-text small {
+  font-size: 12px;
+  color: var(--acs-muted);
+}
+#view-account .acs-profile-text strong {
+  font-size: 17px;
+  color: #2b2f2f;
+  word-break: break-word;
+}
+#view-account .acs-badge {
+  align-self: flex-start;
+  background: #fff1a8;
+  color: #7a5c00;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 10px;
+  border-radius: 50px;
+}
+
+#view-account .acs-menu {
+  list-style: none;
+}
+#view-account .acs-menu-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  font-size: 15px;
+  cursor: pointer;
+  border-left: 4px solid transparent;
+  transition: background 0.15s;
+}
+#view-account .acs-menu-item span {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+#view-account .acs-menu-item i {
+  font-size: 18px;
+}
+#view-account .acs-menu-item > i {
+  color: #b5b8b8;
+}
+#view-account .acs-menu-item:hover {
+  background: #fafaf7;
+}
+#view-account .acs-menu-item.active {
+  background: var(--acs-soft);
+  border-left-color: var(--color-primary);
+  font-weight: 600;
+}
+
+#view-account .acs-help {
+  background: #f6f6f3;
+  padding: 16px 20px;
+  font-size: 13px;
+  color: var(--acs-muted);
+}
+#view-account .acs-help b {
+  display: block;
+  color: #2b2f2f;
+}
+
+/* Thẻ nội dung */
+#view-account .acs-card {
+  background: #fff;
+  border: 1px solid var(--acs-line);
+  border-radius: 20px;
+  overflow: hidden;
+}
+#view-account .acs-card-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 26px 30px 22px;
+  border-bottom: 1px solid var(--acs-line);
+}
+#view-account .acs-card-head h2 {
+  font-size: 22px;
+  margin-bottom: 4px;
+  color: #2b2f2f;
+}
+#view-account .acs-card-head p {
+  font-size: 14px;
+  color: var(--acs-muted);
+}
+#view-account .acs-verified {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: fit-content;
+  background: #eaf7ef;
+  color: var(--acs-ok);
+  border: 1px solid #c8ebd5;
+  padding: 6px 12px;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+#view-account .acs-section {
+  padding: 26px 30px 6px;
+}
+#view-account .acs-section-line {
+  border-top: 1px solid var(--acs-line);
+  margin: 0 30px;
+  padding: 26px 0 6px;
+}
+#view-account .acs-section h3 {
+  font-size: 17px;
+  color: #2b2f2f;
+}
+#view-account .acs-sub {
+  font-size: 12.5px;
+  color: var(--acs-muted);
+  margin: 2px 0 18px;
+}
+
+#view-account .acs-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 18px;
+}
+#view-account .acs-field {
+  margin-bottom: 20px;
+  min-width: 0;
+}
+#view-account .acs-full {
+  grid-column: 1 / -1;
+}
+#view-account .acs-field label {
+  display: block;
+  font-size: 13.5px;
+  font-weight: 600;
+  margin-bottom: 7px;
+  color: #2b2f2f;
+}
+#view-account .acs-req {
+  color: var(--acs-danger);
+  margin-left: 2px;
+}
+
+#view-account .acs-field input,
+#view-account .acs-field select {
+  width: 100%;
+  height: 46px;
+  padding: 0 14px;
+  border: 1.5px solid #dcdcd6;
+  border-radius: 12px;
+  font: inherit;
+  font-size: 15px;
+  color: var(--color-font);
+  background: #fff;
+  transition:
+    border-color 0.15s,
+    box-shadow 0.15s;
+}
+#view-account .acs-field input:hover,
+#view-account .acs-field select:hover {
+  border-color: #c4c4bc;
+}
+#view-account .acs-field input:focus,
+#view-account .acs-field select:focus {
+  outline: none;
+  border-color: #e6bc12;
+  box-shadow: 0 0 0 3px rgba(253, 214, 53, 0.4);
+}
+#view-account .acs-field select:disabled {
+  background: #f5f5f2;
+  cursor: not-allowed;
+}
+#view-account .acs-field .acs-invalid {
+  border-color: var(--acs-danger);
+  background: #fffafa;
+}
+#view-account .acs-error {
+  display: none;
+  font-size: 12.5px;
+  color: var(--acs-danger);
+  margin-top: 5px;
+}
+#view-account .acs-error.show {
+  display: block;
+}
+
+#view-account .acs-note {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  background: var(--acs-soft);
+  border: 1px solid #f6e38c;
+  border-radius: 12px;
+  padding: 14px 16px;
+  margin: 4px 30px 28px;
+  font-size: 13px;
+}
+#view-account .acs-note > i {
+  font-size: 22px;
+  color: #a67c00;
+}
+#view-account .acs-note b {
+  display: block;
+  font-size: 13.5px;
+  color: #2b2f2f;
+}
+#view-account .acs-note span {
+  color: #6b5a1f;
+}
+
+#view-account .acs-foot {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 30px;
+  background: #fafaf7;
+  border-top: 1px solid var(--acs-line);
+}
+#view-account .acs-msg {
+  font-size: 13.5px;
+  font-weight: 600;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+#view-account .acs-msg.show {
+  opacity: 1;
+}
+#view-account .acs-msg.ok {
+  color: var(--acs-ok);
+}
+#view-account .acs-msg.fail {
+  color: var(--acs-danger);
+}
+#view-account .acs-save {
+  background: var(--color-primary);
+  color: #2b2f2f;
+  border: 2px solid var(--color-primary);
+  border-radius: 50px;
+  padding: 12px 30px;
+  font: inherit;
+  font-weight: 700;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+#view-account .acs-save:hover {
+  background: #fffbe8;
+}
+#view-account .acs-save:focus-visible {
+  outline: 3px solid rgba(253, 214, 53, 0.6);
+  outline-offset: 2px;
+}
+
+/* Responsive */
+@media (max-width: 860px) {
+  #view-account .acs-layout {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 560px) {
+  #view-account .acs-grid {
+    grid-template-columns: 1fr;
+  }
+  #view-account .acs-card-head {
+    flex-direction: column;
+    padding: 22px 20px 18px;
+  }
+  #view-account .acs-section {
+    padding: 22px 20px 4px;
+  }
+  #view-account .acs-section-line {
+    margin: 0 20px;
+    padding: 22px 0 4px;
+  }
+  #view-account .acs-note {
+    margin: 4px 20px 24px;
+  }
+  #view-account .acs-foot {
+    padding: 14px 20px;
+  }
+  #view-account {
+    padding-bottom: 90px;
+  } /* chừa chỗ cho thanh điều hướng mobile */
+}
+
+/* ===== Tab (panel) ===== */
+#view-account .acs-panel {
+  display: none;
+}
+#view-account .acs-panel.active {
+  display: block;
+}
+
+/* ===== Đổi mật khẩu ===== */
+#view-account .acs-pass-box {
+  max-width: 480px;
+}
+#view-account .acs-pass-wrap {
+  position: relative;
+}
+#view-account .acs-pass-wrap input {
+  padding-right: 46px;
+}
+#view-account .acs-eye {
+  position: absolute;
+  right: 4px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 38px;
+  height: 38px;
+  border: none;
+  background: transparent;
+  font-size: 20px;
+  color: var(--acs-muted);
+  cursor: pointer;
+  border-radius: 50%;
+}
+#view-account .acs-eye:hover {
+  background: #f3f3ef;
+}
+@media (max-width: 560px) {
+  #view-account .acs-pass-box {
+    max-width: 100%;
+  }
+}

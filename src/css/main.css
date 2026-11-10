@@ -41,7 +41,6 @@ body {
 header {
   height: auto;
   width: 100%;
-  display: flex;
   background-color: var(--color-primary);
   border-bottom: 1px solid #fee56d;
 }
@@ -49,6 +48,7 @@ header {
   height: 100%;
   margin: 0 auto;
   padding: 0 0;
+  display: none ;
 }
 
 .topbar-items {
@@ -96,7 +96,7 @@ header {
 }
 .nav-menu {
   display: none;
-  gap: 38px;
+  gap: 20px;
 }
 .nav-item {
   list-style: none;

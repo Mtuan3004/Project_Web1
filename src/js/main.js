@@ -1,4 +1,6 @@
 const navLinks = document.querySelectorAll('.nav-item');
+const navMobileLinks = document.querySelectorAll('.bottom-nav__item');
+const navHamburgerLinks = document.querySelectorAll('.menu-modal-list a[data-view]');
 
 const icon = document.querySelectorAll('#iconBranch');
 const btnMain = document.querySelector('.icon-set');
@@ -20,16 +22,9 @@ const linkAdmin = document.querySelector('.link_Admin');
 
 const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('left-bar');
-// Gạch chân + chuyển màn hình khi bấm nút trên navbar
-navLinks.forEach((link) => {
-  link.addEventListener('click', (e) => {
-    e.preventDefault(); // không cho link nhảy theo #Trangchủ...
-    navLinks.forEach((item) => item.classList.remove('active'));
-    link.classList.add('active');
-    showView(link.dataset.view);
-  });
-});
 
+const viewGiaTot = document.querySelector('.gia-tot');
+const viewCombo = document.querySelector('.combo');
 // Chỉnh icon
 
 function closeAllMenus() {
@@ -188,7 +183,7 @@ document.addEventListener('DOMContentLoaded', function () {
         role.style.color = '#d63031';
         linkAdmin.style.display = 'flex';
       } else {
-        role.textContent = 'Thành viên';
+        role.textContent = 'Khánh hàng';
         role.classList.add('customers');
       }
     }
@@ -220,63 +215,42 @@ function toggleMenu(e) {
 
 // Ẩn tất cả màn hình, chỉ hiện màn có id được truyền vào
 function showView(id) {
-  document
-    .querySelectorAll('.app-view')
+  document.querySelectorAll('.app-view')
     .forEach((view) => view.classList.add('d-none'));
   document.getElementById(id).classList.remove('d-none');
   window.scrollTo(0, 0);
 }
 
-function formatPrice(n) {
-  return Number(n).toLocaleString('vi-VN') + ' đ';
-}
+// Gạch chân + chuyển màn hình khi bấm nút trên navbar
+navLinks.forEach((link) => {
+  link.addEventListener('click', (e) => {
+    e.preventDefault(); // không cho link nhảy theo #Trangchủ...
+    navLinks.forEach((item) => item.classList.remove('active'));
+    link.classList.add('active');
+    showView(link.dataset.view);
+  });
+});
 
-async function xemChiTietSanPham(id) {
-  const { getProducts } = await import('./ProductService.js');
-  const products = await getProducts();
+navMobileLinks.forEach((link) => {
+    link.addEventListener('click', (e) => {
+        e.preventDefault();
 
-  const p = products.find((item) => String(item.id) === String(id));
-  if (!p) return;
+        showView(link.dataset.view);
+    });
+});
+navHamburgerLinks.forEach((link) => {
+    link.addEventListener('click', (e) => {
+        e.preventDefault();
 
-  const hasDiscount = p.oldPrice > p.price;
+        showView(link.dataset.view);
+        document.getElementById("mobileMenuModal").classList.remove("active");
+    });
+});
+console.log(navMobileLinks);
+console.log(navMobileLinks.length);
 
-  document.getElementById('detailImg').src = p.image;
-  document.getElementById('detailMiniImg').src = p.image;
-  document.getElementById('detailTitle').textContent = p.name;
-  document.getElementById('detailSubTitle').textContent = p.name;
-
-  document.getElementById('detailSalesPrice').textContent = formatPrice(
-    p.price
-  );
-  document.getElementById('detailOldPrice').textContent = formatPrice(
-    p.oldPrice
-  );
-  document.getElementById('detailDiscount').textContent = p.discount;
-  document.getElementById('detailOldPrice').style.display = hasDiscount
-    ? ''
-    : 'none';
-  document.getElementById('detailDiscount').style.display = hasDiscount
-    ? ''
-    : 'none';
-
-  document.getElementById('detailStock').textContent = p.stock;
-  document.getElementById('detailSoldText').textContent =
-    `| Đã bán Online: ${p.sold ?? 0}`;
-  document.getElementById('detailBrand').textContent = p.brand;
-  document.getElementById('detailCategory').textContent = p.category;
-  document.getElementById('detailWeight').textContent = p.weight || '—';
-  document.getElementById('detailOrigin').textContent =
-    p.origin || 'Đang cập nhật';
-
-  document.getElementById('detailFullContent').innerHTML = `
-    <p><strong>${p.name}</strong> ${p.description}</p>
-    <p><strong>Đặc điểm nổi bật (Highlight):</strong></p>
-    <ul>${p.highlights.map((h) => `<li>${h}</li>`).join('')}</ul>
-  `;
-
-  document.getElementById('quantity').textContent = 1;
-  showView('view-detail');
-}
+console.log(navHamburgerLinks);
+console.log(navHamburgerLinks.length);
 
 // Nút xem thêm
 function bindGoTo(selector, viewId) {
@@ -288,8 +262,92 @@ function bindGoTo(selector, viewId) {
   });
 }
 
-bindGoTo('.view-more', 'view-products');
 bindGoTo('.brand-view-more', 'view-brand');
+
+const bannerConfigs = {
+    red: {
+        type: "red",
+        imgSrc: "./src/img/banner/Combo.svg",
+        alt: "Combo quà tặng",
+        title: "Combo tiết kiệm",
+        subtitle: "Nhận quà cực ngầu - Mua ngay!"
+    },
+
+    yellow: {
+        type: "yellow",
+        imgSrc: "./src/img/banner/Giatot.svg",
+        alt: "Giá tốt hôm nay",
+        title: "Giá tốt hôm nay",
+        subtitle: "Càng mua - Càng hời - Càng tiết kiệm!"
+    }
+};
+
+
+// Hàm render banner
+function renderDealBanner(selector, configType) {
+    // Tìm banner trong HTML
+    const banner = document.querySelector(selector);
+    if (!banner) {
+        console.warn("Không tìm thấy banner:", selector);
+        return;
+    }
+    // Lấy cấu hình theo loại banner
+    const data = bannerConfigs[configType];
+    if (!data) {
+        console.warn("Không tồn tại loại banner:", configType);
+        return;
+    }
+    banner.dataset.bannerType = data.type;
+    const img = banner.querySelector(".banner-img-relative img");
+    if (img) {
+        img.src = data.imgSrc;
+        img.alt = data.alt;
+    }
+    const title = banner.querySelector(".banner-title");
+    if (title) {
+        title.textContent = data.title;
+    }
+    const subtitle = banner.querySelector(".banner-subtitle");
+    if (subtitle) {
+        subtitle.textContent = data.subtitle;
+    }
+}
+
+
+// Hàm chuyển đến màn hình sản phẩm kèm loại banner
+function openProductsWithBanner(event, bannerType) {
+    // Ngăn hành vi mặc định của thẻ a
+    event.preventDefault();
+    // Render banner trước khi chuyển màn hình
+    renderDealBanner(".deal-banner", bannerType);
+    // Tận dụng hệ thống điều hướng hiện tại
+    const productNav = document.querySelector(
+        '.nav-item[data-view="view-products"]'
+    );
+
+    if (productNav) {
+        productNav.click();
+    } else {
+        console.warn("Không tìm thấy nút điều hướng sản phẩm!");
+    }
+}
+
+
+// Nút xem thêm Giá tốt hôm nay
+document.querySelectorAll(".gia-tot").forEach(btn => {
+    btn.addEventListener("click", (event) => {
+        openProductsWithBanner(event, "yellow");
+    });
+});
+
+
+// Nút xem thêm Combo tiết kiệm
+document.querySelectorAll(".combo").forEach(btn => {
+    btn.addEventListener("click", (event) => {
+        openProductsWithBanner(event, "red");
+    });
+});
+
 
 
 // hahah
@@ -297,6 +355,6 @@ bindGoTo('.brand-view-more', 'view-brand');
 const myOrder = document.querySelector('.personal-menu');
 
 myOrder.addEventListener('click', (e) => {
-  e.preventDefault(); // nếu .personal-menu là thẻ <a>, chặn nó nhảy trang/cuộn lên đầu
+  e.preventDefault();
   showView('view-cart');
 });

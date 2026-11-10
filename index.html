@@ -30,6 +30,7 @@
     <link rel="stylesheet" href="./src/css/detail-product.css" />
     <link rel="stylesheet" href="./src/css/resposive.css" />
     <link rel="stylesheet" href="./src/css/gthieu.css" />
+    <link rel="stylesheet" href="./src/css/account.css" />
     <!--------->
   </head>
   <body>
@@ -62,22 +63,22 @@
     </div>
     <!-- Mobile Bottom Navigation -->
     <nav class="mobile-bottom-nav">
-      <a href="#Trangchu" class="bottom-nav__item">
+      <a class="bottom-nav__item" data-view="view-home">
         <img src="./src/img/icon-nav/sprite-nav-home.svg" alt="icon" />
         <span>Trang chủ</span>
       </a>
 
-      <a href="#Video" class="bottom-nav__item">
+      <a class="bottom-nav__item">
         <img src="./src/img/icon-nav/sprite-nav-video.svg" alt="icon" />
         <span>Video</span>
       </a>
 
-      <a href="#Sanpham" class="bottom-nav__item">
+      <a class="bottom-nav__item" data-view="view-products">
         <img src="./src/img/icon-nav/sprite-nav-category.svg" alt="icon" />
         <span>Sản phẩm</span>
       </a>
 
-      <a href="#Taikhoan" class="bottom-nav__item">
+      <a class="bottom-nav__item">
         <img src="./src/img/icon-nav/sprite-nav-account.svg" alt="icon" />
         <span>Tài khoản</span>
       </a>
@@ -429,7 +430,7 @@
         </div>
       </nav>
       <!-- 1. MÀN HÌNH TRANG CHỦ (HOME) -->
-      <section id="view-home" class="app-view">
+      <section id="view-home" class="app-view d-none">
         <!-- Image Slider -->
         <div class="site-container">
           <div class="img-slider">
@@ -475,7 +476,7 @@
                 <h2>Giá tốt hôm nay ⚡</h2>
                 <p>Càng mua - Càng hời - Càng tiết kiệm!</p>
               </div>
-              <a href="#" class="view-more"
+              <a href="#" class="view-more gia-tot"
                 >Xem thêm <i class="ri-arrow-right-s-line"></i
               ></a>
             </div>
@@ -493,7 +494,7 @@
                 <h2>Combo tiết kiệm</h2>
                 <p>Săn deal hời - Chăm boss nhẹ tênh!</p>
               </div>
-              <a href="#" class="view-more"
+              <a href="#" class="view-more combo"
                 >Xem thêm <i class="ri-arrow-right-s-line"></i
               ></a>
             </div>
@@ -778,9 +779,6 @@
                 <div class="brand-title-group">
                   <h1>Thương hiệu yêu thích</h1>
                 </div>
-                <a href="#" class="brand-view-more">
-                  Xem thêm <i class="ri-arrow-right-s-line"></i>
-                </a>
               </div>
 
               <!-- Lưới danh sách các thương hiệu -->
@@ -897,7 +895,18 @@
               </div>
             </div>
           </section>
-          <div class="screen-product"></div>
+          <div class="deal-banner" data-banner-type="">
+            <div class="banner-content">
+              <h2 class="banner-title">Combo tiết kiệm</h2>
+              <p class="banner-subtitle">Nhận quà cực ngầu - Mua ngay!</p>
+            </div>
+
+            <!-- Khu vực ảnh bên phải đặt relative để bạn tự chèn img -->
+            <div class="banner-img-relative">
+              <img src="" alt="Combo quà tặng" />
+            </div>
+          </div>
+          <div class="screen-product" id="products-full"></div>
         </main>
       </section>
 
@@ -943,7 +952,21 @@
               </button>
             </div>
           </div>
+          <div style="margin: 25px 0px 40px" class="deal-banner">
+            <div class="banner-content">
+              <h2 class="banner-title">Combo tiết kiệm</h2>
+              <p class="banner-subtitle">Nhận quà cực ngầu - Mua ngay!</p>
+            </div>
 
+            <!-- Khu vực ảnh bên phải đặt relative để bạn tự chèn img -->
+            <div class="banner-img-relative">
+              <img
+                style="bottom: -35px; height: 155%; right: -25px"
+                src="./src/img/banner/Brand.svg"
+                alt="Combo quà tặng"
+              />
+            </div>
+          </div>
           <!-- Lưới danh sách các thương hiệu -->
           <div class="brand-grid">
             <!-- Item 1 -->
@@ -1074,10 +1097,7 @@
 
             <div class="info-container">
               <div class="product-title">
-                <h2 id="detailTitle">
-                  Combo 5 Pate DoggyMan Cho Cún Sốt Kem Gói 70g Vị Gan Vịt Rau
-                  Củ
-                </h2>
+                <h2 id="detailTitle">hehehheheh</h2>
               </div>
 
               <div class="rating-section">
@@ -1088,7 +1108,7 @@
                     this.outerHTML = '<span class=\'stars\'>⭐⭐⭐⭐⭐</span>'
                   "
                 />
-                <span id="detailSoldText">| Đã bán Online: 88</span>
+                <span id="detailSoldText">| hehehehhehe</span>
                 <i
                   class="ri-poker-hearts-line"
                   style="cursor: pointer"
@@ -1102,9 +1122,9 @@
               </div>
 
               <div class="prices">
-                <span id="detailDiscount" class="discount">-5%</span>
-                <span id="detailOldPrice" class="old-price">75,000 đ</span>
-                <p id="detailSalesPrice" class="sales-price">71,250 đ</p>
+                <span id="detailDiscount" class="discount">null</span>
+                <span id="detailOldPrice" class="old-price">null</span>
+                <p id="detailSalesPrice" class="sales-price">null</p>
               </div>
 
               <div class="description">
@@ -1190,37 +1210,36 @@
 
             <div class="info-sp-content" id="detailFullContent">
               <p>
-                <span
-                  ><strong id="contentTitleBold"
-                    >Combo 5 Pate DoggyMan Cho Cún Sốt Kem Gói 70g Vị Gan Vịt
-                    Rau Củ</strong
-                  >
-                  là dòng thức ăn ướt cao cấp dành cho cún cưng với kết cấu sốt
-                  kem thơm béo, giúp kích thích vị giác tối đa và cung cấp đầy
-                  đủ độ ẩm, dưỡng chất thiết yếu cho bữa ăn hằng ngày của
-                  cún.</span
-                >
+                <span><strong id="contentTitleBold">null</strong> null</span>
               </p>
               <p>
-                <span><strong>Đặc điểm nổi bật (Highlight):</strong></span>
+                <span><strong>null</strong></span>
               </p>
               <ul>
                 <li>
                   <span
-                    >Kết cấu sốt kem mịn màng, thơm ngon đặc biệt, dễ dàng trộn
-                    chung với hạt khô.</span
+                    >Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                    Neque, tempora qui voluptate explicabo commodi quis sequi!
+                    Officia architecto fugiat libero minus vitae vel temporibus
+                    error sequi repellat dicta! Veritatis, repellendus!</span
                   >
                 </li>
                 <li>
                   <span
-                    >Hương vị gan vịt kết hợp rau củ đổi mới khẩu vị, giúp cún
-                    ăn ngon miệng hơn.</span
+                    >Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Distinctio cupiditate officia error est voluptate corrupti
+                    quidem, consequuntur exercitationem, unde laborum obcaecati,
+                    accusantium soluta enim quaerat sequi eveniet in ipsum
+                    voluptas!.</span
                   >
                 </li>
                 <li>
                   <span
-                    >Bổ sung lượng nước và độ ẩm tự nhiên, tốt cho hệ tiêu hóa
-                    và thận của cún.</span
+                    >Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Eum error laboriosam hic facere possimus laudantium delectus
+                    asperiores soluta autem optio, praesentium quia commodi
+                    magni voluptas ratione labore, architecto corporis
+                    rerum!.</span
                   >
                 </li>
                 <li>
@@ -1432,6 +1451,265 @@
         </div>
       </section>
 
+      <!-- 5. ACCOUNT -->
+      <section id="view-account" class="app-view d-none">
+        <div class="site-container acs">
+          <div class="acs-page-head">
+            <h1>Cài đặt tài khoản</h1>
+            <p>Quản lý thông tin và bảo mật tài khoản của bạn</p>
+          </div>
+
+          <div class="acs-layout">
+            <!-- Thanh bên -->
+            <aside class="acs-sidebar">
+              <div class="acs-profile">
+                <div class="acs-avatar" id="acs-avatar">T</div>
+                <div class="acs-profile-text">
+                  <small>Tài khoản của</small>
+                  <strong id="acs-side-name">Tuấn Nguyễn</strong>
+                  <span class="acs-badge">Thành viên</span>
+                </div>
+              </div>
+              <ul class="acs-menu">
+                <li class="acs-menu-item active" data-tab="info">
+                  <span><i class="ri-user-line"></i>Thông tin cá nhân</span>
+                  <i class="ri-arrow-right-s-line"></i>
+                </li>
+                <li class="acs-menu-item" data-tab="password">
+                  <span><i class="ri-lock-line"></i>Đổi mật khẩu</span>
+                  <i class="ri-arrow-right-s-line"></i>
+                </li>
+              </ul>
+              <div class="acs-help">
+                Cần hỗ trợ?
+                <b>Hotline: 1900 3305</b>
+              </div>
+            </aside>
+
+            <!-- Form -->
+            <div class="acs-card acs-panel active" id="acs-panel-info">
+              <div class="acs-card-head">
+                <div>
+                  <h2>Thông tin tài khoản</h2>
+                  <p>
+                    Cập nhật thông tin để mua sắm và nhận hàng thuận tiện hơn.
+                  </p>
+                </div>
+                <div class="acs-verified">
+                  <i class="ri-shield-check-line"></i>Đã xác thực
+                </div>
+              </div>
+
+              <form id="acs-form" novalidate>
+                <div class="acs-section">
+                  <h3>Thông tin cá nhân</h3>
+                  <p class="acs-sub">
+                    Thông tin cơ bản được sử dụng cho tài khoản PETPET.
+                  </p>
+                  <div class="acs-grid">
+                    <div class="acs-field">
+                      <label for="acs-fullName"
+                        >Họ và tên<span class="acs-req">*</span></label
+                      >
+                      <input
+                        id="acs-fullName"
+                        type="text"
+                        maxlength="50"
+                        autocomplete="name"
+                      />
+                      <div class="acs-error" id="acs-err-fullName"></div>
+                    </div>
+                    <div class="acs-field">
+                      <label for="acs-phone"
+                        >Số điện thoại<span class="acs-req">*</span></label
+                      >
+                      <input
+                        id="acs-phone"
+                        type="tel"
+                        inputmode="numeric"
+                        maxlength="14"
+                        autocomplete="tel"
+                      />
+                      <div class="acs-error" id="acs-err-phone"></div>
+                    </div>
+                    <div class="acs-field acs-full">
+                      <label for="acs-email"
+                        >Email<span class="acs-req">*</span></label
+                      >
+                      <input id="acs-email" type="email" autocomplete="email" />
+                      <div class="acs-error" id="acs-err-email"></div>
+                    </div>
+                    <div class="acs-field">
+                      <label for="acs-dob">Ngày sinh</label>
+                      <input id="acs-dob" type="date" />
+                      <div class="acs-error" id="acs-err-dob"></div>
+                    </div>
+                    <div class="acs-field">
+                      <label for="acs-gender">Giới tính</label>
+                      <select id="acs-gender">
+                        <option value="">Chọn giới tính</option>
+                        <option value="Nam">Nam</option>
+                        <option value="Nữ">Nữ</option>
+                        <option value="Khác">Khác</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="acs-section acs-section-line">
+                  <h3>Địa chỉ liên hệ</h3>
+                  <p class="acs-sub">
+                    Địa chỉ mặc định giúp bạn đặt hàng nhanh hơn.
+                  </p>
+                  <div class="acs-grid">
+                    <div class="acs-field">
+                      <label for="acs-city">Tỉnh / Thành phố</label>
+                      <select id="acs-city"></select>
+                      <div class="acs-error" id="acs-err-city"></div>
+                    </div>
+                    <div class="acs-field">
+                      <label for="acs-district">Quận / Huyện</label>
+                      <select id="acs-district"></select>
+                      <div class="acs-error" id="acs-err-district"></div>
+                    </div>
+                    <div class="acs-field">
+                      <label for="acs-ward">Phường / Xã</label>
+                      <select id="acs-ward"></select>
+                      <div class="acs-error" id="acs-err-ward"></div>
+                    </div>
+                    <div class="acs-field">
+                      <label for="acs-street">Địa chỉ cụ thể</label>
+                      <input
+                        id="acs-street"
+                        type="text"
+                        maxlength="100"
+                        autocomplete="street-address"
+                      />
+                      <div class="acs-error" id="acs-err-street"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="acs-note">
+                  <i class="ri-phone-line"></i>
+                  <div>
+                    <b>Số điện thoại đã được xác thực</b>
+                    <span
+                      >PETPET sẽ dùng số điện thoại này để xác nhận đơn hàng và
+                      hỗ trợ khi cần.</span
+                    >
+                  </div>
+                </div>
+
+                <div class="acs-foot">
+                  <span class="acs-msg" id="acs-msg" role="status"></span>
+                  <button type="submit" class="acs-save">Lưu thay đổi</button>
+                </div>
+              </form>
+            </div>
+
+            <!-- Panel: Đổi mật khẩu -->
+            <div class="acs-card acs-panel" id="acs-panel-password">
+              <div class="acs-card-head">
+                <div>
+                  <h2>Đổi mật khẩu</h2>
+                  <p>Dùng mật khẩu mạnh để bảo vệ tài khoản của bạn.</p>
+                </div>
+              </div>
+
+              <form id="acs-pass-form" novalidate>
+                <div class="acs-section acs-pass-box">
+                  <div class="acs-field">
+                    <label for="acs-curPass"
+                      >Mật khẩu hiện tại<span class="acs-req">*</span></label
+                    >
+                    <div class="acs-pass-wrap">
+                      <input
+                        id="acs-curPass"
+                        type="password"
+                        maxlength="50"
+                        autocomplete="current-password"
+                      />
+                      <button
+                        type="button"
+                        class="acs-eye"
+                        data-target="acs-curPass"
+                        aria-label="Hiện / ẩn mật khẩu"
+                      >
+                        <i class="ri-eye-line"></i>
+                      </button>
+                    </div>
+                    <div class="acs-error" id="acs-err-curPass"></div>
+                  </div>
+                  <div class="acs-field">
+                    <label for="acs-newPass"
+                      >Mật khẩu mới<span class="acs-req">*</span></label
+                    >
+                    <div class="acs-pass-wrap">
+                      <input
+                        id="acs-newPass"
+                        type="password"
+                        maxlength="50"
+                        autocomplete="new-password"
+                      />
+                      <button
+                        type="button"
+                        class="acs-eye"
+                        data-target="acs-newPass"
+                        aria-label="Hiện / ẩn mật khẩu"
+                      >
+                        <i class="ri-eye-line"></i>
+                      </button>
+                    </div>
+                    <div class="acs-error" id="acs-err-newPass"></div>
+                  </div>
+                  <div class="acs-field">
+                    <label for="acs-confirmPass"
+                      >Nhập lại mật khẩu mới<span class="acs-req"
+                        >*</span
+                      ></label
+                    >
+                    <div class="acs-pass-wrap">
+                      <input
+                        id="acs-confirmPass"
+                        type="password"
+                        maxlength="50"
+                        autocomplete="new-password"
+                      />
+                      <button
+                        type="button"
+                        class="acs-eye"
+                        data-target="acs-confirmPass"
+                        aria-label="Hiện / ẩn mật khẩu"
+                      >
+                        <i class="ri-eye-line"></i>
+                      </button>
+                    </div>
+                    <div class="acs-error" id="acs-err-confirmPass"></div>
+                  </div>
+                </div>
+
+                <div class="acs-note">
+                  <i class="ri-lock-line"></i>
+                  <div>
+                    <b>Yêu cầu mật khẩu mới</b>
+                    <span
+                      >Từ 6 ký tự trở lên, gồm cả chữ và số, không chứa khoảng
+                      trắng.</span
+                    >
+                  </div>
+                </div>
+
+                <div class="acs-foot">
+                  <span class="acs-msg" id="acs-pass-msg" role="status"></span>
+                  <button type="submit" class="acs-save">Đổi mật khẩu</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <!-- ORDERING -->
       <section id="view-cart" class="app-view d-none">
         <div class="site-container">
@@ -1537,20 +1815,21 @@
       <div class="menu-modal-overlay"></div>
       <div class="menu-modal-content">
         <ul class="menu-modal-list">
-          <li><a href="#Trangchủ">Trang chủ</a></li>
-          <li><a href="#Giớithiệu">Giới thiệu</a></li>
-          <li><a href="#Sảnphẩm">Sản phẩm</a></li>
-          <li><a href="#Thươnghiệu">Thương hiệu</a></li>
-          <li><a href="#Tạpchí">Tạp chí</a></li>
+          <li><a href="#Trangchủ" data-view="view-home">Trang chủ</a></li>
+          <li><a href="#Giớithiệu" data-view="view-about">Giới thiệu</a></li>
+          <li><a href="#Sảnphẩm" data-view="view-products">Sản phẩm</a></li>
+          <li><a href="#Thươnghiệu" data-view="view-brand">Thương hiệu</a></li>
         </ul>
       </div>
     </div>
     <!-- JS -->
-    <script src="./src/js/orders.js"></script>
     <script src="./src/js/main.js"></script>
+    <script src="./src/js/orders.js"></script>
+    <script src="./src/js/detail-product.js"></script>
     <script src="./src/js/home/mobile.js"></script>
     <script src="./src/data/Products.js"></script>
     <script src="./src/js/home/render.js"></script>
+    <script src="./src/js/home/account.js"></script>
     <script
       src="https://kit.fontawesome.com/6abea2bdfc.js"
       crossorigin="anonymous"
