@@ -257,6 +257,14 @@ if (mypay) {
   mypay.addEventListener("click", (e) => {
     e.preventDefault();
 
+    let currentUser = localStorage.getItem("currentUser");
+    if (!currentUser) {
+      alert("Vui lòng đăng nhập để tiến hành mua hàng!");
+      // Chuyển hướng sang trang đăng nhập (bạn có thể thay đổi đường dẫn phù hợp với thư mục của bạn)
+      window.location.href = "./src/html/signUp.html";
+      return;
+    }
+
     let cart = getCart();
     let checkboxes = document.querySelectorAll(".product-checkbox");
     let selectedItems = [];
