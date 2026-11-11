@@ -807,3 +807,35 @@ if (clearCartBtn) {
     }
   });
 }
+
+// LÀM NỔI BẬT SẢN PHẨM KHI TÌM KIẾM TRONG GIỎ HÀNG
+const cartSearchInput = document.getElementById("cartSearchInput"); // Đảm bảo đúng ID ô input của bạn
+if (cartSearchInput) {
+  cartSearchInput.addEventListener("input", (e) => {
+    let keyword = e.target.value.toLowerCase().trim();
+
+    // Lấy tất cả các dòng sản phẩm trong giỏ hàng
+    let cartRows = document.querySelectorAll(".cartTable.cart-Main");
+
+    cartRows.forEach((row) => {
+      let nameEl = row.querySelector(".col-product span");
+      if (!nameEl) return;
+
+      let productName = nameEl.textContent.toLowerCase();
+
+      if (keyword !== "" && productName.includes(keyword)) {
+        // Nếu khớp từ khóa: làm nổi bật border và nền nhẹ
+        row.style.border = "2px solid #ffc83d";
+        row.style.backgroundColor = "#fffdf5";
+        row.style.transition = "all 0.3s ease";
+
+        // Tự động cuộn đến sản phẩm đầu tiên tìm thấy (tuỳ chọn)
+        // row.scrollIntoView({ behavior: "smooth", block: "center" });
+      } else {
+        // Nếu không khớp hoặc ô tìm kiếm trống: trả về giao diện bình thường
+        row.style.border = "";
+        row.style.backgroundColor = "";
+      }
+    });
+  });
+}
